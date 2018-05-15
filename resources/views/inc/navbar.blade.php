@@ -1,3 +1,4 @@
+<div class="">
 <nav class="navbar-inverse navbar-fixed-top" id="custome1">
                    <div class="container" >
                            <div class="row">
@@ -13,19 +14,21 @@
                    </div>
                    <div class="collapse navbar-collapse" id="myheader">
                            <ul class="nav navbar-nav navbar-right">
-                               <li class="active"><a href="#">home</a></li>
+                               <li><a href="#">home</a></li>
                                <li ><a href="#">About</a></li>
                                <li ><a href="#">Contact</a></li>
-                               <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Portfolio <span class="caret"></span> </a>
+                               <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Service Provider <span class="caret"></span> </a>
                                <ul class="dropdown-menu custome1">
-                                       <li ><a href="#">Portfolio1</a></li>
-                                       <li ><a href="#">Portfolio2</a></li>
-                                       <li ><a href="#">Portfolio3</a></li>
+                                       <li ><a href="#">Plumber</a></li>
+                                       <li ><a href="#">Electrician</a></li>
+                                       <li ><a href="#">Carpenter</a></li>
+                                       <li ><a href="#">Painter</a></li>
+                                       <li ><a href="#">Auto-Mechanic</a></li>
                                </ul>
                                </li>
 
-                               <li ><a href="#">Blog</a></li>
-                               <li ><a href="#">Features</a></li>
+                               <li class="active"><a href="#">Login</a></li>
+                               <li ><a href="#">Register</a></li>
                                <li ><a href="#"><i class="fa fa-search fa-lg "></i> </a></li>
                            </ul>
                    </div>
@@ -33,3 +36,4 @@
            </div>
        </div>
            </nav>
+           </div>
