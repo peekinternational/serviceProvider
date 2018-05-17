@@ -14,6 +14,12 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
+Route::get('signin', function () {
     return view('inc/sign_in');
+});
+Route::get('/', function () {
+    return view('home');
+});
+Route::get('/slider', function () {
+    return view('inc/slider');
 });
