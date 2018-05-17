@@ -13,6 +13,12 @@
 
 // Route::get('/', function () {
 // });
+Route::get('/create', function () {
+    return view('user_profile.create');
+});
+Route::get('/login', function () {
+    return view('user_profile.login');
+});
 Route::get('/update', function () {
     return view('user_profile.update');
 });
