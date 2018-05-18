@@ -12,14 +12,24 @@
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
 // });
-Route::get('signin', function () {
-    return view('inc/sign_in');
+
+Route::get('/create', function () {
+    return view('user_profile.create');
 });
-Route::get('/', function () {
-    return view('home');
+Route::get('/login', function () {
+    return view('user_profile.login');
 });
-Route::get('/slider', function () {
-    return view('inc/slider');
+
+Route::get('/update', function () {
+    return view('user_profile.update');
 });
+Route::post('create', 'RegisterController@store');
+Route::post('login', 'RegisterController@login');
+
+Route::get('/', 'RegisterController@index');
+Route::get('/update/{id}', 'RegisterController@edit');
+Route::post('/update/{id}', 'RegisterController@update');
+
+Route::get('profile_view/{id}', 'RegisterController@show');
+Route::get('logout', 'RegisterController@logout');

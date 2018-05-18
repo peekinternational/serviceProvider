@@ -1,4 +1,5 @@
 
+<div class="">
 <nav class="navbar-inverse " id="custome1">
                    <div class="container" >
                            <div class="row">
@@ -25,7 +26,7 @@
                                </ul>
                                </li>
                                <li ><a href="{{url('signin')}}">Login</a></li>
-                               <li ><a href="#">Register</a></li>
+                               <li ><a href="{{url('create')}}">Register</a></li>
                                <li ><a href="#">About</a></li>
                                <li ><a href="#">Contact</a></li>
                                <li ><a href="#"><i class="fa fa-search fa-lg "></i> </a></li>
