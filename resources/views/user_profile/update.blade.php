@@ -9,6 +9,11 @@
 <form class="" action="{{url('/update/'. $user->id)}}" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
   <div class="" style="text-align: -webkit-center">
+    <div class="profile-overlay">
+      <i class="fa fa-camera"></i>Change
+      <i class="fa fa-pencil"></i>Edit
+      <i class="fa fa-remove"></i>Remove
+    </div>
   <div class="profile-image text-center">
     <?php if (!empty($user->image)): ?>
       <img src="{{url('img/'.$user->image)}}" class="pf-image" alt="{{$user->image}}">
