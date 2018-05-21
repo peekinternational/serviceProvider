@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <section class="hero-area">
 	<div class="container">
@@ -7,14 +8,18 @@
 				<div class="block">
 					<h1 class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s" >We are smart <br> Creative Agency</h1>
 					<p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.</p>
-					<ul class="list-inline wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".7s">
-						<li>
-							<a data-scroll href="#services" class="btn btn-main">Explore Us</a>
-						</li>
-						<li>
-							<a data-scroll href="#team" class="btn btn-transparent">Learn More</a>
-						</li>
-					</ul>
+					<div class="text-center col-md-8 col-md-offset-2 model">
+						<br>
+					<form class="form-group" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Skills" name="skill">
+						</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Location" name="location">
+							</div>
+									<button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button>
+					</form>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -31,39 +36,50 @@
         <div class="border"></div>
       </div>
       <!-- /section title -->
-
-      <div class="col-md-10 col-md-offset-1">
-        <div class="row">
-					@if(count($user)>0)
-		      @foreach($user as $users)
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="service-item">
-							<h4><?php echo ucfirst($users->name); ?></h4>
-							<small><cite title="San Francisco, USA">{{$users->address}}
-								<i class="fas fa-map-marker">
-							</i></cite></small>
-							<p>
-									<i class="glyphicon glyphicon-phone"></i>{{$users->phone}}
-									<br />
-									<i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-									<br />
-									<i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-							<!-- Split button -->
-							<div class="">
-							<label>Skills</label>
-							<ul>
-								<li>{{$users->skill}}</li>
-							</ul>
-							<label>Experience</label>
-							<ul>
-								<li>{{$users->experience}}</li>
-							</ul>
-							</div>
-
-          </div>
-					</div>
-					@endforeach
-					@endif
+      <div class="col-md-10">
+        <div class="row text-center">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="fa fa-home"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+					<div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-alarm-outline"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+					<div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-alarm-outline"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-briefcase-outline"></i>
+              <h4>Marketing Ideas</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-email-outline"></i>
+              <h4>Mail Support</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-locked-outline"></i>
+              <h4>Secure System</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
         </div>
       </div>
     </div>    <!-- End row -->
@@ -201,7 +217,7 @@ Start Call To Action
 							<!-- /client info -->
 							<!-- client photo -->
 							<div class="client-thumb">
-								<img src="images/plumber.jpg" class="img-responsive" alt="">
+								<img src="images/client-logo/clients-1.jpg" class="img-responsive" alt="">
 							</div>
 							<div class="client-meta">
 								<h3>Abul Mal Muhit</h3>
@@ -372,4 +388,50 @@ Start Call To Action
     <h6>Design and Developed by <a href="">Themefisher</a></h6>
   </div>
 </footer> <!-- end footer -->
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+      @if(count($user)>0)
+      @foreach($user as $users)
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="{{asset('images/builder.jpg')}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4><?php echo ucfirst($users->name); ?></h4>
+                        <small><cite title="San Francisco, USA">{{$users->address}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-phone"></i>{{$users->phone}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        <!-- Split button -->
+                        <div class="">
+                        <label>Skills</label>
+                        <ul>
+                          <li>{{$users->skill}}</li>
+                        </ul>
+                        <label>Experience</label>
+                        <ul>
+                          <li>{{$users->experience}}</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
+
 @endsection

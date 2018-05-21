@@ -72,6 +72,7 @@ class RegisterController extends Controller
   {
       $user = Register::find($id);
         // $val = $request->session()->get('ses');
+
       return view('user_profile.update',compact('user'));
   }
 
@@ -103,6 +104,14 @@ class RegisterController extends Controller
       $user->address = $request->input('address');
       $user->fee = $request->input('fee');
       $user->experience = $request->input('experience');
+      // $user->image = $request->input('image');
+
+      $image = $request->file('image');
+      $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+      $destinationPath = public_path('img');
+      $image->move($destinationPath, $profilePicture);
+  //  dd($profilePicture);
+      $user->image=$profilePicture;
       $user->save();
       //dd($user);->save();
       //dd($user->id);
