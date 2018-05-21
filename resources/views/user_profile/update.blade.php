@@ -1,12 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+
 <h1 align="center">Create Profile</h1>
 <!-- @if(Session ('ses'))
 {{Session('ses')}}
 @endif -->
-<form class="" action="{{url('/update/'. $user->id)}}" method="post">
+<form class="" action="{{url('/update/'. $user->id)}}" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
+  <div class="" style="text-align: -webkit-center">
+  <div class="profile-image text-center">
+    <?php if (!empty($user->image)): ?>
+      <img src="{{url('img/'.$user->image)}}" class="pf-image" alt="{{$user->image}}">
+      <?php else: ?>
+          <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$user->image}}">
+    <?php endif; ?>
+
+    </div>
+
+  </div>
   <div class="form-group">
     <label>Full Name:</label>
     <input type="text" name="name" class="form-control" value="{{$user->name}}">
@@ -39,6 +51,12 @@
     <label>Experience:</label>
     <input type="text" name="experience" class="form-control" value="{{$user->experience}}" placeholder="Enter Experience">
   </div>
+  <div class="form-group">
+    <label>Profile Image:</label>
+    <input type="file" class="form-control" name="image" id="file" value="">
+    </div>
+
   <button type="submit" class="btn btn-primary" name="button">Submit</button>
 </form>
+
 @endsection

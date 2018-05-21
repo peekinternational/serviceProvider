@@ -25,7 +25,7 @@
                                        <li ><a href="#">Auto-Mechanic</a></li>
                                </ul>
                                </li>
-                               <li ><a href="{{url('signin')}}">Login</a></li>
+                               <li ><a href="{{url('/login')}}">Login</a></li>
                                <li ><a href="{{url('create')}}">Register</a></li>
                                <li ><a href="#">About</a></li>
                                <li ><a href="#">Contact</a></li>

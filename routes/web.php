@@ -20,7 +20,9 @@ Route::get('/create', function () {
 Route::get('/login', function () {
     return view('user_profile.login');
 });
-
+Route::get('/index', function () {
+    return view('index');
+});
 Route::get('/update', function () {
     return view('user_profile.update');
 });
