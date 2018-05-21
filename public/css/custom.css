@@ -1,0 +1,27 @@
+
+/* body{background-color: #2C3E50;} */
+#img-slider{width: 5000px;height:450px;}
+
+.profile-image {
+  border-radius: 50%;
+height: 120px;
+width: 120px;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+align: center;
+overflow: hidden;
+}
+.pf-image {
+  width: 100%;#img-slider{width: 5000px;height:450px;}
+.custumelogo{width: 70px; height: 40px}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+
+}
+.logo-white{
+  width: 20%;
+}

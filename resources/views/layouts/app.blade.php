@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Service Provider</title>
 
-    <!-- <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/custume.css')}}"> -->
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/custume.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <!-- <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css"> -->
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
 
@@ -45,7 +45,7 @@
   <body id="body">
   @include('inc.navbar')
 
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
 
       @include('inc.messages')
   @yield('content')

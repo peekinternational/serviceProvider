@@ -1,4 +1,4 @@
-       <header class="navigation navbar navbar-fixed-top">
+       <header class="navigation navbar navbar-inverse navbar-fixed-top">
               <div class="container">
                  <div class="navbar-header">
                     <!-- responsive nav button -->
@@ -11,8 +11,8 @@
                     <!-- /responsive nav button -->
                     <!-- logo -->
                     <a class="navbar-brand logo" href="{{url('/')}}">
-           <img class="logo-default custumelogo" src="{{url('images/logo2.png')}}" alt="logo" />
-           <img class="logo-white custumelogo" src="{{url('images/logo.png')}}" alt="logo" />
+           <img class="logo-default custumelogo" src="{{url('images/logo2.png')}}" alt="logo" style="width: 20%;" />
+           <!-- <img class="logo-white custumelogo" src="{{url('images/logo.png')}}" alt="logo" style="width: 20%;" /> -->
         </a>
 
 
@@ -47,4 +47,3 @@
                  <!-- /main nav -->
               </div>
            </header>
->>>>>>> 7aaba92566cffe5d80f8440d647243f57f7ea320
