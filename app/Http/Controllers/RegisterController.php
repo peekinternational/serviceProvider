@@ -165,4 +165,5 @@ class RegisterController extends Controller
     session()->forget('ses');
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
+
 }
