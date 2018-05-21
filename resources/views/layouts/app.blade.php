@@ -40,29 +40,11 @@
     <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow">
     <link rel="stylesheet" type="text/css" href="css/colors/light-green.css" title="light-green">
   </head>
-  <body id="body">
+  <body>
   @include('inc.navbar')
     <div>
       @include('inc.messages')
   @yield('content')
     </div>
-    <script src="plugins/jquery/dist/jquery.min.js"></script>
-    <!-- Google Map -->
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-    <script  src="plugins/google-map/gmap.js"></script>
-    <!-- Bootstrap 3.7 -->
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Parallax -->
-    <script src="plugins/parallax/jquery.parallax-1.1.3.js"></script>
-    <!-- lightbox -->
-    <script src="plugins/lightbox2/dist/js/lightbox.min.js"></script>
-    <!-- Owl Carousel -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <!-- Portfolio Filtering -->
-    <script src="plugins/mixitup/dist/mixitup.min.js"></script>
-    <!-- Smooth Scroll js -->
-    <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>

@@ -1,24 +1,24 @@
 @extends('layouts.app')
 @section('content')
-<nav class="navbar-default " id="custome1">
-                   <div class="container" >
-                     <ul class="nav navbar-nav navbar-left">
-                       <div class="col-lg-2 col-md-2">
-<li><a href="{{url('/')}}">Home</a></li>
-                       </div>
-                       <div class="col-lg-2 col-md-2">
-<li><a href="{{url('/')}}">Home</a></li>
-                       </div>
-                       <div class="col-lg-2 col-md-2">
-<li><a href="{{url('/')}}">Home</a></li>
-                       </div>
-
-                          <li><a href="{{url('/')}}">Home</a></li>
-                           <li><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="{{url('/')}}">Home</a></li>
-                       </ul>
-
-       </div>
-           </nav>
+<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h1 class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s" >We are smart <br> Creative Agency</h1>
+					<p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.</p>
+					<ul class="list-inline wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".7s">
+						<li>
+							<a data-scroll href="#services" class="btn btn-main">Explore Us</a>
+						</li>
+						<li>
+							<a data-scroll href="#team" class="btn btn-transparent">Learn More</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 @endsection
