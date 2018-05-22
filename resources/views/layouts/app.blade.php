@@ -6,8 +6,10 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
 
     <!-- CSS
@@ -44,7 +46,7 @@
   <body>
   @include('inc.navbar')
 
-    <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
+    <div class="" style="margin-top:50px;">
 
       @include('inc.messages')
   @yield('content')

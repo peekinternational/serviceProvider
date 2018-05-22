@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="col-md-8 col-md-offset-2">
+
+
 <h1 align="center">Registeration</h1>
 
 <form class="" action="{{url('create')}}" method="post">
@@ -19,4 +22,5 @@
   </div>
   <button type="submit" class="btn btn-primary" name="button">Submit</button>
 </form>
+</div>
 @endsection

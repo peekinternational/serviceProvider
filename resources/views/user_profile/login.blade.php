@@ -3,7 +3,6 @@
 @section('content')
 <div class="col-lg-6 col-md-6 col-sm-6 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
 <h1 align="center">Login</h1>
-
 <form class="" action="{{url('login')}}" method="post">
   {{csrf_field()}}
   <div class="form-group">

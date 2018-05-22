@@ -10,7 +10,7 @@
 					<p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.</p>
 					<div class="text-center col-md-8 col-md-offset-2 model">
 						<br>
-					<form class="form-group" role="search">
+					<form class="form-group" role="search" action="{{url('search')}}" method="get">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Skills" name="skill">
 						</div>
