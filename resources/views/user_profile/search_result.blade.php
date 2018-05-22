@@ -5,7 +5,7 @@
     <div class="row">
       @if(count($user)>0)
       @foreach($user as $users)
-        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card">
             <div class="well well-sm">
                 <div class="row">
                     <!-- <div class="col-sm-6 col-md-4">
@@ -13,7 +13,11 @@
                     </div> -->
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
-                        <img src="{{asset('img/'.$users->image)}}" class="" alt="" style="width: 100%;">
+                          <?php if (!empty($users->image)): ?>
+                            <img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">
+                            <?php else: ?>
+                                <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$users->image}}">
+                          <?php endif; ?>
                       </div>
 
 

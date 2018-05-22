@@ -36,3 +36,7 @@ overflow: hidden;
   height: 180px;
   overflow: hidden;
 }
+.profile_card {
+  height: 330px;
+  overflow: hidden;
+}
