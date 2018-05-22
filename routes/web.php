@@ -29,6 +29,9 @@ Route::get('/update', function () {
 Route::get('home', function () {
     return view('user_profile.home');
 });
+Route::get('profile-view', function () {
+    return view('user_profile.profile_view');
+});
 
 Route::post('create', 'RegisterController@store');
 Route::post('login', 'RegisterController@login');
@@ -40,3 +43,4 @@ Route::post('/update/{id}', 'RegisterController@update');
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
+Route::get('profile/{skill}', 'RegisterController@profile');

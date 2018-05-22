@@ -165,5 +165,10 @@ class RegisterController extends Controller
     session()->forget('ses');
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
+   public function profile($skill)
+   {
+     $user=Register::where('skill','LIKE',"%{$skill}%")->get();
+     return view('user_profile.profile_view',compact('user'));
+   }
 
 }

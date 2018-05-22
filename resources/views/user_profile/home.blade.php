@@ -39,46 +39,57 @@
       <div class="col-md-10">
         <div class="row text-center">
           <div class="col-md-4 col-sm-4 col-xs-12">
+						<a href="{{url('profile/'.$skill='plumber')}}">
             <div class="service-item">
-              <i class="fa fa-home"></i>
-              <h4>Time Management</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+              <i class="fa fa-wrench"></i>
+              <h4>Plumber Services </h4>
+              <p><b>Looking for a Plumber?</b> We offer a premium plumbing service in Islamabad. No job is too small or big for us. Our Plumbers are skilled, trained and professional, and can do any kind of plumbing job for you.</p>
             </div>
+					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="service-item">
-              <i class="tf-ion-ios-alarm-outline"></i>
-              <h4>Time Management</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+          <a href="{{url('profile/'.$skill='electrical')}}"> <div class="service-item">
+              <i class="fa fa-bolt"></i>
+              <h4>Electrician</h4>
+              <p><b>Electricians install </b> and maintain all of the electrical and power systems for our homes, businesses, and factories. They install and maintain the wiring and control equipment through which electricity flows. </p>
             </div>
+						</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
+						<a href="{{url('profile/'.$skill='Carpenter')}}">
             <div class="service-item">
-              <i class="tf-ion-ios-alarm-outline"></i>
-              <h4>Time Management</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+              <i class="fa fa-gavel"></i>
+              <h4>Carpenter</h4>
+              <p>Carpenter. Carpenters construct and repair building frameworks and structures—such as stairways, doorframes, partitions, and rafters—made from wood and other materials. They also may install kitchen cabinets, siding, and drywall.</p>
             </div>
+					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
+						<a href="{{url('profile/'.$skill='Mechanic')}}">
             <div class="service-item">
-              <i class="tf-ion-ios-briefcase-outline"></i>
-              <h4>Marketing Ideas</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+              <i class="fa fa-bus"></i>
+              <h4>Auto Mechanic</h4>
+              <p>An auto mechanic performs maintenance, diagnostic testing, repairs, and inspections of small trucks and cars. They work on engines, drive belts, transmissions, and electronic systems such as steering, brakes, and accident-avoidance systems.</p>
             </div>
+					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
+						<a href="{{url('profile/'.$skill='electrical')}}">
             <div class="service-item">
               <i class="tf-ion-ios-email-outline"></i>
               <h4>Mail Support</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
             </div>
+					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
+						<a href="{{url('profile/'.$skill='electrical')}}">
             <div class="service-item">
               <i class="tf-ion-ios-locked-outline"></i>
               <h4>Secure System</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
             </div>
+					</a>
           </div><!-- END COL -->
         </div>
       </div>
