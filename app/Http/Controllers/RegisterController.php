@@ -165,6 +165,11 @@ class RegisterController extends Controller
     session()->forget('ses');
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
+   public function profile($skill)
+   {
+     $user=Register::where('skill','LIKE',"%{$skill}%")->get();
+     return view('user_profile.profile_view',compact('user'));
+   }
 
   public function search(Request $request)
   {
@@ -180,7 +185,10 @@ class RegisterController extends Controller
       // $user = $user->where('skill', 'like', $request->get('skill'). '%')->get();
       // return view('user_profile.index', compact('user'))
       // return $user;
-
-  }
-
+}
+public function showdata($skill)
+{
+  $user= Register::where('skill','LIKE',"%{$skill}%")->get();
+return view('user_profile.search_result',compact('user'));
+}
 }
