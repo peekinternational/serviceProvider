@@ -32,15 +32,12 @@
                               <li ><a href="#">Auto-Mechanic</a></li>
                       </ul>
                       </li>
-                      <li ><a href="{{url('login')}}">Login</a></li>
-                      <li ><a href="{{url('create')}}">Register</a></li>
                       <li ><a href="#">About</a></li>
                       <li ><a href="#">Contact</a></li>
-                      <li ><a href="#"><i class="fa fa-search fa-lg "></i> </a></li>
-                      <li><form class="navbar-form" role="search">
-                          <input type="text" class="form-control" placeholder="Search" name="q">
-                              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                      </form></li>
+                      <li ><a href="{{url('login')}}">Login</a></li>
+                      <li ><a href="{{url('create')}}">Register</a></li>
+
+
 
                     </ul>
                  </nav>

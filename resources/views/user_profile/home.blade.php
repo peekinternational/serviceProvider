@@ -8,14 +8,18 @@
 				<div class="block">
 					<h1 class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s" >We are smart <br> Creative Agency</h1>
 					<p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.</p>
-					<ul class="list-inline wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".7s">
-						<li>
-							<a data-scroll href="#services" class="btn btn-main">Explore Us</a>
-						</li>
-						<li>
-							<a data-scroll href="#team" class="btn btn-transparent">Learn More</a>
-						</li>
-					</ul>
+					<div class="text-center col-md-8 col-md-offset-2 model">
+						<br>
+					<form class="form-group" role="search" action="{{url('search')}}" method="get">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Skills" name="skill">
+						</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Location" name="location">
+							</div>
+									<button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button>
+					</form>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -32,32 +36,44 @@
         <div class="border"></div>
       </div>
       <!-- /section title -->
-
-      <div class="col-md-4 text-center">
-        <img src="images/about/member.jpg" class="inline-block" alt="">
-      </div>
-      <div class="col-md-8">
+      <div class="col-md-10">
         <div class="row text-center">
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="service-item">
-
-                          </div>
+              <i class="fa fa-home"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
           </div><!-- END COL -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-alarm-outline"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+					<div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="service-item">
+              <i class="tf-ion-ios-alarm-outline"></i>
+              <h4>Time Management</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            </div>
+          </div><!-- END COL -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="service-item">
               <i class="tf-ion-ios-briefcase-outline"></i>
               <h4>Marketing Ideas</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
             </div>
           </div><!-- END COL -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="service-item">
               <i class="tf-ion-ios-email-outline"></i>
               <h4>Mail Support</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
             </div>
           </div><!-- END COL -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="service-item">
               <i class="tf-ion-ios-locked-outline"></i>
               <h4>Secure System</h4>
@@ -372,7 +388,6 @@ Start Call To Action
     <h6>Design and Developed by <a href="">Themefisher</a></h6>
   </div>
 </footer> <!-- end footer -->
-
 
 
 

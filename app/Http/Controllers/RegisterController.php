@@ -166,4 +166,21 @@ class RegisterController extends Controller
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
 
+  public function search(Request $request)
+  {
+      $skill = $request->input('skill');
+      $location = $request->input('location');
+      // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
+
+      $user = Register::where('skill','LIKE',"%{$skill}%")->Where('address', 'LIKE',"%{$location}%")->get();
+
+      return view('user_profile.search_result',compact('user'));
+      // print_r($user);
+
+      // $user = $user->where('skill', 'like', $request->get('skill'). '%')->get();
+      // return view('user_profile.index', compact('user'))
+      // return $user;
+
+  }
+
 }

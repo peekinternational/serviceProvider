@@ -6,8 +6,7 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <!-- <link rel="stylesheet" href="css/app.css"> -->
-    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -44,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow">
     <link rel="stylesheet" type="text/css" href="css/colors/light-green.css" title="light-green">
   </head>
-  <body id="body">
+  <body>
   @include('inc.navbar')
 
     <div class="" style="margin-top:50px;">
@@ -52,23 +51,5 @@
       @include('inc.messages')
   @yield('content')
     </div>
-    <script src="plugins/jquery/dist/jquery.min.js"></script>
-    <!-- Google Map -->
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-    <script  src="plugins/google-map/gmap.js"></script>
-    <!-- Bootstrap 3.7 -->
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Parallax -->
-    <script src="plugins/parallax/jquery.parallax-1.1.3.js"></script>
-    <!-- lightbox -->
-    <script src="plugins/lightbox2/dist/js/lightbox.min.js"></script>
-    <!-- Owl Carousel -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <!-- Portfolio Filtering -->
-    <script src="plugins/mixitup/dist/mixitup.min.js"></script>
-    <!-- Smooth Scroll js -->
-    <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>
