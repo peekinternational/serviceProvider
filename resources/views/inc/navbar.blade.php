@@ -21,7 +21,7 @@
                       <li><a href="{{url('/')}}">Home</a></li>
                       <li class="dropdown" ><a class="dropbtn" href="#">Service Provider <span class="caret"></span> </a>
                       <ul class="dropdown-menu dropdown_list">
-                              <li ><a href="{{url('profile/'.$skill='Plumber')}}">Plumber</a></li>
+                              <li ><a href="{{url('search/'.$skill='Plumber')}}">Plumber</a></li>
                               <li ><a href="{{url('profile/'.$skill='electrician')}}">Electrician</a></li>
                               <li ><a href="{{url('profile/'.$skill='Carpenter')}}">Carpenter</a></li>
                               <li ><a href="{{url('profile/'.$skill='painter')}}">Painter</a></li>
