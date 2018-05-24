@@ -20,9 +20,17 @@ class CreateRegistersTable extends Migration
             $table->String('password');
             $table->string('skill')->nullable();
             $table->string('email')->nullable();
+            $table->string('location')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
             $table->string('address')->nullable();
             $table->string('fee')->nullable();
             $table->string('experience')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('image')->nullable();
+
             $table->timestamps();
         });
     }

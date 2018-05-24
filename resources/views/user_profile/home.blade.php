@@ -48,7 +48,7 @@
 					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-          <a href="{{url('profile/'.$skill='electrical')}}"> <div class="service-item">
+          <a href="{{url('profile/'.$skill='Electrician')}}"> <div class="service-item">
               <i class="fa fa-bolt"></i>
               <h4>Electrician</h4>
               <p><b>Electricians install </b> and maintain all of the electrical and power systems for our homes, businesses, and factories. They install and maintain the wiring and control equipment through which electricity flows. </p>
@@ -395,54 +395,10 @@ Start Call To Action
     </div> <!-- end container -->
   </div>
   <div class="footer-bottom">
-    <h5>Copyright 2016. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="">Themefisher</a></h6>
+    <h5>Copyright 2018. All rights reserved.</h5>
+    <h6>Design and Developed by <a href="">Peek International</a></h6>
   </div>
 </footer> <!-- end footer -->
 
-
-
-
-
-
-<div class="container">
-    <div class="row">
-      @if(count($user)>0)
-      @foreach($user as $users)
-        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src="{{asset('images/builder.jpg')}}" alt="" class="img-rounded img-responsive" />
-                    </div>
-                    <div class="col-sm-6 col-md-8">
-                        <h4><?php echo ucfirst($users->name); ?></h4>
-                        <small><cite title="San Francisco, USA">{{$users->address}} <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
-                        <p>
-                            <i class="glyphicon glyphicon-phone"></i>{{$users->phone}}
-                            <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                        <!-- Split button -->
-                        <div class="">
-                        <label>Skills</label>
-                        <ul>
-                          <li>{{$users->skill}}</li>
-                        </ul>
-                        <label>Experience</label>
-                        <ul>
-                          <li>{{$users->experience}}</li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
-</div>
 
 @endsection

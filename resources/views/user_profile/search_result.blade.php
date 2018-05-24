@@ -29,22 +29,17 @@
 
 
                         <div class="col-md-3">
-                        <i class="fa fa-wrench fa-2x"></i></div>
+                        <i class="fa fa-wrench"></i></div>
                         <div class="col-md-9">
                           {{$users->skill}}
                         </div>
                         </div>
-                        <!-- <ul>
-                          <li>{{$users->skill}}</li><br>
-                        </ul> -->
                         <div class="row">
-
-
-                        <div class="col-md-3">
-                          <i class="fa fa-map-marker fa-2x"></i>
+                          <div class="col-md-3">
+                          <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="col-md-9">
-                          {{$users->address}}
+                          {{$users->location}}
                         </div>
                       </div>
                     </div>

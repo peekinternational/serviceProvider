@@ -88,9 +88,8 @@ class RegisterController extends Controller
 
       $this->validate($request,[
         'skill' => 'required',
-        'email' => 'required',
         'address' => 'required',
-        'fee' => 'required',
+        'location' => 'required',
         'experience' => 'required'
       ]);
 
@@ -100,19 +99,32 @@ class RegisterController extends Controller
       $user->phone = $request->input('phone');
       $user->password = $request->input('password');
       $user->skill = $request->input('skill');
+      $user->location = $request->input('location');
+      $user->city = $request->input('city');
+      $user->state = $request->input('state');
+      $user->country = $request->input('country');
+      $user->latitude = $request->input('latitude');
+      $user->longitude = $request->input('longitude');
       $user->email = $request->input('email');
       $user->address = $request->input('address');
       $user->fee = $request->input('fee');
       $user->experience = $request->input('experience');
       // $user->image = $request->input('image');
 
+
       $image = $request->file('image');
+      // dd($image);
+      if ($image != null) {
+
+
       $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
       $destinationPath = public_path('img');
       $image->move($destinationPath, $profilePicture);
   //  dd($profilePicture);
       $user->image=$profilePicture;
+      }
       $user->save();
+
       //dd($user);->save();
       //dd($user->id);
 // $request->session()->put('success','Information Updated successfully');
@@ -178,14 +190,8 @@ class RegisterController extends Controller
       // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
 
       $user = Register::where('skill','LIKE',"%{$skill}%")->Where('address', 'LIKE',"%{$location}%")->get();
-
       return view('user_profile.search_result',compact('user'));
-      // print_r($user);
-
-      // $user = $user->where('skill', 'like', $request->get('skill'). '%')->get();
-      // return view('user_profile.index', compact('user'))
-      // return $user;
-}
+  }
 public function showdata($skill)
 {
   $user= Register::where('skill','LIKE',"%{$skill}%")->get();
