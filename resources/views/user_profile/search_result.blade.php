@@ -5,13 +5,17 @@
     <div class="row">
       @if(count($user)>0)
       @foreach($user as $users)
-        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card">
             <div class="well well-sm">
                 <div class="row">
                   
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
-                        <img src="{{asset('img/'.$users->image)}}" class="" alt="" style="width: 100%;">
+                          <?php if (!empty($users->image)): ?>
+                            <img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">
+                            <?php else: ?>
+                                <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$users->image}}">
+                          <?php endif; ?>
                       </div>
 
 
@@ -23,22 +27,17 @@
 
 
                         <div class="col-md-3">
-                        <i class="fa fa-wrench fa-2x"></i></div>
+                        <i class="fa fa-wrench"></i></div>
                         <div class="col-md-9">
                           {{$users->skill}}
                         </div>
                         </div>
-                        <!-- <ul>
-                          <li>{{$users->skill}}</li><br>
-                        </ul> -->
                         <div class="row">
-
-
-                        <div class="col-md-3">
-                          <i class="fa fa-map-marker fa-2x"></i>
+                          <div class="col-md-3">
+                          <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="col-md-9">
-                          {{$users->address}}
+                          {{$users->location}}
                         </div>
                       </div>
                     </div>

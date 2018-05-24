@@ -15,18 +15,7 @@
 
     <!-- CSS
     ================================================== -->
-    <!-- RS5.0 Main Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/settings.css">
-    <!-- RS5.0 Layers and Navigation Styles -->
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/navigation.css">
-    <!-- REVOLUTION STYLE SHEETS -->
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/fonts/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="plugins/revo-slider/css/navigation.css">
-    <!-- Themefisher Icon font -->
+
     <link rel="stylesheet" href="plugins/themefisher-font/style.css">
     <!-- Lightbox.min css -->
     <link rel="stylesheet" href="plugins/lightbox2/dist/css/lightbox.min.css">
@@ -43,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="css/colors/light-blue.css" title="light-blue">
     <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow">
     <link rel="stylesheet" type="text/css" href="css/colors/light-green.css" title="light-green">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   </head>
   <body>
   @include('inc.navbar')

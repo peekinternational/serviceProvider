@@ -36,6 +36,18 @@ Route::get('profile-view', function () {
     return view('user_profile.profile_view');
 });
 
+Route::get('myip', function () {
+	// $ip = '115.186.188.3';
+  //   $data = \Location::get($ip);
+  $data = Location::get();
+    dd($data);
+});
+Route::get('userip',function(){
+    $ip= \Request::ip();
+    $location = \Location::get($ip);
+    dd($location);
+});
+
 Route::post('create', 'RegisterController@store');
 Route::post('login', 'RegisterController@login');
 

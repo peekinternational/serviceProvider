@@ -39,3 +39,7 @@ overflow: hidden;
 .dropdown_list  li a:hover {background-color: black; color:white; font-size: 18px;}
 .dropbtn{display: none;}
 .dropdown:hover .dropdown_list{display: block;}
+.profile_card {
+  height: 330px;
+  overflow: hidden;
+}
