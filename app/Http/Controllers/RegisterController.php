@@ -188,10 +188,13 @@ class RegisterController extends Controller
   {
       $skill = $request->input('skill');
       $location = $request->input('location');
+      $city = $request->input('city');
       // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
 
-      $user = Register::where('skill','LIKE',"%{$skill}%")->Where('address', 'LIKE',"%{$location}%")->get();
-      return view('user_profile.search_result',compact('user'));
+      $user = Register::where('skill','LIKE',"%{$skill}%")->Where('location', 'LIKE',"%{$location}%")->get();
+      $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
+
+      return view('user_profile.search_result',compact('user', 'user1'));
   }
 public function showdata($skill)
 {
