@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
@@ -51,5 +52,6 @@
       @include('inc.messages')
   @yield('content')
     </div>
+    @include('inc.footer')
   </body>
 </html>

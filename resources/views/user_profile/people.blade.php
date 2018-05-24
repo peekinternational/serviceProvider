@@ -8,7 +8,7 @@
         <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
             <div class="well well-sm">
                 <div class="row">
-                  
+
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
                         <img src="{{asset('img/'.$users->image)}}" class="" alt="" style="width: 100%;">

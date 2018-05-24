@@ -11,36 +11,63 @@
                     <!-- /responsive nav button -->
                     <!-- logo -->
                     <a class="navbar-brand logo" href="{{url('/')}}">
-           <!-- <img class="logo-default custumelogo" src="{{url('images/logo2.png')}}" alt="logo" style="width: 20%;" /> -->
            <img class="logo-white custumelogo" src="{{url('images/logo.png')}}" alt="logo" style="width: 20%;" />
         </a>
-
-
-
                     <!-- /logo -->
                  </div>
                  <!-- main nav -->
-                 <nav class="collapse navbar-collapse navbar-right">
+                 <nav class="collapse navbar-collapse navbar-left">
                     <ul id="nav" class="nav navbar-nav menu">
                       <li><a href="{{url('/')}}">Home</a></li>
-                      <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Service Provider <span class="caret"></span> </a>
-                      <ul class="dropdown-menu custome1">
-                              <li ><a href="#">Plumber</a></li>
-                              <li ><a href="#">Electrician</a></li>
-                              <li ><a href="#">Carpenter</a></li>
-                              <li ><a href="#">Painter</a></li>
-                              <li ><a href="#">Auto-Mechanic</a></li>
+                      <li class="dropdown" ><a class="dropbtn" href="#">Service Provider <span class="caret"></span> </a>
+                      <ul class="dropdown-menu dropdown_list">
+                              <li ><a href="{{url('profile/'.$skill='Plumber')}}">Plumber</a></li>
+                              <li ><a href="{{url('profile/'.$skill='electrician')}}">Electrician</a></li>
+                              <li ><a href="{{url('profile/'.$skill='Carpenter')}}">Carpenter</a></li>
+                              <li ><a href="{{url('profile/'.$skill='painter')}}">Painter</a></li>
+                              <li ><a href="{{url('profile/'.$skill='welder')}}">Welder</a></li>
+                              <li ><a href="{{url('profile/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
                       </ul>
                       </li>
+                      <li ><a href="{{url('profile')}}">People</a></li>
                       <li ><a href="#">About</a></li>
                       <li ><a href="#">Contact</a></li>
-                      <li ><a href="{{url('login')}}">Login</a></li>
+                      </nav>
+                      <nav class="collapse navbar-collapse navbar-right">
+                         <ul id="nav" class="nav navbar-nav menu">
+                      <li id="logout" class="dropdown">
+                        <a class="dropbtn" href="">
+                          {{session()->get('name')}}</a>
+                          <ul class="dropdown-menu dropdown_list">
+                            <?php $id=session()->get('ses'); ?>
+                                  <li ><a href="{{url('profile_view/'.$id)}}">Profile</a></li>
+                                  <li ><a href="{{url('/update/'. $id)}}">Setting</a></li>
+                                  <li ><a href="{{url('logout')}}">Log out</a></li>
+                          </ul>
+                        </li>
+                      <li id="login"><a href="{{url('login')}}">Login</a></li>
                       <li ><a href="{{url('create')}}">Register</a></li>
-
-
-
                     </ul>
                  </nav>
                  <!-- /main nav -->
               </div>
            </header>
+<script>
+           $(document).ready(function(){
+             $("logout").hide();
+            <?php
+            $name=session()->get('name');
+             if($name==""){
+                ?>
+                $("#logout").hide();
+                $("#login").show();
+                <?php }
+                else {
+               ?>
+               $("#logout").show();
+               $("#login").hide();
+               <?php
+             }
+                ?>
+});
+           </script>

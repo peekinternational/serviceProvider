@@ -26,8 +26,11 @@ Route::get('/index', function () {
 Route::get('/update', function () {
     return view('user_profile.update');
 });
-Route::get('home', function () {
+Route::get('/', function () {
     return view('user_profile.home');
+});
+Route::get('People', function () {
+    return view('user_profile.people');
 });
 Route::get('profile-view', function () {
     return view('user_profile.profile_view');
@@ -36,7 +39,7 @@ Route::get('profile-view', function () {
 Route::post('create', 'RegisterController@store');
 Route::post('login', 'RegisterController@login');
 
-Route::get('/', 'RegisterController@index');
+Route::get('profile', 'RegisterController@index');
 Route::get('/update/{id}', 'RegisterController@edit');
 Route::post('/update/{id}', 'RegisterController@update');
 

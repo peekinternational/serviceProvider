@@ -14,7 +14,7 @@ class RegisterController extends Controller
   public function index()
   {
       $user = Register::all();
-      return view('user_profile.home', compact('user'));
+      return view('user_profile.people', compact('user'));
   }
 
   /**
@@ -146,6 +146,7 @@ class RegisterController extends Controller
       if ($phone == $user->phone) {
         if ($password == $user->password) {
           $request->session()->put('ses', $user->id);
+          $request->session()->put('name', $user->name);
           $val = $request->session()->get('ses');
 
           // return redirect('/dashboard')->with('success','You are successfully logged in');

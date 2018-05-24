@@ -48,7 +48,7 @@
 					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-          <a href="{{url('profile/'.$skill='electrical')}}"> <div class="service-item">
+          <a href="{{url('profile/'.$skill='electrician')}}"> <div class="service-item">
               <i class="fa fa-bolt"></i>
               <h4>Electrician</h4>
               <p><b>Electricians install </b> and maintain all of the electrical and power systems for our homes, businesses, and factories. They install and maintain the wiring and control equipment through which electricity flows. </p>
@@ -74,20 +74,20 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='electrical')}}">
+						<a href="{{url('profile/'.$skill='painter')}}">
             <div class="service-item">
-              <i class="tf-ion-ios-email-outline"></i>
-              <h4>Mail Support</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+              <i class="fa fa-paint-brush"></i>
+              <h4>Painter</h4>
+              <p>Wall Painter Service in your city. Service Provider can provide work related to the painting of homes and offices. We can paint and polish walls, partitions, etc.</p>
             </div>
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='electrical')}}">
+						<a href="{{url('profile/'.$skill='welder')}}">
             <div class="service-item">
-              <i class="tf-ion-ios-locked-outline"></i>
-              <h4>Secure System</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+              <i class="fa fa-fire"></i>
+              <h4>Welder</h4>
+              <p>Welders primary duty is joining metal parts together. They work on metal components of a various of building or construction industries. Examples include but are not limited to pipelines, bridges, power-plants, or refineries.</p>
             </div>
 					</a>
           </div><!-- END COL -->
@@ -106,7 +106,7 @@ Start About Section
 
 			<!-- section title -->
 			<div class="title text-center"  >
-				<h2>We Are Bingo Agency</h2>
+				<h2>We Are Service Provider</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam reprehenderit accusamus labore iusto, aut, eum itaque illo totam tempora eius.</p>
 				<div class="border"></div>
 			</div>
@@ -115,7 +115,7 @@ Start About Section
 			<div class="col-md-6">
 				<img src="images/about/about-2.png" class="img-responsive" alt="">
 			</div>
-			<div class="col-md-6">
+			<!-- <div class="col-md-6">
 				<ul class="checklist">
                     <li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
                     <li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
@@ -124,7 +124,7 @@ Start About Section
                     <li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
                 </ul>
 				<a href="#" class="btn btn-main mt-20">Learn More</a>
-			</div>
+			</div> -->
 		</div> 		<!-- End row -->
 	</div>   	<!-- End container -->
 </section>   <!-- End section -->
@@ -132,7 +132,7 @@ Start About Section
 <!--
 Start Call To Action
 ==================================== -->
-<section class="call-to-action section">
+<section class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -228,47 +228,7 @@ Start Call To Action
 							<!-- /client info -->
 							<!-- client photo -->
 							<div class="client-thumb">
-								<img src="images/client-logo/clients-1.jpg" class="img-responsive" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Abul Mal Muhit</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<img src="images/client-logo/clients-1.jpg" class="img-responsive" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Abul Mal Muhit</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<img src="images/client-logo/clients-1.jpg" class="img-responsive" alt="">
+								<img src="images/builder.jpg" class="img-responsive" alt="">
 							</div>
 							<div class="client-meta">
 								<h3>Abul Mal Muhit</h3>
@@ -348,101 +308,4 @@ Start Call To Action
 			</div> <!-- end row -->
 		</div> <!-- end container -->
 	</section> <!-- end section -->
-
-<footer id="footer" class="bg-one">
-  <div class="top-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>about</h3>
-          <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Our Services</h3></li>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Quick Links</h3></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Badges</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Connect with us Socially</h3></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Youtube</a></li>
-            <li><a href="#">Pinterest</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-      </div>
-    </div> <!-- end container -->
-  </div>
-  <div class="footer-bottom">
-    <h5>Copyright 2016. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="">Themefisher</a></h6>
-  </div>
-</footer> <!-- end footer -->
-
-
-
-
-
-
-<div class="container">
-    <div class="row">
-      @if(count($user)>0)
-      @foreach($user as $users)
-        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src="{{asset('images/builder.jpg')}}" alt="" class="img-rounded img-responsive" />
-                    </div>
-                    <div class="col-sm-6 col-md-8">
-                        <h4><?php echo ucfirst($users->name); ?></h4>
-                        <small><cite title="San Francisco, USA">{{$users->address}} <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
-                        <p>
-                            <i class="glyphicon glyphicon-phone"></i>{{$users->phone}}
-                            <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                        <!-- Split button -->
-                        <div class="">
-                        <label>Skills</label>
-                        <ul>
-                          <li>{{$users->skill}}</li>
-                        </ul>
-                        <label>Experience</label>
-                        <ul>
-                          <li>{{$users->experience}}</li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
-</div>
-
 @endsection
