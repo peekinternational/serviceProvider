@@ -184,9 +184,8 @@ class RegisterController extends Controller
      return view('user_profile.profile_view',compact('user'));
    }
 
-  public function search(Request $request,$skills)
+  public function search(Request $request)
   {
-    dd($skills);
       $skill = $request->input('skill');
       $location = $request->input('location');
       $city = $request->input('city');

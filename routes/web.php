@@ -58,5 +58,5 @@ Route::post('/update/{id}', 'RegisterController@update');
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
-// Route::get('profile/{skill}', 'RegisterController@showdata');
-Route::get('search/{skill}', 'RegisterController@search');
+Route::get('profile/{skill}', 'RegisterController@showdata');
+Route::get('search', 'RegisterController@search');
