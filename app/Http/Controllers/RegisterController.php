@@ -131,7 +131,7 @@ class RegisterController extends Controller
 //     session()->flush();
 //     session()->forget('success');
      // $success='Information Updated successfully';
-      return view('user_profile.dashboard',compact('user'));
+      return view('user_profile.view',compact('user'));
 
 
   }
@@ -162,7 +162,7 @@ class RegisterController extends Controller
           $val = $request->session()->get('ses');
 
           // return redirect('/dashboard')->with('success','You are successfully logged in');
-          return view('user_profile.dashboard',compact('user'));
+          return view('user_profile.home',compact('user'));
 
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');

@@ -36,7 +36,7 @@
                       <nav class="collapse navbar-collapse navbar-right">
                          <ul id="nav" class="nav navbar-nav menu">
                       <li id="logout" class="dropdown">
-                        <a class="dropbtn" href="">
+                        <a class="dropbtn" href="#">
                           {{session()->get('name')}}</a>
                           <ul class="dropdown-menu dropdown_list">
                             <?php $id=session()->get('ses'); ?>
@@ -46,7 +46,7 @@
                           </ul>
                         </li>
                       <li id="login"><a href="{{url('login')}}">Login</a></li>
-                      <li ><a href="{{url('create')}}">Register</a></li>
+                      <li id="register"><a href="{{url('create')}}">Register</a></li>
                     </ul>
                  </nav>
                  <!-- /main nav -->
@@ -66,6 +66,7 @@
                ?>
                $("#logout").show();
                $("#login").hide();
+               $("#register").hide();
                <?php
              }
                 ?>

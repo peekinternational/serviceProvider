@@ -48,11 +48,7 @@
 					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-<<<<<<< HEAD
           <a href="{{url('profile/'.$skill='electrician')}}"> <div class="service-item">
-=======
-          <a href="{{url('profile/'.$skill='Electrician')}}"> <div class="service-item">
->>>>>>> c843a85787903e12c88588b287dd97e4efdd065f
               <i class="fa fa-bolt"></i>
               <h4>Electrician</h4>
               <p><b>Electricians install </b> and maintain all of the electrical and power systems for our homes, businesses, and factories. They install and maintain the wiring and control equipment through which electricity flows. </p>

@@ -42,6 +42,6 @@
       @include('inc.messages')
   @yield('content')
     </div>
-    @include('inc.footer')
+
   </body>
 </html>
