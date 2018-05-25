@@ -56,3 +56,142 @@ overflow: hidden;
 .toppad
 {margin-top:20px;
 }
+.eo-box{
+    overflow: auto;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    background: #ffffff;
+    position: relative;
+}
+.eo-timeline-cover{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+.eo-timeline{
+    width: 100%;
+    height: 300px;
+}
+.eo-timeline:hover .eo-timeline-toolkit{
+    display: inline-block;
+}
+.eo-timeline-toolkit{
+    display: none;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 5px 20px;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    color: #ffffff;
+    border: 1px solid #fff;
+}
+.eo-timeline input[type=file]{
+    visibility: hidden;
+}
+.eo-timeline-toolkit label{
+    font-size: 12px;
+    font-weight: normal;
+}
+.eo-dp-box{
+    width: 16%;
+    height: 200px;
+    overflow: hidden;
+    top: -69px;
+    position: relative;
+}
+.eo-dp{
+    width: 100%;
+    border: 4px solid #ffffff;
+	margin-top:30px;
+}
+.eo-dp-box:hover .eo-dp-toolkit{
+    display: inline-block;
+}
+.eo-dp-toolkit{
+    display: none;
+    position: absolute;
+    top: 89px;
+    left: 19px;
+    width: 83%;
+    height: 57px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    color: #ffffff;
+}
+.eo-dp-toolkit input[type=file]{
+    visibility: hidden;
+}
+.eo-dp-toolkit label{
+    font-size: 12px;
+    font-weight: normal;
+}
+.eo-timeline-details{
+
+    top: -69px;
+    right: 19px;
+}
+.eo-timeline-details h1 a{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    padding: 5px 13px;
+}
+.eo-edit-btn{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #ffffff;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.eo-section{
+    padding-top: 20px;
+}
+.eo-details{
+    padding: 3px;
+}
+.eo-details span{
+    font-weight: 600;
+}
+.eo-edit-section{
+    display: none;
+}
+.eo-edit-section hr{
+    width: 100%;
+    float: left;
+}
+.eo-edit-section h3{
+    background-color: #eee;
+    padding: 10px;
+}
+.eo-about{
+    position: relative;
+}
+.eo-about-heading{
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #eee;
+    margin-top: -10px;
+    padding: 10px 13px;
+}
+.eo-about-org{
+    padding: 10px;
+    text-align: justify;
+}
+.eo-about-editor{
+    display: none;
+}
+
+.cVenue-box{
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    background: #ffffff;
+    padding-bottom: 20px;
+}

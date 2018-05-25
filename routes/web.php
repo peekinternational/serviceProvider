@@ -51,7 +51,7 @@ Route::get('userip',function(){
 Route::post('create', 'RegisterController@store');
 Route::post('login', 'RegisterController@login');
 
-Route::get('profile', 'RegisterController@index');
+Route::get('people', 'RegisterController@index');
 Route::get('/update/{id}', 'RegisterController@edit');
 Route::post('/update/{id}', 'RegisterController@update');
 

@@ -14,9 +14,6 @@
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Skills" name="skill">
 						</div>
-							<!-- <div class="form-group">
-								<input type="text" class="form-control" placeholder="Location" name="location">
-							</div> -->
 							<div class="form-group">
 
 						    <div id="locationField">
@@ -37,14 +34,13 @@
 <section class="service-2 section">
   <div class="container">
     <div class="row">
-
-      <!-- section title -->
+      <!-- Content Section -->
       <div class="title text-center"  >
         <h2>What Do We Offer</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, earum. </p>
         <div class="border"></div>
       </div>
-      <!-- /section title -->
+      <!--  Services Section  -->
       <div class="col-md-10">
         <div class="row text-center">
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -101,7 +97,7 @@
 					</a>
           </div><!-- END COL -->
         </div>
-      </div>
+      </div> <!-- End Services Section  -->
     </div>    <!-- End row -->
   </div>    <!-- End container -->
 </section>   <!-- End section -->
@@ -227,46 +223,6 @@ Start Call To Action
 				<div class="col-lg-12">
 					<!-- testimonial wrapper -->
 					<div class="testimonial-slider">
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<!-- <img src="images/client-logo/clients-1.jpg" class="img-responsive" alt=""> -->
-							</div>
-							<div class="client-meta">
-								<h3>Abul Mal Muhit</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<!-- <img src="images/client-logo/clients-1.jpg" class="img-responsive" alt=""> -->
-							</div>
-							<div class="client-meta">
-								<h3>Abul Mal Muhit</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-
 						<!-- testimonial single -->
 						<div class="item text-center">
 							<i class="tf-ion-chatbubbles"></i>

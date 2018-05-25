@@ -29,7 +29,7 @@
                               <li ><a href="{{url('profile/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
                       </ul>
                       </li>
-                      <li ><a href="{{url('profile')}}">People</a></li>
+                      <li ><a href="{{url('people')}}">People</a></li>
                       <li ><a href="#">About</a></li>
                       <li ><a href="#">Contact</a></li>
                       </nav>
