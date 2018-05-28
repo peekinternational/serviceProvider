@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 // });
 
-Route::get('/create', function () {
+Route::get('/register', function () {
     return view('user_profile.create');
 });
 Route::get('/login', function () {
@@ -48,12 +48,12 @@ Route::get('userip',function(){
     dd($location);
 });
 
-Route::post('create', 'RegisterController@store');
-Route::post('login', 'RegisterController@login');
+Route::post('create_r', 'RegisterController@store');
+Route::post('Account/login', 'RegisterController@login');
 
 Route::get('profile', 'RegisterController@index');
-Route::get('/update/{id}', 'RegisterController@edit');
-Route::post('/update/{id}', 'RegisterController@update');
+Route::get('edit/{id}', 'RegisterController@edit');
+Route::post('update/{id}', 'RegisterController@update');
 
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');

@@ -11,7 +11,11 @@
 
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
-                        <img src="{{asset('img/'.$users->image)}}" class="" alt="" style="width: 100%;">
+                          <?php if (!empty($users->image)): ?>
+                            <img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">
+                            <?php else: ?>
+                                <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$users->image}}">
+                          <?php endif; ?>
                       </div>
 
 
@@ -48,5 +52,6 @@
         @endforeach
         @endif
     </div>
+    <div style="text-align:center"><?php	echo $user->render(); ?></div>
 </div>
 @endsection

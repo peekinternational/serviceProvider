@@ -13,7 +13,7 @@ class RegisterController extends Controller
    */
   public function index()
   {
-      $user = Register::all();
+      $user = Register::paginate(2);
       return view('user_profile.people', compact('user'));
   }
 
@@ -35,6 +35,7 @@ class RegisterController extends Controller
    */
   public function store(Request $request)
   {
+    //dd($request->all());
     $this->validate($request,[
       'name' => 'required',
       'phone' => 'required',
@@ -46,8 +47,10 @@ class RegisterController extends Controller
       'phone' => $request->input('phone'),
       'password' => $request->input('password')
     ]);
-    $user->save();
-    return redirect('/login')->with('success', 'You are successfully registered');
+  $user->save();
+// echo "successfully";
+exit(1);
+    // return redirect('/login')->with('success', 'You are successfully registered');
   }
 
   /**
@@ -186,6 +189,7 @@ class RegisterController extends Controller
 
   public function search(Request $request)
   {
+
       $skill = $request->input('skill');
       $location = $request->input('location');
       $city = $request->input('city');
@@ -199,6 +203,8 @@ class RegisterController extends Controller
 public function showdata($skill)
 {
   $user= Register::where('skill','LIKE',"%{$skill}%")->get();
-return view('user_profile.search_result',compact('user'));
+  $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
+
+return view('user_profile.search_result',compact('user', 'user1'));
 }
 }

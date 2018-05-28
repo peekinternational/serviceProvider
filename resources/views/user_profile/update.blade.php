@@ -9,8 +9,8 @@
 <!-- @if(Session ('ses'))
 {{Session('ses')}}
 @endif -->
-<form class="" action="{{url('/update/'. $user->id)}}" method="post" enctype="multipart/form-data">
-  {{csrf_field()}}
+<form class="" action="{{url('update/'. $user->id)}}" method="post" enctype="multipart/form-data">
+  {{csrf_token()}}
   <div class="" style="text-align: -webkit-center">
       <!-- <i class="fa fa-camera"></i>Change
       <i class="fa fa-pencil"></i>Edit
