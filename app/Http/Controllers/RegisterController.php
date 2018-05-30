@@ -77,8 +77,8 @@ exit(1);
       $user = Register::find($id);
         // $val = $request->session()->get('ses');
 
-      // return view('user_profile.update',compact('user'));
-      return view('user_profile.view',compact('user'));
+      return view('user_profile.update',compact('user'));
+      // return view('user_profile.view',compact('user'));
   }
 
   /**

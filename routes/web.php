@@ -29,10 +29,10 @@ Route::get('/edit', function () {
 Route::get('/', function () {
     return view('user_profile.home');
 });
-Route::get('People', function () {
+Route::get('view_people', function () {
     return view('user_profile.people');
 });
-Route::get('profile-view', function () {
+Route::get('profile', function () {
     return view('user_profile.view');
 });
 Route::get('skills', function () {

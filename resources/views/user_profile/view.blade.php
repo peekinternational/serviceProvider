@@ -7,7 +7,7 @@
             <div class="eo-timeline">
                 <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover">
                  <!--  Cover image  -->
-                <input type="file" id="eo-timeline" class="compnay-cover">
+                <input type="file" id="cover" class="compnay-cover">
                 <div class="eo-timeline-toolkit">
                     <label for="eo-timeline"><i class="fa fa-camera"></i> &nbsp;Change</label>
                 </div>
@@ -21,8 +21,9 @@
                              <img src="{{asset('img/profile-logo.jpg')}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
                        <?php endif; ?>
                        <div class="eo-dp-toolkit">
-                           <input type="file" id="eo-dp" class="compnay-logo">
-                           <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
+                         <input type="file" name="" value="" style="display: none;">
+                           <input type="file" id="file" name="image" class="compnay-logo">
+                          <a href="update/'. $user->id"> <label for="eo-dp"><i class="fa fa-camera"></i> change</label></a><br>
                            <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i> home.Edit</label><br>
                            <label onclick="removecompanypic()"><i class="fa fa-remove">
                              <input type="hidden" value=""id="userID">
@@ -34,7 +35,7 @@
                    <div class="col-md-10 eo-timeline-details">
                        <h1><a href="">{{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
-                          <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+                          <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                            <h4>Basic Information</h4>
                            <div class="eo-details">
                                <span>Skills:</span> {{$user->skill}}
@@ -241,7 +242,17 @@
                    </div>
                </div>
             </div>
-
+    <script>
+      $(document).ready(function () {
+        $("#edit_btn").hide();
+      <?php
+      $id = session()->get('ses');
+      if ($id == $user->id) { ?>
+        $("#edit_btn").show();
+    <?php  }
+       ?>
+      });
+    </script>
 
 
 @endsection
