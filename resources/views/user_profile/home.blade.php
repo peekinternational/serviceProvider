@@ -45,7 +45,7 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="row text-center">
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='plumber')}}">
+						<a href="{{url('skill_search/'.$skill='plumber')}}">
             <div class="service-item">
               <i class="fa fa-wrench"></i>
               <h4>Plumber Services </h4>
@@ -54,7 +54,7 @@
 					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-          <a href="{{url('profile/'.$skill='electrician')}}"> <div class="service-item">
+          <a href="{{url('skill_search/'.$skill='electrician')}}"> <div class="service-item">
               <i class="fa fa-bolt"></i>
               <h4>Electrician</h4>
               <p><b>Electricians install </b> and maintain all of the electrical and power systems for our homes, businesses, and factories. They install and maintain the wiring and control equipment through which electricity flows. </p>
@@ -62,7 +62,7 @@
 						</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='Carpenter')}}">
+						<a href="{{url('skill_search/'.$skill='Carpenter')}}">
             <div class="service-item">
               <i class="fa fa-gavel"></i>
               <h4>Carpenter</h4>
@@ -71,7 +71,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='Mechanic')}}">
+						<a href="{{url('skill_search/'.$skill='Mechanic')}}">
             <div class="service-item">
               <i class="fa fa-bus"></i>
               <h4>Auto Mechanic</h4>
@@ -80,7 +80,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='painter')}}">
+						<a href="{{url('skill_search/'.$skill='painter')}}">
             <div class="service-item">
 							<i class="fa fa-paint-brush"></i>
               <h4>Painter</h4>
@@ -89,7 +89,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('profile/'.$skill='welder')}}">
+						<a href="{{url('skill_search/'.$skill='welder')}}">
             <div class="service-item">
 							<i class="fa fa-fire"></i>
               <h4>Welder</h4>

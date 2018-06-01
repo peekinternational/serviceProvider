@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
       <div class="container">
@@ -20,12 +21,12 @@
             <li><a href="{{url('/')}}">Home</a></li>
           <li class="dropdown" ><a class="dropbtn" href="#">Service Provider <span class="caret"></span> </a>
           <ul class="dropdown-menu dropdown_list">
-                  <li ><a href="{{url('profile/'.$skill='Plumber')}}">Plumber</a></li>
-                  <li ><a href="{{url('profile/'.$skill='electrician')}}">Electrician</a></li>
-                  <li ><a href="{{url('profile/'.$skill='Carpenter')}}">Carpenter</a></li>
-                  <li ><a href="{{url('profile/'.$skill='painter')}}">Painter</a></li>
-                  <li ><a href="{{url('profile/'.$skill='welder')}}">Welder</a></li>
-                  <li ><a href="{{url('profile/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='Plumber')}}">Plumber</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='electrician')}}">Electrician</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='Carpenter')}}">Carpenter</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='painter')}}">Painter</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='welder')}}">Welder</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
           </ul>
           </li>
           <li ><a href="{{url('people')}}">People</a></li>
@@ -68,4 +69,4 @@
              }
                 ?>
 });
-           </script>
+    </script>

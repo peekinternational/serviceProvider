@@ -43,6 +43,7 @@ overflow: hidden;
 
 /*Navbar Css  End ===========================================   */
 
+
 /*Footer Css  start ===========================================   */
 
 
@@ -83,7 +84,8 @@ overflow: hidden;
 .eo-timeline-cover{
     object-fit: cover;
     width: 100%;
-    /*height: 300px;*/
+    height: 360px;
+
 }
 .eo-timeline{
     width: 100%;

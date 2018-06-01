@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 // });
 
-Route::get('/create', function () {
+Route::get('/register', function () {
     return view('user_profile.create');
 });
 Route::get('/login', function () {
@@ -23,40 +23,42 @@ Route::get('/login', function () {
 Route::get('/index', function () {
     return view('index');
 });
-Route::get('/update', function () {
+Route::get('/edit', function () {
     return view('user_profile.update');
 });
 Route::get('/', function () {
     return view('user_profile.home');
 });
-Route::get('People', function () {
+Route::get('view_people', function () {
     return view('user_profile.people');
 });
-Route::get('profile-view', function () {
-    return view('user_profile.profile_view');
+Route::get('profile', function () {
+    return view('user_profile.view');
+});
+Route::get('skills', function () {
+    return view('user_profile.skill_search');
 });
 
-Route::get('myip', function () {
-	// $ip = '115.186.188.3';
-  //   $data = \Location::get($ip);
-  $data = Location::get();
-    dd($data);
-});
-Route::get('userip',function(){
-    $ip= \Request::ip();
-    $location = \Location::get($ip);
-    dd($location);
-});
 
-Route::post('create', 'RegisterController@store');
-Route::post('login', 'RegisterController@login');
+
+Route::post('create_r', 'RegisterController@store');
+Route::post('Account/login', 'RegisterController@login');
+
 
 Route::get('people', 'RegisterController@index');
+<<<<<<< HEAD
 // Route::get('/update/{id}', 'RegisterController@edit');
 Route::post('update/{id}', 'RegisterController@update');
+=======
+Route::get('edit/{id}', 'RegisterController@edit');
+Route::post('update/{id}', 'RegisterController@update');
+Route::post('updateProfile', 'RegisterController@updateProfile');
+>>>>>>> 70161bb1b0e63565b5181f3a773903f0baa04199
 
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
-Route::get('profile/{skill}', 'RegisterController@showdata');
+Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
+Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
+Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');

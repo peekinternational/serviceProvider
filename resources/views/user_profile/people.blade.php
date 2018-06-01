@@ -51,5 +51,6 @@
         @endforeach
         @endif
     </div>
+    <div style="text-align:center"><?php	echo $user->render(); ?></div>
 </div>
 @endsection

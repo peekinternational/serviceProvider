@@ -6,6 +6,6 @@
 <!-- @if(Session ('ses'))
 {{Session('ses')}}
 @endif -->
-<a href="{{url('/update/'. $user->id)}}" class="btn btn-primary">Edit</a>
+<a href="{{url('edit/'. $user->id)}}" class="btn btn-primary">Edit</a>
 </div>
 @endsection
