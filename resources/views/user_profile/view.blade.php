@@ -296,7 +296,7 @@ var user_id="{{$user->id}}";
 });
 </script>
 
-<script>
+<!-- <script>
   $(document).ready(function () {
     $.ajaxSetup({
       header: {
@@ -329,6 +329,36 @@ var user_id="{{$user->id}}";
       });
     });
   });
-</script>
+</script> -->
 
+
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+      header: {
+        'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+      }
+    });
+    $(document).on('change','#cover',function () {
+      var id = "{{$user->id}}";
+      var image = $('.sp-cover')[0].files[0];
+
+      form = new FormData();
+      form.append('cover-image', image);
+      form.append('user_id', id);
+
+      $.ajax({
+          type: 'post',
+          data: form,
+          cache: false,
+          contentType: false,
+          processData: false,
+          url: "{{ url('coverUpload/'. $user->id) }}",
+          success: function (response) {
+            console.log(response);
+          }
+      });
+    });
+  });
+</script>
 @endsection
