@@ -5,11 +5,16 @@
   <!--     Profile view       -->
     <div class="eo-box">
             <div class="eo-timeline">
-                <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover">
+              <?php if (!empty($user->cover_img)): ?>
+                <img src="{{url('img/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
+                 <?php else: ?>
+                   <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
+                   <?php endif; ?>
                  <!--  Cover image  -->
-                <input type="file" id="cover" class="compnay-cover">
+
+                <input type="file" id="cover" name="cover_img" class="compnay-cover sp-cover">
                 <div class="eo-timeline-toolkit">
-                    <label for="eo-timeline"><i class="fa fa-camera"></i> &nbsp;Change</label>
+                    <label for="cover"><i class="fa fa-camera"></i> &nbsp;Change</label>
                 </div>
             </div>
             <div class="col-md-12">
@@ -21,10 +26,9 @@
                              <img src="{{asset('img/profile-logo.jpg')}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
                        <?php endif; ?>
                        <div class="eo-dp-toolkit">
-                         <input type="file" name="" value="" style="display: none;">
-                           <input type="file" id="file" name="image" class="compnay-logo">
-                          <a href="update/'. $user->id"> <label for="eo-dp"><i class="fa fa-camera"></i> change</label></a><br>
-                           <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i> home.Edit</label><br>
+                           <input type="file" id="eo-dp" name="profile-image" class="compnay-logo pf-image-change">
+                           <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
+                           <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i>Edit</label><br>
                            <label onclick="removecompanypic()"><i class="fa fa-remove">
                              <input type="hidden" value=""id="userID">
                            </i> Remove</label>
@@ -254,5 +258,77 @@
       });
     </script>
 
+    <script>
+$(document).ready(function(){
+
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).on('change','#eo-dp',function(e){
+var user_id="{{$user->id}}";
+
+     var image = $('.pf-image-change')[0].files[0];
+
+       form = new FormData();
+      form.append('profile-image',image);
+      form.append('user_id',user_id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+   cache: false,
+   contentType: false,
+   processData: false,
+        url: "{{ url('imageUpload/'.$user->id) }}",
+        success: function(response){
+          console.log(response);
+          if(response){
+            $('.eo-c-logo').attr('src','<?= url('img')?>/'+response);
+          }else {
+            toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
+          }
+
+        }
+    });
+});
+});
+</script>
+
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+      header: {
+        'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+      }
+    });
+    $(document).on("change", "#cover", function () {
+
+      var id = "{{$user->id}}";
+      var image = $('.sp-cover')[0].files[0];
+
+      form = new FormData();
+      form.append('cover_image', image);
+      form.append('user_id', id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{ url('coverUpload/'. $user->id) }}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('.eo-timeline-cover').attr('src','<?=url('img')?>/'+response);
+          }
+        }
+      });
+    });
+  });
+</script>
 
 @endsection

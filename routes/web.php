@@ -53,5 +53,7 @@ Route::post('updateProfile', 'RegisterController@updateProfile');
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
+Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
+Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');

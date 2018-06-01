@@ -234,4 +234,32 @@ public function updateProfile(Request $request)
 {
   print_r($request->input());
 }
+public function imageUpload(Request $request,$id)
+{
+
+  $user = Register::find($id);
+  $image = $request->file('profile-image');
+
+  $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+  $destinationPath = public_path('img');
+  $image->move($destinationPath, $profilePicture);
+//  dd($profilePicture);
+  $user->image=$profilePicture;
+
+  $user->save();
+  echo $profilePicture;
+}
+public function coverUpload(Request $request, $id)
+{
+  $user = Register::find($id);
+  $image = $request->file('cover_image');
+
+  $coverPicture = 'cover-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+  $destinationPath = public_path('img');
+  $image->move($destinationPath, $coverPicture);
+  $user->cover_img = $coverPicture;
+
+  $user->save();
+  echo $coverPicture;
+}
 }
