@@ -45,7 +45,7 @@
     </div> <!-- end container -->
   </div>
   <div class="footer-bottom">
-    <h5>Copyright 2016. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="">Themefisher</a></h6>
+    <h5>Copyright 2018. All rights reserved.</h5>
+    <h6>Design and Developed by <a href="">Peek International</a></h6>
   </div>
 </footer> <!-- end footer -->

@@ -52,8 +52,8 @@ Route::post('create', 'RegisterController@store');
 Route::post('login', 'RegisterController@login');
 
 Route::get('people', 'RegisterController@index');
-Route::get('/update/{id}', 'RegisterController@edit');
-Route::post('/update/{id}', 'RegisterController@update');
+// Route::get('/update/{id}', 'RegisterController@edit');
+Route::post('update/{id}', 'RegisterController@update');
 
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');

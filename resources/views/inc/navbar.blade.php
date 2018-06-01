@@ -1,57 +1,54 @@
-       <header class="navbar navbar-inverse navbar-fixed-top">
-              <div class="container">
-                 <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!-- /responsive nav button -->
-                    <!-- logo -->
-                    <a class="navbar-brand logo" href="{{url('/')}}">
-           <img class="logo-white custumelogo" src="{{url('images/logo.png')}}" alt="logo" style="width: 20%;" />
-        </a>
-                    <!-- /logo -->
-                 </div>
-                 <!-- main nav -->
-                 <nav class="collapse navbar-collapse navbar-left">
-                    <ul id="nav" class="nav navbar-nav menu">
-                      <li><a href="{{url('/')}}">Home</a></li>
-                      <li class="dropdown" ><a class="dropbtn" href="#">Service Provider <span class="caret"></span> </a>
-                      <ul class="dropdown-menu dropdown_list">
-                              <li ><a href="{{url('profile/'.$skill='Plumber')}}">Plumber</a></li>
-                              <li ><a href="{{url('profile/'.$skill='electrician')}}">Electrician</a></li>
-                              <li ><a href="{{url('profile/'.$skill='Carpenter')}}">Carpenter</a></li>
-                              <li ><a href="{{url('profile/'.$skill='painter')}}">Painter</a></li>
-                              <li ><a href="{{url('profile/'.$skill='welder')}}">Welder</a></li>
-                              <li ><a href="{{url('profile/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
-                      </ul>
-                      </li>
-                      <li ><a href="{{url('people')}}">People</a></li>
-                      <li ><a href="#">About</a></li>
-                      <li ><a href="#">Contact</a></li>
-                      </nav>
-                      <nav class="collapse navbar-collapse navbar-right">
-                         <ul id="nav" class="nav navbar-nav menu">
-                      <li id="logout" class="dropdown">
-                        <a class="dropbtn" href="#">
-                          {{session()->get('name')}}</a>
-                          <ul class="dropdown-menu dropdown_list">
-                            <?php $id=session()->get('ses'); ?>
-                                  <li ><a href="{{url('profile_view/'.$id)}}">Profile</a></li>
-                                  <li ><a href="{{url('/update/'. $id)}}">Setting</a></li>
-                                  <li ><a href="{{url('logout')}}">Log out</a></li>
-                          </ul>
-                        </li>
-                      <li id="login"><a href="{{url('login')}}">Login</a></li>
-                      <li id="register"><a href="{{url('create')}}">Register</a></li>
-                    </ul>
-                 </nav>
-                 <!-- /main nav -->
-              </div>
-           </header>
+  <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+      <div class="container">
+       
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           <!-- logo -->
+        <a class="navbar-brand logo" href="{{url('/')}}">
+<img class="logo-white customlogo" src="{{url('images/logo.png')}}" alt="logo" style="width: 20%;" />
+</a>
+        <!-- /logo -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="{{url('/')}}">Home</a></li>
+          <li class="dropdown" ><a class="dropbtn" href="#">Service Provider <span class="caret"></span> </a>
+          <ul class="dropdown-menu dropdown_list">
+                  <li ><a href="{{url('profile/'.$skill='Plumber')}}">Plumber</a></li>
+                  <li ><a href="{{url('profile/'.$skill='electrician')}}">Electrician</a></li>
+                  <li ><a href="{{url('profile/'.$skill='Carpenter')}}">Carpenter</a></li>
+                  <li ><a href="{{url('profile/'.$skill='painter')}}">Painter</a></li>
+                  <li ><a href="{{url('profile/'.$skill='welder')}}">Welder</a></li>
+                  <li ><a href="{{url('profile/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
+          </ul>
+          </li>
+          <li ><a href="{{url('people')}}">People</a></li>
+          <li ><a href="#">About</a></li>
+          <li ><a href="#">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+             <li id="logout" class="dropdown"> 
+            <a class="dropbtn" href="#"><i class="fa fa-cog"></i>
+              {{session()->get('name')}}</a>
+              <ul class="dropdown-menu dropdown_list">
+                <?php $id=session()->get('ses'); ?>
+                      <li ><a href="{{url('profile_view/'.$id)}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a></li>
+                      <li ><a href="{{url('/update/'. $id)}}"><i class="fa fa-key"></i>&nbsp;&nbsp;Setting</a></li>
+                      <li ><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log out</a></li>
+              </ul>
+            </li>
+          <li id="login"><a href="{{url('login')}}"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+          <li id="register"><a href="{{url('create')}}"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Register</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 <script>
            $(document).ready(function(){
              $("logout").hide();

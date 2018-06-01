@@ -3,9 +3,10 @@
 @section('content')
 
   <!--     Profile view       -->
+  <div class="container custom_profile">
     <div class="eo-box">
             <div class="eo-timeline">
-                <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover">
+                <img src="" class="eo-timeline-cover" alt="cover image">
                  <!--  Cover image  -->
                 <input type="file" id="eo-timeline" class="compnay-cover">
                 <div class="eo-timeline-toolkit">
@@ -25,16 +26,15 @@
                            <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
                            <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i> home.Edit</label><br>
                            <label onclick="removecompanypic()"><i class="fa fa-remove">
-                             <input type="hidden" value=""id="userID">
+                            <input type="hidden" value="" id="userID">
                            </i> Remove</label>
                        </div>
 
                    </div>
 
-                   <div class="col-md-10 eo-timeline-details">
+                   <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
                        <h1><a href="">{{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
-                          <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                            <h4>Basic Information</h4>
                            <div class="eo-details">
                                <span>Skills:</span> {{$user->skill}}
@@ -55,9 +55,13 @@
                               <span>Fee</span> {{$user->fee}}  Rs.
                            </div>
                        </div>
+                       <div class="col-md-6 eo-section">    <!-- edit buttion -->
+                         <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+                       </div>
                        <div class="eo-edit-section">
-                           <form id="pnj-form" action="{{url('/update/'. $user->id)}}" method="post" class="organization-form">
-                                <input type="hidden" name="_token" class="token">
+                           <form id="pnj-form" action="{{url('update/'. $user->id)}}" method="post" class="organization-form">
+                            {{csrf_field()}}
+                                <input type="hidden" name="" class="token">
                                <div class="pnj-form-section">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">Name</label>
@@ -68,7 +72,7 @@
                                      <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">Skills</label>
                                        <div class="col-sm-9 pnj-form-field">
-                                           <select class="form-control select2" name="Skill" required>
+                                           <select class="form-control select2" name="skill" required>
                                                 <option value="Plumber"> Plumber</option>
                                                 <option value="Electrician" >Electrician</option>
                                                 <option value="Welder "> Welder</option>
@@ -128,7 +132,7 @@
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">city</label>
                                        <div class="col-sm-9 pnj-form-field">
-                                         <input type="text" class="form-control field" name="state"  placeholder="City" value="{{ $user->city }}" required>
+                                         <input type="text" class="form-control field" name="city"  placeholder="City" value="{{ $user->city }}" required>
                                        </div>
                                    </div>
               								   <div class="form-group">
@@ -155,10 +159,39 @@
                                    </div>
                                </div>
                            </form>
-                       </div>
+                       </div> 
                    </div>
                </div>
             </div>
+             <!-- about editor -->
+             <div class="eo-box eo-about">
+            <a class="btn btn-primary r-add-btn hideThis" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+            <h3 class="eo-about-heading">About Me</h3>
+            <div class="eo-about-org" style="padding-left:30px">
+                <p><span></span></p>
+            </div>
+             <div class="eo-about-editor"> 
+                <form action="" id="pnj-form" method="post" class="organization-desc-form">
+                    <input type="hidden" name="" class="token">
+                    <div class="form-group" style="padding-left:20px">
+                        <label class="control-label col-sm-3">&nbsp;</label>
+                        <div class="col-sm-7 pnj-form-field">
+                            <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn btn-primary col-md-3" name="save" style="margin-right:5px">SAVE</button>
+                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>  <!-- about editor div clossed -->
+          </div>
         </div>
+     </div>
+  
 
 @endsection

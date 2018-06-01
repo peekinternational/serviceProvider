@@ -6,8 +6,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h1 class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s" >We are smart <br> Creative Agency</h1>
-					<p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.</p>
+					<div class="text-center">
+					<h3 class="Message"  >Get Your Service Provider in Seconds </h3>
+				</div>
 					<div class="text-center col-md-8 col-md-offset-2 model">
 						<br>
 					<form class="form-group" role="search" action="{{url('search')}}" method="get">
@@ -41,7 +42,7 @@
         <div class="border"></div>
       </div>
       <!--  Services Section  -->
-      <div class="col-md-10">
+      <div class="col-md-10 col-md-offset-1">
         <div class="row text-center">
           <div class="col-md-4 col-sm-4 col-xs-12">
 						<a href="{{url('profile/'.$skill='plumber')}}">
@@ -120,35 +121,9 @@ Start About Section
 			<div class="col-md-6">
 				<!-- <img src="images/about/about-2.png" class="img-responsive" alt=""> -->
 			</div>
-			<div class="col-md-6">
-				<ul class="checklist">
-                    <li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-                    <li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-                    <li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-                    <li>Etiam porta sem multipage evint landing magna mollis euismod a pharetra augue.</li>
-                    <li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-                </ul>
-				<a href="#" class="btn btn-main mt-20">Learn More</a>
-			</div>
 		</div> 		<!-- End row -->
 	</div>   	<!-- End container -->
 </section>   <!-- End section -->
-
-<!--
-Start Call To Action
-==================================== -->
-<section class="call-to-action section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<h2>Let's Create Something Together</h2>
-				<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, <br> nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit.</p>
-				<a href="" class="btn btn-main">Contact Us</a>
-			</div>
-		</div> 		<!-- End row -->
-	</div>   	<!-- End container -->
-</section>   <!-- End section -->
-
 <!--
 		Start Counter Section
 		==================================== -->
@@ -313,57 +288,8 @@ Start Call To Action
 			</div> <!-- end row -->
 		</div> <!-- end container -->
 	</section> <!-- end section -->
-
-<footer id="footer" class="bg-one">
-  <div class="top-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>about</h3>
-          <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Our Services</h3></li>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Quick Links</h3></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Badges</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <ul>
-            <li><h3>Connect with us Socially</h3></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Youtube</a></li>
-            <li><a href="#">Pinterest</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-      </div>
-    </div> <!-- end container -->
-  </div>
-  <div class="footer-bottom">
-    <h5>Copyright 2018. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="">Peek International</a></h6>
-  </div>
-</footer> <!-- end footer -->
+     
+     <!-- ===================================== Script code here ================================= -->
 <script>
 	// This example displays an address form, using the autocomplete feature
 	// of the Google Places API to help users fill in the information.
