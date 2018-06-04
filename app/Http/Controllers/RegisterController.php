@@ -255,11 +255,12 @@ public function coverUpload(Request $request, $id)
   $image = $request->file('cover_image');
 
   $coverPicture = 'cover-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
-  $destinationPath = public_path('img');
+  $destinationPath = public_path('img/cover');
   $image->move($destinationPath, $coverPicture);
   $user->cover_img = $coverPicture;
 
   $user->save();
   echo $coverPicture;
 }
+
 }

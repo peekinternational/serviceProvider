@@ -6,7 +6,7 @@
     <div class="eo-box">
             <div class="eo-timeline">
               <?php if (!empty($user->cover_img)): ?>
-                <img src="{{url('img/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
+                <img src="{{url('img/cover/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                  <?php else: ?>
                    <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                    <?php endif; ?>
@@ -296,7 +296,7 @@ var user_id="{{$user->id}}";
 });
 </script>
 
-<!-- <script>
+<script>
   $(document).ready(function () {
     $.ajaxSetup({
       header: {
@@ -323,42 +323,14 @@ var user_id="{{$user->id}}";
           console.log(response);
           // alert(response);
           if(response) {
-            $('.eo-timeline-cover').attr('src','<?=url('img')?>/'+response);
+            $('.eo-timeline-cover').attr('src','<?=url('img/cover')?>/'+response);
           }
         }
       });
     });
   });
-</script> -->
-
-
-<script>
-  $(document).ready(function () {
-    $.ajaxSetup({
-      header: {
-        'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
-      }
-    });
-    $(document).on('change','#cover',function () {
-      var id = "{{$user->id}}";
-      var image = $('.sp-cover')[0].files[0];
-
-      form = new FormData();
-      form.append('cover-image', image);
-      form.append('user_id', id);
-
-      $.ajax({
-          type: 'post',
-          data: form,
-          cache: false,
-          contentType: false,
-          processData: false,
-          url: "{{ url('coverUpload/'. $user->id) }}",
-          success: function (response) {
-            console.log(response);
-          }
-      });
-    });
-  });
 </script>
+
+
+
 @endsection
