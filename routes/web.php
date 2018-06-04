@@ -46,14 +46,11 @@ Route::post('Account/login', 'RegisterController@login');
 
 
 Route::get('people', 'RegisterController@index');
-<<<<<<< HEAD
-// Route::get('/update/{id}', 'RegisterController@edit');
-Route::post('update/{id}', 'RegisterController@update');
-=======
+
 Route::get('edit/{id}', 'RegisterController@edit');
 Route::post('update/{id}', 'RegisterController@update');
 Route::post('updateProfile', 'RegisterController@updateProfile');
->>>>>>> 70161bb1b0e63565b5181f3a773903f0baa04199
+
 
 Route::get('profile_view/{id}', 'RegisterController@show');
 Route::get('logout', 'RegisterController@logout');
