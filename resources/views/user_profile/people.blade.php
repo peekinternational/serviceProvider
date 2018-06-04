@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 100px;">
+<div class="container" id="container">
     <div class="row">
       @if(count($user)>0)
       @foreach($user as $users)
         <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
             <div class="well well-sm">
                 <div class="row">
-
-                    <div class="col-sm-12 text-center">
+                       <div class="col-sm-12 text-center">
                       <div class="profile-show">
                           <?php if (!empty($users->image)): ?>
                             <img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">

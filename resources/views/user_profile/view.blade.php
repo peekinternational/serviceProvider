@@ -3,8 +3,10 @@
 @section('content')
 
   <!--     Profile view       -->
+  <div class="container custom_profile">
     <div class="eo-box">
             <div class="eo-timeline">
+
               <?php if (!empty($user->cover_img)): ?>
                 <img src="{{url('img/cover/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                  <?php else: ?>
@@ -30,13 +32,13 @@
                            <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
                            <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i>Edit</label><br>
                            <label onclick="removecompanypic()"><i class="fa fa-remove">
-                             <input type="hidden" value=""id="userID">
+                            <input type="hidden" value="" id="userID">
                            </i> Remove</label>
                        </div>
 
                    </div>
 
-                   <div class="col-md-10 eo-timeline-details">
+                   <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
                        <h1><a href="">{{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
                           <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
@@ -60,8 +62,10 @@
                               <span>Fee</span> {{$user->fee}}  Rs.
                            </div>
                        </div>
+                       <div class="col-md-6 eo-section">    <!-- edit buttion -->
+                         <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+                       </div>
                        <div class="eo-edit-section">
-
                            <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">
                              {{csrf_field()}}
                             <div class="alert alert-success success-group"  style="display:None">
@@ -165,7 +169,43 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <script>
+
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+            </div>
+             <!-- about editor -->
+             <div class="eo-box eo-about">
+            <a class="btn btn-primary r-add-btn hideThis" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+            <h3 class="eo-about-heading">About Me</h3>
+            <div class="eo-about-org" style="padding-left:30px">
+                <p><span></span></p>
+            </div>
+             <div class="eo-about-editor">
+                <form action="" id="pnj-form" method="post" class="organization-desc-form">
+                    <input type="hidden" name="" class="token">
+                    <div class="form-group" style="padding-left:20px">
+                        <label class="control-label col-sm-3">&nbsp;</label>
+                        <div class="col-sm-7 pnj-form-field">
+                            <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn btn-primary col-md-3" name="save" style="margin-right:5px">SAVE</button>
+                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>  <!-- about editor div clossed -->
+          </div>
+        </div>
+     </div>
+     <script>
                                      // This example displays an address form, using the autocomplete feature
                                      // of the Google Places API to help users fill in the information.
 
@@ -238,14 +278,7 @@
                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
                                        async defer></script>
 
-
-
-                               </div>
-                           </form>
-                       </div>
-                   </div>
-               </div>
-            </div>
+<!-- hide edit button profile page -->
     <script>
       $(document).ready(function () {
         $("#edit_btn").hide();
@@ -257,7 +290,9 @@
        ?>
       });
     </script>
+ <!-- =================================== -->
 
+ <!-- upload profile image through Ajax ============== -->
     <script>
 $(document).ready(function(){
 
@@ -295,6 +330,9 @@ var user_id="{{$user->id}}";
 });
 });
 </script>
+
+<!-- ============================================ -->
+<!-- Cover image using Ajax===================================== -->
 
 <script>
   $(document).ready(function () {

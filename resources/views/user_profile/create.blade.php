@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container" id="container">
+  <div class="row">
 <div class="col-md-8 col-md-offset-2">
 
 
@@ -25,6 +27,8 @@
   <input id="page_submit" type="button" class="btn btn-primary" value="Submit" >
   <!-- <button type="submit" id="page_submit" class="btn btn-primary" name="button">Submit</button> -->
 </form>
+</div>
+</div>
 </div>
 <script>
   $(document).ready(function () {
