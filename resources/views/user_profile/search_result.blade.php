@@ -24,19 +24,16 @@
                         <h4><a href="{{url('profile_view/'.$users->id)}}"> <?php echo ucfirst($users->name); ?></a></h4>
                         <!-- Split button -->
                         <div class="row">
-
-
-                        <div class="col-md-3">
-                        <i class="fa fa-wrench"></i></div>
-                        <div class="col-md-9">
-                          {{$users->skill}}
+                          <div class="col-md-12 col-sm-12 col-xm-12">
+                            <i class="fa fa-wrench"></i>
+                            &nbsp;
+                            {{$users->skill}}
                         </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-3">
+                          <div class="col-md-12 col-sm-12 col-xm-12">
                           <i class="fa fa-map-marker"></i>
-                        </div>
-                        <div class="col-md-9">
+                          &nbsp;&nbsp;
                           {{$users->location}}
                         </div>
                       </div>

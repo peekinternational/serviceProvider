@@ -409,106 +409,6 @@ a:focus, a:hover {
   bottom: 0;
 }
 
-/*=================================================================
-  Navigation
-==================================================================*/
-.navigation {
-  transition: .3s all;
-}
-
-.navigation .logo-default {
-  display: none;
-}
-
-.navigation .navbar-nav > li.active a {
-  color: #28ABE3;
-}
-
-.navigation .navbar-nav > li > a {
-  color: #fff;
-  font-size: 14px;
-  line-height: 26px;
-  padding: 20px 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: .2s ease-in-out 0s;
-}
-
-.navigation .navbar-nav > li > a:hover, .navigation .navbar-nav > li > a:active, .navigation .navbar-nav > li > a:focus {
-  background: none;
-  color: #28ABE3;
-}
-
-.navigation .nav .open > a {
-  background: none;
-}
-
-.navigation .dropdown {
-  padding: 0;
-}
-
-.navigation .dropdown .dropdown-menu {
-  border-radius: 0;
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-transform: scale(1, 0);
-          transform: scale(1, 0);
-  background-color: #000;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out,-webkit-transform 0.3s;
-  transition: transform 0.3s,opacity 0.3s ease-in-out;
-  transition: transform 0.3s,opacity 0.3s ease-in-out,-webkit-transform 0.3s;
-}
-
-.navigation .dropdown .dropdown-menu li a {
-  padding: 8px 15px;
-  color: #9d9d9d;
-}
-
-.navigation .dropdown .dropdown-menu li a:hover {
-  padding-left: 20px;
-  background: transparent;
-  color: #fff;
-}
-
-.navigation .dropdown:hover .dropdown-menu {
-  transition: opacity 0.3s ease-in-out,-webkit-transform 0.3s;
-  transition: transform 0.3s,opacity 0.3s ease-in-out;
-  transition: transform 0.3s,opacity 0.3s ease-in-out,-webkit-transform 0.3s;
-  -webkit-transform: scale(1, 1);
-  transform: scale(1, 1);
-  opacity: 1;
-}
-
-.sticky-header {
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.06);
-  background: #fff !important;
-}
-
-.sticky-header .navbar-nav > li > a {
-  color: #000;
-}
-
-.sticky-header .logo-white {
-  display: none;
-}
-
-.sticky-header .logo-default {
-  display: block;
-}
-
-.navbar-brand {
-  height: auto;
-  padding: 8px 0;
-}
-
-.navbar-brand h1 {
-  margin: 0;
-}
-
 .hero-area {
   background-image: url("../images/slider/slider-bg-1.jpg");
   background-size: cover;
@@ -1657,31 +1557,6 @@ a:focus, a:hover {
 	For Small Desktop
 ==============================================================*/
 @media (min-width: 700px) and (max-width: 1090px) {
-  .navigation .navbar-toggle {
-    border: 1px solid #fff;
-  }
-  .navigation .navbar-toggle span {
-    background: #fff;
-  }
-  .navigation .navbar-nav > li > a {
-    font-size: 10px;
-    padding: 20px 9px;
-  }
-  .navigation.sticky-header .navbar-toggle {
-    border: 1px solid #dedede;
-  }
-  .navigation.sticky-header .navbar-toggle span {
-    background: #000;
-  }
-  .navigation.sticky-header .navbar-nav > li > a {
-    padding: 16px 9px;
-  }
-  .navbar-brand h1 {
-    width: 130px;
-  }
-  .navbar-brand img {
-    width: 100%;
-  }
   .counters-item:before {
     display: none;
   }
@@ -1744,10 +1619,7 @@ a:focus, a:hover {
   .parallax-section {
     background-position: center top !important;
   }
-  /* navigation */
-  .navbar-inverse .navbar-nav li a {
-    padding: 20px 10px;
-  }
+
   /* about us */
   .wrap-about {
     margin: 0 0 75px;
@@ -1812,22 +1684,7 @@ a:focus, a:hover {
 	Mobile (Portrait) Design for a width of 320px
 ==============================================================*/
 @media only screen and (max-width: 767px) {
-  .navigation.sticky-header .navbar-toggle {
-    border: 1px solid #dedede;
-  }
-  .navigation.sticky-header .navbar-toggle span {
-    background: #000;
-  }
-  .navigation.sticky-header .navbar-nav > li > a {
-    padding: 8px 9px;
-  }
-  .navigation .navbar-toggle {
-    border: 1px solid #fff;
-  }
-  .navigation .navbar-toggle span {
-    background: #fff;
-  }
-  .counters-item:before {
+   .counters-item:before {
     display: none;
   }
   .clients-logo-slider {
@@ -1859,46 +1716,7 @@ a:focus, a:hover {
   #slitSlider .carousel-caption a {
     font-size: 14px;
   }
-  #nav-dots {
-    display: block;
-  }
-  #nav-arrows {
-    display: none;
-  }
-  /* navigation */
-  .navbar-fixed-top {
-    padding-bottom: 10px;
-  }
-  .navbar-inverse .navbar-toggle,
-  .navbar-inverse .navbar-toggle .icon-bar {
-    border-color: #4e595f;
-    border-radius: 0;
-  }
-  .navbar-inverse .navbar-toggle:hover {
-    border-color: #ddd;
-    border-radius: 0;
-  }
-  .navbar-inverse .navbar-toggle .icon-bar:hover {
-    background-color: #ddd;
-  }
-  .navbar-collapse.in {
-    overflow-y: inherit;
-  }
-  .navbar-brand {
-    padding: 10px 0 10px 10px;
-  }
-  .navbar-toggle {
-    margin-top: 22px;
-  }
-  .navbar-nav {
-    margin: 0 -15px;
-  }
-  .navbar-inverse .navbar-nav li a {
-    line-height: 45px;
-    padding: 0;
-    text-align: center;
-    border-bottom: 1px solid transparent;
-  }
+ 
   .wrap-about {
     margin: 0 auto 80px;
     width: 85%;
@@ -2021,39 +1839,8 @@ a:focus, a:hover {
   .counter .counter-title h2 {
     font-size: 35px;
   }
-  /* navigation */
-  .navigation .navbar-toggle {
-    border: 1px solid #fff;
-  }
-  .navigation .navbar-toggle span {
-    background: #fff;
-  }
-  .navbar-fixed-top {
-    padding-bottom: 10px;
-  }
-  .navbar-brand {
-    padding: 10px 0 10px 10px;
-  }
-  .navbar-inverse .navbar-toggle {
-    border-color: #6CB670;
-    border-radius: 0;
-  }
-  .navbar-inverse .navbar-toggle:hover {
-    border-color: #fff;
-    border-radius: 0;
-  }
-  .navbar-collapse.in {
-    overflow-y: inherit;
-  }
-  .navbar-toggle {
-    margin-top: 22px;
-  }
-  .navbar-inverse .navbar-nav li a {
-    line-height: 45px;
-    padding: 0;
-    text-align: center;
-    border-bottom: 2px solid transparent;
-  }
+
+
   /* about us */
   .wrap-about {
     margin: 0 auto 75px;

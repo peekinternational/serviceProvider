@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="col-md-8 col-md-offset-2">
-
-
+<div class="container" id="container">
+  <div class="row">
+<div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
 <h1 align="center">Create Profile</h1>
 <!-- @if(Session ('ses'))
 {{Session('ses')}}
@@ -13,19 +12,6 @@
 
   {{csrf_field()}}
   <div class="" style="text-align: -webkit-center">
-      <!-- <i class="fa fa-camera"></i>Change
-      <i class="fa fa-pencil"></i>Edit
-      <i class="fa fa-remove"></i>Remove -->
-
-  <div class="profile-image text-center">
-    <?php if (!empty($user->image)): ?>
-      <img src="{{url('img/'.$user->image)}}" class="pf-image" alt="{{$user->image}}">
-      <?php else: ?>
-          <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$user->image}}">
-    <?php endif; ?>
-
-    </div>
-
   </div>
   <div class="form-group">
     <label>Full Name:</label>
@@ -51,7 +37,7 @@
     <label>Location:</label>
     <div id="locationField">
       <input id="autocomplete" name="location" class="form-control" value="{{$user->location}}" placeholder="Select your location"
-             onFocus="geolocate()" type="text"></input>
+             onFocus="geolocate()" type="text">
     </div>
   </div>
   <div class="form-group">
@@ -60,15 +46,15 @@
   </div>
   <div class="form-group">
     <label>City:</label>
-    <input class="field form-control" name="city" value="{{$user->city}}"  id="locality"></input>
+    <input class="field form-control" name="city" value="{{$user->city}}"  id="locality">
   </div>
   <div class="form-group">
     <label>State:</label>
-    <input class="field form-control" name="state" value="{{$user->state}}" id="administrative_area_level_1"></input>
+    <input class="field form-control" name="state" value="{{$user->state}}" id="administrative_area_level_1">
   </div>
   <div class="form-group">
     <label>Country:</label>
-    <input class="field form-control" name="country" value="{{$user->country}}" id="country"></input>
+    <input class="field form-control" name="country" value="{{$user->country}}" id="country">
   </div>
   <input type="hidden" name="latitude" id="lat1">
   <input type="hidden" name="longitude" id="lng1">
@@ -161,5 +147,7 @@
 
   <button type="submit" class="btn btn-primary" name="button">Submit</button>
 </form>
+</div>
+</div>
 </div>
 @endsection

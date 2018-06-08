@@ -3,9 +3,7 @@
 @section('content')
 <div class="container" id="container">
   <div class="row">
-<div class="col-md-8 col-md-offset-2">
-
-
+   <div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
 <h1 align="center">Registeration</h1>
 <div class="alert alert-danger error-group" style="display:None">
 
@@ -24,7 +22,14 @@
     <label>Password:</label>
     <input type="password" name="password" class="form-control"  placeholder="Enter Password">
   </div>
-  <input id="page_submit" type="button" class="btn btn-primary" value="Submit" >
+   <div>
+    <input type="checkbox" name="agree" value="agree" id="agree" required="" >
+        <p class="terms-condition"> <a href="#">Terms of Services</a> (TOS) <a href="#">Privacy Policy</a> 
+        I agree with </p>    
+      </div>
+  <input id="page_submit" type="button" class="btn btn-primary btn-block" value="Submit">
+  <p class="text-center show-loginBox">Already Have Account? <a href="{{url('login')}}">Login Here</a></p>
+
   <!-- <button type="submit" id="page_submit" class="btn btn-primary" name="button">Submit</button> -->
 </form>
 </div>
@@ -48,6 +53,7 @@
       success: function(response){
         console.log(response);
         if(response == "successfully"){
+
           window.location.href = "{{ url('/login') }}";
         }else {
             window.location.href = "{{ url('/register') }}";

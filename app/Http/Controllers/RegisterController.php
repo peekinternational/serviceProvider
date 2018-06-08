@@ -49,8 +49,8 @@ class RegisterController extends Controller
       'password' => $request->input('password')
     ]);
   $user->save();
-// echo "successfully";
-exit(1);
+echo "successfully";
+// exit(1);
     // return redirect('/login')->with('success', 'You are successfully registered');
   }
 

@@ -1,5 +1,5 @@
 #img-slider{width: 5000px;height:450px;}
-.customlogo{width: 25%}
+.customlogo{width:25%; margin-top: -20px;}
 /* .show_provider{width: 100%; height: 100px;} */
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
 .model{border: 2px solid white; border-radius: 5px;}
@@ -35,10 +35,9 @@ overflow: hidden;
 .navbar-default .navbar-nav  li  a {color: white;}               
 .navbar-default .navbar-nav  li  a:hover {font-size: 20px;color: white;}
 /*.navbar-default .navbar-nav  li  a:visited{color: #bbb;}*/
-.dropdown_list li a {color:white; }                
-.dropdown_list  li a:hover {background-color: black; color:white; font-size: 18px;}
-.dropbtn{display: none;}
-.dropdown:hover .dropdown_list{display: block; background:#454251;  }
+.dropdown_list li a {color:white;background:#454251; }
+#navbar li a:focus{color: white;}              
+.dropdown_list  li a:hover {background-color: black; color:white; font-size: 16px;}
 .navbar-custom {background-color: #343140;}
 
 /*Navbar Css  End ===========================================   */
@@ -62,6 +61,7 @@ overflow: hidden;
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);
 }
+.well.well-sm{height: 315px; overflow: hidden;}
 .panel-footer{height: 45px;}
 .table-user-information > tbody > tr:first-child {
     border-top: 0;
@@ -240,13 +240,21 @@ overflow: hidden;
     width: 36px;
     border-radius: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
 }
 
-/*End section of Profile view
-==================================================
-*/
-
-
+ /*Login Page ==========================================*/
+.loginBox{
+    background-position: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    border: 1px solid #cccccc;
+}
+.show-loginBox{
+    font-size: 12px;
+    margin-top: 10px;
+}
+.btn-block{ margin-top: 12px }
 
 
 /*media Query
@@ -255,44 +263,85 @@ overflow: hidden;
 */
 
 @media (max-width: 499px){
-.customlogo{height: 34px; 
-width: 20%;}   
-.eo-timeline-cover {
-        object-fit: cover;
-        width: 308px;
-        height: 115.63px;
+    .customlogo{
+        height: 34px; 
+        width: 18% !important; 
+        margin-top: -15px;
+    }  
+    input[type='text'], input[type='number'],input[type="password"],
+    input[type="search"],input[type="email"],input[type="date"],
+input[type="datetime"],textarea {
+      font-size: 16px;
     }
-.eo-box{
-    width: 330px;
-    height:auto;
-}
-.eo-dp-box{
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-custom{height: 6%;}
+    button.navbar-toggle.collapsed{margin-top: 11px; padding: 6px;}
+    button.navbar-toggle{margin-top: 11px; padding: 6px;}
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: #454251;
+    }
+    #navbar{background-color: #333; margin-top: -12px; float: left; width: 108%;}
+    #profile_list, #dropmenu{background-color: #333;margin-top: -12px; float: left; width: 108%;}
+    .loginBox{margin: -30px 15px;} 
+    .eo-timeline-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 115.63px;
+        }
+    .eo-box{
+        width: 100%;
+        height:auto;
+    }
+    .eo-dp-box{
+            text-align: center;
+        }
+    .custom_profile{
+        margin-top: 75px;
         text-align: center;
-    }
-.custom_profile{
-    margin-top: 90px;
-    padding-left: 38px;
-}   
-.eo-dp-box{
-        text-align: center;
-        width: 40%;
-        left:27%;
-        margin-top: -205px;
-    }
-.eo-timeline-details{
-        text-align: center;
-    }
-.eo-timeline-details h1 a{
-        background: none;
-        color: #2d8ac7;
-    }     
-.eo-edit-btn{
-        top: -306px;
-        right: -21px;
-    }    
-.hero-area{height: 250px;}    
-  /*footer Meida Css  End ===========================================   */
+        /*padding-left: 38px;*/
+    }   
+    .eo-dp-box{
+            text-align: center;
+            width: 40%;
+            left:27%;
+            margin-top: -205px;
+        }
+    .eo-timeline-details{
+            text-align: center;
+        }
+    .eo-timeline-details h1 a{
+            background: none;
+            color: #2d8ac7;
+        }     
+    .eo-edit-btn{
+            top: -306px;
+            right: -21px;
+        }  
+    .well.well-sm{height: 315px;
+        overflow: hidden;
+    }      
+    .hero-area{height: 270px;}    
+      /*footer Meida Css  End    */
   #footer{text-align: center;}
-
-    /*Media  499 Queryy ended  */
     }
+                                /*Media  991 Queryy ended  */
+@media (max-width: 991px){
+    .eo-dp-box{
+            text-align: center;
+        }
+    .eo-timeline-details{
+            text-align: center;
+        }
+    .eo-timeline-details h1 a{
+            background: none;
+            color: #2d8ac7;
+        }
+    .eo-edit-btn{
+            top: -306px;
+            right: -21px;
+        }
+@media (max-width:768px){
+    .well.well-sm{height: 315px;
+        overflow: hidden;
+    }
+      }
+}  /*  Media Query end*/

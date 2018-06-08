@@ -6,14 +6,13 @@
   <div class="container custom_profile">
     <div class="eo-box">
             <div class="eo-timeline">
-
+                <!--  Cover image  -->
               <?php if (!empty($user->cover_img)): ?>
                 <img src="{{url('img/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                  <?php else: ?>
                    <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                    <?php endif; ?>
                  <!--  Cover image  -->
-
                 <input type="file" id="cover" name="cover_img" class="compnay-cover sp-cover">
                 <div class="eo-timeline-toolkit">
                     <label for="cover"><i class="fa fa-camera"></i> &nbsp;Change</label>
@@ -41,7 +40,6 @@
                    <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
                        <h1><a href="">{{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
-                          <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                            <h4>Basic Information</h4>
                            <div class="eo-details">
                                <span>Skills:</span> {{$user->skill}}
@@ -65,17 +63,11 @@
                        <div class="col-md-6 eo-section">    <!-- edit buttion -->
                          <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                        </div>
-                       <div class="eo-edit-section">
-                           <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">
+                       <div class="eo-edit-section">   <!-- Edit section start -->
+                           <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
                              {{csrf_field()}}
-                            <div class="alert alert-success success-group"  style="display:None">
-
-                            </div>
                                 <input type="hidden" name="" class="token">
                                <div class="pnj-form-section">
-                                 <div class="alert alert-danger error-group" style="display:None">
-
-                                 </div>
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">Name</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -92,6 +84,9 @@
                                                 <option value="Painter" >Painter</option>
                                                 <option value="Carpenter"> Carpenter</option>
                                                 <option value="Auto-Mechanic" >Auto-Mechanic</option>
+                                                <option value="Cook" >cook</option>
+                                                <option value="Gardener"> Gardener</option>
+                                                <option value="Sweeper" >Sweeper</option>
                                            </select>
                                        </div>
                                    </div>
@@ -146,38 +141,37 @@
                                          <input class="field form-control" name="city" value="{{$user->city}}"  id="locality"></input>
                                         </div>
                                    </div>
-              								   <div class="form-group">
+              					   <div class="form-group">
                                      <label class="control-label col-sm-3 col-xs-12">Fee</label>
                                      <div class="col-sm-9 pnj-form-field">
                                          <input type="text" class="form-control" name="fee" placeholder="1000" value="{{ $user->fee }}" required>
                                      </div>
                                  </div>
-                               </div>
-                            <div class="form-group">
-                                 <label class="control-label col-sm-3 col-xs-12">Experience</label>
-                                 <div class="col-sm-9 pnj-form-field">
-                                     <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}" required>
-                                 </div>
-                             </div>
-
-                                   <div class="col-md-12">
+								   <div class="form-group">
+									 <label class="control-label col-sm-3 col-xs-12">Experience</label>
+									 <div class="col-sm-9 pnj-form-field">
+										 <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}" required>
+									 </div>
+                                   </div>	 
+                            
+                                   <div class="col-md-12">								   
                                        <div class="row">
-                                           <div class="col-md-offset-3 col-md-9">
+                                           <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
                                              <!-- <input type="button" class="btn btn-primary col-md-3" id="page_submit" name="save" value="Save" style="margin-right:5px"> -->
                                                <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" style="margin-right:5px">SAVE</button>
                                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-edit-section').hide(); $('.eo-section').show()">CANCEL</button>
                                            </div>
                                        </div>
                                    </div>
-                                   
-                               </div>
-                           </form>
-                       </div> 
-                   </div>
-               </div>
-            </div>
-             <!-- about editor -->
-             <div class="eo-box eo-about">
+								    </div>  <!-- pnj-form-section ends -->
+                           </form> 	<!-- Update Form  end -->
+						   
+                          </div>      <!--  Edit section end -->
+                       </div>      <!-- Profile view end -->
+					   </div>
+					   </div>
+             </div>    <!-- eo-box end -->
+             <div class="eo-box eo-about">   <!-- about div start -->
             <a class="btn btn-primary r-add-btn hideThis" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
             <h3 class="eo-about-heading">About Me</h3>
             <div class="eo-about-org" style="padding-left:30px">
@@ -201,10 +195,9 @@
                         </div>
                     </div>
                 </form>
-            </div>  <!-- about editor div clossed -->
-          </div>
-        </div>
-     </div>
+              </div>
+              </div>   <!-- about div end -->
+          </div> 	<!-- container end -->
      <script>
                                      // This example displays an address form, using the autocomplete feature
                                      // of the Google Places API to help users fill in the information.
@@ -277,7 +270,7 @@
                                    </script>
                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
                                        async defer></script>
-
+                                     </div>
 <!-- hide edit button profile page -->
     <script>
       $(document).ready(function () {
@@ -366,7 +359,6 @@ var user_id="{{$user->id}}";
     });
   });
 </script>
-
 
 
 @endsection
