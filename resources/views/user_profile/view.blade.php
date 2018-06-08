@@ -41,7 +41,6 @@
                    <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
                        <h1><a href="">{{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
-                          <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                            <h4>Basic Information</h4>
                            <div class="eo-details">
                                <span>Skills:</span> {{$user->skill}}
@@ -63,7 +62,7 @@
                            </div>
                        </div>
                        <div class="col-md-6 eo-section">    <!-- edit buttion -->
-                         <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+                         <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                        </div>
                        <div class="eo-edit-section">
                            <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">
@@ -134,6 +133,8 @@
                                          <input class="field form-control" name="country" value="{{$user->country}}" id="country"></input>
                                        </div>
                                    </div>
+                                   <input type="hidden" name="latitude" id="lat1">
+                                   <input type="hidden" name="longitude" id="lng1">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">state</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -177,14 +178,14 @@
                </div>
             </div>
              <!-- about editor -->
-             <div class="eo-box eo-about">
-            <a class="btn btn-primary r-add-btn hideThis" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+             <div class="eo-box eo-about" id="eo-about">
+            <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
             <h3 class="eo-about-heading">About Me</h3>
             <div class="eo-about-org" style="padding-left:30px">
                 <p><span></span></p>
             </div>
              <div class="eo-about-editor">
-                <form action="" id="pnj-form" method="post" class="organization-desc-form">
+                <form action="" id="pnj-form1" method="post" class="organization-desc-form">
                     <input type="hidden" name="" class="token">
                     <div class="form-group" style="padding-left:20px">
                         <label class="control-label col-sm-3">&nbsp;</label>
@@ -211,7 +212,7 @@
 
                                      // This example requires the Places library. Include the libraries=places
                                      // parameter when you first load the API. For example:
-                                     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
 
                                      var placeSearch, autocomplete;
                                      var componentForm = {
@@ -282,10 +283,12 @@
     <script>
       $(document).ready(function () {
         $("#edit_btn").hide();
+        $("#eo-about").hide();
       <?php
       $id = session()->get('ses');
       if ($id == $user->id) { ?>
         $("#edit_btn").show();
+        $("#eo-about").show();
     <?php  }
        ?>
       });

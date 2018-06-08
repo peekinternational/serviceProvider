@@ -263,4 +263,15 @@ public function coverUpload(Request $request, $id)
   echo $coverPicture;
 }
 
+public function searchProviders(Request $request)
+  {
+  //  return $request->lati.' '.$request->longitude;
+    $latitude = $request->latitude;
+    $longitude = $request->longitude;
+
+    $providers = Register::whereBetween('latitude',[$latitude-0.1, $latitude+0.1])->whereBetween('longitude',[$longitude-0.1, $longitude+0.1])->get();
+     return $providers;
+
+  }
+
 }

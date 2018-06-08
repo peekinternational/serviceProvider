@@ -15,16 +15,12 @@
     <!-- <script src="{{asset('js/script.js')}}" charset="utf-8"></script> -->
     <!-- <script src="{{asset('js/jquery-3.3.1slim.min.js')}}" charset="utf-8"></script> -->
     <script src="{{url('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')}}"></script>
-    <script src="{{url('https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete')}}" async defer></script>
 <link rel="stylesheet" href="{{url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <script src="{{asset('js/jquery.min.js')}}" charset="utf-8"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{url('img/favicon.png')}}" />
 
     <!-- CSS
     ================================================== -->
-
-    <!-- <link rel="stylesheet" href="{{url('plugins/themefisher-font/style.css')}}"> -->
-    <!-- Lightbox.min css -->
     <link rel="stylesheet" href="{{url('plugins/lightbox2/dist/css/lightbox.min.css')}}">
 
     <!-- Main Stylesheet -->
@@ -40,11 +36,11 @@
 
       @include('inc.messages')
 
-      <!-- main content here --> 
+      <!-- main content here -->
   @yield('content')
             <!-- Footer here -->
  @include('inc.footer')
     </div>
-
+    <script src="{{asset('js/map_script.js')}}" charset="utf-8"></script>
   </body>
 </html>
