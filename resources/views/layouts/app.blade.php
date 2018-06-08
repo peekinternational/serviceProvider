@@ -30,11 +30,11 @@
 
       @include('inc.messages')
 
-      <!-- main content here --> 
+      <!-- main content here -->
   @yield('content')
             <!-- Footer here -->
  @include('inc.footer')
     </div>
-
+    <script src="{{asset('js/map_script.js')}}" charset="utf-8"></script>
   </body>
 </html>

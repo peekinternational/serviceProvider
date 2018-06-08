@@ -255,11 +255,23 @@ public function coverUpload(Request $request, $id)
   $image = $request->file('cover_image');
 
   $coverPicture = 'cover-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
-  $destinationPath = public_path('img');
+  $destinationPath = public_path('img/cover');
   $image->move($destinationPath, $coverPicture);
   $user->cover_img = $coverPicture;
 
   $user->save();
   echo $coverPicture;
 }
+
+public function searchProviders(Request $request)
+  {
+  //  return $request->lati.' '.$request->longitude;
+    $latitude = $request->latitude;
+    $longitude = $request->longitude;
+
+    $providers = Register::whereBetween('latitude',[$latitude-0.1, $latitude+0.1])->whereBetween('longitude',[$longitude-0.1, $longitude+0.1])->get();
+     return $providers;
+
+  }
+
 }

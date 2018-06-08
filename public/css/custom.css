@@ -32,7 +32,7 @@ overflow: hidden;
                 /* Navbar Css Start
          ================================================
                 */
-.navbar-default .navbar-nav  li  a {color: white;}               
+.navbar-default .navbar-nav  li  a {color: white;}
 .navbar-default .navbar-nav  li  a:hover {font-size: 20px;color: white;}
 /*.navbar-default .navbar-nav  li  a:visited{color: #bbb;}*/
 .dropdown_list li a {color:white;background:#454251; }
@@ -50,6 +50,12 @@ overflow: hidden;
 .profile_card {
   height: 330px;
   overflow: hidden;
+}
+
+#map {
+  height: 500px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 
@@ -272,6 +278,12 @@ overflow: hidden;
     input[type="search"],input[type="email"],input[type="date"],
 input[type="datetime"],textarea {
       font-size: 16px;
+        }
+
+.eo-timeline-cover {
+        object-fit: cover;
+        width: 308px;
+        height: 115.63px;
     }
     nav.navbar.navbar-default.navbar-fixed-top.navbar-custom{height: 6%;}
     button.navbar-toggle.collapsed{margin-top: 11px; padding: 6px;}
@@ -290,6 +302,16 @@ input[type="datetime"],textarea {
     .eo-box{
         width: 100%;
         height:auto;
+    }
+.custom_profile{
+    margin-top: 90px;
+    padding-left: 38px;
+}
+.eo-dp-box{
+        text-align: center;
+        width: 40%;
+        left:27%;
+        margin-top: -205px;
     }
     .eo-dp-box{
             text-align: center;
@@ -321,6 +343,9 @@ input[type="datetime"],textarea {
     }      
     .hero-area{height: 270px;}    
       /*footer Meida Css  End    */
+    }
+
+  /*footer Meida Css  End ===========================================   */
   #footer{text-align: center;}
     }
                                 /*Media  991 Queryy ended  */

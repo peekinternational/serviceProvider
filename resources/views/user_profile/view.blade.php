@@ -8,7 +8,7 @@
             <div class="eo-timeline">
                 <!--  Cover image  -->
               <?php if (!empty($user->cover_img)): ?>
-                <img src="{{url('img/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
+                <img src="{{url('img/cover/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                  <?php else: ?>
                    <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                    <?php endif; ?>
@@ -61,7 +61,7 @@
                            </div>
                        </div>
                        <div class="col-md-6 eo-section">    <!-- edit buttion -->
-                         <a class="btn btn-primary eo-edit-btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+                         <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
                        </div>
                        <div class="eo-edit-section">   <!-- Edit section start -->
                            <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
@@ -129,6 +129,8 @@
                                          <input class="field form-control" name="country" value="{{$user->country}}" id="country"></input>
                                        </div>
                                    </div>
+                                   <input type="hidden" name="latitude" id="lat1">
+                                   <input type="hidden" name="longitude" id="lng1">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">state</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -163,22 +165,23 @@
                                            </div>
                                        </div>
                                    </div>
-								    </div>  <!-- pnj-form-section ends -->
+								                </div>  <!-- pnj-form-section ends -->
                            </form> 	<!-- Update Form  end -->
-						   
                           </div>      <!--  Edit section end -->
                        </div>      <!-- Profile view end -->
-					   </div>
-					   </div>
+					           </div>
+					       </div>
              </div>    <!-- eo-box end -->
-             <div class="eo-box eo-about">   <!-- about div start -->
-            <a class="btn btn-primary r-add-btn hideThis" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+             
+             <!-- about editor -->
+             <div class="eo-box eo-about" id="eo-about">
+            <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
             <h3 class="eo-about-heading">About Me</h3>
             <div class="eo-about-org" style="padding-left:30px">
                 <p><span></span></p>
             </div>
-             <div class="eo-about-editor"> 
-                <form action="" id="pnj-form" method="post" class="organization-desc-form">
+             <div class="eo-about-editor">
+                <form action="" id="pnj-form1" method="post" class="organization-desc-form">
                     <input type="hidden" name="" class="token">
                     <div class="form-group" style="padding-left:20px">
                         <label class="control-label col-sm-3">&nbsp;</label>
@@ -204,7 +207,7 @@
 
                                      // This example requires the Places library. Include the libraries=places
                                      // parameter when you first load the API. For example:
-                                     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
 
                                      var placeSearch, autocomplete;
                                      var componentForm = {
@@ -275,10 +278,12 @@
     <script>
       $(document).ready(function () {
         $("#edit_btn").hide();
+        $("#eo-about").hide();
       <?php
       $id = session()->get('ses');
       if ($id == $user->id) { ?>
         $("#edit_btn").show();
+        $("#eo-about").show();
     <?php  }
        ?>
       });
@@ -323,8 +328,10 @@ var user_id="{{$user->id}}";
 });
 });
 </script>
+
 <!-- ============================================ -->
 <!-- Cover image using Ajax===================================== -->
+
 <script>
   $(document).ready(function () {
     $.ajaxSetup({
@@ -352,7 +359,7 @@ var user_id="{{$user->id}}";
           console.log(response);
           // alert(response);
           if(response) {
-            $('.eo-timeline-cover').attr('src','<?=url('img')?>/'+response);
+            $('.eo-timeline-cover').attr('src','<?=url('img/cover')?>/'+response);
           }
         }
       });

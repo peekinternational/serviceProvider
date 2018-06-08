@@ -34,6 +34,9 @@
 </section>
 <section class="service-2 section">
   <div class="container">
+		<div id="map">
+
+  </div>
     <div class="row">
       <!-- Content Section -->
       <div class="title text-center"  >
@@ -288,7 +291,7 @@ Start About Section
 			</div> <!-- end row -->
 		</div> <!-- end container -->
 	</section> <!-- end section -->
-     
+
      <!-- ===================================== Script code here ================================= -->
 <script>
 	// This example displays an address form, using the autocomplete feature
@@ -296,7 +299,7 @@ Start About Section
 
 	// This example requires the Places library. Include the libraries=places
 	// parameter when you first load the API. For example:
-	// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
 
 	var placeSearch, autocomplete;
 	var componentForm = {
@@ -361,6 +364,7 @@ Start About Section
 	}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
-		async defer></script>
+		async="" defer=""></script>
+
 
 @endsection
