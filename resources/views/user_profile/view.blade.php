@@ -154,9 +154,9 @@
 									 <div class="col-sm-9 pnj-form-field">
 										 <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}" required>
 									 </div>
-                                   </div>	 
-                            
-                                   <div class="col-md-12">								   
+                                   </div>
+
+                                   <div class="col-md-12">
                                        <div class="row">
                                            <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
                                              <!-- <input type="button" class="btn btn-primary col-md-3" id="page_submit" name="save" value="Save" style="margin-right:5px"> -->
@@ -172,7 +172,7 @@
 					           </div>
 					       </div>
              </div>    <!-- eo-box end -->
-             
+
              <!-- about editor -->
              <div class="eo-box eo-about" id="eo-about">
             <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
@@ -270,6 +270,11 @@
                                          });
                                        }
                                      }
+                                     // var searchBox = new google.maps.places.SearchBox(document.getElementById('locationField'));4
+                                     // google.maps.event.addListener(searchBox, 'place_changed', function () {
+                                     //   var places = searchBox.getPlace();
+                                     //   var bounds
+                                     });
                                    </script>
                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
                                        async defer></script>
