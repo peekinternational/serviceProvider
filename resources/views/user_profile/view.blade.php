@@ -17,7 +17,7 @@
                 <div class="eo-timeline-toolkit">
                     <label for="cover"><i class="fa fa-camera"></i> &nbsp;Change</label>
                 </div>
-            </div>
+            </div>  <!-- cover img end -->
             <div class="col-md-12">
                <div class="row">
                    <div class="col-md-2 eo-dp-box">      <!--  Profile image  -->
@@ -35,10 +35,10 @@
                            </i> Remove</label>
                        </div>
 
-                   </div>
+                   </div>   <!-- profile img end -->
 
                    <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
-                       <h1><a href="">{{ $user->name }}</a></h1>
+                       <h1><a href="#"> {{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
                            <h4>Basic Information</h4>
                            <div class="eo-details">
@@ -74,7 +74,7 @@
                                            <input type="text" class="form-control" name="name" id="companyName" placeholder="Name" value="{{ $user->name }}" required>
                                        </div>
                                    </div>
-                                     <div class="form-group">
+                                     <div class="form-group">     <!-- Skill slection -->
                                        <label class="control-label col-sm-3 col-xs-12">Skills</label>
                                        <div class="col-sm-9 pnj-form-field">
                                            <select class="form-control select2" name="skill">
@@ -89,7 +89,7 @@
                                                 <option value="Sweeper" >Sweeper</option>
                                            </select>
                                        </div>
-                                   </div>
+                                   </div>   <!-- Skill slection end -->
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">phone</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -154,23 +154,22 @@
 									 <div class="col-sm-9 pnj-form-field">
 										 <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}" required>
 									 </div>
-                                   </div>
+                  </div>
 
                                    <div class="col-md-12">
                                        <div class="row">
                                            <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
-                                             <!-- <input type="button" class="btn btn-primary col-md-3" id="page_submit" name="save" value="Save" style="margin-right:5px"> -->
                                                <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" style="margin-right:5px">SAVE</button>
                                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-edit-section').hide(); $('.eo-section').show()">CANCEL</button>
                                            </div>
                                        </div>
                                    </div>
-								                </div>  <!-- pnj-form-section ends -->
+							 </div>  <!-- pnj-form-section ends -->
                            </form> 	<!-- Update Form  end -->
                           </div>      <!--  Edit section end -->
-                       </div>      <!-- Profile view end -->
-					           </div>
-					       </div>
+                   </div>      <!-- Profile view end -->
+			 </div>
+			 </div>
              </div>    <!-- eo-box end -->
 
              <!-- about editor -->
@@ -180,7 +179,7 @@
             <div class="eo-about-org" style="padding-left:30px">
                 <p><span></span></p>
             </div>
-             <div class="eo-about-editor">
+             <div class="eo-about-editor"> <!-- about editior -->
                 <form action="" id="pnj-form1" method="post" class="organization-desc-form">
                     <input type="hidden" name="" class="token">
                     <div class="form-group" style="padding-left:20px">
@@ -198,8 +197,8 @@
                         </div>
                     </div>
                 </form>
-              </div>
-              </div>   <!-- about div end -->
+            </div>  <!-- about editior end -->
+			  </div>   <!-- about div end -->
           </div> 	<!-- container end -->
      <script>
                                      // This example displays an address form, using the autocomplete feature

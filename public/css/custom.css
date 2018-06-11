@@ -44,7 +44,7 @@ overflow: hidden;
 
 
 /*Footer Css  start ===========================================   */
-
+.page-footer{background-color: #343140;}
 
 
 .profile_card {
@@ -305,7 +305,6 @@ input[type="datetime"],textarea {
     }
 .custom_profile{
     margin-top: 90px;
-    padding-left: 38px;
 }
 .eo-dp-box{
         text-align: center;
@@ -343,11 +342,11 @@ input[type="datetime"],textarea {
     }      
     .hero-area{height: 270px;}    
       /*footer Meida Css  End    */
-    }
 
   /*footer Meida Css  End ===========================================   */
-  #footer{text-align: center;}
-    }
+  #footer{text-align: center;
+  }
+}
                                 /*Media  991 Queryy ended  */
 @media (max-width: 991px){
     .eo-dp-box{
@@ -357,16 +356,24 @@ input[type="datetime"],textarea {
             text-align: center;
         }
     .eo-timeline-details h1 a{
-            background: none;
+            /*background: none;*/
             color: #2d8ac7;
         }
     .eo-edit-btn{
             top: -306px;
             right: -21px;
         }
+
+} 
 @media (max-width:768px){
     .well.well-sm{height: 315px;
         overflow: hidden;
     }
-      }
-}  /*  Media Query end*/
+    .eo-timeline-details h1 a{
+    text-decoration: none;
+    color: #2d8ac7;
+    background: rgba(0,0,0,0);
+    padding: 5px 13px;
+    }
+}  
+ /*  Media Query end*/
