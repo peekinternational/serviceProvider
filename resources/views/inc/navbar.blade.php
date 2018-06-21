@@ -39,9 +39,9 @@
           <ul class="nav navbar-nav navbar-right">
              <li id="logout" class="dropdown">
             <a class="dropbtn" href="#"><i class="fa fa-cog"></i>
-              {{session()->get('name')}}<span class="caret"></span> </a> 
+              {{session()->get('name')}}<span class="caret"></span> </a>
               <ul id="profile_list" class="dropdown-menu dropdown_list" >
-                <?php $id=session()->get('ses'); ?> 
+                <?php $id=session()->get('ses'); ?>
                       <li ><a href="{{url('profile_view/'.$id)}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a></li>
                       <li ><a href="{{url('edit/'. $id)}}"><i class="fa fa-key"></i>&nbsp;&nbsp;Setting</a></li>
                       <li ><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log out</a></li>
@@ -70,9 +70,9 @@
                $("#register").hide();
                <?php
              }
-                ?>      
-                // toggle menu bar 
-      
+                ?>
+                // toggle menu bar
+
             $("#dropdown").click(function(){
               $("#profile_list").hide();
               $("#dropmenu").toggle();
@@ -82,6 +82,6 @@
               $("#dropmenu").hide();
               $("#profile_list").toggle();
             });
- 
+
 });
     </script>

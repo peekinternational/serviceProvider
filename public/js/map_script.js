@@ -1,6 +1,7 @@
 var map;
 var myLatlng;
 var api_url='http://127.0.0.1:8000/api/'
+// var api_url='http://203.99.61.173/demos/service_provider/public/api/'
 $(document).ready(function () {
   geoLocationInit();
   function geoLocationInit() {

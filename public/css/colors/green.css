@@ -17,12 +17,12 @@
 }
 
 .btn-main {
-  background: #5BB12F;
-  border: 1px solid #5BB12F;
+  background: #49f5fbc7;
+  border: 1px solid #49f5fbc7;
 }
 
 .title .border {
-  background-color: #5BB12F;
+  background-color: #49f5fbc7;
 }
 
 .portfolio-filter button {
@@ -38,7 +38,13 @@
 }
 
 .testimonial {
-  background: #5BB12F;
+  background: #49f5fbc7;
+  padding-bottom: 80px;
+  padding-top: 10px;
+/* background: #28ABE3; */
+/* position: relative; */
+/* padding-bottom: 0px; */
+margin-bottom: 80px;
 }
 
 .team .member-photo .mask {
@@ -76,11 +82,11 @@
 }
 
 .service-2 .service-item:hover i {
-  color: #5BB12F;
+  color: #49f5fbc7;
 }
 
 .service-2 .service-item i {
-  background: #5BB12F none repeat scroll 0 0;
+  background: #49f5fbc7 none repeat scroll 0 0;
 }
 
 .pricing-table .price-title .value {
