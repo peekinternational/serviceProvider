@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="block">
-					<div class="text-center">
-					<h3 class="Message"  >Get Your Service Provider in Seconds </h3>
-				</div>
-					<div class="text-center col-md-8 col-md-offset-2 model">
-						<br>
-					<form class="form-group" role="search" action="{{url('search')}}" method="get">
+<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-center">
+						<div class="banner-content col-lg-12">
+							<h1 class="text-white">
+								<span>1500+</span> People registered last week
+							</h1>
+
+					<!-- <form class="form-group" role="search" action="{{url('search')}}" method="get">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Skills" name="skill">
 						</div>
@@ -25,13 +24,29 @@
 								<input class="field form-control" type="hidden" name="city"  id="locality"></input>
 							</div>
 									<button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button>
-					</form>
-				</div>
+					</form> -->
+					<form action="{{url('search')}}" method="get" role="search" class="serach-form-area">
+								<div class="row justify-content-center form-wrap">
+									<div class="col-md-5 form-cols">
+										<input type="text" class="form-control" name="skill" placeholder="Skills">
+									</div>
+									<div class="col-md-5 form-cols" id="locationField">
+										<input id="autocomplete" name="location" class="form-control"  placeholder="Select your location" onFocus="geolocate()" type="text"></input>
+									</div>
+									<div class="col-md-2 form-cols">
+									    <button type="submit" class="btn btn-info">
+									      <span class="fa fa-search"></span> Search
+									    </button>
+											<!-- <button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button> -->
+									</div>
+								</div>
+							</form>
+
+				<p class="text-white"> <span>Search by tags:</span> Plumber, Mechanic, Electrician, Welder, Painter, Area, Location</p>
+			</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</section>
+		</section>
 <section class="service-2 section">
   <div class="container">
 		<div id="map">
