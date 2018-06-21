@@ -18,7 +18,7 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-4 col-lg-4 ">
+      <div class="col-md-4 col-lg-4 col-sm-12">
 
         <!-- Social buttons -->
         <div class=" text-md-right">

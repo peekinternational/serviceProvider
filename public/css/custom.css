@@ -28,6 +28,23 @@ overflow: hidden;
 .profile-show {
   height: 180px;
   overflow: hidden;
+}    
+.skill_logo{
+    height: 78px;
+    width: 40%;
+    }      
+/*===============================================contact page ===============================*/
+.company-box-left{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    border: 1px solid #cccccc;
+    background: #ffffff;
+}
+.company-box-right{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    border: 1px solid #cccccc;
+    background: #ffffff;
 }
                 /* Navbar Css Start
          ================================================
@@ -362,6 +379,11 @@ input[type="datetime"],textarea {
     .eo-edit-btn{
             top: -306px;
             right: -21px;
+        }
+    .company-box-right {
+            margin-right: -15px;
+            margin-left: -15px;
+            margin-top: 20px;
         }
 
 } 

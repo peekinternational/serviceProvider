@@ -38,6 +38,12 @@ Route::get('profile', function () {
 Route::get('skills', function () {
     return view('user_profile.skill_search');
 });
+Route::get('/about', function () {
+    return view('user_profile.about');
+});
+Route::get('/contact', function () {
+    return view('user_profile.contact');
+});
 
 
 
