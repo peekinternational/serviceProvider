@@ -3,7 +3,7 @@
 @section('content')
 
   <!--     Profile view       -->
-  <div class="container custom_profile">
+  <div class="container " id="custom_profile">
     <div class="eo-box">
             <div class="eo-timeline">
                 <!--  Cover image  -->
@@ -273,7 +273,7 @@
                                      // google.maps.event.addListener(searchBox, 'place_changed', function () {
                                      //   var places = searchBox.getPlace();
                                      //   var bounds
-                                     });
+                                     // });
                                    </script>
                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
                                        async defer></script>

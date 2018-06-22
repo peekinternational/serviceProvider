@@ -273,5 +273,19 @@ public function searchProviders(Request $request)
      return $providers;
 
   }
+//   public function NearBy(Request $req){
+//     $rad=10;
+//     $products = Register::selectRaw("*,
+//             ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+//             cos( radians(user.latitude) ) *
+//             cos( radians(user.longitude) - radians(" . $longitude . ") ) + 
+//             sin( radians(" . $latitude . ") ) *
+//             sin( radians(user.latitude) ) ) ) 
+//             AS distance")
+// ->having("distance", "<", $radius)
+// ->orderBy("distance")
+// ->get();
+//     return view('user_profile.home');
+//   }
 
 }

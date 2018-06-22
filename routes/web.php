@@ -49,6 +49,7 @@ Route::get('/contact', function () {
 
 Route::post('create_r', 'RegisterController@store');
 Route::post('Account/login', 'RegisterController@login');
+// Route::get('/','RegisterController@NearBy');      //              new added by Rj
 
 
 Route::get('people', 'RegisterController@index');

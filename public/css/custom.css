@@ -1,5 +1,6 @@
 #img-slider{width: 5000px;height:450px;}
 .customlogo{width:25%; margin-top: -20px;}
+body{margin-top: 75px;}
 /* .show_provider{width: 100%; height: 100px;} */
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
 /* .model{border: 2px solid white; border-radius: 5px;} */
@@ -360,9 +361,6 @@ input[type="datetime"],textarea {
         width: 100%;
         height:auto;
     }
-.custom_profile{
-    margin-top: 90px;
-}
 .eo-dp-box{
         text-align: center;
         width: 40%;
@@ -372,8 +370,8 @@ input[type="datetime"],textarea {
     .eo-dp-box{
             text-align: center;
         }
-    .custom_profile{
-        margin-top: 75px;
+    #custom_profile{
+        margin-top: 100px;
         text-align: center;
         /*padding-left: 38px;*/
     }
@@ -402,9 +400,10 @@ input[type="datetime"],textarea {
 
 
 
-  /*footer Meida Css  End ===========================================   */
-  #footer{text-align: center;
-  }
+       /*footer Meida Css  End ===========================================   */
+    .footer-center{
+        text-align: center;
+    }
 }
                                 /*Media  991 Queryy ended  */
 @media (max-width: 991px){
@@ -475,7 +474,9 @@ input[type="datetime"],textarea {
   background-image: -moz-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background-image: -webkit-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background-image: -ms-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
+
 }
+.overlay.overlay-bg{margin-top: -15px;}
 
 .overlay {
   position: absolute;
