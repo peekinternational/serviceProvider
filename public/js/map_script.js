@@ -1,5 +1,8 @@
 var map;
 var myLatlng;
+var radius;
+// var km =  0.00900900;
+var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
 // var api_url='http://203.99.61.173/demos/service_provider/public/api/'
 $(document).ready(function () {
@@ -20,7 +23,7 @@ $(document).ready(function () {
      myLatlng = new google.maps.LatLng(latval, lngval);
     createMap(myLatlng);
     // nearbySearch(myLatlng, "school");
-    searchBoys(latval, lngval);
+    searchBoys(latval, lngval, km);
   }
 
   function fail() {
@@ -29,7 +32,7 @@ $(document).ready(function () {
 
 
   //Create Map
-  function createMap(myLatlng) {
+  function createMap(myLatlng, radius) {
      map = new google.maps.Map(document.getElementById('map'), {
       center: myLatlng,
       zoom: 12
@@ -39,6 +42,8 @@ $(document).ready(function () {
           position: myLatlng,
           map: map
     });
+
+
   }
 
   //Create Marker
@@ -48,6 +53,8 @@ $(document).ready(function () {
             map: map,
             icon: icn,
             title:name
+            // draggable: true
+
         });
   }
 
@@ -56,7 +63,7 @@ $(document).ready(function () {
 //
 //   var request = {
 //   location: myLatlng,
-//   radius: '2500',
+//   radius: '1000',
 //   type: [type]
 //   };
 //
@@ -78,10 +85,11 @@ $(document).ready(function () {
 // }
 // }
 
-function searchBoys(lat, lng) {
+function searchBoys(lat, lng, km) {
       var mydata={
         latitude:lat,
-        longitude:lng
+        longitude:lng,
+        km: km
       }
       $.ajaxSetup({
         header: {
@@ -90,13 +98,28 @@ function searchBoys(lat, lng) {
       });
 
       console.log(mydata);
+      // ajax_kilometer();
+      // function ajax_kilometer() {
+
+
       $.ajax({
+          // [lbl] start:
         type: 'post',
         data: mydata,
         url: api_url+"searchBoys",
         success: function (response) {
+          var res = JSON.parse(response);
+          console.log(res);
+          km = res.km;
+        radius = km*111*1000;
+          console.log(radius);
 
-          $.each(response, function (i, val) {
+          var circle = new google.maps.Circle({
+            map: map,
+            center: myLatlng,
+            radius: radius
+          });
+          $.each(res.provider, function (i, val) {
             console.log(val.name);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
@@ -105,9 +128,10 @@ function searchBoys(lat, lng) {
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
           var  gicn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             createMarker(GLatlng, gicn, gname);
+
           });
         }
       });
-
+      // }
     }
 });

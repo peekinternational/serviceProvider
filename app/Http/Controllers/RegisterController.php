@@ -268,10 +268,24 @@ public function searchProviders(Request $request)
   //  return $request->lati.' '.$request->longitude;
     $latitude = $request->latitude;
     $longitude = $request->longitude;
+    $km = $request->km;
+    // $radius = 10;
+    // $km = 0.04504504;
+    // $km = 0.009009008;
 
-    $providers = Register::whereBetween('latitude',[$latitude-0.1, $latitude+0.1])->whereBetween('longitude',[$longitude-0.1, $longitude+0.1])->get();
-     return $providers;
+    again:
+    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->get();
 
+    if (count($providers)==0) {
+      $km=$km*2;
+       goto again;
+    }
+    $obj = array(
+      "km" => $km,
+      "provider"=> $providers
+    );
+     echo json_encode($obj);
+     // return $providers;
   }
 
 }
