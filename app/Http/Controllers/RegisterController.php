@@ -213,8 +213,6 @@ echo "successfully";
      $user1=$alls->get();
      //dd($user);
 
-
-
       // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
 
       // $user = Register::where('skill','LIKE',"%{$skill}%")->Where('location', 'LIKE',"%{$location}%")->get();
@@ -273,17 +271,25 @@ public function searchProviders(Request $request)
     // $km = 0.04504504;
     // $km = 0.009009008;
     again:
-    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->get();
+    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderByRaw('latitude','des')->get();
+
+$order = Register::selectRaw("*,
+            ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+            cos( radians(latitude) ) *
+            cos( radians(longitude) - radians(" . $longitude . ") ) + 
+            sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distance")->orderBy("distance", 'asc')->get();
+
     if (count($providers)==0) {
       $km=$km*2;
        goto again;
     }
     $obj = array(
       "km" => $km,
-      "provider"=> $providers
+      "provider"=> $providers,
+      "order"=> $order
     );
      echo json_encode($obj);
-     // return $providers;
+
   }
 //   public function NearBy(Request $req){
 //     $rad=10;

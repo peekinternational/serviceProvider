@@ -50,8 +50,12 @@
 <section class="service-2 section">
   <div class="container">
 		<div id="map">
-
-  </div>
+								 <!-- Google map showing here -->
+  		</div>
+  		<div class="container">
+  			<div class="row" id="show_all">
+  			</div>
+  		</div>
     <div class="row">
       <!-- Content Section -->
       <div class="title text-center"  >
