@@ -3,7 +3,7 @@
 @section('content')
 
   <!--     Profile view       -->
-  <div class="container custom_profile">
+  <div class="container " id="custom_profile">
     <div class="eo-box">
             <div class="eo-timeline">
                 <!--  Cover image  -->
@@ -129,8 +129,8 @@
                                          <input class="field form-control" name="country" value="{{$user->country}}" id="country"></input>
                                        </div>
                                    </div>
-                                   <input type="text" name="latitude" id="latitude">
-                                   <input type="text" name="longitude" id="longitude">
+                                   <input type="text" hidden="" name="latitude" id="latitude">
+                                   <input type="text" hidden="" name="longitude" id="longitude">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">state</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -215,7 +215,6 @@
          var place = autocomplete.getPlace();
          var lat = place.geometry.location.lat();
          var lng = place.geometry.location.lng();
-         var placeId = place.place_id;
          // to set city name, using the locality param
          var componentForm = {
            locality1: 'short_name',
@@ -232,9 +231,7 @@
          }
          document.getElementById("latitude").value = lat;
          document.getElementById("longitude").value = lng;
-         // document.getElementById("country").value = val;
-
-         // document.getElementById("location_id").value = placeId;
+       
        });
      }
                                    </script>

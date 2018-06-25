@@ -9,16 +9,16 @@
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-8 col-lg-8 col-sm-12">
+      <div class="col-md-8 col-lg-8 col-sm-12 footer-center" >
 
         <!--Copyright-->
-        <p class="">© 2018 Copyright: <a href="https://mdbootstrap.com/bootstrap-tutorial/"><strong> MDBootstrap.com</strong></a></p>
+        <p class="">&copy 2018 Copyright: <a href="{{url('/')}}"><strong> Service Provider</strong></a></p>
 
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-4 col-lg-4 ">
+      <div class="col-md-4 col-lg-4 col-sm-12 footer-center">
 
         <!-- Social buttons -->
         <div class=" text-md-right">

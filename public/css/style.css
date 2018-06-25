@@ -986,6 +986,8 @@ a:focus, a:hover {
   margin-bottom: 30px;
   padding: 50px 20px;
   transition: all 0.3s ease 0s;
+  overflow: hidden;
+  height: 385px;
 }
 
 .service-2 .service-item:hover {
