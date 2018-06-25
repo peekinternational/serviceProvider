@@ -51,32 +51,32 @@ $(document).ready(function () {
         });
   }
 
-//Nearby Search
-// function nearbySearch(myLatlng, type) {
-//
-//   var request = {
-//   location: myLatlng,
-//   radius: '2500',
-//   type: [type]
-//   };
-//
-//
-//   service = new google.maps.places.PlacesService(map);
-//   service.nearbySearch(request, callback);
-//
-//   function callback(results, status) {
-//     // console.log(results);
-//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       var place = results[i];
-//       latlng = place.geometry.location;
-//       icn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-//       name = place.name;
-//       createMarker(latlng, icn, name);
-//     }
-//   }
-// }
-// }
+// Nearby Search
+function nearbySearch(myLatlng, type) {
+
+  var request = {
+  location: myLatlng,
+  radius: '2500',
+  type: [type]
+  };
+
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+
+  function callback(results, status) {
+    // console.log(results);
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      var place = results[i];
+      latlng = place.geometry.location;
+      icn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      name = place.name;
+      createMarker(latlng, icn, name);
+    }
+  }
+}
+}
 
 function searchBoys(lat, lng) {
       var mydata={
@@ -97,11 +97,11 @@ function searchBoys(lat, lng) {
         success: function (response) {
 
           $.each(response, function (i, val) {
-            console.log(val.name);
+            // console.log(val.name);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
-          // console.log([glatval, glngval]);
+          console.log([glatval, glngval,gname]);
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
           var  gicn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             createMarker(GLatlng, gicn, gname);

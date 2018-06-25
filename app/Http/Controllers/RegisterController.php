@@ -269,7 +269,7 @@ public function searchProviders(Request $request)
     $latitude = $request->latitude;
     $longitude = $request->longitude;
 
-    $providers = Register::whereBetween('latitude',[$latitude-0.1, $latitude+0.1])->whereBetween('longitude',[$longitude-0.1, $longitude+0.1])->get();
+    $providers = Register::whereBetween('latitude',[$latitude-0.0450450, $latitude+0.0450450])->whereBetween('longitude',[$longitude-0.0450450, $longitude+0.0450450])->get();
      return $providers;
 
   }

@@ -68,7 +68,7 @@
             	<div class="text-center">
              	 <img src="{{asset('images/plumber.jpg')}}" class=" img-circle skill_logo">
                 </div>
-              <h4>Plumber Services </h4>
+              <h4>Plumber</h4>
               <p><b>Looking for a Plumber?</b> We offer a premium plumbing service in Islamabad. No job is too small or big for us. Our Plumbers are skilled, trained and professional, and can do any kind of plumbing job for you.</p>
             </div>
 					</a>
