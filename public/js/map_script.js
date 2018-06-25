@@ -1,8 +1,11 @@
 var map;
 var myLatlng;
 var radius;
-// var km =  0.00900900;
-var km =  0.04504504;
+var lngval;
+var latval;
+var kilometer = 20;
+var km =  (1/111)*kilometer;
+// var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
 // var api_url='http://203.99.61.173/demos/service_provider/public/api/'
 $(document).ready(function () {
@@ -16,9 +19,9 @@ $(document).ready(function () {
   }
 
   function success(position) {
-    console.log(position);
-    var latval = position.coords.latitude;
-    var lngval = position.coords.longitude;
+    // console.log(position);
+     latval = position.coords.latitude;
+     lngval = position.coords.longitude;
 
      myLatlng = new google.maps.LatLng(latval, lngval);
     createMap(myLatlng);
@@ -35,7 +38,7 @@ $(document).ready(function () {
   function createMap(myLatlng, radius) {
      map = new google.maps.Map(document.getElementById('map'), {
       center: myLatlng,
-      zoom: 12
+      zoom: 11
     });
 
     var marker = new google.maps.Marker({
@@ -86,6 +89,7 @@ $(document).ready(function () {
 // }
 
 function searchBoys(lat, lng, km) {
+  // console.log(km);
       var mydata={
         latitude:lat,
         longitude:lng,
@@ -97,19 +101,15 @@ function searchBoys(lat, lng, km) {
         }
       });
 
-      console.log(mydata);
-      // ajax_kilometer();
-      // function ajax_kilometer() {
-
+      // console.log(mydata);
 
       $.ajax({
-          // [lbl] start:
         type: 'post',
         data: mydata,
         url: api_url+"searchBoys",
         success: function (response) {
           var res = JSON.parse(response);
-          console.log(res);
+          // console.log(res);
           km = res.km;
         radius = km*111*1000;
           console.log(radius);
@@ -124,7 +124,46 @@ function searchBoys(lat, lng, km) {
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
-          // console.log([glatval, glngval]);
+          var temp = '';
+          for (var i = 0; i <res.provider.length; i++) {
+            var profile_img = '';
+            if (res.provider[i].image == null) {
+            profile_img = '<img src="img/profile-logo.jpg" class="pf-image" alt="">'
+            }
+            else {
+            profile_img = '<img src="img/'+ res.provider[i].image+'" class="pf-image" alt="">'
+            }
+            temp +='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">'+
+            '<div class="well well-sm">'+
+              '<div class="row">'+
+                     '<div class="col-sm-12 text-center">'+
+                    '<div class="profile-show">'+
+                    profile_img+
+                    '</div>'+
+                    '</div>'+
+                  '<div class="col-sm-12 col-md-8">&nbsp;'+
+                  '<h4><a href="profile_view/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
+                      <!-- Split button -->
+                      '<div class="row">'+
+                        '<div class="col-md-12 col-sm-12 col-xm-12">'+
+                         '<i class="fa fa-wrench"></i>&nbsp; &nbsp;'+
+                    			res.provider[i].skill+
+
+                       '</div>'+
+                      '</div>'+
+
+                      '<div class="row">'+
+                       '<div class="col-md-12 col-sm-12 col-xm-12">'+
+                        '<i class="fa fa-map-marker"></i>&nbsp;  &nbsp; '+
+      	                         res.provider[i].location+
+      	                        '</div>'+
+      	                      '</div>'+
+      	                    '</div>'+
+      	                '</div>'+
+      	            '</div>'+
+      	        '</div>';
+          }
+          document.getElementById('show_all').innerHTML = temp;
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
           var  gicn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             createMarker(GLatlng, gicn, gname);
@@ -132,6 +171,5 @@ function searchBoys(lat, lng, km) {
           });
         }
       });
-      // }
     }
 });

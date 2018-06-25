@@ -52,6 +52,17 @@
 		<div id="map">
 
   </div>
+
+	<!-- Google Search Display -->
+	<div class="container" id="container">
+	    <div class="row" id="show_all">
+
+
+
+	    </div>
+
+	</div>
+	<!-- Google Search Ends -->
     <div class="row">
       <!-- Content Section -->
       <div class="title text-center"  >
