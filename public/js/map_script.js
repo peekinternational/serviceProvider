@@ -192,7 +192,7 @@ var myLatlng;
 var radius;
 var lngval;
 var latval;
-var kilometer = 3;
+var kilometer = 20;
 var km =  (1/111)*kilometer;
 var autozoom;
 // var km =  0.04504504;
@@ -324,21 +324,21 @@ function searchBoys(lat, lng, km, get_skill) {
         radius = km*111*1000;
          var kilom=res.km*111;
             console.log(kilom);
-        if(kilom <=30){
+        if(kilom <=10){
           autozoom=12;
         }
-        else if (kilom <=60)
+        else if (kilom <=30)
         {
           autozoom=11;
-        } else if(kilom <=150)
+        } else if(kilom <=60)
         {
-           autozoom=8;
+           autozoom=10;
         }
-          else if(kilom <=300)
-          { autozoom=7;
+          else if(kilom <=100)
+          { autozoom=8;
           }
-          else if(kilom >300){
-            autozoom=6;
+          else if(kilom >200){
+            autozoom=7;
           }
 
           console.log(autozoom);
@@ -349,9 +349,9 @@ function searchBoys(lat, lng, km, get_skill) {
             center: myLatlng,
             radius: radius
           });
-          $.each(res.order, function (i, val) {
+          $.each(res.provider, function (i, val) {
             // console.log(val.name);
-            console.log(res.order);
+            console.log(res.provider);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
