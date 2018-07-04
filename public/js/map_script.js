@@ -194,6 +194,7 @@ var lngval;
 var latval;
 var kilometer = 3;
 var km =  (1/111)*kilometer;
+var autozoom;
 // var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
 // var api_url='http://203.99.61.173/demos/service_provider/public/api/'
@@ -227,7 +228,8 @@ skills(rec_skill);
      lngval = position.coords.longitude;
 
      myLatlng = new google.maps.LatLng(latval, lngval);
-    createMap(myLatlng);
+
+    // createMap(myLatlng,autozoom);
     // nearbySearch(myLatlng, "school");
     // alert(get_skill);
     searchBoys(latval, lngval, km, get_skill);
@@ -236,13 +238,12 @@ skills(rec_skill);
   function fail() {
     alert("It Fails");
   }
-
-
   //Create Map
-  function createMap(myLatlng, radius) {
+  function createMap(myLatlng, autozoom) {
      map = new google.maps.Map(document.getElementById('map'), {
       center: myLatlng,
-      zoom: 11
+      zoom:autozoom
+
     });
 
     var marker = new google.maps.Marker({
@@ -321,15 +322,36 @@ function searchBoys(lat, lng, km, get_skill) {
           // console.log(res);
           km = res.km;
         radius = km*111*1000;
-          console.log(radius);
+         var kilom=res.km*111;
+            console.log(kilom);
+        if(kilom <=30){
+          autozoom=12;
+        }
+        else if (kilom <=60)
+        {
+          autozoom=11;
+        } else if(kilom <=150)
+        {
+           autozoom=8;
+        }
+          else if(kilom <=300)
+          { autozoom=7;
+          }
+          else if(kilom >300){
+            autozoom=6;
+          }
 
+          console.log(autozoom);
+          createMap(myLatlng,autozoom);
+                                                 // Circle at Map
           var circle = new google.maps.Circle({
             map: map,
             center: myLatlng,
             radius: radius
           });
-          $.each(res.provider, function (i, val) {
-            console.log(val.name);
+          $.each(res.order, function (i, val) {
+            // console.log(val.name);
+            console.log(res.order);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;

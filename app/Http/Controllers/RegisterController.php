@@ -275,22 +275,16 @@ public function searchProviders(Request $request)
 
 
     again:
+      $distan=$km*111;
     if (empty($skill)) {
-    // dd($skill);
-    // $radius = 10;
-    // $km = 0.04504504;
-    // $km = 0.009009008;
-
-    // $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->get();
-    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
-//
-// $order = Register::selectRaw("*,
-//             ( 6371 * acos( cos( radians(" . $latitude . ") ) *
-//             cos( radians(latitude) ) *
-//             cos( radians(longitude) - radians(" . $longitude . ") ) +
-//             sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distance")->orderBy("distance", 'des')->get();
 
 
+    $order1 = Register::selectRaw("*,
+                ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+                cos( radians(latitude) ) *
+                cos( radians(longitude) - radians(" . $longitude . ") ) +
+                sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
+    $providers=$order1->where('distan','<=',$distan);
     }
     else {
       $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
