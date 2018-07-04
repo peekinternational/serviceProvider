@@ -5,15 +5,16 @@
     <div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
 <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-lg-offset-2 col-md-offset-2 col-sm-offset-1"> -->
 <h1 align="center">Login</h1>
+@include('inc.messages')
 <form class="" action="{{url('Account/login')}}" method="post">
   {{csrf_field()}}
   <div class="form-group">
     <label>Phone Number:</label>
-    <input type="number" name="phone" class="form-control" value="" placeholder="Enter Phone">
+    <input type="number" name="phone" class="form-control" value="" placeholder="Enter Phone" required="">
   </div>
   <div class="form-group">
     <label>Password:</label>
-    <input type="password" name="password" class="form-control" value="" placeholder="Enter Password">
+    <input type="password" name="password" class="form-control" value="" placeholder="Enter Password" required="">
   </div>
   <div class="">
         <h5><a href="">Forget Password?</a></h5>

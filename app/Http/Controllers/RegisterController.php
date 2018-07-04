@@ -37,21 +37,23 @@ class RegisterController extends Controller
   public function store(Request $request)
   {
     //dd($request->all());
-    $this->validate($request,[
+  $validator =  $this->validate($request,[
       'name' => 'required',
-      'phone' => 'required',
-      'password' => 'required'
+      'phone' => 'required|unique:registers|min:10|max:15',
+      'password' => 'required|min:6|confirmed',
+      'password_confirmation' => ''
     ]);
+    $user = new Register;
+    $user->name  = $request->input('name');
+    $user->phone  = $request->input('phone');
+    $user->password  = $request->input('password');
+    $phone = $request->input('phone');
 
-    $user = new Register([
-    'name'  => $request->input('name'),
-      'phone' => $request->input('phone'),
-      'password' => $request->input('password')
-    ]);
-  $user->save();
-echo "successfully";
+      $user->save();
+      return redirect('/login')->with('success','You are successfully Registered');
+
+// echo "successfully";
 // exit(1);
-    // return redirect('/login')->with('success', 'You are successfully registered');
   }
 
   /**
@@ -264,29 +266,44 @@ public function coverUpload(Request $request, $id)
 public function searchProviders(Request $request)
   {
   //  return $request->lati.' '.$request->longitude;
+
     $latitude = $request->latitude;
     $longitude = $request->longitude;
     $km = $request->km;
+
+    $skill = $request->skill;
+
+
+    again:
+    if (empty($skill)) {
+    // dd($skill);
     // $radius = 10;
     // $km = 0.04504504;
     // $km = 0.009009008;
-    again:
-    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderByRaw('latitude','des')->get();
 
-$order = Register::selectRaw("*,
-            ( 6371 * acos( cos( radians(" . $latitude . ") ) *
-            cos( radians(latitude) ) *
-            cos( radians(longitude) - radians(" . $longitude . ") ) + 
-            sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distance")->orderBy("distance", 'asc')->get();
+    // $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->get();
+    $providers = Register::whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
+//
+// $order = Register::selectRaw("*,
+//             ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+//             cos( radians(latitude) ) *
+//             cos( radians(longitude) - radians(" . $longitude . ") ) +
+//             sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distance")->orderBy("distance", 'des')->get();
 
+
+    }
+    else {
+      $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
+
+    }
     if (count($providers)==0) {
       $km=$km*2;
        goto again;
     }
     $obj = array(
       "km" => $km,
-      "provider"=> $providers,
-      "order"=> $order
+      "provider"=> $providers
+      // "order"=> $order
     );
      echo json_encode($obj);
 
@@ -296,14 +313,16 @@ $order = Register::selectRaw("*,
 //     $products = Register::selectRaw("*,
 //             ( 6371 * acos( cos( radians(" . $latitude . ") ) *
 //             cos( radians(user.latitude) ) *
-//             cos( radians(user.longitude) - radians(" . $longitude . ") ) + 
+//             cos( radians(user.longitude) - radians(" . $longitude . ") ) +
 //             sin( radians(" . $latitude . ") ) *
-//             sin( radians(user.latitude) ) ) ) 
+//             sin( radians(user.latitude) ) ) )
 //             AS distance")
 // ->having("distance", "<", $radius)
 // ->orderBy("distance")
 // ->get();
 //     return view('user_profile.home');
 //   }
+
+// }
 
 }

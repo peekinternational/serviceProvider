@@ -28,7 +28,7 @@
 
     <div class="" style="margin-top:50px;">
 
-      @include('inc.messages')
+      <!-- @include('inc.messages') -->
 
       <!-- main content here -->
   @yield('content')

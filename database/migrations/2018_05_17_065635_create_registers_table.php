@@ -16,7 +16,7 @@ class CreateRegistersTable extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->increments('id');
             $table->String('name');
-            $table->integer('phone');
+            $table->bigInteger('phone')->unique();
             $table->String('password');
             $table->string('skill')->nullable();
             $table->string('email')->nullable();
@@ -30,7 +30,7 @@ class CreateRegistersTable extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('image')->nullable();
-
+            $table->string('cover_img')->nullable();
             $table->timestamps();
         });
     }

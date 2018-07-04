@@ -25,22 +25,22 @@
 							</div>
 									<button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button>
 					</form> -->
-					<form action="{{url('search')}}" method="get" role="search" class="serach-form-area">
+					<!-- <form action="{{url('search')}}" method="get" role="search" class="serach-form-area"> -->
 								<div class="row justify-content-center form-wrap">
 									<div class="col-md-5 form-cols">
-										<input type="text" class="form-control" name="skill" placeholder="Skills">
+										<input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills">
 									</div>
 									<div class="col-md-5 form-cols" id="locationField">
 										<input id="autocomplete" name="location" class="form-control"  placeholder="Select your location" onFocus="geolocate()" type="text"></input>
 									</div>
 									<div class="col-md-2 form-cols">
-									    <button type="submit" class="btn btn-info">
-									      <span class="fa fa-search"></span> Search
+									    <button type="submit" class="btn btn-info" id="gskill">
+									      <span class="fa fa-search" ></span> Search
 									    </button>
 											<!-- <button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button> -->
 									</div>
 								</div>
-							</form>
+							<!-- </form> -->
 
 				<p class="text-white"> <span>Search by tags:</span> Plumber, Mechanic, Electrician, Welder, Painter, Area, Location</p>
 			</div>
@@ -56,7 +56,7 @@
 	<!-- Google Search Display -->
 	<div class="container" id="container">
 	    <div class="row" id="show_all">
-				
+
 	    </div>
 
 	</div>
@@ -238,11 +238,11 @@
 			// document.getElementById("lat1").value = user_latitude;
 			// document.getElementById("lng1").value = user_longitude;
 
-				var circle = new google.maps.Circle({
-					center: geolocation,
-					radius: position.coords.accuracy
-				});
-				autocomplete.setBounds(circle.getBounds());
+				// var circle = new google.maps.Circle({
+				// 	center: geolocation,
+				// 	radius: position.coords.accuracy
+				// });
+				// autocomplete.setBounds(circle.getBounds());
 			});
 		}
 	}

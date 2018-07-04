@@ -78,7 +78,12 @@
                                        <label class="control-label col-sm-3 col-xs-12">Skills</label>
                                        <div class="col-sm-9 pnj-form-field">
                                            <select class="form-control select2" name="skill">
-                                                <option value="Plumber"selected> Plumber</option>
+                                             <?php if (!empty($user->skill)): ?>
+                                               <option value="{{ $user->skill }}"selected> {{ $user->skill }}</option>
+                                               <?php else: ?>
+                                                 <option value="" selected> Select Skill</option>
+                                             <?php endif; ?>
+                                             <option value="Plumber"> Plumber</option>
                                                 <option value="Electrician" >Electrician</option>
                                                 <option value="Welder "> Welder</option>
                                                 <option value="Painter" >Painter</option>
@@ -231,13 +236,13 @@
          }
          document.getElementById("latitude").value = lat;
          document.getElementById("longitude").value = lng;
-       
+
        });
      }
-                                   </script>
-                                   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
-                                       async defer></script>
-                                     </div>
+ </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
+     async defer></script>
+   </div>
 <!-- hide edit button profile page -->
     <script>
       $(document).ready(function () {

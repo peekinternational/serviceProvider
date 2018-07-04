@@ -5,37 +5,42 @@
   <div class="row">
    <div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
 <h1 align="center">Registeration</h1>
+@include('inc.messages')
 <div class="alert alert-danger error-group" style="display:None">
 
 </div>
-<form class="form_registeration" method="post" action="#">
-
+<form class="form_registeration" method="post" action="{{url('create_r')}}">
+{{csrf_field()}}
   <div class="form-group">
     <label>Full Name:</label>
-    <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
+    <input type="text" name="name" class="form-control" placeholder="Enter Full Name" required="">
   </div>
   <div class="form-group">
     <label>Phone Number:</label>
-    <input type="number" name="phone" class="form-control"  placeholder="Enter Phone">
+    <input type="number" name="phone" class="form-control"  placeholder="Enter Phone" required="">
   </div>
   <div class="form-group">
     <label>Password:</label>
-    <input type="password" name="password" class="form-control"  placeholder="Enter Password">
+    <input type="password" name="password" class="form-control"  placeholder="Enter Password" required="">
+  </div>
+  <div class="form-group">
+    <label>Confirm Password:</label>
+    <input type="password" name="password_confirmation" class="form-control"  placeholder="Confirm Password" required="">
   </div>
    <div>
     <input type="checkbox" name="agree" value="agree" id="agree" required="" >
-        <p class="terms-condition"> <a href="#">Terms of Services</a> (TOS) <a href="#">Privacy Policy</a> 
-        I agree with </p>    
+        <p class="terms-condition"> <a href="#">Terms of Services</a> (TOS) <a href="#">Privacy Policy</a>
+        I agree with </p>
       </div>
-  <input id="page_submit" type="button" class="btn btn-primary btn-block" value="Submit">
+  <!-- <input id="page_submit" type="button" class="btn btn-primary btn-block" value="Submit"> -->
   <p class="text-center show-loginBox">Already Have Account? <a href="{{url('login')}}">Login Here</a></p>
 
-  <!-- <button type="submit" id="page_submit" class="btn btn-primary" name="button">Submit</button> -->
+  <button type="submit" id="page_submit" class="btn btn-primary" name="button">Submit</button>
 </form>
 </div>
 </div>
 </div>
-<script>
+<!-- <script>
   $(document).ready(function () {
 
   });
@@ -63,7 +68,7 @@
       error: function (data) {
       console.log(data);
       var errors = data.responseJSON;
-      // console.log("gggg"+errors.errors.name);
+
       var vErrors = '';
     if(errors.errors.name){
           vErrors += '<li style="list-style-type: none;">' +errors.errors.name+ '</li>';
@@ -78,12 +83,10 @@
             $('div.alert.alert-danger.error-group').show();
           $('div.alert.alert-danger.error-group').html('<ul>'+vErrors+'</ul>');
           $('.form_registeration button[name="save"]').prop('disabled',false);
-          // Pace.stop;
-          // $('html, body').animate({scrollTop:$('#experience-edit').position().top}, 1000);
+
     }
-      // e.preventDefault();
     });
   });
 
-</script>
+</script> -->
 @endsection
