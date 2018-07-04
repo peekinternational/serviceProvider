@@ -1,8 +1,9 @@
 var map;
 var myLatlng;
 var radius;
-var killometer=1;
+var killometer=10;
 var km = (1/111)*killometer;
+var autozoom;
 var api_url='http://127.0.0.1:8000/api/'
 // var api_url='http://203.99.61.173/demos/service_provider/public/api/'
 $(document).ready(function () {
@@ -17,11 +18,12 @@ $(document).ready(function () {
 
   function success(position) {
     console.log(position);
+    console.log(autozoom);
     var latval = position.coords.latitude;
     var lngval = position.coords.longitude;
-
      myLatlng = new google.maps.LatLng(latval, lngval);
-    createMap(myLatlng);
+
+    // createMap(myLatlng,autozoom);
     // nearbySearch(myLatlng, "school");
     searchBoys(latval, lngval, km);
   }
@@ -29,13 +31,11 @@ $(document).ready(function () {
   function fail() {
     alert("It Fails");
   }
-
-
   //Create Map
-  function createMap(myLatlng, radius) {
+  function createMap(myLatlng, autozoom) {
      map = new google.maps.Map(document.getElementById('map'), {
       center: myLatlng,
-      zoom:12
+      zoom:autozoom
       
     });
 
@@ -136,18 +136,40 @@ function searchBoys(lat, lng, km) {
           // console.log(res);
           km = res.km;
         radius = km*111*1000;
-          console.log(res.order);
+         var kilom=res.km*111;
+            console.log(kilom);
+        if(kilom <=30){
+          autozoom=12;
+        }
+        else if (kilom <=60) 
+        {
+          autozoom=11;
+        } else if(kilom <=150)
+        {
+           autozoom=8;
+        }
+          else if(kilom <=300)
+          { autozoom=7;
+          }
+          else if(kilom >300){
+            autozoom=6;
+          }
+
+          console.log(autozoom);
+          createMap(myLatlng,autozoom);
                                                  // Circle at Map
           var circle = new google.maps.Circle({
             map: map,
             center: myLatlng,
             radius: radius
           });
-          $.each(res.provider, function (i, val) {
-            console.log(val.name);
+          $.each(res.order, function (i, val) {
+            // console.log(val.name);
+            console.log(res.order);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
+           // console.log(res.order);
           var temp = '';
           for (var i = 0; i <res.order.length; i++) {
             var profile_img = '';
@@ -167,7 +189,7 @@ function searchBoys(lat, lng, km) {
                     '</div>'+
                   '<div class="col-sm-12 col-md-8">&nbsp;'+
                   '<h4><a href="profile_view/'+res.order[i].id+ '">'+  res.order[i].name+ '</a></h4>'+
-                      <!-- Split button -->
+                      
                       '<div class="row">'+
                         '<div class="col-md-12 col-sm-12 col-xm-12">'+
                          '<i class="fa fa-wrench"></i>&nbsp; &nbsp;'+
