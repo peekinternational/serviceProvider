@@ -227,7 +227,6 @@ public function showdata($skill)
 {
   $user= Register::where('skill','LIKE',"%{$skill}%")->get();
   // $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
-
 return view('user_profile.skill_search',compact('user'));
 }
 public function updateProfile(Request $request)
@@ -272,18 +271,15 @@ public function searchProviders(Request $request)
     $km = $request->km;
 
     $skill = $request->skill;
-
-
     again:
       $distan=$km*111;
-    if (empty($skill)) {
-
 
     $order1 = Register::selectRaw("*,
                 ( 6371 * acos( cos( radians(" . $latitude . ") ) *
                 cos( radians(latitude) ) *
                 cos( radians(longitude) - radians(" . $longitude . ") ) +
                 sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
+    if (empty($skill)) {
     $providers=$order1->where('distan','<=',$distan);
     }
     else {

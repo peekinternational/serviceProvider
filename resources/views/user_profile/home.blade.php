@@ -137,7 +137,7 @@
 					</a>
           </div><!-- END COL -->
 	        <div class="col-md-4 col-sm-4 col-xs-12">
-				<a href="{{url('skill_search/'.$skill='Mechanic')}}">
+				<a href="{{url('skill_search/'.$skill='cook')}}">
             <div class="service-item">
              <div class="text-center">
              	 <img src="{{asset('images/chef.jpg')}}" class=" img-circle skill_logo">
@@ -148,7 +148,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='painter')}}">
+			<a href="{{url('skill_search/'.$skill='Gardener')}}">
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/garden.png')}}" class=" img-circle skill_logo">
@@ -159,7 +159,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='welder')}}">
+			<a href="{{url('skill_search/'.$skill='sweeper')}}">
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/sweeper.png')}}" class=" img-circle skill_logo">
