@@ -39,7 +39,6 @@
 									    <button type="submit" class="btn btn-info" id="gskill">
 									      <span class="fa fa-search" ></span> Search
 									    </button>
-											<!-- <button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button> -->
 									</div>
 								</div>
 							<!-- </form> -->
