@@ -44,6 +44,10 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('user_profile.contact');
 });
+Route::get('skill_search/', function () {
+    return view('user_profile.skill_search');
+});
+
 
 
 
@@ -64,5 +68,5 @@ Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
 Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
 Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
-Route::get('skill_search/{skill}', 'RegisterController@showdata');
+// Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');

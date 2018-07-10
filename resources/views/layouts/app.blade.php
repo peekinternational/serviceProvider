@@ -16,6 +16,10 @@
     <script src="{{asset('js/jquery.min.js')}}" charset="utf-8"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{url('img/favicon.png')}}" />
     <link rel="stylesheet" href="{{url('plugins/lightbox2/dist/css/lightbox.min.css')}}">
+    <link rel="stylesheet" href="{{url('http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css')}}">
+    <script src="{{'http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'}}"></script>
+    <!-- <link href="toastr.css" rel="stylesheet"/>
+    <script src="toastr.js"></script> -->
 
     <!-- Main Stylesheet -->
 

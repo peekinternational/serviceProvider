@@ -13,9 +13,9 @@
                    <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                    <?php endif; ?>
                  <!--  Cover image  -->
-                <input type="file" id="cover" name="cover_img" class="compnay-cover sp-cover">
-                <div class="eo-timeline-toolkit">
-                    <label for="cover"><i class="fa fa-camera"></i> &nbsp;Change</label>
+                <input type="file" id="cover" name="cover_img"  class="compnay-cover sp-cover">
+                <div class="eo-timeline-toolkit" id="cover_change">
+                    <label for="cover"><i class="fa fa-camera" ></i> &nbsp;Change</label>
                 </div>
             </div>  <!-- cover img end -->
             <div class="col-md-12">
@@ -26,7 +26,7 @@
                          <?php else: ?>
                              <img src="{{asset('img/profile-logo.jpg')}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
                        <?php endif; ?>
-                       <div class="eo-dp-toolkit">
+                       <div class="eo-dp-toolkit" id="profile_img_change">
                            <input type="file" id="eo-dp" name="profile-image" class="compnay-logo pf-image-change">
                            <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
                            <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i>Edit</label><br>
@@ -88,7 +88,7 @@
                                                 <option value="Welder "> Welder</option>
                                                 <option value="Painter" >Painter</option>
                                                 <option value="Carpenter"> Carpenter</option>
-                                                <option value="Auto-Mechanic" >Auto-Mechanic</option>
+                                                <option value="Mechanic" >Mechanic</option>
                                                 <option value="Cook" >cook</option>
                                                 <option value="Gardener"> Gardener</option>
                                                 <option value="Sweeper" >Sweeper</option>
@@ -248,11 +248,16 @@
       $(document).ready(function () {
         $("#edit_btn").hide();
         $("#eo-about").hide();
+        $("#cover_change").hide();
+        $("#profile_img_change").hide();
       <?php
       $id = session()->get('ses');
       if ($id == $user->id) { ?>
         $("#edit_btn").show();
         $("#eo-about").show();
+        $("#cover_change").show();
+        $("#profile_img_change").show();
+        // $("#profile_img_change").show();
     <?php  }
        ?>
       });

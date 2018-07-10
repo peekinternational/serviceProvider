@@ -192,19 +192,32 @@ var myLatlng;
 var radius;
 var lngval;
 var latval;
-var kilometer = 20;
+var kilometer = 3;
 var km =  (1/111)*kilometer;
 var autozoom;
 // var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
 // var api_url='http://203.99.61.173/demos/service_provider/public/api/'
+$("#area_btn").click(function () {
+  kilometer = kilometer * 2;
+  km =  (1/111)*kilometer;
+  skills();
+});
+
 $("#gskill").click(function () {
 var skill = $("#skill_val").val();
 skills(skill);
 });
 var rec_skill =$("input[name='skill_send']").val();
-// alert(rec_skill);
 skills(rec_skill);
+$("#area_btn_skill").click(function () {
+var rec_skill =$("input[name='skill_send']").val();
+kilometer = kilometer * 2;
+km =  (1/111)*kilometer;
+skills(rec_skill);
+});
+// alert(rec_skill);
+
 
   // $('.nav_skill').on('click',function(e){
   //   var skill = $(e.target).data('skill');
@@ -295,6 +308,7 @@ skills(rec_skill);
 // }
 
 function searchBoys(lat, lng, km, get_skill) {
+
   // alert(get_skill);
       var mydata={
         latitude:lat,
@@ -318,10 +332,16 @@ function searchBoys(lat, lng, km, get_skill) {
         data: mydata,
         url: api_url+"searchBoys",
         success: function (response) {
+          // console.log(response);
+          if (response == "not found") {
+            toastr.warning('No Record Found');
+            window.location.href = "/";
+          }
           var res = JSON.parse(response);
-          // console.log(res);
+          // console.log(km);
           km = res.km;
-        radius = km*111*1000;
+
+        radius = km*111*1000+1000;
          var kilom=res.km*111;
             console.log(kilom);
         if(kilom <=10){
@@ -351,7 +371,11 @@ function searchBoys(lat, lng, km, get_skill) {
           });
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
-            console.log(res.provider);
+            console.log(res.provider[i].name);
+            // if ((res.provider)== null) {
+            //   window.location('home.blade.php');
+            // }
+            // console.log(res.provider.);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
@@ -368,16 +392,18 @@ function searchBoys(lat, lng, km, get_skill) {
             profile_img = '<img src="http://localhost:8000/img/'+res.provider[i].image+'" class="pf-image" alt="">'
             // console.log(profile_img);
             }
+
             temp +='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">'+
             '<div class="well well-sm">'+
               '<div class="row">'+
                      '<div class="col-sm-12 text-center">'+
                     '<div class="profile-show">'+
-                    '<a href="profile_view/'+res.provider[i].id+ '">'+ profile_img+ '</a>'+
+                    '<a href="http://localhost:8000/profile_view/'+res.provider[i].id+ '">'+ profile_img+ '</a>'+
+                    // profile_img+
                     '</div>'+
                     '</div>'+
                   '<div class="col-sm-12 col-md-8">&nbsp;'+
-                  '<h4><a href="profile_view/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
+                  '<h4><a href="http://localhost:8000/profile_view/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
                       <!-- Split button -->
                       '<div class="row">'+
                         '<div class="col-md-12 col-sm-12 col-xm-12">'+
@@ -398,6 +424,7 @@ function searchBoys(lat, lng, km, get_skill) {
       	            '</div>'+
       	        '</div>';
           }
+
           document.getElementById('show_all').innerHTML = temp;
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
           var  gicn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';

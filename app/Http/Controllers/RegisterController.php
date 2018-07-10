@@ -64,6 +64,7 @@ class RegisterController extends Controller
    */
   public function show($id)
   {
+    // dd($id);
       $user = Register::find($id);
       return view('user_profile.view', compact('user'));
   }
@@ -276,47 +277,45 @@ public function searchProviders(Request $request)
 
     again:
       $distan=$km*111;
+      $order1 = Register::selectRaw("*,
+                  ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+                  cos( radians(latitude) ) *
+                  cos( radians(longitude) - radians(" . $longitude . ") ) +
+                  sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
     if (empty($skill)) {
 
-
-    $order1 = Register::selectRaw("*,
-                ( 6371 * acos( cos( radians(" . $latitude . ") ) *
-                cos( radians(latitude) ) *
-                cos( radians(longitude) - radians(" . $longitude . ") ) +
-                sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
     $providers=$order1->where('distan','<=',$distan);
     }
     else {
       $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
+      // $providers = $order1->where('skill','LIKE',"%{$skill}%")->where('distan','<=',$distan);
+    }
 
-    }
     if (count($providers)==0) {
-      $km=$km*2;
-       goto again;
+      // echo $km;
+      if ($km > 2.7027) {
+        echo "not found";
+
+      }else{
+        $km=$km*2;
+        // echo $km; die();
+         goto again;
+
+      }
+
+    }else {
+      $obj = array(
+        "km" => $km,
+        "provider"=> $providers
+        // "order"=> $order
+      );
+       echo json_encode($obj);
     }
-    $obj = array(
-      "km" => $km,
-      "provider"=> $providers
-      // "order"=> $order
-    );
-     echo json_encode($obj);
+
+
+
 
   }
-//   public function NearBy(Request $req){
-//     $rad=10;
-//     $products = Register::selectRaw("*,
-//             ( 6371 * acos( cos( radians(" . $latitude . ") ) *
-//             cos( radians(user.latitude) ) *
-//             cos( radians(user.longitude) - radians(" . $longitude . ") ) +
-//             sin( radians(" . $latitude . ") ) *
-//             sin( radians(user.latitude) ) ) )
-//             AS distance")
-// ->having("distance", "<", $radius)
-// ->orderBy("distance")
-// ->get();
-//     return view('user_profile.home');
-//   }
 
-// }
 
 }
