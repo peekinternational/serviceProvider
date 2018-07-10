@@ -45,10 +45,7 @@
         @endif
     </div>
 </div>
-
-
-
-
+<!-- Suggeted data close to your search -->
 <div class="container" style="margin-top: 100px;">
   <h1>Suggested</h1>
     <div class="row">

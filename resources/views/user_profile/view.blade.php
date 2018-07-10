@@ -31,7 +31,7 @@
                            <label for="eo-dp"><i class="fa fa-camera"></i> change</label><br>
                            <label  style="margin-left:-23px" onclick="editcompanypic()"><i class="fa fa-edit"></i>Edit</label><br>
                            <label onclick="removecompanypic()"><i class="fa fa-remove">
-                            <input type="hidden" value="" id="userID">
+                            <input type="hidden" value="{{ $user->id }}" id="userID">
                            </i> Remove</label>
                        </div>
 
@@ -169,7 +169,7 @@
                                            </div>
                                        </div>
                                    </div>
-							 </div>  <!-- pnj-form-section ends -->
+						            	 </div>  <!-- pnj-form-section ends -->
                            </form> 	<!-- Update Form  end -->
                           </div>      <!--  Edit section end -->
                    </div>      <!-- Profile view end -->
@@ -339,6 +339,67 @@ var user_id="{{$user->id}}";
       });
     });
   });
+   // ================================To remove profile picture  ==========================
+
+   function editcompanypic(){
+        var proImg = $('.eo-dp').attr('src');
+       $('#editProCompanyModel').modal('show');
+       $('#proEditImg img').attr('src',proImg);
+       $('#proEditImg img').rcrop({
+            minSize : [100,100],
+            preserveAspectRatio : true,
+            
+            preview : {
+                display: true,
+                size : [100,100],
+                wrapper : '#custom-preview-wrapper'
+            }
+        });
+      
+    }
+       $('#proEditImg img').on('rcrop-changed', function(){
+        var srcOriginal = $(this).rcrop('getDataURL');
+        var srcResized = $(this).rcrop('getDataURL', 50,50);
+        var userId = "{{ session()->get('ses') }}";
+        $('.eo-dp').attr('src',srcOriginal);
+        //test:
+        var blob = dataURLtoBlob(srcOriginal);
+        var imagelink = $('#proEditImg img').attr('src');
+
+        /*blobToDataURL(blob, function(dataurl){
+            console.log(dataurl);
+        });*/
+        var fd = new FormData();
+        fd.append('profileImage', blob);
+        fd.append('_token', "{{ csrf_token() }}");
+        fd.append('userId', userId);
+        fd.append('imagelink', imagelink);
+        $.ajax({
+            type: 'POST',
+            url: '{{ url("cropCompanyProfileImage") }}',
+            data: fd,
+            processData: false,
+            contentType: false
+        }).done(function(data) {
+               console.log(data);
+        });    
+    });
+       // ===================== To remove profile image =======================
+         function removecompanypic(){
+       var userId = $('#userID').val();
+       $.ajax({
+        url:'{{ url("RemCompProImage") }}',
+        data:{userId:userId,_token:'{{ csrf_token() }}'},
+        type:'POST',
+        success:function(res){
+            if(res == 1){
+                toastr.success('home.Profile Pic Remove');
+                $('.eo-dp').attr('src','{{ asset("compnay-logo/default-logo.jpg") }}');
+            }
+        }
+       });
+    }
+
 </script>
 
 

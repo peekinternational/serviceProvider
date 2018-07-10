@@ -1,5 +1,5 @@
 #img-slider{width: 5000px;height:450px;}
-.customlogo{width:25%; margin-top: -20px;}
+.customlogo{width:25%; margin-top: -15px;}
 body{margin-top: 75px; background-color: #d4d4ec;}
 /* .show_provider{width: 100%; height: 100px;} */
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
@@ -52,13 +52,14 @@ overflow: hidden;
                 */
 .navbar-default .navbar-nav  li  a {color: white; padding-bottom: 10px;}
 .navbar-default .navbar-nav  li  a:hover {font-size: 20px;color: white;}
+ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 /*.navbar-default .navbar-nav  li  a:visited{color: #bbb;}*/
 .dropdown_list li a {color:white;background:#454251; }
 #navbar li a:focus{color: white;}
 .dropdown_list  li a:hover {background-color: black; color:white; font-size: 16px;}
 .navbar-custom {background-color: #8e73f9;}
-#login {background-color: #49f5fbc7; margin-top: 10px;}
-#register {background-color: #49f5fbc7; margin-top: 10px; margin-left: 10px;}
+#login {background-color: #49f5fbc7; margin-top: 7px;}
+#register {background-color: #49f5fbc7; margin-top: 7px; margin-left: 10px;}
 /*Navbar Css  End ===========================================   */
 
 
@@ -187,7 +188,7 @@ overflow: hidden;
 .eo-dp{
     width: 100%;
     border: 4px solid #ffffff;
-	margin-top:30px;
+	margin-top:20px;
 }
 .eo-dp-box:hover .eo-dp-toolkit{
     display: inline-block;
@@ -195,11 +196,11 @@ overflow: hidden;
 .eo-dp-toolkit{
     display: none;
     position: absolute;
-    top: 89px;
+    top: 105px;
     left: 19px;
-    width: 83%;
+    width: 78%;
     height: 90px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
     text-align: center;
     color: #ffffff;
 }

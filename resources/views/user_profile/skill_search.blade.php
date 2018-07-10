@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container" style="margin-top: 100px;">
-  <div class="container">
 		<div id="map">
 
   </div><br>
@@ -17,7 +16,7 @@
 	    <div class="row" id="show_all">
 
 	    </div>
-
+</div>
 </div>
 <input type="hidden" name="skill_send" value="<?php echo $_GET['skill'] ?>">
 

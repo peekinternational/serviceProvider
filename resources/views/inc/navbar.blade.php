@@ -21,8 +21,6 @@
             <li><a href="{{url('/')}}">Home</a></li>
           <li class=" dropdown" id="dropdown" ><a href="#">Service Provider <span class="caret"></span> </a>
           <ul class="dropdown-menu dropdown_list" id="dropmenu">
-
-              <!-- <li class="nav_skill"><a  data-skill='plumber'>Plumber</a></li> -->
               <li ><a href="{{url('skill_search/')}}?skill=plumber">Plumber</a></li>
               <li ><a href="{{url('skill_search/')}}?skill=electrician">Electrician</a></li>
               <li ><a href="{{url('skill_search/')}}?skill=carpenter">Carpenter</a></li>
@@ -32,14 +30,6 @@
               <li ><a href="{{url('skill_search/')}}?skill=Cook">Cook</a></li>
               <li ><a href="{{url('skill_search/')}}?skill=Gardener">Gardener</a></li>
               <li ><a href="{{url('skill_search/')}}?skill=Sweeper">Sweeper</a></li>
-              <!-- <li ><a href="{{url('skill_search/'.$skill='Carpenter')}}">Carpenter</a></li> -->
-              <!-- <li ><a href="{{url('skill_search/'.$skill='painter')}}">Painter</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='welder')}}">Welder</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='Mechanic')}}">Mechanic</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='Cook')}}">Cook</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='Gardener')}}">Gardener</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='Sweeper')}}">Sweeper</a></li> -->
-
           </ul>
           </li>
           <li ><a href="{{url('people')}}">People</a></li>

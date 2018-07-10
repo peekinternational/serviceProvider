@@ -152,7 +152,9 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
+
 			<a href="{{url('skill_search/')}}?skill=gardener">
+
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/garden.png')}}" class=" img-circle skill_logo">
@@ -163,7 +165,9 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
+
 			<a href="{{url('skill_search/')}}?skill=sweeper">
+
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/sweeper.png')}}" class=" img-circle skill_logo">
