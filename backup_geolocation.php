@@ -101,7 +101,7 @@
                              <option value="Welder "> Welder</option>
                              <option value="Painter" >Painter</option>
                              <option value="Carpenter"> Carpenter</option>
-                             <option value="Auto-Mechanic" >Auto-Mechanic</option>
+                             <option value="Mechanic" >Auto Mechanic</option>
                              <option value="Cook" >cook</option>
                              <option value="Gardener"> Gardener</option>
                              <option value="Sweeper" >Sweeper</option>

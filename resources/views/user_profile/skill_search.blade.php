@@ -4,10 +4,15 @@
 <div class="container" style="margin-top: 100px;">
 		<div id="map">
 
-  </div>
-
-
+  </div><br>
+  <div class="text-center">
+		<button type="button" id="area_btn_skill" class="btn btn-success" name="button">Increase Area</button>
+	</div>
+<div class="text-center">
+  <h1>Search Results</h1>
+</div>
 	<div class="container" id="container">
+
 	    <div class="row" id="show_all">
 
 	    </div>

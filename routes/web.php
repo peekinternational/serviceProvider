@@ -44,14 +44,13 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('user_profile.contact');
 });
-Route::get('skill/', function () {
+
+Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
 });
 
-
 Route::post('create_r', 'RegisterController@store');
 Route::post('Account/login', 'RegisterController@login');
-// Route::get('/','RegisterController@NearBy');      //              new added by Rj
 
 
 Route::get('people', 'RegisterController@index');

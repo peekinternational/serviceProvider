@@ -4,6 +4,8 @@
 <section class="banner-area relative" id="home">
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
+					@include('inc.messages')
+
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-12">
 							<h1 class="text-white">
@@ -42,7 +44,7 @@
 								</div>
 							<!-- </form> -->
 
-				<p class="text-white"> <span>Search by tags:</span> Plumber, Mechanic, Electrician, Welder, Painter, Area, Location</p>
+				<p class="text-white"> <span>Search by tags:</span> Plumber, Auto Mechanic, Electrician, Welder, Painter, Area, Location</p>
 			</div>
 				</div>
 			</div>
@@ -51,7 +53,10 @@
   <div class="container">
 		<div id="map">
 
-  </div>
+  </div><br>
+	<div class="text-center">
+		<button type="button" id="area_btn" class="btn btn-success" name="button">Increase Area</button>
+	</div>
 
 	<!-- Google Search Display -->
 	<div class="container" id="container">
@@ -65,14 +70,14 @@
       <!-- Content Section -->
       <div class="title text-center"  >
         <h2>What Do We Offer</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, earum. </p>
+        <p>Plumber, Auto Mechanic, Electrician, Welder, Painter, Cook, Gardener, Sweeper </p>
         <div class="border"></div>
       </div>
       <!--  Services Section  -->
       <div class="col-md-10 col-md-offset-1">
         <div class="row text-center">
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='plumber')}}">
+			<a href="{{url('skill_search/')}}?skill=plumber">
             <div class="service-item">
             	<div class="text-center">
              	 <img src="{{asset('images/plumber.jpg')}}" class=" img-circle skill_logo">
@@ -83,7 +88,7 @@
 					</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-          <a href="{{url('skill_search/'.$skill='electrician')}}"> <div class="service-item">
+          <a href="{{url('skill_search/')}}?skill=electrician"> <div class="service-item">
              <div class="text-center">
              	 <img src="{{asset('images/elec.png')}}" class=" img-circle skill_logo">
                 </div>
@@ -93,7 +98,7 @@
 						</a>
           </div><!-- END COL -->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('skill_search/'.$skill='Carpenter')}}">
+						<a href="{{url('skill_search/')}}?skill=carpenter">
             <div class="service-item">
               <div class="text-center">
              	 <img src="{{asset('images/carpentry-2.jpg')}}" class=" img-circle skill_logo">
@@ -104,7 +109,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-						<a href="{{url('skill_search/'.$skill='Mechanic')}}">
+						<a href="{{url('skill_search/')}}?skill=mechanic">
             <div class="service-item">
              <div class="text-center">
              	 <img src="{{asset('images/aut.png')}}" class=" img-circle skill_logo">
@@ -115,7 +120,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='painter')}}">
+			<a href="{{url('skill_search/')}}?skill=painter">
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/painter.jpg')}}" class=" img-circle skill_logo">
@@ -126,7 +131,7 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='welder')}}">
+			<a href="{{url('skill_search/')}}?skill=welder">
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/welder.jpg')}}" class=" img-circle skill_logo">
@@ -137,7 +142,7 @@
 					</a>
           </div><!-- END COL -->
 	        <div class="col-md-4 col-sm-4 col-xs-12">
-				<a href="{{url('skill_search/'.$skill='cook')}}">
+				<a href="{{url('skill_search/')}}?skill=cook">
             <div class="service-item">
              <div class="text-center">
              	 <img src="{{asset('images/chef.jpg')}}" class=" img-circle skill_logo">
@@ -148,7 +153,9 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='Gardener')}}">
+
+			<a href="{{url('skill_search/')}}?skill=gardener">
+
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/garden.png')}}" class=" img-circle skill_logo">
@@ -159,7 +166,9 @@
 					</a>
           </div><!-- END COL -->
           <div class="col-md-4 col-sm-4 col-xs-12">
-			<a href="{{url('skill_search/'.$skill='sweeper')}}">
+
+			<a href="{{url('skill_search/')}}?skill=sweeper">
+
             <div class="service-item">
 				<div class="text-center">
              	 <img src="{{asset('images/sweeper.png')}}" class=" img-circle skill_logo">

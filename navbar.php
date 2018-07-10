@@ -26,7 +26,7 @@
               <li ><a href="{{url('skill_search/'.$skill='Carpenter')}}">Carpenter</a></li>
               <li ><a href="{{url('skill_search/'.$skill='painter')}}">Painter</a></li>
               <li ><a href="{{url('skill_search/'.$skill='welder')}}">Welder</a></li>
-              <li ><a href="{{url('skill_search/'.$skill='Mechanic')}}">Auto-Mechanic</a></li>
+              <li ><a href="{{url('skill_search/'.$skill='Mechanic')}}">Mechanic</a></li>
               <li ><a href="{{url('skill_search/'.$skill='Cook')}}">Cook</a></li>
               <li ><a href="{{url('skill_search/'.$skill='Gardener')}}">Gardener</a></li>
               <li ><a href="{{url('skill_search/'.$skill='Sweeper')}}">Sweeper</a></li>

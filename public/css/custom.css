@@ -27,13 +27,13 @@ overflow: hidden;
 .pf-image {
   width: 100%;}
 .profile-show {
-  height: 180px;
+  height: 200px;
   overflow: hidden;
-}    
+}
 .skill_logo{
     height: 78px;
     width: 40%;
-    }      
+    }
 /*===============================================contact page ===============================*/
 .company-box-left{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -126,7 +126,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);
 }
-.well.well-sm{height: 315px; overflow: hidden;}
+.well.well-sm{height: 350px; overflow: hidden;}
 .panel-footer{height: 45px;}
 .table-user-information > tbody > tr:first-child {
     border-top: 0;
