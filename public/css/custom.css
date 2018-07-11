@@ -30,6 +30,12 @@ overflow: hidden;
   height: 200px;
   overflow: hidden;
 }
+.profile_card {
+  height: 330px;
+  overflow: hidden;
+}
+
+.edit-about-btn{margin: 5px 0 4px 15px;}
 .skill_logo{
     height: 78px;
     width: 40%;
@@ -54,9 +60,9 @@ overflow: hidden;
 .navbar-default .navbar-nav  li  a:hover {font-size: 20px;color: white;}
 ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 /*.navbar-default .navbar-nav  li  a:visited{color: #bbb;}*/
-.dropdown_list li a {color:white;background:#454251; }
+.dropdown_list li a {background:#b3a1f9; }
 #navbar li a:focus{color: white;}
-.dropdown_list  li a:hover {background-color: black; color:white; font-size: 16px;}
+.dropdown_list  li a:hover {background-color: black; color:white; font-size: 14px;}
 .navbar-custom {background-color: #8e73f9;}
 #login {background-color: #49f5fbc7; margin-top: 7px;}
 #register {background-color: #49f5fbc7; margin-top: 7px; margin-left: 10px;}
@@ -67,10 +73,6 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 .page-footer{background-color: #343140;}
 
 
-.profile_card {
-  height: 330px;
-  overflow: hidden;
-}
 
 #map {
   height: 500px;
@@ -346,14 +348,21 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         width: 308px;
         height: 115.63px;
     }
+    #pnj-form .control-label {
+    text-align: left;
+    }
     nav.navbar.navbar-default.navbar-fixed-top.navbar-custom{height: 6%;}
     button.navbar-toggle.collapsed{margin-top: 11px; padding: 6px;}
     button.navbar-toggle{margin-top: 11px; padding: 6px;}
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-        background-color: #454251;
+        background-color: #8E73F9;
     }
-    #navbar{background-color: #333; margin-top: -12px; float: left; width: 108%; margin-top: -58px;}
-    #profile_list, #dropmenu{background-color: #333;margin-top: -12px; float: left; width: 108%;}
+    .dropdown_list  li a:hover {background-color: black; color:white; font-size: 12px;}
+
+    ul.nav.navbar-nav.navbar-left { margin-top: -5px; margin-left: -3px; }
+    #navbar{background-color: #8E73F9; margin-top: -12px; float: left; width: 108%; margin-top: -58px;}
+    #profile_list, #dropmenu{background-color: #b3a1f9;margin-top: -12px; float: left; width: 108%;     padding-left: 20px;
+    margin-left: -15px;}
     .loginBox{margin: -30px 15px;}
     .eo-timeline-cover {
             object-fit: cover;
@@ -386,6 +395,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         }
     .eo-timeline-details{
             text-align: center;
+            top:-120px;
         }
     .eo-timeline-details h1 a{
             background: none;
@@ -399,14 +409,11 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         overflow: hidden;
     }
     .hero-area{height: 270px;}
-      /*footer Meida Css  End    */
-
+    .edit-about-btn{margin: 2px 0 4px 15px;}
 
 
        /*footer Meida Css  End ===========================================   */
-    .footer-center{
-        text-align: center;
-    }
+    footer{display: none;}
 }
                                 /*Media  991 Queryy ended  */
 @media (max-width: 991px){
@@ -415,9 +422,10 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         }
     .eo-timeline-details{
             text-align: center;
+              top:-120px;
         }
     .eo-timeline-details h1 a{
-            /*background: none;*/
+            background: none;
             color: #2d8ac7;
         }
     .eo-edit-btn{
@@ -429,6 +437,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
             margin-left: -15px;
             margin-top: 20px;
         }
+   .edit-about-btn{margin: margin: 2px 0 4px 15px; padding: 6px 50px 6px;}   
 
 }
 @media (max-width:768px){
@@ -441,6 +450,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     background: rgba(0,0,0,0);
     padding: 5px 13px;
     }
+    .edit-about-btn{ padding:4px 15px;} 
 }
 /*  Media Query end*/
 

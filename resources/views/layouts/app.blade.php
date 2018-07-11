@@ -14,6 +14,9 @@
      <script src="{{asset('js/custom.js')}}"></script>
 <link rel="stylesheet" href="{{url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <script src="{{asset('js/jquery.min.js')}}" charset="utf-8"></script>
+    <script src="{{'http://cdn.ckeditor.com/4.10.0/standard/ckeditor.js'}}"></script>
+    <!-- <script src="{{'http://cdn.ckeditor.com/4.10.0/full/ckeditor.js'}}"></script> -->
+    <!-- <script src="//cdn.ckeditor.com/4.10.0/basic/ckeditor.js"></script> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{url('img/favicon.png')}}" />
     <link rel="stylesheet" href="{{url('plugins/lightbox2/dist/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{url('http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css')}}">
