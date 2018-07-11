@@ -214,7 +214,7 @@
        // };
        var options = {}
 
-       var autocomplete = new google.maps.places.Autocomplete(input, options);
+       var autocomplete = new google.maps.places.Autocomplete(input,options);
 
        google.maps.event.addListener(autocomplete, 'place_changed', function() {
          var place = autocomplete.getPlace();
@@ -246,18 +246,14 @@
 <!-- hide edit button profile page -->
     <script>
       $(document).ready(function () {
+
+      <?php
+      $id = session()->get('ses');
+      if ($id != $user->id) { ?>
         $("#edit_btn").hide();
         $("#eo-about").hide();
         $("#cover_change").hide();
         $("#profile_img_change").hide();
-      <?php
-      $id = session()->get('ses');
-      if ($id == $user->id) { ?>
-        $("#edit_btn").show();
-        $("#eo-about").show();
-        $("#cover_change").show();
-        $("#profile_img_change").show();
-        // $("#profile_img_change").show();
     <?php  }
        ?>
       });
@@ -268,11 +264,11 @@
     <script>
 $(document).ready(function(){
 
-      $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
     $(document).on('change','#eo-dp',function(e){
 var user_id="{{$user->id}}";
 
@@ -283,11 +279,11 @@ var user_id="{{$user->id}}";
       form.append('user_id',user_id);
 
       $.ajax({
-        type: 'post',
-        data: form,
-   cache: false,
-   contentType: false,
-   processData: false,
+      type: 'post',
+      data: form,
+       cache: false,
+       contentType: false,
+       processData: false,
         url: "{{ url('imageUpload/'.$user->id) }}",
         success: function(response){
           console.log(response);
@@ -348,14 +344,14 @@ var user_id="{{$user->id}}";
        $('#proEditImg img').rcrop({
             minSize : [100,100],
             preserveAspectRatio : true,
-            
+
             preview : {
                 display: true,
                 size : [100,100],
                 wrapper : '#custom-preview-wrapper'
             }
         });
-      
+
     }
        $('#proEditImg img').on('rcrop-changed', function(){
         var srcOriginal = $(this).rcrop('getDataURL');
@@ -382,7 +378,7 @@ var user_id="{{$user->id}}";
             contentType: false
         }).done(function(data) {
                console.log(data);
-        });    
+        });
     });
        // ===================== To remove profile image =======================
          function removecompanypic(){

@@ -27,7 +27,7 @@
 							</div>
 									<button class="btn btn-default" type="submit"> Search &nbsp; &nbsp;<i class="fa fa-search fa-lg "></i></button>
 					</form> -->
-					<!-- <form action="{{url('search')}}" method="get" role="search" class="serach-form-area"> -->
+					<form action="{{url('search')}}" method="get" role="search" class="serach-form-area">
 								<div class="row justify-content-center form-wrap">
 									<div class="col-md-5 form-cols">
 										<input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills">
@@ -36,7 +36,7 @@
 										<input id="autocomplete" name="location" class="form-control"  placeholder="Select your location" onFocus="geolocate()" type="text"></input>
 									</div>
 									<div class="col-md-2 form-cols">
-									    <button type="submit" class="btn btn-info" id="gskill">
+									    <button type="submit" class="btn btn-info" id="gskill1">
 									      <span class="fa fa-search" ></span> Search
 									    </button>
 									</div>

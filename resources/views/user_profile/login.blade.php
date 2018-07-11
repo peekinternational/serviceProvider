@@ -10,7 +10,7 @@
   {{csrf_field()}}
   <div class="form-group">
     <label>Phone Number:</label>
-    <input type="number" name="phone" class="form-control" value="" placeholder="Enter Phone" required="">
+    <input type="number" name="phone" class="form-control" value="" placeholder="03123456789" required="">
   </div>
   <div class="form-group">
     <label>Password:</label>

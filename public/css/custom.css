@@ -180,7 +180,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 }
 .eo-dp-box{
     width: 16%;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
     top: -69px;
     position: relative;
@@ -280,7 +280,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 }
 
 #container{
-    margin-top: 100px; margin-bottom: 100px;
+    margin-top: 20px; margin-bottom: 50px;
 }
 .eo-about{
     position: relative;
@@ -378,6 +378,11 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         text-align: center;
         /*padding-left: 38px;*/
     }
+
+    .profile_card_show{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
     .eo-dp-box{
             text-align: center;
             width: 40%;
@@ -395,8 +400,12 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
             top: -306px;
             right: -21px;
         }
-    .well.well-sm{height: 315px;
+    .well.well-sm{
+      height: auto;
         overflow: hidden;
+    }
+    .profile-show {
+      height: 120px;
     }
     .hero-area{height: 270px;}
       /*footer Meida Css  End    */
@@ -410,6 +419,10 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 }
                                 /*Media  991 Queryy ended  */
 @media (max-width: 991px){
+  .profile-show {
+    height: 200px;
+  }
+
     .eo-dp-box{
             text-align: center;
         }
@@ -432,9 +445,12 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 
 }
 @media (max-width:768px){
-    .well.well-sm{height: 315px;
+    .well.well-sm{
+      height: auto;
         overflow: hidden;
     }
+
+
     .eo-timeline-details h1 a{
     text-decoration: none;
     color: #2d8ac7;

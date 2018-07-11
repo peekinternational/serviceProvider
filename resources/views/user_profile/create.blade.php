@@ -17,7 +17,7 @@
   </div>
   <div class="form-group">
     <label>Phone Number:</label>
-    <input type="number" name="phone" class="form-control"  placeholder="Enter Phone" required="">
+    <input type="number" name="phone" class="form-control"  placeholder="03123456789" required="">
   </div>
   <div class="form-group">
     <label>Password:</label>

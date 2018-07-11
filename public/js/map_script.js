@@ -347,14 +347,14 @@ function searchBoys(lat, lng, km, get_skill) {
         if(kilom <=10){
           autozoom=12;
         }
-        else if (kilom <=30)
+        else if (kilom <=20)
         {
           autozoom=11;
-        } else if(kilom <=60)
+        } else if(kilom <=40)
         {
            autozoom=10;
         }
-          else if(kilom <=100)
+          else if(kilom <=80)
           { autozoom=8;
           }
           else if(kilom >200){
@@ -393,7 +393,7 @@ function searchBoys(lat, lng, km, get_skill) {
             // console.log(profile_img);
             }
 
-            temp +='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">'+
+            temp +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 profile_card_show">'+
             '<div class="well well-sm">'+
               '<div class="row">'+
                      '<div class="col-sm-12 text-center">'+
