@@ -93,16 +93,19 @@ class RegisterController extends Controller
    */
   public function update(Request $request, $id)
   {
+    // return $id;
 
-      $this->validate($request,[
-        'skill' => 'required',
-        'address' => 'required',
-        'location' => 'required',
-        'experience' => 'required'
-      ]);
+      // $this->validate($request,[
+      //   'skill' => 'required',
+      //   'address' => 'required',
+      //   'location' => 'required',
+      //   'experience' => 'required'
+      // ]);
+  
 
       $user = Register::find($id);
-      // dd($user);
+      // dd($id);
+      // return $user;
       $user->name = $request->input('name');
       $user->phone = $request->input('phone');
       $user->password = $request->input('password');

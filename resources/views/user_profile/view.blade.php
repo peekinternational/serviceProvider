@@ -66,7 +66,7 @@
                        <div class="eo-edit-section">   <!-- Edit section start -->
                            <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
                              {{csrf_field()}}
-                                <input type="hidden" name="" class="token">
+                                <!-- <input type="hi.dden" name="" class="token"> -->
                                <div class="pnj-form-section">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">Name</label>
@@ -77,7 +77,7 @@
                                      <div class="form-group">     <!-- Skill slection -->
                                        <label class="control-label col-sm-3 col-xs-12">Skills</label>
                                        <div class="col-sm-9 pnj-form-field">
-                                           <select class="form-control select2" name="skill">
+                                           <select class="form-control select2" name="skill" required="" >
                                              <?php if (!empty($user->skill)): ?>
                                                <option value="{{ $user->skill }}"selected> {{ $user->skill }}</option>
                                                <?php else: ?>
@@ -164,7 +164,7 @@
                                    <div class="col-md-12">
                                        <div class="row">
                                            <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
-                                               <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" style="margin-right:5px">SAVE</button>
+                                               <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" >SAVE</button>
                                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-edit-section').hide(); $('.eo-section').show()">CANCEL</button>
                                            </div>
                                        </div>
@@ -195,13 +195,16 @@
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="btn btn-primary col-md-3" name="save" style="margin-right:5px">SAVE</button>
-                                <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+                            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button>
+                                <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                <script>
+                  CKEDITOR.replace( 'companyAbout' );
+                </script>
             </div>  <!-- about editior end -->
 			  </div>   <!-- about div end -->
           </div> 	<!-- container end -->
@@ -243,7 +246,7 @@
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
      async defer></script>
    </div>
-<!-- hide edit button profile page -->
+<!-- hide profile image edit button  -->
     <script>
       $(document).ready(function () {
 
