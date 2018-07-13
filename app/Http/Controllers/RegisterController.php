@@ -101,7 +101,7 @@ class RegisterController extends Controller
       //   'location' => 'required',
       //   'experience' => 'required'
       // ]);
-  
+
 
       $user = Register::find($id);
       // dd($id);

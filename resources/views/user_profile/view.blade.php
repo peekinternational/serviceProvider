@@ -40,6 +40,12 @@
                    <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
                        <h1><a href="#"> {{ $user->name }}</a></h1>
                        <div class="col-md-6 eo-section">
+
+                         <!-- Image Loader -->
+                      <div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+                      </div>
+                      <!-- Image Loader Ends -->
+
                            <h4>Basic Information</h4>
                            <div class="eo-details">
                                <span>Skills:</span> {{$user->skill}}
@@ -273,6 +279,9 @@ $(document).ready(function(){
     }
 });
     $(document).on('change','#eo-dp',function(e){
+      if ($('#eo-dp').val()) {
+        e.preventDefault()
+        $('#loaderIcon').show()
 var user_id="{{$user->id}}";
 
      var image = $('.pf-image-change')[0].files[0];
@@ -291,6 +300,7 @@ var user_id="{{$user->id}}";
         success: function(response){
           console.log(response);
           if(response){
+              $('#loaderIcon').hide()
             $('.eo-c-logo').attr('src','<?= url('img')?>/'+response);
           }else {
             toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
@@ -298,6 +308,7 @@ var user_id="{{$user->id}}";
 
         }
     });
+    }
 });
 });
 </script>
@@ -312,8 +323,10 @@ var user_id="{{$user->id}}";
         'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
       }
     });
-    $(document).on("change", "#cover", function () {
-
+    $(document).on("change", "#cover", function (e) {
+      if ($('#cover').val()) {
+        e.preventDefault()
+        $('#loaderIcon').show()
       var id = "{{$user->id}}";
       var image = $('.sp-cover')[0].files[0];
 
@@ -332,10 +345,12 @@ var user_id="{{$user->id}}";
           console.log(response);
           // alert(response);
           if(response) {
+            $('#loaderIcon').hide()
             $('.eo-timeline-cover').attr('src','<?=url('img/cover')?>/'+response);
           }
         }
       });
+    }
     });
   });
    // ================================To remove profile picture  ==========================

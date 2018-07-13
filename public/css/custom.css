@@ -34,6 +34,16 @@ overflow: hidden;
   height: 330px;
   overflow: hidden;
 }
+.loaderIcon {
+  position: absolute;
+  top: 10%;
+  left: 60%;
+}
+.loaderIcon_main {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
 
 .edit-about-btn{margin: 5px 0 4px 15px;}
 .skill_logo{
@@ -348,6 +358,21 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         width: 308px;
         height: 115.63px;
     }
+    .loaderIcon {
+      position: absolute;
+      top: 0%;
+      left: 20%;
+
+    }
+    .loaderIcon_main {
+      left: 40%;
+    }
+    .loaderIcon img {
+        width: 50%;
+    }
+    .loaderIcon_main img {
+      width: 50%;
+    }
     #pnj-form .control-label {
     text-align: left;
     }
@@ -450,7 +475,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
             margin-left: -15px;
             margin-top: 20px;
         }
-   .edit-about-btn{margin: margin: 2px 0 4px 15px; padding: 6px 50px 6px;}   
+   .edit-about-btn{margin: margin: 2px 0 4px 15px; padding: 6px 50px 6px;}
 
 }
 @media (max-width:768px){
@@ -466,7 +491,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     background: rgba(0,0,0,0);
     padding: 5px 13px;
     }
-    .edit-about-btn{ padding:4px 15px;} 
+    .edit-about-btn{ padding:4px 15px;}
 }
 /*  Media Query end*/
 
