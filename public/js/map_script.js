@@ -178,7 +178,7 @@ $(document).ready(function(){
             // console.log(profile_img);
             }
 
-            temp +='<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 profile_card_show">'+
+            temp +='<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 profile_card_show">'+
             '<div class="well well-sm">'+
               '<div class="">'+
                      '<div class="col-sm-12 text-center">'+

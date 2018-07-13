@@ -11,12 +11,9 @@
 <div class="text-center">
   <h1>Search Results</h1>
 </div>
-	<div class="container" id="container">
-
-	    <div class="row" id="show_all">
+	    <div id="show_all">
 
 	    </div>
-</div>
 </div>
 <input type="hidden" name="skill_send" value="<?php echo $_GET['skill'] ?>">
 

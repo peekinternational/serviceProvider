@@ -74,8 +74,8 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 #navbar li a:focus{color: white;}
 .dropdown_list  li a:hover {background-color: black; color:white; font-size: 14px;}
 .navbar-custom {background-color: #8e73f9;}
-#login {background-color: #49f5fbc7; margin-top: 7px;}
-#register {background-color: #49f5fbc7; margin-top: 7px; margin-left: 10px;}
+#login {background-color: #8e73f9; margin-top: 7px;}
+#register {background-color: #8e73f9; margin-top: 7px; margin-left: 10px;}
 /*Navbar Css  End ===========================================   */
 
 
@@ -389,6 +389,8 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     #profile_list, #dropmenu{background-color: #b3a1f9;margin-top: -12px; float: left; width: 108%;     padding-left: 20px;
     margin-left: -15px;}
     .loginBox{margin: -30px 15px;}
+    #login {background-color: #8e73f9; margin-top: -7px;}
+    #register {background-color: #8e73f9; margin-top: -7px; margin-left:0 }
     .eo-timeline-cover {
             object-fit: cover;
             width: 100%;
@@ -484,7 +486,9 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         overflow: hidden;
     }
 
-
+     .profile-show {
+    height: 250px;
+  }
     .eo-timeline-details h1 a{
     text-decoration: none;
     color: #2d8ac7;
