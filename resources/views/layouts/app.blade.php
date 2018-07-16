@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Service Provider</title>
-
+    <link rel="shortcut icon" href="http://localhost:8000/images/logo2.png">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}"> -->
     <link rel="stylesheet" href="{{url('css/style.css')}}">

@@ -308,4 +308,6 @@ public function searchProviders(Request $request)
        echo json_encode($obj);
     }
   }
+
+  
 }

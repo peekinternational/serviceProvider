@@ -12,12 +12,13 @@
     <label>Phone Number:</label>
     <input type="number" name="phone" class="form-control" value="" placeholder="03123456789" required="">
   </div>
-  <div class="form-group">
+  <div class="form-group ">
     <label>Password:</label>
-    <input type="password" name="password" class="form-control" value="" placeholder="Enter Password" required="">
+    <input type="password" id="login-password" name="password" class="form-control" value="" placeholder="Enter Password" required="">
+     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon " id="toggle-passwords"></span>
   </div>
   <div class="">
-        <h5><a href="">Forget Password?</a></h5>
+        <h5><a href="{{'send'}}">Forget Password?</a></h5>
         </div>
                 <div class="input-group">
                     <div class="checkbox">
@@ -38,6 +39,33 @@
 </form>
 </div>
 </div>
-</div>
+</div> 
+<!-- Java script starts -->
+<script type="text/javascript">
+  $(document).ready(function(){
+  // function to hide and show password
+   function shows() {
+    var p = document.getElementById('login-password');
+    p.setAttribute('type', 'text');
+}
+
+function hides() {
+    var p = document.getElementById('login-password');
+    p.setAttribute('type', 'password');
+}
+
+var pwShowns = 0;
+
+document.getElementById("toggle-passwords").addEventListener("click", function () {
+    if (pwShowns == 0) {
+        pwShowns = 1;
+        shows();
+    } else {
+        pwShowns = 0;
+        hides();
+    }
+}, false);
+});
+</script>
 
 @endsection

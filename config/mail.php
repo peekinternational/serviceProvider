@@ -17,6 +17,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
+    // 'driver' => env('sparkpost', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,11 +56,11 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
-
+    // 'from' => [
+    //     'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+    //     'name' => env('MAIL_FROM_NAME', 'Example'),
+    // ],
+    'from' => ['address' => 'waqasaltaf9@gmail.com', 'name' => 'Waqas_Altaf'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

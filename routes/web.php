@@ -47,6 +47,10 @@ Route::get('/contact', function () {
 
 Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
+}); 
+
+Route::get('send', function () {
+    return view('welcome');
 });
 
 Route::post('create_r', 'RegisterController@store');
@@ -67,3 +71,4 @@ Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
 Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 // Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');
+// Route::post('sendemail', 'RegisterController@ship');

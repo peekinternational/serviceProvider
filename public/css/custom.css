@@ -190,7 +190,8 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 .eo-dp{
     width: 100%;
     border: 4px solid #ffffff;
-	margin-top:20px;
+    margin-top: 35px;
+	
 }
 .eo-dp-box:hover .eo-dp-toolkit{
     display: inline-block;
@@ -317,6 +318,13 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     padding: 20px;
     border: 1px solid #cccccc;
 }
+.field-icon {
+    float: right;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    right: 10px;
+}
 .show-loginBox{
     font-size: 12px;
     margin-top: 10px;
@@ -374,6 +382,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     .eo-box{
         width: 100%;
         height:auto;
+        margin-top: -25px
     }
 .eo-dp-box{
         text-align: center;
@@ -437,7 +446,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         }
     .eo-timeline-details{
             text-align: center;
-              top:-120px;
+              top:-90px;
         }
     .eo-timeline-details h1 a{
             background: none;
