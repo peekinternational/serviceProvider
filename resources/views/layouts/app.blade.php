@@ -55,7 +55,7 @@
     <script>
       $(window).on('load', function () {
         $('#loaderIcon_main').fadeIn();
-        $('#loaderIcon_main').fadeOut(6000);
+        $('#loaderIcon_main').fadeOut();
         // $('#loaderIcon').show()
       });
     </script>
