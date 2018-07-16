@@ -32,7 +32,7 @@
               <li ><a href="{{url('skill_search/')}}?skill=Sweeper">Sweeper</a></li>
           </ul>
           </li>
-          <li ><a href="{{url('people')}}">People</a></li>
+          <li ><a href="{{url('people')}}?people=7">People</a></li>
           <li ><a href="{{url('/about')}}">About</a></li>
           <li ><a href="{{url('/contact')}}">Contact</a></li>
           </ul>

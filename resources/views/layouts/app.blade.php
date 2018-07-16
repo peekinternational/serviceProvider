@@ -15,13 +15,14 @@
 <link rel="stylesheet" href="{{url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <script src="{{asset('js/jquery.min.js')}}" charset="utf-8"></script>
     <script src="{{'http://cdn.ckeditor.com/4.10.0/standard/ckeditor.js'}}"></script>
-    <!-- <script src="{{'http://cdn.ckeditor.com/4.10.0/full/ckeditor.js'}}"></script> -->
-    <!-- <script src="//cdn.ckeditor.com/4.10.0/basic/ckeditor.js"></script> -->
+
     <link rel="shortcut icon" type="image/x-icon" href="{{url('img/favicon.png')}}" />
     <link rel="stylesheet" href="{{url('plugins/lightbox2/dist/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{url('http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css')}}">
     <script src="{{'http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.37.0/jquery.form.min.js"></script>
     <!-- <link href="toastr.css" rel="stylesheet"/>
+
     <script src="toastr.js"></script> -->
 
     <!-- Main Stylesheet -->
@@ -31,6 +32,7 @@
     <link type="text/css" rel="stylesheet" href="{{url('https://fonts.googleapis.com/css?family=Roboto:300,400,500')}}">
   </head>
   <body>
+
   @include('inc.navbar')
 
     <div class="" style="margin-top:50px;">
@@ -38,11 +40,24 @@
       <!-- @include('inc.messages') -->
 
       <!-- main content here -->
+
   @yield('content')
+  <div id="loaderIcon_main" class="loaderIcon_main" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+  </div>
             <!-- Footer here -->
- 
+            <!-- Image Loader -->
+
+
     </div>
     @include('inc.footer')
     <script src="{{asset('js/map_script.js')}}" charset="utf-8"></script>
+
+    <script>
+      $(window).on('load', function () {
+        $('#loaderIcon_main').fadeIn();
+        $('#loaderIcon_main').fadeOut();
+        // $('#loaderIcon').show()
+      });
+    </script>
   </body>
 </html>

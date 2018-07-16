@@ -4,8 +4,15 @@ var myLatlng;
 var radius;
 var lngval;
 var latval;
-var kilometer = 3;
+var kilometer =$("input[name='people_show']").val();
+if (kilometer == null) {
+    kilometer = 3;
+}else {
+  kilometer = 300;
+}
+// alert(kilometer);
 var km =  (1/111)*kilometer;
+// alert(km);
 var autozoom;
 // var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
@@ -28,9 +35,11 @@ kilometer = kilometer * 2;
 km =  (1/111)*kilometer;
 skills(rec_skill);
 });
-  function skills(get_skill) {
 
-  // alert(get_skill);
+
+
+  function skills(get_skill) {
+    // alert(get_skill);
   geoLocationInit();
   function geoLocationInit() {
     if (navigator.geolocation) {
@@ -93,7 +102,7 @@ function searchBoys(lat, lng, km, get_skill) {
 
       }
 
-
+$(document).ready(function(){
       $.ajaxSetup({
         header: {
           'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
@@ -112,6 +121,7 @@ function searchBoys(lat, lng, km, get_skill) {
             toastr.warning('No Record Found');
             window.location.href = "/";
           }
+
           var res = JSON.parse(response);
           // console.log(km);
           km = res.km;
@@ -133,7 +143,7 @@ function searchBoys(lat, lng, km, get_skill) {
           { autozoom=8;
           }
           else if(kilom >200){
-            autozoom=7;
+            autozoom=5;
           }
 
           console.log(autozoom);
@@ -147,9 +157,9 @@ function searchBoys(lat, lng, km, get_skill) {
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
             console.log(res.provider[i].name);
-            // if ((res.provider)== null) {
-            //   window.location('home.blade.php');
-            // }
+            if ((res.provider)== null) {
+              window.location('home.blade.php');
+            }
             // console.log(res.provider.);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
@@ -209,5 +219,6 @@ function searchBoys(lat, lng, km, get_skill) {
           });
         }
       });
+    });
     }
 }

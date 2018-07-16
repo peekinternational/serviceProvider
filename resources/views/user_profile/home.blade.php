@@ -41,7 +41,8 @@
 									    </button>
 									</div>
 								</div>
-
+								<!-- <div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+					      </div> -->
 				<p class="text-white"> <span>Search by tags:</span> Plumber, Auto Mechanic, Electrician, Welder, Painter, Area, Location</p>
 			</div>
 				</div>
@@ -50,7 +51,9 @@
 <section class="service-2 section">
   <div class="container">
 		<div id="map">
-
+			<!-- Image Loader -->
+	 <div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
+	 </div>
   </div><br>
 	<div class="text-center">
 		<button type="button" id="area_btn" class="btn btn-success" name="button">Increase Area</button>
