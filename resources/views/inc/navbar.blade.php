@@ -33,8 +33,8 @@
           </ul>
           </li>
           <li ><a href="{{url('people')}}?people=7">People</a></li>
-          <li ><a href="{{url('/about')}}">About</a></li>
-          <li ><a href="{{url('/contact')}}">Contact</a></li>
+          <li ><a href="#features-sec">About</a></li>
+          <li ><a href="#contact-sec">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
              <li id="logout" class="dropdown">

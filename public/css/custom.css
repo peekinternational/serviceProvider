@@ -33,6 +33,8 @@ overflow: hidden;
 .profile_card {
   height: 330px;
   overflow: hidden;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .loaderIcon {
   position: absolute;
@@ -74,14 +76,15 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 #navbar li a:focus{color: white;}
 .dropdown_list  li a:hover {background-color: black; color:white; font-size: 14px;}
 .navbar-custom {background-color: #8e73f9;}
-#login {background-color: #8e73f9; margin-top: 7px;}
-#register {background-color: #8e73f9; margin-top: 7px; margin-left: 10px;}
+#login {background-color: #49f5fbc7; margin-top: 7px;}
+#register {background-color: #49f5fbc7; margin-top: 7px; margin-left: 10px;}
 /*Navbar Css  End ===========================================   */
 
 
 /*Footer Css  start ===========================================   */
-.page-footer{background-color: #343140;}
-
+.page-footer{background-color: #7573f9; padding-top: 10px;}
+.page-footer P {color: white;}
+.page-footer p strong {color: white;}
 
 
 #map {
@@ -200,8 +203,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
 .eo-dp{
     width: 100%;
     border: 4px solid #ffffff;
-    margin-top: 35px;
-	
+	margin-top:20px;
 }
 .eo-dp-box:hover .eo-dp-toolkit{
     display: inline-block;
@@ -328,13 +330,6 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     padding: 20px;
     border: 1px solid #cccccc;
 }
-.field-icon {
-    float: right;
-    margin-top: -25px;
-    position: relative;
-    z-index: 2;
-    right: 10px;
-}
 .show-loginBox{
     font-size: 12px;
     margin-top: 10px;
@@ -397,8 +392,6 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     #profile_list, #dropmenu{background-color: #b3a1f9;margin-top: -12px; float: left; width: 108%;     padding-left: 20px;
     margin-left: -15px;}
     .loginBox{margin: -30px 15px;}
-    #login {background-color: #8e73f9; margin-top: -7px;}
-    #register {background-color: #8e73f9; margin-top: -7px; margin-left:0 }
     .eo-timeline-cover {
             object-fit: cover;
             width: 100%;
@@ -407,7 +400,6 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
     .eo-box{
         width: 100%;
         height:auto;
-        margin-top: -25px
     }
 .eo-dp-box{
         text-align: center;
@@ -471,7 +463,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         }
     .eo-timeline-details{
             text-align: center;
-              top:-90px;
+              top:-120px;
         }
     .eo-timeline-details h1 a{
             background: none;
@@ -495,9 +487,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -225px; }
         overflow: hidden;
     }
 
-     .profile-show {
-    height: 250px;
-  }
+
     .eo-timeline-details h1 a{
     text-decoration: none;
     color: #2d8ac7;

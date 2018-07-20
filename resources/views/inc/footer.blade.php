@@ -3,35 +3,20 @@
 
   <!-- Footer Links -->
   <div class="container">
- 
+
 
     <!-- Grid row -->
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-8 col-lg-8 col-sm-12 footer-center" >
+      <div class="col-md-12 col-lg-12 col-sm-12 footer-center" >
 
         <!--Copyright-->
-        <p class="">&copy 2018 Copyright: <a href="{{url('/')}}"><strong> Service Provider</strong></a></p>
+        <p class=" text-center">&copy 2018 Copyright:  <a href="{{url('/')}}"><strong>  Service Provider</strong></a></p>
 
       </div>
       <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-4 col-sm-12 footer-center">
-
-        <!-- Social buttons -->
-        <div class=" text-md-right">
-          <ul class="list-unstyled list-inline">
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-google-plus"></i></a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-        </div>
-
-      </div>
-      <!-- Grid column -->
 
     </div>
     <!-- Grid row -->

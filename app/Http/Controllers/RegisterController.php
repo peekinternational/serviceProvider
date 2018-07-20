@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Register;
+use App\Contact;
 use DB;
 class RegisterController extends Controller
 {
@@ -163,18 +164,17 @@ class RegisterController extends Controller
   {
     $phone  = $request->input('phone');
     $password = $request->input('password');
-    $user = Register::wherephone($phone)->first();
+    $user1 = Register::wherephone($phone)->first();
 
-    if (!empty($user->phone)) {
-      if ($phone == $user->phone) {
-        if ($password == $user->password) {
-          $request->session()->put('ses', $user->id);
-          $request->session()->put('name', $user->name);
+    if (!empty($user1->phone)) {
+      if ($phone == $user1->phone) {
+        if ($password == $user1->password) {
+          $request->session()->put('ses', $user1->id);
+          $request->session()->put('name', $user1->name);
           $val = $request->session()->get('ses');
 
-          // return redirect('/dashboard')->with('success','You are successfully logged in');
-          // return view('user_profile.home',compact('user'));
-          return redirect('/')->with('success', 'You are successfully logged in');
+          $user = Register::find($val);
+          return view('user_profile.view', compact('user'));
 
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
@@ -215,7 +215,7 @@ class RegisterController extends Controller
 
      $alls=DB::table('registers');
      if($city != "")$alls->where('city',$city);
-     if($skill != "")$alls->where('skill',$skill);
+     // if($skill != "")$alls->where('skill',$skill);
      $user1=$alls->get();
      //dd($user);
 
@@ -308,6 +308,21 @@ public function searchProviders(Request $request)
        echo json_encode($obj);
     }
   }
+  public function contact(Request $request)
+  {
+    $name = $request->get('name');
+    $email = $request->get('email');
+    $message = $request->get('message');
 
-  
+    $user = new Contact;
+    $user->name = $name;
+    $user->email = $email;
+    $user->message = $message;
+
+
+    $user->save();
+    echo "successfully";
+  }
+
+
 }

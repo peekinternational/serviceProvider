@@ -29,6 +29,9 @@ Route::get('/edit', function () {
 Route::get('/', function () {
     return view('user_profile.home');
 });
+Route::get('/landing', function () {
+    return view('user_profile.landing_page');
+});
 Route::get('view_people', function () {
     return view('user_profile.people');
 });
@@ -47,7 +50,7 @@ Route::get('/contact', function () {
 
 Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
-}); 
+});
 
 Route::get('send', function () {
     return view('welcome');
@@ -72,3 +75,4 @@ Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 // Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');
 // Route::post('sendemail', 'RegisterController@ship');
+Route::post('contact', 'RegisterController@contact');

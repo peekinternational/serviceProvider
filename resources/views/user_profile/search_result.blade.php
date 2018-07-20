@@ -45,9 +45,11 @@
         @endif
     </div>
 </div>
+
 <!-- Suggeted data close to your search -->
-<div class="container" style="margin-top: 100px;">
-  <h1>Suggested</h1>
+<div class="container">
+  <!-- <h4>Not Found in Your Area</h4> -->
+  <h1 align="center">Suggested</h1>
     <div class="row">
       @if(count($user1)>0)
       @foreach($user1 as $users)
@@ -92,6 +94,7 @@
         </div>
         @endforeach
         @endif
+
     </div>
 </div>
 @endsection

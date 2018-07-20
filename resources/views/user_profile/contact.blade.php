@@ -38,7 +38,7 @@ Very simple and takes only few minutes.
                 <hr>
                 <div class="row">
                     <div class="col-md-3"><strong>Email</strong></div>
-                    <div class="col-md-9"><a href="#">here</a> </div>
+                    <div class="col-md-9"><a href="#">peekinternational@gmail.com</a> </div>
                 </div>
                 <hr>
                 <div class="row">
@@ -50,9 +50,9 @@ Very simple and takes only few minutes.
             </div>
  <!--  <div class="company-box-right">
             <h3>Help Query</h3>
-           
+
             <hr>
-            
+
             <form class="contact-us-form" method="post" action="#">
             {{ csrf_field() }}
             	<div class="form-group">
