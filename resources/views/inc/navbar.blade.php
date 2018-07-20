@@ -12,7 +12,7 @@
           </button>
            <!-- logo -->
         <a class="navbar-brand logo" href="{{url('/')}}">
-<img class="customlogo" src="{{url('images/logo.png')}}" alt="logo" style="width: 20%;" />
+<img class="customlogo" src="{{url('images/logoC.png')}}" alt="logo" style="width: 20%;" />
 </a>
         <!-- /logo -->
         </div>

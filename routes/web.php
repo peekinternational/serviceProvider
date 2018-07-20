@@ -13,7 +13,9 @@
 
 // Route::get('/', function () {
 // });
-
+Route::get('/', function () {
+    return view('user_profile.home');
+});
 Route::get('/register', function () {
     return view('user_profile.create');
 });
@@ -26,9 +28,7 @@ Route::get('/index', function () {
 Route::get('/edit', function () {
     return view('user_profile.update');
 });
-Route::get('/', function () {
-    return view('user_profile.home');
-});
+
 Route::get('view_people', function () {
     return view('user_profile.people');
 });
@@ -49,9 +49,6 @@ Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
 }); 
 
-Route::get('send', function () {
-    return view('welcome');
-});
 
 Route::post('create_r', 'RegisterController@store');
 Route::post('Account/login', 'RegisterController@login');
@@ -71,4 +68,3 @@ Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
 Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 // Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');
-// Route::post('sendemail', 'RegisterController@ship');
