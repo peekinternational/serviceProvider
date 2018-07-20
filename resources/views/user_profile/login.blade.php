@@ -18,13 +18,12 @@
      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon " id="toggle-passwords"></span>
   </div>
   <div class="">
-        <h5><a href="{{'send'}}">Forget Password?</a></h5>
+        <h5><a href="">Forget Password?</a></h5>
         </div>
                 <div class="input-group">
                     <div class="checkbox">
                         <label>
-                            <input id="login-remember" type="checkbox" name="remember" value="1">
-                            Remember Me
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                         </label>
                     </div>
                 </div>

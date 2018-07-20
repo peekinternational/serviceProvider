@@ -13,7 +13,9 @@
 
 // Route::get('/', function () {
 // });
-
+Route::get('/', function () {
+    return view('user_profile.home');
+});
 Route::get('/register', function () {
     return view('user_profile.create');
 });
@@ -52,9 +54,6 @@ Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
 });
 
-Route::get('send', function () {
-    return view('welcome');
-});
 
 Route::post('create_r', 'RegisterController@store');
 Route::post('Account/login', 'RegisterController@login');
