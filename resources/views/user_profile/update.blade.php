@@ -4,11 +4,11 @@
 <div class="container" id="container">
   <div class="row">
 <div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
-<h1 align="center">Create Profile</h1>
+<h1 align="center">General Account Settings</h1>
 <!-- @if(Session ('ses'))
 {{Session('ses')}}
 @endif -->
-<form class="" action="{{url('update/'. $user->id)}}" method="post" enctype="multipart/form-data">
+<!-- <form class="" action="{{url('update/'. $user->id)}}" method="post" enctype="multipart/form-data">
 
   {{csrf_field()}}
   <div class="" style="text-align: -webkit-center">
@@ -141,11 +141,26 @@
         }
       }
     </script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initAutocomplete"
-        async defer></script> -->
 
   <button type="submit" class="btn btn-primary" name="button">Submit</button>
-</form>
+</form> -->
+<table class="table table-hover">
+  <tr>
+    <td><b> Password</b></td>
+    <td><?php echo ucwords($user->name); ?></td>
+    <td>edit</td>
+  </tr>
+    <tr>
+    <td><b>Contact#</b></td>
+    <td></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td><b>Manage Account</b></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 </div>
 </div>
 </div>
