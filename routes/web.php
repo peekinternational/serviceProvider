@@ -68,3 +68,4 @@ Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
 Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 // Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');
+Route::post('changepwd/{id}', 'RegisterController@changePassword');

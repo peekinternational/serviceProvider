@@ -308,6 +308,9 @@ public function searchProviders(Request $request)
        echo json_encode($obj);
     }
   }
-
+ public function changePassword(Request $req)
+ {
+  return 111;
+ }
   
 }

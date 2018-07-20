@@ -144,23 +144,29 @@
 
   <button type="submit" class="btn btn-primary" name="button">Submit</button>
 </form> -->
-<table class="table table-hover">
-  <tr>
-    <td><b> Password</b></td>
-    <td><?php echo ucwords($user->name); ?></td>
-    <td>edit</td>
-  </tr>
-    <tr>
-    <td><b>Contact#</b></td>
-    <td></td>
-    <td></td>
-  </tr>
-    <tr>
-    <td><b>Manage Account</b></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+<form action="{{url('changepwd/'. $user->id)}}" method="post">
+  <div>
+    <label>Old Password</label>
+  </div>
+  <div class="form-group">
+    <input type="password" name="oldpassword" class="form-control">
+  </div>
+    <div>
+    <label>Old Password</label>
+  </div>
+  <div class="form-group">
+        <input type="password" name="newPassword" class="form-control">
+  </div>
+    <div>
+    <label>Old Password</label>
+  </div>
+  <div class="form-group">
+        <input type="password" name="NewConPassword" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="submit" class="form-control btn btn-primary"  name="changPwd" value="Change Password">
+  </div>
+</form>
 </div>
 </div>
 </div>
