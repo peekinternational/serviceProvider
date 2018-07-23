@@ -331,6 +331,21 @@ public function searchProviders(Request $request)
     }
   }
 
+
+ public function changePassword(Request $request, $id)
+ {
+  $oldpassword=$request->get('oldPassword');
+    $user = Register::find($id);
+    if($user->password==$oldpassword){
+  $user->password= $request->get('newPassword');
+    $user->save();
+  return back()->with('success','Your password has been changed');
+    }
+    else{
+      return back()->with('red-alert','Enter Correct old password');
+    }
+ }
+
   // Contact Us function calling through ajax
   public function contact(Request $request)
   {
@@ -347,6 +362,9 @@ public function searchProviders(Request $request)
     $user->save();
     echo "successfully";
   }
-
+  public function contactUpdate(Request $req, $id)
+  {
+    return 112;
+  }
 
 }

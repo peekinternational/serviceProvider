@@ -28,7 +28,7 @@ Very simple and takes only few minutes.
 
 	</div>
         <div class="col-md-4">
-            <div class="company-box-right">
+           <!--  <div class="company-box-right">
                 <h4>Contact Details</h4>
                 <hr>
                 <div class="row">
@@ -47,7 +47,7 @@ Very simple and takes only few minutes.
                         here
                     </div>
                 </div>
-            </div>
+            </div> -->
  <!--  <div class="company-box-right">
             <h3>Help Query</h3>
 
@@ -72,9 +72,65 @@ Very simple and takes only few minutes.
             	</div>
             </form>
         </div> -->
+          <form action="" method="">
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control" onkeyup="check()" id="name"  name="name"   placeholder="Your Name" />
+                                </div>
+                                <div class="form-group">
+                                  <input type="email" class="form-control" onkeyup="check()" id="email"  name="email"   placeholder="Your Email" />
+                                </div>
+                                <div class="form-group">
+                                  <textarea name="message" id="message" onkeyup="check()"  class="form-control"  style="min-height: 150px;" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <button type="button" id="contact_btn" disabled class="btn btn-info btn-block btn-lg">SUBMIT REQUEST</button>
+                                </div>
+
+                              </form>
         </div>
     </div>
 </section>
+ <script>
+   function check(){
+     var name = $('#name').val();
+     var email = $('#email').val();
+     var message = $('#message').val();
+     if(name != '' && email != '' && message != ''){
+       $('#contact_btn').prop('disabled', false);
+     }
+   }
 
+   $('#contact_btn').click(function () {
+     var name = $('#name').val();
+     var email = $('#email').val();
+     var message = $('#message').val();
+     $.ajaxSetup({
+       headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+     });
 
+     form = new FormData();
+     form.append('name', name);
+     form.append('email', email);
+     form.append('message', message);
+
+     $.ajax({
+       type: 'post',
+       data: form,
+       cache: false,
+       contentType: false,
+       processData: false,
+       url: "{{ url('contact') }}",
+       success: function (response) {
+         console.log(response);
+         if (response == "successfully") {
+           toastr.success('Thank you for Contacting Us', { timeOut: 5000 });
+           // window.location.href = "/landing";
+         }
+       }
+     });
+   });
+ </script>
 @endsection
