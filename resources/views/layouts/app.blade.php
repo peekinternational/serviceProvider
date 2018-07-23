@@ -10,17 +10,14 @@
     <!-- <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> -->
     <link rel="stylesheet" href="{{url('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
      <script src="{{asset('js/custom.js')}}"></script>
 <link rel="stylesheet" href="{{url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <script src="{{asset('js/jquery.min.js')}}" charset="utf-8"></script>
     <script src="{{'http://cdn.ckeditor.com/4.10.0/standard/ckeditor.js'}}"></script>
-    <!-- <script src="{{'http://cdn.ckeditor.com/4.10.0/full/ckeditor.js'}}"></script> -->
-    <!-- <script src="//cdn.ckeditor.com/4.10.0/basic/ckeditor.js"></script> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{url('img/favicon.png')}}" />
     <link rel="stylesheet" href="{{url('plugins/lightbox2/dist/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{url('http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css')}}">
-    <script src="{{'http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'}}"></script>
+
     <!-- For Loading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.37.0/jquery.form.min.js"></script>
     <!-- <link href="toastr.css" rel="stylesheet"/>
@@ -33,6 +30,8 @@
 <link rel="stylesheet" href="{{asset('css/new_css/flexslider.css')}}">
     <!-- CUSTOM STYLE CSS -->
     <link href="{{asset('css/new_css/style2.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/owl.carousel.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/owl.theme.default.min.css')}}" rel="stylesheet" />
 
     <!-- Main Stylesheet -->
 
@@ -64,8 +63,11 @@
     <script src="{{asset('js/new_js/scrollReveal.js')}}"></script>
     <!--  Scroll Scripts -->
     <script src="{{asset('js/new_js/jquery.easing.min.js')}}"></script>
+    <!-- Toaster -->
+    <script src="{{'http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'}}"></script>
     <!--  Custom Scripts -->
          <script src="{{asset('js/new_js/custom.js')}}"></script>
+         <script src="{{asset('js/owl.carousel.js')}}"></script>
 
 
     <script>
@@ -74,6 +76,22 @@
         $('#loaderIcon_main').fadeOut(2000);
         // $('#loaderIcon').show()
       });
+    </script>
+    <script>
+    $('.owl-carousel').owlCarousel({
+   loop:true,
+   margin:10,
+   responsiveClass:true,
+   responsive:{
+      0:{
+          items:1,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout:3000
+      }
+   }
+   })
+
     </script>
   </body>
 </html>

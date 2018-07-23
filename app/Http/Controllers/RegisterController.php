@@ -13,6 +13,7 @@ class RegisterController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+
   public function index()
   {
       $user = Register::paginate(8);
@@ -35,6 +36,8 @@ class RegisterController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
+
+   // Register User
   public function store(Request $request)
   {
     //dd($request->all());
@@ -63,6 +66,9 @@ class RegisterController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+   // Show Profile of User on click
+
   public function show($id)
   {
     // dd($id);
@@ -76,6 +82,8 @@ class RegisterController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+   // Edit User
   public function edit($id)
   {
       $user = Register::find($id);
@@ -92,6 +100,8 @@ class RegisterController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+   // Update User
   public function update(Request $request, $id)
   {
     // return $id;
@@ -159,7 +169,7 @@ class RegisterController extends Controller
       //
   }
 
-
+    // Login Function
   public function login(Request $request)
   {
     $phone  = $request->input('phone');
@@ -184,23 +194,26 @@ class RegisterController extends Controller
         return redirect('/login')->with('red-alert', 'Incorrect Phone');
     }
   }
+
+  // Logout Funciton
    public function logout()
   {
     session()->flush();
     session()->forget('ses');
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
+
+  // Show Profiles using skills in navbar
    public function profile($skill)
    {
      $user=Register::where('skill','LIKE',"%{$skill}%")->get();
      return view('user_profile.profile_view',compact('user'));
    }
 
+
+   // Searching from Home Page and Landing Page
   public function search(Request $request)
   {
-
-
-
       $skill = $request->input('skill');
       $location = $request->input('location');
       $city = $request->input('city');
@@ -227,16 +240,22 @@ class RegisterController extends Controller
       // return view('user_profile.search_result',compact('user', 'user1'));
       return view('user_profile.search_result',compact('user','user1'));
   }
+
+  //  Searching through skill but not in use
 public function showdata($skill)
 {
   $user= Register::where('skill','LIKE',"%{$skill}%")->get();
   // $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
 return view('user_profile.skill_search',compact('user'));
 }
+
+// No Use
 public function updateProfile(Request $request)
 {
   print_r($request->input());
 }
+
+// Image Upload function calling through ajax
 public function imageUpload(Request $request,$id)
 {
 
@@ -252,6 +271,8 @@ public function imageUpload(Request $request,$id)
   $user->save();
   echo $profilePicture;
 }
+
+// Cover Upload function calling through ajax
 public function coverUpload(Request $request, $id)
 {
   $user = Register::find($id);
@@ -266,6 +287,7 @@ public function coverUpload(Request $request, $id)
   echo $coverPicture;
 }
 
+//  Searching in radius calling from map_script through ajax
 public function searchProviders(Request $request)
   {
   //  return $request->lati.' '.$request->longitude;
@@ -308,6 +330,8 @@ public function searchProviders(Request $request)
        echo json_encode($obj);
     }
   }
+
+  // Contact Us function calling through ajax
   public function contact(Request $request)
   {
     $name = $request->get('name');

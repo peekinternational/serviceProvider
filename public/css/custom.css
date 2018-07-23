@@ -1,5 +1,5 @@
 #img-slider{width: 5000px;height:450px;}
-.customlogo{width:100% !important; margin-top: -15px;}
+.customlogo{width:18% !important; margin-left: 30px; margin-top: -15px;}
 body{margin-top: 75px; background-color: #d4d4ec;}
 /* .show_provider{width: 100%; height: 100px;} */
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
@@ -70,7 +70,7 @@ overflow: hidden;
                 */
 .navbar-default .navbar-nav  li  a {color: white; padding-bottom: 10px;}
 .navbar-default .navbar-nav  li  a:hover {font-size: 20px;color: white;}
-ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: 25px; }
+ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
 /*.navbar-default .navbar-nav  li  a:visited{color: #bbb;}*/
 .dropdown_list li a {background:#b3a1f9; }
 #navbar li a:focus{color: white;}
@@ -345,8 +345,8 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: 25px; }
 @media (max-width: 499px){
     .customlogo{
         height: 34px;
-        width: 100% !important;
-        margin-top: -13px;
+        /* width: 100% !important; */
+        margin-top: -64px;
     }
     .banner-content.col-lg-12{margin-top: -80px;}
     .row.justify-content-center.form-wrap {margin-top: -5px;}
@@ -388,16 +388,12 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: 25px; }
     .dropdown_list  li a:hover {background-color: black; color:white; font-size: 12px;}
 
     ul.nav.navbar-nav.navbar-left { margin-top: -5px; margin-left: -3px; }
-    #navbar{background-color: #8E73F9; margin-top: -10px; float: left; width: 108%; }
+    #navbar{background-color: #8E73F9; margin-top: -59px; float: left; width: 108%; }
     #profile_list, #dropmenu{background-color: #b3a1f9;margin-top: -12px; float: left; width: 108%;     padding-left: 20px;
     margin-left: -15px;}
-<<<<<<< HEAD
-    .loginBox{margin: -30px 15px;}
-=======
     .loginBox{margin: -5px 15px;}
     #login {background-color: #8e73f9; margin-top: -7px;}
     #register {background-color: #8e73f9; margin-top: -7px; margin-left:0 }
->>>>>>> d88c9ad94dff9e1d678db840d114f9301da40dae
     .eo-timeline-cover {
             object-fit: cover;
             width: 100%;

@@ -9,11 +9,13 @@
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-12 col-lg-12 col-sm-12 footer-center" >
+      <div class="col-md-12 col-lg-12 col-sm-12" >
 
-        <!--Copyright-->
-        <p class=" text-center">&copy 2018 Copyright:  <a href="{{url('/')}}"><strong>  Service Provider</strong></a></p>
 
+        <!-- <p class=" text-center">&copy 2018 Copyright:  <a href="{{url('/')}}"><strong>  Service Provider</strong></a></p> -->
+        <div id="footer">
+          &copy 2018 yourdomain.com | All Rights Reserved |  <a href="http://binarytheme.com" style="color: #fff" target="_blank">Design by : binarytheme.com</a>
+        </div>
       </div>
       <!-- Grid column -->
 

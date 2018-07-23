@@ -24,11 +24,20 @@ body {
 .our-courses {
   background: #f2f2f2;
 }
+.owl-dot span {
+  background: white !important;
+}
+.owl-dot.active span {
+  background: #636b6f !important;
+}
+
+
 .set-row-pad {
     padding-top:30px;
     padding-bottom:50px;
     margin-left: 70px;
 }
+
 /*=====================================
   NAVBAR STYLES
     ===================================*/
@@ -248,7 +257,6 @@ h1::after {
     .faculty-div img {
         border: 10px double #fff;
     }
-
 /*=====================================
   CONTACT STYLES
   ===================================*/
@@ -281,7 +289,8 @@ h1::after {
   ===================================*/
 #footer {
     padding:5px 20px;
-    background-color:#2d3d5a;
+    padding-bottom: 13px;
+    background-color:#7573f9;
     text-align:right;
     color:#fff;
     font-size:15px;
