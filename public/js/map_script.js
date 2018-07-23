@@ -18,8 +18,10 @@ var autozoom;
 var api_url='http://127.0.0.1:8000/api/'
 
 $("#area_btn").click(function () {
+  $('#loaderIcon_main').fadeIn();
   kilometer = kilometer * 2;
   km =  (1/111)*kilometer;
+
   skills();
 });
 
@@ -78,17 +80,31 @@ skills(rec_skill);
 
   }
 
+
+
   //Create Marker
-  function createMarker(latlng, icn, name) {
+  function createMarker(latlng, icn, name, contentString) {
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
 
     var marker = new google.maps.Marker({
             position: latlng,
             map: map,
             icon: icn,
             title:name
-            // draggable: true
-
+          // draggable: true
         });
+        function isInfoWindowOpen(infowindow){
+    var map = infowindow.getMap();
+    return (map !== null && typeof map !== "undefined");
+}
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            setTimeout(function () { infowindow.close(); }, 5000);
+        });
+
   }
 
 function searchBoys(lat, lng, km, get_skill) {
@@ -154,16 +170,24 @@ $(document).ready(function(){
             center: myLatlng,
             radius: radius
           });
+
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
             console.log(res.provider[i].name);
             if ((res.provider)== null) {
               window.location('home.blade.php');
             }
+
             // console.log(res.provider.);
           var  glatval=val.latitude;
           var  glngval=val.longitude;
           var  gname=val.name;
+          var gskill = val.skill;
+          var contentString = '<div id="content">'+
+          '<a href="http://localhost:8000/profile_view/'+res.provider[i].id +'"><strong>'+ gname+'</strong></a>'+
+          '<p>'+gskill+'</p></div>';
+          // console.log(gskill);
+
 
           var temp = '';
           for (var i = 0; i <res.provider.length; i++) {
@@ -214,7 +238,9 @@ $(document).ready(function(){
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
           var  gicn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             // alert(GLatlng);
-            createMarker(GLatlng, gicn, gname);
+
+
+            createMarker(GLatlng, gicn, gname, contentString);
 
           });
         }

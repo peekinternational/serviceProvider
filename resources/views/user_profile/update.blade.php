@@ -1,173 +1,124 @@
-@extends('layouts.app')
+  @extends('layouts.app')
+  @section('content')
+  <div class="container" id="container">
+    <div class="row">
+      <h1 align="center">General Account Settings</h1>
+      <!-- Side bar div -->
+      <div class=" col-md-6 col-sm-12 sidebar">
+        <div class="setting_head text-center" >
+          <b> General Settings </b>
+        </div>
+        <div>
+          <div class="setting_item">
+            <i class="fa fa-key">&nbsp; <a href="javascript:;" onclick="switchPage('password')"> Change Password </a> </i> 
+          </div>
+          <hr>
+          <div class="setting_item">
+            <i class="fa fa-phone">&nbsp; <a href="javascript:;" onclick="switchPage('contact')"> Contact Number </a> </i> 
+          </div>
+          <hr>
+          <div class="setting_item">
+            <i class="fa fa-cog">&nbsp; <a href="javascript:;"> Account Deactivation </a> </i> 
+          </div>
+          <hr>
+        </div>
+      </div>
 
-@section('content')
-<div class="container" id="container">
-  <div class="row">
-<div id="loginBox" class="col-md-6 col-md-offset-3 loginBox">
-<h1 align="center">General Account Settings</h1>
-<!-- @if(Session ('ses'))
-{{Session('ses')}}
-@endif -->
-<!-- <form class="" action="{{url('update/'. $user->id)}}" method="post" enctype="multipart/form-data">
+      <!-- Side bar div end -->
+      <div id="changePwd" class="col-md-6 col-sm-12 SettingBox">
+        @include('inc.messages')
+        <h3 align="center">Change Password</h3>
+        <form action="{{url('changepwd/'.$user->id)}}" method="post">
+          {{csrf_field()}}
+          <div>
+            <label>Old Password</label>
+          </div>
+          <div class="form-group">
+            <input type="password" name="oldPassword" required="" class="form-control">
+          </div>
+          <div>
+            <label>Old Password</label>
+          </div>
+          <div class="form-group">
+            <input type="password" name="newPassword" required="" class="form-control">
+          </div>
+          <div>
+            <label>Old Password</label>
+          </div>
+          <div class="form-group">
+            <input type="password" name="NewConPassword" required="" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="form-control btn btn-primary"  name="changPwd" value="Change Password">
+          </div>
+        </form>
+      </div>
+      <!-- Change and update contact info -->
+      <div id="changeContact" style="display: none;" class="col-md-6 col-sm-12 SettingBox">
+        @include('inc.messages')
+        <h3 align="center">Update Contact</h3>
+        {{csrf_field()}}
+        <div id="oldContact">
+          <label>Current Contact Number:</label> &nbsp; {{$user->phone}}
+            <br>          
+        </div>
+        <div> 
+          <h6><a href="javascript:;" onclick="switchPage('addnew')" id="addbtn" >Add new contact </a> </h6>
+          <hr></div>
+          <div id="addnew"  style="display: none;">
+            <form action="{{url('change/contact/'.$user->id)}}" method="post">
+              {{csrf_field()}}
+              <div class="form-group" id="newCont">
+                <label>Enter new Number</label>
+                <input type="Number"  class="form-control" required="" name="new_no">
+              </div>
+              <div class="form-group">
+                 <button type="button" name="sendSms" id="sendSMS" onclick="switchPage('sendSMS')" class="btn btn-primary" value="Cancel">Send SMS </button>
+                 <!-- cancel sending sms-->
+                <button type="button" name="cancel" id="cancel" onclick="$('#oldContact').show();$('#addnew').hide(); $('#addbtn').show();" class="btn btn-default" value="Cancel">Cancel</button>
+              </div>
+              <div class="form-group" style="display: none;" id="code">
+                <label> Enter Received Code Here</label>
+                <input type="Number" name="code" class="form-control" >
+                <br>
+                <input type="submit" name="newContact" class="btn btn-primary" value="Submit">
+              </div>
+            </form>
+          </div>
 
-  {{csrf_field()}}
-  <div class="" style="text-align: -webkit-center">
-  </div>
-  <div class="form-group">
-    <label>Full Name:</label>
-    <input type="text" name="name" class="form-control" value="{{$user->name}}">
-  </div>
-  <div class="form-group">
-    <label>Phone Number:</label>
-    <input type="number" name="phone" class="form-control" value="{{$user->phone}}">
-  </div>
-  <div class="form-group">
-    <label>Password:</label>
-    <input type="text" name="password" class="form-control" value="{{$user->password}}">
-  </div>
-  <div class="form-group">
-    <label>Skills:</label>
-    <input type="text" name="skill" class="form-control" value="{{$user->skill}}" placeholder="Enter Skills">
-  </div>
-  <div class="form-group">
-    <label>Email:</label>
-    <input type="email" name="email" class="form-control" value="{{$user->email}}"  placeholder="Enter Email">
-  </div>
-  <div class="form-group">
-    <label>Location:</label>
-    <div id="locationField">
-      <input id="autocomplete" name="location" class="form-control" value="{{$user->location}}" placeholder="Select your location"
-             onFocus="geolocate()" type="text">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label>Address:</label>
-    <input type="text" name="address" class="form-control"  value="{{$user->address}}"  placeholder="Enter Address">
-  </div>
-  <div class="form-group">
-    <label>City:</label>
-    <input class="field form-control" name="city" value="{{$user->city}}"  id="locality">
-  </div>
-  <div class="form-group">
-    <label>State:</label>
-    <input class="field form-control" name="state" value="{{$user->state}}" id="administrative_area_level_1">
-  </div>
-  <div class="form-group">
-    <label>Country:</label>
-    <input class="field form-control" name="country" value="{{$user->country}}" id="country">
-  </div>
-  <input type="hidden" name="latitude" id="lat1">
-  <input type="hidden" name="longitude" id="lng1">
-  <div class="form-group">
-    <label>Fee:</label>
-    <input type="number" name="fee" class="form-control" value="{{$user->fee}}"  placeholder="Enter Examination Fee">
-  </div>
-  <div class="form-group">
-    <label>Experience:</label>
-    <input type="text" name="experience" class="form-control" value="{{$user->experience}}" placeholder="Enter Experience">
-  </div>
-  <div class="form-group">
-    <label>Profile Image:</label>
-    <input type="file" class="form-control" value="{{$user->image}}" name="image" id="file" value="">
-    </div>
+    @endsection
 
 
     <script>
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-
-      var placeSearch, autocomplete;
-      var componentForm = {
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name'
-      };
-      var user_latitude, user_longitude;
-      function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode']});
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
-      }
-
-      function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
-
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-          }
-        }
-      }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
-      function geolocate() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var geolocation = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-          user_latitude =  geolocation.lat;
-          user_longitude =  geolocation.lng;
-          document.getElementById("lat1").value = user_latitude;
-          document.getElementById("lng1").value = user_longitude;
-
-            var circle = new google.maps.Circle({
-              center: geolocation,
-              radius: position.coords.accuracy
-            });
-            autocomplete.setBounds(circle.getBounds());
-          });
-        }
-      }
-    </script>
-
-  <button type="submit" class="btn btn-primary" name="button">Submit</button>
-</form> -->
-<form action="{{url('changepwd/'. $user->id)}}" method="post">
-  <div>
-    <label>Old Password</label>
-  </div>
-  <div class="form-group">
-    <input type="password" name="oldpassword" class="form-control">
-  </div>
-    <div>
-    <label>Old Password</label>
-  </div>
-  <div class="form-group">
-        <input type="password" name="newPassword" class="form-control">
-  </div>
-    <div>
-    <label>Old Password</label>
-  </div>
-  <div class="form-group">
-        <input type="password" name="NewConPassword" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="submit" class="form-control btn btn-primary"  name="changPwd" value="Change Password">
-  </div>
-</form>
-</div>
-</div>
-</div>
-@endsection
+  // Switch Between tags
+  function switchPage(page){
+    if(page == 'contact'){
+      $('#changePwd').hide(); 
+      $('#changeContact').show();
+  var href = "{{ url('edit/Contact') }}";
+ if(page == 'addnew'){
+      $('#addnew').show();
+ }
+}else  if(page == 'password'){
+  $('#changeContact').hide(); 
+  $('#changePwd').show();
+  var href = "{{ url('edit/password') }}";
+}
+else if(page == 'addnew'){
+      $('#addnew').show();
+       $('#addbtn').hide();
+       $('#oldContact').hide();
+ }
+ else if(page == 'sendSMS')
+ {
+  $('#sendSMS').hide();
+  $('#cancel').hide();
+  $('#newCont').hide();
+   $('#code').show();
+ }
+// window.parent.history.pushState({path:href},'',href);
+}
+</script>

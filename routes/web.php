@@ -28,7 +28,12 @@ Route::get('/index', function () {
 Route::get('/edit', function () {
     return view('user_profile.update');
 });
-
+Route::get('/', function () {
+    return view('user_profile.home');
+});
+Route::get('/landing', function () {
+    return view('user_profile.landing_page');
+});
 Route::get('view_people', function () {
     return view('user_profile.people');
 });
@@ -47,8 +52,7 @@ Route::get('/contact', function () {
 
 Route::get('skill_search/', function () {
     return view('user_profile.skill_search');
-}); 
-
+});
 
 Route::post('create_r', 'RegisterController@store');
 Route::post('Account/login', 'RegisterController@login');
@@ -68,4 +72,8 @@ Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
 Route::post('coverUpload/{id}', 'RegisterController@coverUpload');
 // Route::get('skill_search/{skill}', 'RegisterController@showdata');
 Route::get('search', 'RegisterController@search');
+
 Route::post('changepwd/{id}', 'RegisterController@changePassword');
+ Route::post('sendemail', 'RegisterController@ship');
+Route::post('contact', 'RegisterController@contact');
+Route::post('change/contact/{id}', 'RegisterController@contactUpdate');

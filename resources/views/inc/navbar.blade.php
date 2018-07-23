@@ -33,8 +33,8 @@
           </ul>
           </li>
           <li ><a href="{{url('people')}}?people=7">People</a></li>
-          <li ><a href="{{url('/about')}}">About</a></li>
-          <li ><a href="{{url('/contact')}}">Contact</a></li>
+          <li ><a href="#features-sec">About</a></li>
+          <li ><a href="#contact-sec">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
              <li id="logout" class="dropdown">
@@ -43,7 +43,7 @@
               <ul id="profile_list" class="dropdown-menu dropdown_list" >
                 <?php $id=session()->get('ses'); ?>
                       <li ><a href="{{url('profile_view/'.$id)}}"><i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a></li>
-                      <li ><a href="{{url('edit/'. $id)}}"><i class="fa fa-key"></i>&nbsp;&nbsp;Setting</a></li>
+                      <li ><a href="{{url('edit/'. $id)}}"><i class="fa fa-key"></i>&nbsp;&nbsp;Settings</a></li>
                       <li ><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log out</a></li>
               </ul>
             </li>

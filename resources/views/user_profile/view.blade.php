@@ -140,8 +140,8 @@
                                          <input class="field form-control" name="country" value="{{$user->country}}" id="country"></input>
                                        </div>
                                    </div>
-                                   <input type="text" hidden="" name="latitude" id="latitude">
-                                   <input type="text" hidden="" name="longitude" id="longitude">
+                                   <input type="hidden"  name="latitude" id="latitude">
+                                   <input type="hidden"  name="longitude" id="longitude">
                                    <div class="form-group">
                                        <label class="control-label col-sm-3 col-xs-12">state</label>
                                        <div class="col-sm-9 pnj-form-field">
@@ -191,7 +191,7 @@
                 <p><span></span></p>
             </div>
              <div class="eo-about-editor"> <!-- about editior -->
-                <form action="" id="pnj-form1" method="post" class="organization-desc-form">
+                <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
                     <input type="hidden" name="" class="token">
                     <div class="form-group" style="padding-left:20px">
                         <label class="control-label col-sm-3">&nbsp;</label>
