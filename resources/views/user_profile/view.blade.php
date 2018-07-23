@@ -63,7 +63,7 @@
                                <span>Experience:</span>{{ $user->experience }}
                            </div>
                            <div class="eo-details">
-                              <span>Fee</span> {{$user->fee}}  Rs.
+                              <span>Examination Fee:</span> {{$user->fee}}  Rs.
                            </div>
                        </div>
                        <div class="col-md-6 eo-section">    <!-- edit buttion -->
@@ -157,7 +157,7 @@
               					   <div class="form-group">
                                      <label class="control-label col-sm-3 col-xs-12">Fee</label>
                                      <div class="col-sm-9 pnj-form-field">
-                                         <input type="text" class="form-control" name="fee" placeholder="1000" value="{{ $user->fee }}" required>
+                                         <input type="text" class="form-control" name="fee" placeholder="1000" value="{{ $user->fee }}">
                                      </div>
                                  </div>
 								   <div class="form-group">

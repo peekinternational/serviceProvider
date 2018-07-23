@@ -17,6 +17,7 @@ var autozoom;
 // var km =  0.04504504;
 var api_url='http://127.0.0.1:8000/api/'
 
+// Increase Area function calling below from google button
 $("#area_btn").click(function () {
   $('#loaderIcon_main').fadeIn();
   kilometer = kilometer * 2;
@@ -29,8 +30,11 @@ $("#gskill").click(function () {
 var skill = $("#skill_val").val();
 skills(skill);
 });
+// Receive skill from skill_search page getting from navbar
 var rec_skill =$("input[name='skill_send']").val();
 skills(rec_skill);
+
+// Increase Area function calling below from google button in skill_search page
 $("#area_btn_skill").click(function () {
 var rec_skill =$("input[name='skill_send']").val();
 kilometer = kilometer * 2;
@@ -39,7 +43,7 @@ skills(rec_skill);
 });
 
 
-
+//  Main function
   function skills(get_skill) {
     // alert(get_skill);
   geoLocationInit();
@@ -50,7 +54,7 @@ skills(rec_skill);
       alert("Browser not supported");
     }
   }
-
+// get current location from google map
   function success(position) {
     // console.log(position);
      latval = position.coords.latitude;
@@ -58,9 +62,11 @@ skills(rec_skill);
 
      myLatlng = new google.maps.LatLng(latval, lngval);
 
+     // Calling searchBoys function
     searchBoys(latval, lngval, km, get_skill);
   }
 
+//If google map not show
   function fail() {
     alert("It Fails");
   }
@@ -72,6 +78,7 @@ skills(rec_skill);
 
     });
 
+    // Create marker on current location
     var marker = new google.maps.Marker({
           position: myLatlng,
           map: map
@@ -82,7 +89,7 @@ skills(rec_skill);
 
 
 
-  //Create Marker
+  //Create Marker on other people location
   function createMarker(latlng, icn, name, contentString) {
 
     var infowindow = new google.maps.InfoWindow({
@@ -106,10 +113,11 @@ skills(rec_skill);
         });
 
   }
-
+// Main function calculating radius showing showing circle and showing marker
 function searchBoys(lat, lng, km, get_skill) {
 
   // alert(get_skill);
+  // store data and send data to controller
       var mydata={
         latitude:lat,
         longitude:lng,
@@ -164,13 +172,13 @@ $(document).ready(function(){
 
           console.log(autozoom);
           createMap(myLatlng,autozoom);
-                                                 // Circle at Map
+          // Circle at Map
           var circle = new google.maps.Circle({
             map: map,
             center: myLatlng,
             radius: radius
           });
-
+          // Loop for getting multiple users
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
             console.log(res.provider[i].name);
@@ -190,6 +198,7 @@ $(document).ready(function(){
 
 
           var temp = '';
+          // Loop for creating cards of users
           for (var i = 0; i <res.provider.length; i++) {
             var profile_img = '';
             if (res.provider[i].image == null) {
