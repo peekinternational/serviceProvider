@@ -78,23 +78,21 @@
       <div class="col-md-4 col-xs-12" data-scroll-reveal="enter from the bottom after 0.5s">
         <div class="owl-carousel">
           <div class="item">
-            <div class="thumbnail"> <img alt="" class="img-responsive" src="{{asset('img2/faculty/1.jpg')}}" /> </div>
+            <div class="thumbnail"> <img alt="" class="img-responsive" src="{{asset('screen_shots/1.jpg')}}" /> </div>
           </div>
           <div class="item">
-            <img alt="" class="img-responsive" src="{{asset('img2/faculty/1.jpg')}}" />
+            <img alt="" class="img-responsive" src="{{asset('screen_shots/2.jpg')}}" />
           </div>
           <div class="item">
-            <img alt="" class="img-responsive" src="{{asset('img2/faculty/2.jpg')}}" />
+            <img alt="" class="img-responsive" src="{{asset('screen_shots/3.jpg')}}" />
           </div>
           <div class="item">
-            <img alt="" class="img-responsive" src="{{asset('img2/faculty/3.jpg')}}" />
+            <img alt="" class="img-responsive" src="{{asset('screen_shots/4.jpg')}}" />
           </div>
           <div class="item">
-            <img alt="" class="img-responsive" src="{{asset('img2/faculty/2.jpg')}}" />
+            <img alt="" class="img-responsive" src="{{asset('screen_shots/5.jpg')}}" />
           </div>
-          <div class="item">
-            <img alt="" class="img-responsive" src="{{asset('img2/faculty/3.jpg')}}" />
-          </div>
+          
         </div>
         <div class="owl-dots" style=""><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div>
       </div>
