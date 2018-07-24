@@ -25,7 +25,7 @@ body {
   background: #f2f2f2;
 }
 .owl-dot span {
-  background: white !important;
+  background: #c9c9c9 !important;
 }
 .owl-dot.active span {
   background: #636b6f !important;
@@ -36,6 +36,14 @@ body {
     padding-top:30px;
     padding-bottom:50px;
     margin-left: 70px;
+}
+@media (max-width: 499px){
+  .set-row-pad {
+    margin-left: 0px;
+  }
+  .panel-group {
+    margin-top: 10px;
+  }
 }
 
 /*=====================================

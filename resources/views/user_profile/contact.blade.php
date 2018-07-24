@@ -72,6 +72,7 @@ Very simple and takes only few minutes.
             	</div>
             </form>
         </div> -->
+        <h2 align="center">Contact Us</h2>
           <form action="" method="">
 
                                 <div class="form-group">

@@ -10,7 +10,7 @@
               <?php if (!empty($user->cover_img)): ?>
                 <img src="{{url('img/cover/'.$user->cover_img)}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                  <?php else: ?>
-                   <img src="{{asset('images/builder.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
+                   <img src="{{asset('images/nocover.jpg')}}" class="eo-timeline-cover" alt="{{$user->cover_img}}">
                    <?php endif; ?>
                  <!--  Cover image  -->
                 <input type="file" id="cover" name="cover_img"  class="compnay-cover sp-cover">
@@ -38,7 +38,7 @@
                    </div>   <!-- profile img end -->
 
                    <div class="col-md-10 eo-timeline-details">    <!-- Profile view div  -->
-                       <h1><a href="#"> {{ $user->name }}</a></h1>
+                       <h2><a style="color: white;" href="#"> {{ $user->name }}</a></h2>
                        <div class="col-md-6 eo-section">
 
                          <!-- Image Loader -->

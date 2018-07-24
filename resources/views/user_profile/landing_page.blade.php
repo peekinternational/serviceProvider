@@ -92,7 +92,7 @@
           <div class="item">
             <img alt="" class="img-responsive" src="{{asset('screen_shots/5.jpg')}}" />
           </div>
-          
+
         </div>
         <div class="owl-dots" style=""><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div>
       </div>
