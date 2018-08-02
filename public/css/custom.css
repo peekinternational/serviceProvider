@@ -264,6 +264,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
     font-weight: 600;
 }
 .eo-edit-section{
+  margin-top: 50px;
     display: none;
 }
 .eo-edit-section hr{
@@ -273,6 +274,9 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
 .eo-edit-section h3{
     background-color: #eee;
     padding: 10px;
+}
+.pnj-form-field {
+  margin-bottom: 15px;
 }
 .eo-about{
     position: relative;
@@ -408,6 +412,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
     #pnj-form .control-label {
     text-align: left;
     }
+
     nav.navbar.navbar-default.navbar-fixed-top.navbar-custom{height: 6%;}
     button.navbar-toggle.collapsed{margin-top: 11px; padding: 6px;}
     button.navbar-toggle{margin-top: 11px; padding: 6px;}

@@ -47,17 +47,17 @@
  <script>
   // check length of password
    var checklen = function()
-     {   
+     {
      if(document.getElementById('pwd').value.length<6)
  {
      document.getElementById('length').style.color = 'red';
      document.getElementById('length').innerHTML = 'Password is too short';
-} 
+}
   else     document.getElementById('length').innerHTML = ' ';
      }
      // <!-- ------------------------------  Match Function password ------------------------     -->
 var check = function()
-{  
+{
   if (document.getElementById('pwd').value ==
     document.getElementById('confirm_password').value) {
     document.getElementById('message').style.color = 'green';
@@ -96,7 +96,7 @@ document.getElementById("toggle-passwords").addEventListener("click", function (
     }
 }, false);
 });
- 
+
  //  $(document).ready(function () {
  // // Password length and password match
 
@@ -143,7 +143,7 @@ document.getElementById("toggle-passwords").addEventListener("click", function (
 
 //     }
 //     });
-//   }); 
+//   });
 
 </script>
 @endsection

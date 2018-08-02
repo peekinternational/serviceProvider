@@ -21,20 +21,33 @@
             <span>1500+</span> People registered last week
           </h1>
           <form action="{{url('search')}}" method="get" role="search" class="serach-form-area">
-            <div class="row justify-content-center form-wrap">
-              <div class="col-md-5 form-cols">
-                <input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills">
-              </div>
-              <div class="col-md-5 form-cols" id="locationField">
-                <input id="locality1" name="location" class="form-control"  placeholder="Select your location" type="text"></input>
-              </div>
-              <input type="hidden" name="city" id="locality">
-              <div class="col-md-2 form-cols">
-                <button type="submit" class="btn btn-info" id="gskill1">
-                  <span class="fa fa-search" ></span> Search
-                </button>
-              </div>
-            </div>
+  					<div class="row justify-content-center form-wrap">
+  						<div class="col-md-5 form-cols">
+  							<!-- <input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills"> -->
+  							<select class="form-control select2" name="skill" required="" >
+  										<option value="" selected> Select Skill</option>
+  								<option value="Plumber"> Plumber</option>
+  									 <option value="Electrician" >Electrician</option>
+  									 <option value="Welder "> Welder</option>
+  									 <option value="Painter" >Painter</option>
+  									 <option value="Carpenter"> Carpenter</option>
+  									 <option value="Mechanic" >Mechanic</option>
+  									 <option value="Cook" >cook</option>
+  									 <option value="Gardener"> Gardener</option>
+  									 <option value="Sweeper" >Sweeper</option>
+  							</select>
+  						</div>
+  						<div class="col-md-5 form-cols" id="locationField">
+  							<input id="locality1" name="location" class="form-control"  placeholder="Select your location" type="text" required=""></input>
+  						</div>
+  						<input type="hidden" name="city" id="locality">
+  						<div class="col-md-2 form-cols">
+  							<button type="submit" class="btn btn-info" id="gskill1">
+  								<span class="fa fa-search" ></span> Search
+  							</button>
+  						</div>
+  					</div>
+  				</form>
             <!-- <div id="loaderIcon" class="loaderIcon" style="display: none;"><img src="{{ asset('images/Spinner.gif')}}" alt="">
           </div> -->
           <p class="text-white"> <span>Search by tags:</span> Plumber, Auto Mechanic, Electrician, Welder, Painter, Area, Location</p>

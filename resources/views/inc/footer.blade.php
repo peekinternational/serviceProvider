@@ -14,7 +14,7 @@
 
         <!-- <p class=" text-center">&copy 2018 Copyright:  <a href="{{url('/')}}"><strong>  Service Provider</strong></a></p> -->
         <div id="footer">
-          &copy 2018 yourdomain.com | All Rights Reserved |  <a href="http://binarytheme.com" style="color: #fff" target="_blank">Design by : binarytheme.com</a>
+          &copy 2018 service_provider.com | All Rights Reserved |  <a href="http://binarytheme.com" style="color: #fff" target="_blank">Design by : binarytheme.com</a>
         </div>
       </div>
       <!-- Grid column -->

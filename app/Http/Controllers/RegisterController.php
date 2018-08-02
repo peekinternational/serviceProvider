@@ -295,8 +295,8 @@ public function searchProviders(Request $request)
     $latitude = $request->latitude;
     $longitude = $request->longitude;
     $km = $request->km;
-
     $skill = $request->skill;
+
     again:
       $distan=$km*111;
     $order1 = Register::selectRaw("*,
