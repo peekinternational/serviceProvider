@@ -296,13 +296,13 @@ class Admin extends Controller
        // dd($token);
        // $token = $request->_token;
        $user['status'] = 'Y';
-       $get_token=DB::table('dhr_users')->where('token',$token)->first();
+       $get_token=DB::table('registers')->where('token',$token)->first();
 
        if (count($get_token)>0) {
-         $getuser=DB::table('dhr_users')->where('token',$token)->update($user);
-         return redirect('/accounts/login')->with('success','Your account has been verified');
+         $getuser=DB::table('registers')->where('token',$token)->update($user);
+         return redirect('/login')->with('success','Your account has been verified');
        }else {
-         return redirect('/accounts/login')->with('red-alert','Your account is not created');
+         return redirect('/login')->with('red-alert','Your account is not created');
 
        }
 
