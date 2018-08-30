@@ -1,0 +1,60 @@
+.users_info_display {
+  padding-left: 10px;
+  border: 1px solid #eae3e3;
+  background: #FF6D0B;
+  color: white;
+}
+.input_group_add {
+  float: right;
+  padding-right: 30px;
+  margin-top: -40px;
+}
+.input_group_add .fa {
+  font-size: 30px;
+}
+#w_image{
+	cursor: pointer;
+	opacity: 0;
+	display: none;
+  /* background: black; */
+}
+.btn-file{
+	background: gray !important;
+    padding: 9px 20px;
+    width: 100%;
+    border-radius: 0;
+    border: #FF6D0B !important;
+    color: white !important;
+}
+.form-group label{
+	font-weight: 400 !important;
+}
+.loaderIcon_franchise {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+}
+#edit-Img{
+	cursor: pointer;
+    opacity: 0;
+    display: none;
+    /* color: white; */
+}
+.profile-img{
+  overflow: hidden;
+	height: 148px;
+	width: 215px;
+}
+.profile-img img{
+	width: 100%;
+}
+.profile-img .icon{
+    position: absolute;
+    top: 76%;
+    left: -89px;
+    width: 96%;
+    /* color: white; */
+}
+.label-success {
+  color: white !important;
+}

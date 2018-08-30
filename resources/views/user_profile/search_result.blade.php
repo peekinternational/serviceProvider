@@ -12,7 +12,7 @@
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
                           <?php if (!empty($users->image)): ?>
-                            <img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">
+                            <img src="{{url('img/profile/'.$users->image)}}" class="pf-image" alt="{{$users->image}}">
                             <?php else: ?>
                                 <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$users->image}}">
                           <?php endif; ?>
@@ -60,7 +60,7 @@
                     <div class="col-sm-12 text-center">
                       <div class="profile-show">
                           <?php if (!empty($users->image)): ?>
-                            <a href="{{url('profile_view/'.$users->id)}}"><img src="{{url('img/'.$users->image)}}" class="pf-image" alt="{{$users->image}}"></a>
+                            <a href="{{url('profile_view/'.$users->id)}}"><img src="{{url('img/profile/'.$users->image)}}" class="pf-image" alt="{{$users->image}}"></a>
                             <?php else: ?>
                                 <a href="{{url('profile_view/'.$users->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$users->image}}"></a>
                           <?php endif; ?>

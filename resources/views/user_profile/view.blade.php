@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-md-2 eo-dp-box">      <!--  Profile image  -->
           <?php if (!empty($user->image)): ?>
-            <img src="{{url('img/'.$user->image)}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
+            <img src="{{url('img/profile/'.$user->image)}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
           <?php else: ?>
             <img src="{{asset('img/profile-logo.jpg')}}" class=" eo-dp eo-c-logo " alt="{{$user->image}}">
           <?php endif; ?>
@@ -251,7 +251,7 @@ function initializeAutocomplete(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1RaWWrKsEf2xeBjiZ5hk1gannqeFxMmw&libraries=places&callback=initializeAutocomplete"
 async defer></script>
-</div>
+
 <!-- hide profile image edit button  -->
 <script>
 $(document).ready(function () {
@@ -301,7 +301,7 @@ $(document).ready(function(){
           console.log(response);
           if(response){
             $('#loaderIcon').hide()
-            $('.eo-c-logo').attr('src','<?= url('img')?>/'+response);
+            $('.eo-c-logo').attr('src','<?= url('img/profile')?>/'+response);
           }else {
             toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
           }

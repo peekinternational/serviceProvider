@@ -77,3 +77,15 @@ Route::post('changepwd/{id}', 'RegisterController@changePassword');
  Route::post('sendemail', 'RegisterController@ship');
 Route::post('contact', 'RegisterController@contact');
 Route::post('change/contact/{id}', 'RegisterController@contactUpdate');
+
+
+//Admin
+
+// Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
+Route::get('/admin/dashboard', function () {
+    return view('admin.admin_account.dashboard');
+});
+Route::get('/admin/user', 'frontend\Admin@show_user');
+Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
+Route::post('edit_user', 'frontend\Admin@admin_edit_user');
+Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');

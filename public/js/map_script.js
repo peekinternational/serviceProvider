@@ -207,7 +207,7 @@ $(document).ready(function(){
             }
             else {
 
-            profile_img = '<img src="http://localhost:8000/img/'+res.provider[i].image+'" class="pf-image" alt="">'
+            profile_img = '<img src="http://localhost:8000/img/profile/'+res.provider[i].image+'" class="pf-image" alt="">'
             // console.log(profile_img);
             }
 

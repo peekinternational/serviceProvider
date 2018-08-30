@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Register;
+use App\Admin;
 use App\Contact;
 use DB;
 class RegisterController extends Controller
@@ -140,7 +141,7 @@ class RegisterController extends Controller
 
 
       $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
-      $destinationPath = public_path('img');
+      $destinationPath = public_path('img/profile');
       $image->move($destinationPath, $profilePicture);
   //  dd($profilePicture);
       $user->image=$profilePicture;
@@ -263,7 +264,7 @@ public function imageUpload(Request $request,$id)
   $image = $request->file('profile-image');
 
   $profilePicture = 'profile-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
-  $destinationPath = public_path('img');
+  $destinationPath = public_path('img/profile');
   $image->move($destinationPath, $profilePicture);
 //  dd($profilePicture);
   $user->image=$profilePicture;
