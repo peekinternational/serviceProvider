@@ -196,9 +196,9 @@ class Admin extends Controller
 
        else {
          // $nameinfo['f_userId']=$userinfo->userId;
-         // $nameinfo['token'] = $request->_token;
+         $nameinfo['token'] = $request->_token;
          // dd($nameinfo['token']);
-         // $nameinfo['type'] = $request->input('type');
+         $nameinfo['type'] = $request->input('type');
          // $ip= \Request::ip();
          // dd($ip);
          // $data = \Location::get($ip);

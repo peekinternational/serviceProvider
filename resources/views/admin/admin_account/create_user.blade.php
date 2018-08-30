@@ -67,6 +67,16 @@
           												</select>
 													  		</div>
 													  	</div>
+                              <div class="form-group col-md-6 col-md-offset-2" style="padding-right: 0;" >
+													  		<label>User Type</label>
+													  		<div class="input-group">
+													    		<span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                  <select class="form-control" id="type">
+          													<option value="provider">Provider</option>
+          													<option value="serviceUser">Service User</option>
+          												</select>
+													  		</div>
+													  	</div>
 															<div class="row">
 												  		<div class="form-group col-md-2 col-md-offset-3  nxt-btn" style="padding-left: 0;">
 												  			<button type="button" id="wEdit_btn" class="btn login-btn btn-block" style="Background: #FF6D0B; border: #FF6D0B; color: white;">Create User <i class="fa fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></button>
@@ -110,6 +120,7 @@ $('#wEdit_btn').click(function () {
 	var phone = $('#w_mobile').val();
 	var email = $('#email').val();
 	var skill = $('#skill').val();
+	var type = $('#type').val();
   	// alert(_token);
 	// alert(phone);
 	if (name == "" || phone=="") {
@@ -129,6 +140,7 @@ $('#wEdit_btn').click(function () {
 	form.append('phone', phone);
 	form.append('email', email);
 	form.append('skill', skill);
+	form.append('type', type);
 
 	console.log(form);
 	$.ajax({
