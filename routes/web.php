@@ -89,3 +89,4 @@ Route::get('/admin/user', 'frontend\Admin@show_user');
 Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
 Route::get('/admin/creatUser', 'frontend\Admin@admin_create_route');
+Route::get('delete_user/{id}', 'frontend\Admin@admin_delete_user');

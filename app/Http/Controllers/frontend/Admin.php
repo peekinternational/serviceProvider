@@ -211,7 +211,7 @@ class Admin extends Controller
       for ($i = 0; $i < 6; $i++) {
           $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-       echo $randomString;
+       //echo $randomString;
        $nameinfo['password'] = md5($randomString);
       // dd($random);
        $user_info=DB::table('registers')->insert($nameinfo);
@@ -311,15 +311,15 @@ class Admin extends Controller
 
      public function admin_delete_user(Request $request, $id)
      {
-        if($request->session()->has('u_session')){
+        // if($request->session()->has('u_session')){
          // dd($id);
-         $user_get=DB::table('dhr_users')->where('userId',$id)->delete();
+         $user_get=DB::table('registers')->where('id',$id)->delete();
         // dd($user_get);
         echo $user_get;
-      }else {
-
-          return redirect('/accounts/login');
-        }
+      // }else {
+      //
+      //     return redirect('/accounts/login');
+      //   }
        }
      public function admin_delete_category(Request $request, $id)
      {
