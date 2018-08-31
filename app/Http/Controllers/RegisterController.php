@@ -148,7 +148,11 @@ class RegisterController extends Controller
       //   'experience' => 'required'
       // ]);
 
-
+      $id= $request->session()->get('u_session')->id;
+      $user_data = DB::table('historys')
+              ->join('registers', 'historys.provider_id', '=', 'registers.id')
+              ->where('historys.user_id', '=', $id)
+              ->get();
       $user = Register::find($id);
       // dd($id);
       // return $user;
@@ -188,7 +192,7 @@ class RegisterController extends Controller
 //     session()->flush();
 //     session()->forget('success');
      // $success='Information Updated successfully';
-      return view('user_profile.view',compact('user'));
+      return view('user_profile.view',compact('user','user_data'));
 // exit(1);
 
   }
