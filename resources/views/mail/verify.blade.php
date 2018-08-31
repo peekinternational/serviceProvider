@@ -10,9 +10,9 @@
                 <table class="m_1888394735623576276content" width="100%" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;margin:0;padding:0;width:100%">
 <tbody><tr>
 <td class="m_1888394735623576276header" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;padding:25px 0;text-align:center;">
-        <a href="http://203.99.61.173/demos/E-dehari/public/accounts/login" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#bbbfc3;font-size:19px;font-weight:bold;text-decoration:none" target="_blank">
+        <a href="https://app.jobcallme.com/service_provider/public/login" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#bbbfc3;font-size:19px;font-weight:bold;text-decoration:none" target="_blank">
 
-           <img src="http://203.99.61.173/demos/E-dehari/public/images/deharilogo.png" class="logo-img">
+           <img src="https://app.jobcallme.com/service_provider/public/images/logo.png" class="logo-img">
 
         </a>
     </td>
@@ -39,7 +39,7 @@
 </td>
     </tr></tbody></table>
 <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">If you did not request a verify email, no further action is required.</p>
-<p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">Regards,<br>E-dehari</p>
+<p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;color:#74787e;font-size:16px;line-height:1.5em;margin-top:0;text-align:left">Regards,<br>Service Provider</p>
 
 </td>
                                 </tr>
@@ -50,7 +50,7 @@
 <td style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box">
         <table class="m_1888394735623576276footer" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;margin:0 auto;padding:0;text-align:center;width:570px"><tbody><tr>
 <td class="m_1888394735623576276content-cell" align="center" style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;padding:35px">
-                    <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;line-height:1.5em;margin-top:0;color:#aeaeae;font-size:12px;text-align:center">© 2018 E-dehari Co.,Ltd. All rights reserved.</p>
+                    <p style="font-family:Avenir,Helvetica,sans-serif;box-sizing:border-box;line-height:1.5em;margin-top:0;color:#aeaeae;font-size:12px;text-align:center">© 2018 Service Provider Co.,Ltd. All rights reserved.</p>
                 </td>
             </tr></tbody></table>
 </td>
