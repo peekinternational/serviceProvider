@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Register;
 use App\Admin;
 use App\Contact;
+use Mail;
 use DB;
 class RegisterController extends Controller
 {
@@ -48,14 +49,25 @@ class RegisterController extends Controller
       'password' => 'required|min:6|confirmed',
       'password_confirmation' => ''
     ]);
+      // dd($request->all());
+    $email['email'] = $request->input('email');
+    $toemail =$email['email'];
     $user = new Register;
     $user->name  = $request->input('name');
     $user->phone  = $request->input('phone');
-    $user->password  = $request->input('password');
+    $user->password  = md5($request->input('password'));
     $phone = $request->input('phone');
 
+    Mail::send('mail.verify',['token' =>$request->_token],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('E-dehari.com - Account Verifaction');
+        $message->from('nabeelirbab@gmail.com', 'E-dehari');
+        $message->to($toemail);
+      });
       $user->save();
-      return redirect('/login')->with('success','You are successfully Registered');
+      return redirect('/login')->with('success','Please verify your account');
 
 // echo "successfully";
 // exit(1);

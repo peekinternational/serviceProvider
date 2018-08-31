@@ -20,6 +20,10 @@
     <input type="number" name="phone" class="form-control"  placeholder="03123456789" required="">
   </div>
   <div class="form-group">
+    <label>Email:</label>
+    <input type="email" name="email" class="form-control"  placeholder="abc@gmail.com" required="">
+  </div>
+  <div class="form-group">
     <label>Password:</label>
     <input type="password" name="password" id="pwd" onkeyup='checklen();' class="form-control" onblur="sendpassword(this.value)" placeholder="Enter Password" required="">
     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon " id="toggle-passwords"></span>
