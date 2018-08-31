@@ -40,7 +40,7 @@ class RegisterController extends Controller
     // $token = $request->_token;
     $user['status'] = 'Y';
     $get_token=DB::table('registers')->where('token',$token)->first();
-
+    // dd($get_token);
     if (count($get_token)>0) {
       $getuser=DB::table('registers')->where('token',$token)->update($user);
       return redirect('/login')->with('success','Your account has been verified');
@@ -76,6 +76,7 @@ class RegisterController extends Controller
     $user->phone  = $request->input('phone');
     $user->password  = md5($request->input('password'));
     $phone = $request->input('phone');
+    $token = $request->_token;
 
     Mail::send('mail.verify',['token' =>$request->_token],
       function ($message) use ($toemail)
