@@ -75,8 +75,8 @@ class RegisterController extends Controller
     $user->name  = $request->input('name');
     $user->phone  = $request->input('phone');
     $user->password  = md5($request->input('password'));
-    $phone = $request->input('phone');
-    $token = $request->_token;
+    $user->email = $request->input('email');
+    $user->token = $request->_token;
 
     Mail::send('mail.verify',['token' =>$request->_token],
       function ($message) use ($toemail)
