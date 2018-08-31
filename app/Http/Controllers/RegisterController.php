@@ -206,17 +206,23 @@ class RegisterController extends Controller
   public function login(Request $request)
   {
     $phone  = $request->input('phone');
-    $password = $request->input('password');
+    $password = md5($request->input('password'));
     $user1 = Register::wherephone($phone)->first();
 
     if (!empty($user1->phone)) {
       if ($phone == $user1->phone) {
         if ($password == $user1->password) {
-          $request->session()->put('ses', $user1->id);
-          $request->session()->put('name', $user1->name);
-          $val = $request->session()->get('ses');
+          // dd($user1);
 
-          $user = Register::find($val);
+          $request->session()->put('u_session', $user1);
+          $val = $request->session()->get('u_session');
+
+          // $user = DhrUser::find($val->userId);
+          // $request->session()->put('ses', $user1->id);
+          // $request->session()->put('name', $user1->name);
+          // $val = $request->session()->get('ses');
+
+          $user = Register::find($val->id);
           return view('user_profile.view', compact('user'));
 
         }else {
@@ -232,7 +238,7 @@ class RegisterController extends Controller
    public function logout()
   {
     session()->flush();
-    session()->forget('ses');
+    session()->forget('u_session');
     return redirect('/login')->with('success', 'You are successfully logged out');
   }
 

@@ -257,7 +257,7 @@ async defer></script>
 $(document).ready(function () {
 
   <?php
-  $id = session()->get('ses');
+  $id = session()->get('u_session')->id;
   if ($id != $user->id) { ?>
     $("#edit_btn").hide();
     $("#eo-about").hide();
