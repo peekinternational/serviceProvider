@@ -300,8 +300,9 @@ $(document).ready(function(){
         success: function(response){
           console.log(response);
           if(response){
-            $('#loaderIcon').hide()
+
             $('.eo-c-logo').attr('src','<?= url('img/profile')?>/'+response);
+            $('#loaderIcon').hide();
           }else {
             toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
           }
