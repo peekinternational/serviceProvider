@@ -219,7 +219,7 @@ class Admin extends Controller
        function ($message) use ($nameinfo)
        {
 
-         $message->subject('E-dehari.com - Account Sign in');
+         $message->subject('Service-Provider.com - Account Sign in');
          $message->from('nabeelirbab@gmail.com', 'E-dehari');
          $message->to($nameinfo['email']);
        });
