@@ -34,7 +34,7 @@ class RegisterController extends Controller
 
   public function change_status(Request $request, $token)
   {
-    dd($request->all());
+    // dd($request->all());
     $token =trim($request->segment(2));
     // dd($token);
     // $token = $request->_token;
