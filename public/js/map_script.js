@@ -147,7 +147,7 @@ $(document).ready(function(){
           }
 
           var res = JSON.parse(response);
-          // console.log(km);
+
           km = res.km;
 
         radius = km*111*1000+1000;
@@ -182,9 +182,21 @@ $(document).ready(function(){
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
             console.log(res.provider[i].name);
+            // console.log(res.provider[i].type+" " +res.provider[i].name);
+            // if (res.provider[i].type =='admin' && res.provider[i].type =='serviceUser') {
+            //
+            // }else {
+            //
+            // }
+
             if ((res.provider)== null) {
               window.location('home.blade.php');
             }
+            if (res.provider[i].type =='admin' || res.provider[i].type =='serviceUser') {
+
+            }else {
+
+
 
             // console.log(res.provider.);
           var  glatval=val.latitude;
@@ -196,10 +208,26 @@ $(document).ready(function(){
           '<p>'+gskill+'</p></div>';
           // console.log(gskill);
 
-
+          }
           var temp = '';
+          //console.log(res.provider.length+"lenght");
           // Loop for creating cards of users
           for (var i = 0; i <res.provider.length; i++) {
+            // console.log(res.provider[i].type+" " +res.provider[i].name);
+            if (res.provider[i].type =='admin' || res.provider[i].type =='serviceUser') {
+
+            }else {
+
+
+            if (res.provider[i].latitude == null) {
+
+              // if (res.provider[i].type != 'admin') {
+              //
+              // }
+
+            }
+            else{
+            // console.log(res.provider[i]+"ata");
             var profile_img = '';
             if (res.provider[i].image == null) {
             profile_img = '<img src="http://localhost:8000/img/profile-logo.jpg" class="pf-image" alt="">'
@@ -242,6 +270,8 @@ $(document).ready(function(){
       	            '</div>'+
       	        '</div>';
           }
+        }
+        }
 
           document.getElementById('show_all').innerHTML = temp;
           var  GLatlng = new google.maps.LatLng(glatval, glngval);
@@ -249,8 +279,8 @@ $(document).ready(function(){
             // alert(GLatlng);
 
 
-            createMarker(GLatlng, gicn, gname, contentString);
 
+            createMarker(GLatlng, gicn, gname, contentString);
           });
         }
       });

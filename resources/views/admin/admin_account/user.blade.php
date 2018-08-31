@@ -30,7 +30,7 @@
                                   <td>{{$user->id}}</td>
                                   <td>{{$user->name}}</td>
                                   <td>{{$user->phone}}</td>
-                                  <td>{{$user->skill}}</td>
+                                  <td>{{$user->type}}</td>
                                   <td>{{$user->created_at}}</td>
                                   <td><a href="{{url('/admin/editUser/'.$user->id)}}"><span class='fa fa-edit'></td>
                                   <td><a data-toggle="modal"  onclick="delete_user('{{$user->id}}');"><span class='fa fa-remove' style="color: red;"></td>

@@ -34,7 +34,15 @@
     <input type="password" name="password_confirmation" id="confirm_password" onkeyup='check();' class="form-control"  placeholder="Confirm Password" required="">
     <span id='message'></span>
   </div>
-   <div>
+  <label>User Type</label>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+    <select class="form-control" name="type" id="type">
+      <option value="provider">Provider</option>
+      <option value="serviceUser">Service User</option>
+    </select>
+  </div><br>
+   <div class="">
     <input type="checkbox" name="agree" value="agree" id="agree" required="" >
      <label for="agree">
         <p class="terms-condition"> <a href="#">Terms of Services</a> (TOS) <a href="#">Privacy Policy</a>

@@ -7,6 +7,7 @@ use App\Register;
 use App\Admin;
 use App\Contact;
 use Mail;
+use Carbon;
 use DB;
 class RegisterController extends Controller
 {
@@ -76,16 +77,17 @@ class RegisterController extends Controller
     $user->phone  = $request->input('phone');
     $user->password  = md5($request->input('password'));
     $user->email = $request->input('email');
+    $user->type = $request->input('type');
     $user->token = $request->_token;
 
-    Mail::send('mail.verify',['token' =>$request->_token],
-      function ($message) use ($toemail)
-      {
-
-        $message->subject('Service-Provider.com - Account Verifaction');
-        $message->from('nabeelirbab@gmail.com', 'E-dehari');
-        $message->to($toemail);
-      });
+    // Mail::send('mail.verify',['token' =>$request->_token],
+    //   function ($message) use ($toemail)
+    //   {
+    //
+    //     $message->subject('Service-Provider.com - Account Verifaction');
+    //     $message->from('nabeelirbab@gmail.com', 'E-dehari');
+    //     $message->to($toemail);
+    //   });
       $user->save();
       return redirect('/login')->with('success','Please verify your account');
 
@@ -221,9 +223,14 @@ class RegisterController extends Controller
           // $request->session()->put('ses', $user1->id);
           // $request->session()->put('name', $user1->name);
           // $val = $request->session()->get('ses');
+          $id= $request->session()->get('u_session')->id;
+          $user_data = DB::table('historys')
+                  ->join('registers', 'historys.provider_id', '=', 'registers.id')
+                  ->where('historys.user_id', '=', $id)
+                  ->get();
 
           $user = Register::find($val->id);
-          return view('user_profile.view', compact('user'));
+          return view('user_profile.view', compact('user', 'user_data'));
 
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
@@ -338,13 +345,16 @@ public function searchProviders(Request $request)
 
     again:
       $distan=$km*111;
+
     $order1 = Register::selectRaw("*,
                 ( 6371 * acos( cos( radians(" . $latitude . ") ) *
                 cos( radians(latitude) ) *
                 cos( radians(longitude) - radians(" . $longitude . ") ) +
                 sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
+
     if (empty($skill)) {
     $providers=$order1->where('distan','<=',$distan);
+    // $providers=$order1;
     }
     else {
       $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
@@ -366,6 +376,7 @@ public function searchProviders(Request $request)
         "provider"=> $providers
         // "order"=> $order
       );
+      //dd($obj);
        echo json_encode($obj);
     }
   }
@@ -404,6 +415,50 @@ public function searchProviders(Request $request)
   public function contactUpdate(Request $req, $id)
   {
     return 112;
+  }
+
+
+  public function user_hire(Request $request, $id)
+  {
+    // if($request->session()->has('u_session')){
+    // $userinfo= $request->session()->get('u_session')->userId;
+      $nameinfo['user_id']= $request->session()->get('u_session')->id;
+      $nameinfo['provider_id'] = $request->id;
+      // dd($nameinfo['user_id']);
+      $mytime = Carbon\Carbon::now();
+      $mytime->toDateTimeString();
+      $nameinfo['created_at'] = $mytime;
+      $nameinfo['updated_at'] = $mytime;
+      // dd($nameinfo['created_at']);
+      $user_info=DB::table('historys')->insert($nameinfo);
+      // dd($user_info);
+
+      // $user_get=DB::table('registers')->where('id',$id)->first();
+      return redirect('/')->with('success', 'you have hire a provider');
+    // }else {
+    //   return redirect('/accounts/login');
+    // }
+
+  }
+
+
+
+
+  public function show_provider(Request $request)
+  {
+    // if($request->session()->has('u_session')){
+    $id= $request->session()->get('u_session')->id;
+    // dd($id);
+    $user_data = DB::table('historys')
+            ->join('registers', 'historys.provider_id', '=', 'registers.id')
+            ->where('historys.user_id', '=', $id)
+            ->get();
+            // dd($users);
+      // return view('user_profile.profile_view', compact('user_data'));
+    // }else {
+    //   return redirect('/accounts/login');
+    // }
+
   }
 
 }

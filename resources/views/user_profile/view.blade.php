@@ -47,7 +47,7 @@
             <!-- Image Loader Ends -->
 
             <h4>Basic Information</h4>
-            <div class="eo-details">
+            <div class="eo-details provider s_user_hide">
               <span>Skills:</span> {{$user->skill}}
             </div>
             <div class="eo-details">
@@ -59,15 +59,18 @@
             <div class="eo-details">
               <span>Phone:</span> {{ $user->phone }}
             </div>
-            <div class="eo-details">
+            <div class="eo-details provider s_user_hide">
               <span>Experience:</span>{{ $user->experience }}
             </div>
-            <div class="eo-details">
+            <div class="eo-details provider s_user_hide">
               <span>Examination Fee:</span> {{$user->fee}}  Rs.
             </div>
           </div>
-          <div class="col-md-6 eo-section">    <!-- edit buttion -->
+          <div class="col-md-5 eo-section">    <!-- edit buttion -->
             <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+          </div>
+          <div class="col-md-1 eo-section">    <!-- edit buttion -->
+            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
           </div>
           <div class="eo-edit-section">   <!-- Edit section start -->
             <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
@@ -80,10 +83,10 @@
                     <input type="text" class="form-control" name="name" id="companyName" placeholder="Name" value="{{ $user->name }}" required>
                   </div>
                 </div><br><br><br>
-                <div class="form-group">     <!-- Skill slection -->
+                <div class="form-group provider">     <!-- Skill slection -->
                   <label class="control-label col-sm-3 col-xs-12">Skills</label>
                   <div class="col-sm-9 pnj-form-field">
-                    <select class="form-control select2" name="skill" required="" >
+                    <select class="form-control select2" name="skill">
                       <?php if (!empty($user->skill)): ?>
                         <option value="{{ $user->skill }}"selected> {{ $user->skill }}</option>
                       <?php else: ?>
@@ -107,7 +110,7 @@
                     <input type="text" class="form-control" name="phone" placeholder="Phone" value="{{ $user->phone}}" required>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group pwd">
                   <label class="control-label col-sm-3 col-xs-12">Password</label>
                   <div class="col-sm-9 pnj-form-field">
                     <input type="password" class="form-control" name="password" placeholder="Password" value="{{ $user->password }}">
@@ -154,16 +157,16 @@
                     <input class="field form-control" name="city" value="{{$user->city}}"  id="locality"></input>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group provider">
                   <label class="control-label col-sm-3 col-xs-12">Fee</label>
                   <div class="col-sm-9 pnj-form-field">
                     <input type="text" class="form-control" name="fee" placeholder="1000" value="{{ $user->fee }}">
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group provider">
                   <label class="control-label col-sm-3 col-xs-12">Experience</label>
                   <div class="col-sm-9 pnj-form-field">
-                    <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}" required>
+                    <input type="text" class="form-control" name="experience" placeholder="2 Years" value="{{ $user->experience }}">
                   </div>
                 </div>
 
@@ -184,13 +187,13 @@
   </div>    <!-- eo-box end -->
 
   <!-- about editor -->
-  <div class="eo-box eo-about" id="eo-about">
+  <div class="eo-box eo-about provider" id="eo-about" >
     <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
     <h3 class="eo-about-heading">About Me</h3>
     <div class="eo-about-org" style="padding-left:30px">
       <p><span></span></p>
     </div>
-    <div class="eo-about-editor"> <!-- about editior -->
+    <div class="eo-about-editor provider"> <!-- about editior -->
       <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
         <input type="hidden" name="" class="token">
         <div class="form-group" style="padding-left:20px">
@@ -199,7 +202,7 @@
             <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 provider">
           <div class="row">
             <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
               <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button>
@@ -213,6 +216,60 @@
     </script>
   </div>  <!-- about editior end -->
 </div>   <!-- about div end -->
+  <!-- History editor -->
+  <div class="eo-box eo-about s_user" id="eo-about1" >
+
+    <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+    <h3 class="eo-about-heading">History</h3>
+    <div class="eo-about-org" style="padding-left:30px">
+      <p><span></span></p>
+    </div>
+    <div class="eo-about-editor s_user"> <!-- about editior -->
+      @if(count($user_data)>0)
+      @foreach($user_data as $data)
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card">
+          <div class="well well-sm">
+              <div class="row">
+
+                  <div class="col-sm-12 text-center">
+                    <div class="profile-show">
+                        <?php if (!empty($data->image)): ?>
+                          <img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}">
+                          <?php else: ?>
+                              <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}">
+                        <?php endif; ?>
+                    </div>
+
+
+                    </div>
+                  <div class="col-sm-12 col-md-8">
+                      <h4><a href="{{url('profile_view/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                      <!-- Split button -->
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xm-12">
+                          <i class="fa fa-wrench"></i>
+                          &nbsp;
+                          {{$data->skill}}
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xm-12">
+                        <i class="fa fa-map-marker"></i>
+                        &nbsp;&nbsp;
+                        {{$data->location}}
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      @endforeach
+      @endif
+      <script>
+      // CKEDITOR.replace( 'companyAbout' );
+    </script>
+  </div>  <!-- about editior end -->
+</div>   <!-- History div end -->
 </div> 	<!-- container end -->
 <script>
 function initializeAutocomplete(){
@@ -255,12 +312,35 @@ async defer></script>
 <!-- hide profile image edit button  -->
 <script>
 $(document).ready(function () {
+$(".pwd").hide();
+  <?php
+  $session = session()->get('u_session');
+  if ($session->type == 'serviceUser') { ?>
+    $(".provider").hide();
+    <?php  }
+    ?>
+  });
+</script>
+<script>
+$(document).ready(function () {
+  <?php
+  $session = session()->get('u_session');
+  if ($session->type == 'provider') { ?>
+    $(".s_user").hide();
+    // $(".provider").show();
+    <?php  }
+    ?>
+  });
+</script>
+<script>
+$(document).ready(function () {
 
   <?php
   $id = session()->get('u_session')->id;
   if ($id != $user->id) { ?>
     $("#edit_btn").hide();
     $("#eo-about").hide();
+    $("#eo-about1").hide();
     $("#cover_change").hide();
     $("#profile_img_change").hide();
     <?php  }
@@ -417,5 +497,8 @@ function removecompanypic(){
 
 </script>
 
+<script>
+
+</script>
 
 @endsection
