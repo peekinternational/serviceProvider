@@ -32,6 +32,25 @@ class RegisterController extends Controller
       //
   }
 
+  public function change_status(Request $request, $token)
+  {
+    dd($request->all());
+    $token =trim($request->segment(2));
+    // dd($token);
+    // $token = $request->_token;
+    $user['status'] = 'Y';
+    $get_token=DB::table('registers')->where('token',$token)->first();
+
+    if (count($get_token)>0) {
+      $getuser=DB::table('registers')->where('token',$token)->update($user);
+      return redirect('/login')->with('success','Your account has been verified');
+    }else {
+      return redirect('/login')->with('red-alert','Your account is not created');
+
+    }
+
+  }
+
   /**
    * Store a newly created resource in storage.
    *

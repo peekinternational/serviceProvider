@@ -77,6 +77,7 @@ Route::post('changepwd/{id}', 'RegisterController@changePassword');
  Route::post('sendemail', 'RegisterController@ship');
 Route::post('contact', 'RegisterController@contact');
 Route::post('change/contact/{id}', 'RegisterController@contactUpdate');
+Route::get('verify_account/{token}', 'RegisterController@change_status');
 
 
 //Admin
