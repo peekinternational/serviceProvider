@@ -128,6 +128,7 @@
                     <div id="locationField">
                       <input id="locality1" name="location" class="form-control" value="{{$user->location}}" placeholder="Select your location"
                       type="text"></input>
+                      <!-- <input type="hidden" name="" value="{{$user->location}}"> -->
                     </div>
                   </div>
                 </div>
@@ -218,6 +219,7 @@
 </div>   <!-- about div end -->
 </div> 	<!-- container end -->
 <script>
+
 function initializeAutocomplete(){
   var input = document.getElementById('locality1');
   // var options = {

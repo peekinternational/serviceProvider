@@ -173,7 +173,7 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
-                      <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" >SAVE</button>
+                      <button type="submit" class="btn btn-primary col-md-3" onClick="initializeAutocomplete();"  id="page_submit" name="save" >SAVE</button>
                       <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-edit-section').hide(); $('.eo-section').show()">CANCEL</button>
                     </div>
                   </div>
@@ -273,6 +273,8 @@
 </div> 	<!-- container end -->
 <script>
 function initializeAutocomplete(){
+  // alert("abc");
+  // var input = $('#locality');
   var input = document.getElementById('locality1');
   // var options = {
   //   types: ['(regions)'],

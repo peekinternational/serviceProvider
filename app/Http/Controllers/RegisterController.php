@@ -84,10 +84,10 @@ class RegisterController extends Controller
     //   function ($message) use ($toemail)
     //   {
     //
-    //     $message->subject('Service-Provider.com - Account Verifaction');
-    //     $message->from('nabeelirbab@gmail.com', 'E-dehari');
-    //     $message->to($toemail);
-    //   });
+        $message->subject('Service-Provider.com - Account Verifaction');
+        $message->from('nabeelirbab@gmail.com', 'Service-Provider');
+        $message->to($toemail);
+      });
       $user->save();
       return redirect('/login')->with('success','Please verify your account');
 
