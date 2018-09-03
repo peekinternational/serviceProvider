@@ -80,12 +80,12 @@ class RegisterController extends Controller
     $user->type = $request->input('type');
     $user->token = $request->_token;
 
-    // Mail::send('mail.verify',['token' =>$request->_token],
-    //   function ($message) use ($toemail)
-    //   {
+    Mail::send('mail.verify',['token' =>$request->_token],
+      function ($message) use ($toemail)
+      {
     //
         $message->subject('Service-Provider.com - Account Verifaction');
-        $message->from('nabeelirbab@gmail.com', 'Service-Provider');
+        $message->from('nabeelirbab@gmail.com', 'E-dehari');
         $message->to($toemail);
       });
       $user->save();
