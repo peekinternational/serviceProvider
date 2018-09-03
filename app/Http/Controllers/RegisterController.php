@@ -240,14 +240,21 @@ class RegisterController extends Controller
           // $request->session()->put('name', $user1->name);
           // $val = $request->session()->get('ses');
           $id= $request->session()->get('u_session')->id;
+          $type= $request->session()->get('u_session')->type;
           $user_data = DB::table('historys')
                   ->join('registers', 'historys.provider_id', '=', 'registers.id')
                   ->where('historys.user_id', '=', $id)
                   ->get();
 
           $user = Register::find($val->id);
-          return view('user_profile.view', compact('user', 'user_data'));
+          // $user_info = Register::wheretype($type)
+          // return view('user_profile.view', compact('user', 'user_data'));
 
+          if ($type == 'admin') {
+            return redirect('/admin/dashboard');
+          }else {
+            return view('user_profile.view', compact('user', 'user_data'));
+          }
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
         }

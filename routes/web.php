@@ -87,10 +87,10 @@ Route::get('show_hire_provider', 'RegisterController@show_provider');
 
 //Admin
 
-// Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
-Route::get('/admin/dashboard', function () {
-    return view('admin.admin_account.dashboard');
-});
+Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
+// Route::get('/admin/dashboard', function () {
+//     return view('admin.admin_account.dashboard');
+// });
 Route::get('/admin/user', 'frontend\Admin@show_user');
 Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
