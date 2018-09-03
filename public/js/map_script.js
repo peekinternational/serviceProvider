@@ -244,12 +244,12 @@ $(document).ready(function(){
               '<div class="">'+
                      '<div class="col-sm-12 text-center">'+
                     '<div class="profile-show">'+
-                    '<a href="http://localhost:8000/profile_view/'+res.provider[i].id+ '">'+ profile_img+ '</a>'+
+                    '<a href="http://localhost:8000/profile_view_other/'+res.provider[i].id+ '">'+ profile_img+ '</a>'+
                     // profile_img+
                     '</div>'+
                     '</div>'+
                   '<div class="col-sm-12 col-md-8">&nbsp;'+
-                  '<h4><a href="http://localhost:8000/profile_view/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
+                  '<h4><a href="http://localhost:8000/profile_view_other/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
                       <!-- Split button -->
                       '<div class="row">'+
                         '<div class="col-md-12 col-sm-12 col-xm-12">'+

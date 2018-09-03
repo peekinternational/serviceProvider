@@ -80,14 +80,14 @@ class RegisterController extends Controller
     $user->type = $request->input('type');
     $user->token = $request->_token;
 
-    // Mail::send('mail.verify',['token' =>$request->_token],
-    //   function ($message) use ($toemail)
-    //   {
-    //
-    //     $message->subject('Service-Provider.com - Account Verifaction');
-    //     $message->from('nabeelirbab@gmail.com', 'E-dehari');
-    //     $message->to($toemail);
-    //   });
+    Mail::send('mail.verify',['token' =>$request->_token],
+      function ($message) use ($toemail)
+      {
+
+        $message->subject('Service-Provider.com - Account Verifaction');
+        $message->from('nabeelirbab@gmail.com', 'E-dehari');
+        $message->to($toemail);
+      });
       $user->save();
       return redirect('/login')->with('success','Please verify your account');
 
@@ -104,11 +104,23 @@ class RegisterController extends Controller
 
    // Show Profile of User on click
 
-  public function show($id)
+  public function show(Request $request, $id)
   {
     // dd($id);
       $user = Register::find($id);
-      return view('user_profile.view', compact('user'));
+      $id= $request->session()->get('u_session')->id;
+      $user_data = DB::table('historys')
+              ->join('registers', 'historys.provider_id', '=', 'registers.id')
+              ->where('historys.user_id', '=', $id)
+              ->get();
+      return view('user_profile.view', compact('user','user_data'));
+  }
+
+  public function show_other($id)
+  {
+    // dd($id);
+      $user = Register::find($id);
+      return view('user_profile.view_other', compact('user'));
   }
 
   /**

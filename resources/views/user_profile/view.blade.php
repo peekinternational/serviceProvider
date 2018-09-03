@@ -67,10 +67,10 @@
             </div>
           </div>
           <div class="col-md-5 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
           </div>
           <div class="col-md-1 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
+            <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
           </div>
           <div class="eo-edit-section">   <!-- Edit section start -->
             <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
@@ -217,14 +217,14 @@
   </div>  <!-- about editior end -->
 </div>   <!-- about div end -->
   <!-- History editor -->
-  <div class="eo-box eo-about s_user" id="eo-about1" >
+  <div class="eo-box eo-about s_user history" id="eo-about1" >
 
-    <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+    <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
     <h3 class="eo-about-heading">History</h3>
     <div class="eo-about-org" style="padding-left:30px">
       <p><span></span></p>
     </div>
-    <div class="eo-about-editor s_user"> <!-- about editior -->
+    <div class="eo-about-editor1 history"> <!-- about editior -->
       @if(count($user_data)>0)
       @foreach($user_data as $data)
       <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card">
@@ -234,16 +234,16 @@
                   <div class="col-sm-12 text-center">
                     <div class="profile-show">
                         <?php if (!empty($data->image)): ?>
-                          <img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}">
+                          <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}"></a>
                           <?php else: ?>
-                              <img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}">
+                            <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}"></a>
                         <?php endif; ?>
                     </div>
 
 
                     </div>
                   <div class="col-sm-12 col-md-8">
-                      <h4><a href="{{url('profile_view/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                      <h4><a href="{{url('profile_view_other/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
                       <!-- Split button -->
                       <div class="row">
                         <div class="col-md-12 col-sm-12 col-xm-12">
@@ -314,6 +314,7 @@ async defer></script>
 $(document).ready(function () {
 $(".pwd").hide();
   <?php
+
   $session = session()->get('u_session');
   if ($session->type == 'serviceUser') { ?>
     $(".provider").hide();
@@ -326,7 +327,8 @@ $(document).ready(function () {
   <?php
   $session = session()->get('u_session');
   if ($session->type == 'provider') { ?>
-    $(".s_user").hide();
+    $(".history").hide();
+    // $(".s_user").hide();
     // $(".provider").show();
     <?php  }
     ?>
@@ -343,6 +345,17 @@ $(document).ready(function () {
     $("#eo-about1").hide();
     $("#cover_change").hide();
     $("#profile_img_change").hide();
+    <?php  }
+    ?>
+  });
+</script>
+<script>
+$(document).ready(function () {
+
+  <?php
+  $id = session()->get('u_session')->id;
+  if ($id == $user->id) { ?>
+    $("#hire_btn").hide();
     <?php  }
     ?>
   });

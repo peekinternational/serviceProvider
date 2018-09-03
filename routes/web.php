@@ -66,6 +66,7 @@ Route::post('updateProfile', 'RegisterController@updateProfile');
 
 
 Route::get('profile_view/{id}', 'RegisterController@show');
+Route::get('profile_view_other/{id}', 'RegisterController@show_other');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
 Route::post('imageUpload/{id}', 'RegisterController@imageUpload');
