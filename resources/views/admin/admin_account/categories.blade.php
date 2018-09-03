@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">All Users</h4>
+                        <h4 class="title">All Categories</h4>
                         <div class="col-md-2 col-md-offset-10">
                           <a href="{{url('/admin/add_category')}}" class="btn btn-success" type="button" name="button" style="Background: #87CB16; color: white; margin-top: -45px;">Add New</a>
                         </div>

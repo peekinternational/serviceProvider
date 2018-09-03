@@ -113,7 +113,8 @@ class RegisterController extends Controller
               ->join('registers', 'historys.provider_id', '=', 'registers.id')
               ->where('historys.user_id', '=', $id)
               ->get();
-      return view('user_profile.view', compact('user','user_data'));
+              $user_skill_info=DB::table('skills')->get();
+      return view('user_profile.view', compact('user','user_data','user_skill_info'));
   }
 
   public function show_other($id)
@@ -204,7 +205,8 @@ class RegisterController extends Controller
 //     session()->flush();
 //     session()->forget('success');
      // $success='Information Updated successfully';
-      return view('user_profile.view',compact('user','user_data'));
+     $user_skill_info=DB::table('skills')->get();
+      return view('user_profile.view',compact('user','user_data','user_skill_info'));
 // exit(1);
 
   }
@@ -245,6 +247,7 @@ class RegisterController extends Controller
                   ->join('registers', 'historys.provider_id', '=', 'registers.id')
                   ->where('historys.user_id', '=', $id)
                   ->get();
+                  $user_skill_info=DB::table('skills')->get();
 
           $user = Register::find($val->id);
           // $user_info = Register::wheretype($type)
@@ -253,7 +256,7 @@ class RegisterController extends Controller
           if ($type == 'admin') {
             return redirect('/admin/dashboard');
           }else {
-            return view('user_profile.view', compact('user', 'user_data'));
+            return view('user_profile.view', compact('user', 'user_data','user_skill_info'));
           }
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');

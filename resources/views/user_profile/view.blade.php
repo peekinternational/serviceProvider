@@ -86,21 +86,10 @@
                 <div class="form-group provider">     <!-- Skill slection -->
                   <label class="control-label col-sm-3 col-xs-12">Skills</label>
                   <div class="col-sm-9 pnj-form-field">
-                    <select class="form-control select2" name="skill">
-                      <?php if (!empty($user->skill)): ?>
-                        <option value="{{ $user->skill }}"selected> {{ $user->skill }}</option>
-                      <?php else: ?>
-                        <option value="" selected> Select Skill</option>
-                      <?php endif; ?>
-                      <option value="Plumber"> Plumber</option>
-                      <option value="Electrician" >Electrician</option>
-                      <option value="Welder "> Welder</option>
-                      <option value="Painter" >Painter</option>
-                      <option value="Carpenter"> Carpenter</option>
-                      <option value="Mechanic" >Mechanic</option>
-                      <option value="Cook" >cook</option>
-                      <option value="Gardener"> Gardener</option>
-                      <option value="Sweeper" >Sweeper</option>
+                    <select class="form-control select2" name="skill">      
+                      <?php foreach ($user_skill_info as $value): ?>
+														<option value="{{$value->skill_name}}" {{ $value->skill_name == $user->skill ? 'selected="selected"' : '' }}>{{$value->skill_name}}</option>
+													<?php endforeach; ?>
                     </select>
                   </div>
                 </div>   <!-- Skill slection end -->
