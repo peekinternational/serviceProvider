@@ -109,10 +109,10 @@ class RegisterController extends Controller
     // dd($id);
       $user = Register::find($id);
       $session_id= $request->session()->get('u_session')->id;
-      // $user_data = DB::table('historys')
-      //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
-      //         ->where('historys.user_id', '=', $session_id)->groupBy('provider_id')
-      //         ->get()->toArray();
+      $user_data = DB::table('historys')
+              ->join('registers', 'historys.provider_id', '=', 'registers.id')
+              ->where('historys.user_id', '=', $session_id)->groupBy('provider_id')
+              ->get()->toArray();
               $user_data_1 =DB::table('ratings')->select('rating_provider_id',DB::raw('Sum(rating_value) as c_value'))->groupBy('rating_value')->get();
               // $user_data_1 =DB::table('ratings')->groupBy('rating_provider_id')->count();
 
