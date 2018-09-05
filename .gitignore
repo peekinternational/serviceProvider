@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/img/cover
+/public/img/gallery
 /public/img/profile
 
 /storage/*.key

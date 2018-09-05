@@ -82,6 +82,10 @@ Route::get('verify_account/{token}', 'RegisterController@change_status');
 
 Route::get('/user/hire/{id}', 'RegisterController@user_hire');
 Route::get('show_hire_provider', 'RegisterController@show_provider');
+Route::post('/user/rating', 'RegisterController@user_rating');
+Route::post('gallery_imgUpload', 'RegisterController@gallery_imageUpload');
+
+
 
 
 

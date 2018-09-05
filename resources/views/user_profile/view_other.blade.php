@@ -187,6 +187,64 @@
     </div>
   </div>    <!-- eo-box end -->
 
+
+  <!-- about Gallery -->
+  <div class="eo-box eo-about">
+    <!-- <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+    <h3 class="eo-about-heading">Gallery</h3>
+    <div class="eo-about-org" style="padding-left:30px">
+      <p><span></span></p>
+    </div>
+    <div class=""> <!-- about editior -->
+      <div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>Please Enter Category Name and Picture</span>
+      </div>
+      <div id="worker_success" class="alert alert-success alert-dismissible" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>New image added Successfully</span>
+      </div>
+      <div class="individual-form hide_other">
+
+      <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
+        {{csrf_field()}}
+        <input type="hidden" name="" class="token">
+        <div class="form-group" style="padding-left:20px">
+          <label class="control-label col-sm-3">&nbsp;</label>
+          <!-- <div class="col-sm-7 pnj-form-field"> -->
+            <!-- <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea> -->
+            <div class="form-group col-md-2">
+              <label>Working Picture</label><br>
+              <label class="btn btn-file" for="w_image">Upload Picture
+                <input type="file" name="w_image" id="w_image">
+              </label>
+            </div>
+          <!-- </div> -->
+        </div>
+
+      </form>
+      </div>
+      @if(count($user_gallery)>0)
+      @foreach(($user_gallery) as $gallery)
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+          <div class="">
+              <div class="row">
+
+                  <div class="col-sm-12 text-center">
+                    <div class="profile-show">
+                        <img src="{{url('img/gallery/'.$gallery->g_image)}}" class="pf-image" alt="">
+                    </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      @endforeach
+      @endif
+
+
+</div>   <!-- about div end -->
+</div>  <!-- about Gallery end -->
+
   <!-- about editor -->
   <div class="eo-box eo-about" id="eo-about" >
     <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
@@ -296,6 +354,7 @@ $(document).ready(function () {
     $("#edit_btn").hide();
     $("#eo-about").hide();
     $("#eo-about1").hide();
+    $(".hide_other").hide();
     $("#cover_change").hide();
     $(".provider").show();
     $("#profile_img_change").hide();

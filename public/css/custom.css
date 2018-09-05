@@ -24,6 +24,20 @@ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 align: center;
 overflow: hidden;
 }
+#w_image{
+	cursor: pointer;
+	opacity: 0;
+	display: none;
+  background: black;
+}
+.btn-file{
+	background: gray !important;
+    padding: 9px 20px;
+    width: 100%;
+    border-radius: 0;
+    border: #FF6D0B !important;
+    color: white !important;
+}
 .pf-image {
   width: 100%;}
 .profile-show {
@@ -35,6 +49,13 @@ overflow: hidden;
   overflow: hidden;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.profile_card_1 {
+  height: auto;
+}
+.rating_btn {
+  margin-left: 170px;
+margin-top: -60px;
 }
 .loaderIcon {
   position: absolute;
@@ -149,6 +170,7 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
     border-top: 1px solid rgb(221, 221, 221);
 }
 .well.well-sm{height: 350px; overflow: hidden;}
+/* .well.well-sm-1{height: 350px; overflow: hidden;} */
 .panel-footer{height: 45px;}
 .table-user-information > tbody > tr:first-child {
     border-top: 0;

@@ -108,20 +108,29 @@ class RegisterController extends Controller
   {
     // dd($id);
       $user = Register::find($id);
-      $id= $request->session()->get('u_session')->id;
+      $session_id= $request->session()->get('u_session')->id;
       $user_data = DB::table('historys')
               ->join('registers', 'historys.provider_id', '=', 'registers.id')
-              ->where('historys.user_id', '=', $id)
-              ->get();
+              // ->join('ratings', 'historys.provider_id', '=', 'ratings.rating_provider_id')
+              ->where('historys.user_id', '=', $session_id)->groupBy('provider_id')
+              ->get()->toArray();
+              $user_data_1 =DB::table('ratings')->select('rating_provider_id',DB::raw('Sum(rating_value) as c_value'))->groupBy('rating_value')->get();
+              // $user_data_1 =DB::table('ratings')->groupBy('rating_provider_id')->count();
+
+              // dd($user_data_1);
+              $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
+              // dd($user_gallery);
               $user_skill_info=DB::table('skills')->get();
-      return view('user_profile.view', compact('user','user_data','user_skill_info'));
+
+      return view('user_profile.view', compact('user','user_data','user_skill_info','user_gallery'));
   }
 
   public function show_other($id)
   {
     // dd($id);
       $user = Register::find($id);
-      return view('user_profile.view_other', compact('user'));
+        $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
+      return view('user_profile.view_other', compact('user', 'user_gallery'));
   }
 
   /**
@@ -166,6 +175,8 @@ class RegisterController extends Controller
               ->join('registers', 'historys.provider_id', '=', 'registers.id')
               ->where('historys.user_id', '=', $id)
               ->get();
+      $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
+
       $user = Register::find($id);
       // dd($id);
       // return $user;
@@ -206,7 +217,7 @@ class RegisterController extends Controller
 //     session()->forget('success');
      // $success='Information Updated successfully';
      $user_skill_info=DB::table('skills')->get();
-      return view('user_profile.view',compact('user','user_data','user_skill_info'));
+      return view('user_profile.view',compact('user','user_data','user_skill_info','user_gallery'));
 // exit(1);
 
   }
@@ -248,6 +259,7 @@ class RegisterController extends Controller
                   ->where('historys.user_id', '=', $id)
                   ->get();
                   $user_skill_info=DB::table('skills')->get();
+            $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
 
           $user = Register::find($val->id);
           // $user_info = Register::wheretype($type)
@@ -256,7 +268,7 @@ class RegisterController extends Controller
           if ($type == 'admin') {
             return redirect('/admin/dashboard');
           }else {
-            return view('user_profile.view', compact('user', 'user_data','user_skill_info'));
+            return view('user_profile.view', compact('user', 'user_data','user_skill_info','user_gallery'));
           }
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
@@ -356,6 +368,27 @@ public function coverUpload(Request $request, $id)
   $user->cover_img = $coverPicture;
 
   $user->save();
+  echo $coverPicture;
+}
+
+// Cover Upload function calling through ajax
+public function gallery_imageUpload(Request $request)
+{
+  $id= $request->session()->get('u_session')->id;
+  // dd($id);
+  $nameinfo['g_provider_id'] = $id;
+  // $nameinfo['g_image'] = $request->get('gal_image');
+
+
+
+  $image = $request->file('gal_image');
+
+  $coverPicture = 'gallery-'.time().'-'.rand(000000,999999).'.'.$image->getClientOriginalExtension();
+  $destinationPath = public_path('img/gallery');
+  $image->move($destinationPath, $coverPicture);
+  $nameinfo['g_image'] = $coverPicture;
+
+  $user_info=DB::table('gallerys')->insert($nameinfo);
   echo $coverPicture;
 }
 
@@ -484,6 +517,29 @@ public function searchProviders(Request $request)
     // }else {
     //   return redirect('/accounts/login');
     // }
+
+  }
+
+  public function user_rating(Request $request)
+  {
+    // $userinfo= $request->session()->get('u_session')->userId;
+    // dd($request->all());
+      $id= $request->session()->get('u_session')->id;
+      $nameinfo['rating_user_id']= $request->session()->get('u_session')->id;
+      $nameinfo['rating_provider_id'] = $request->get('provider_id');
+      $nameinfo['rating_value'] = $request->get('rating');
+      // dd($nameinfo['value']);
+      $user_info=DB::table('ratings')->insert($nameinfo);
+      // dd($user_info);
+
+      // $user_get=DB::table('registers')->where('id',$id)->first();
+      // echo $user_info;
+      if($user_info == 1){
+        echo "1";
+      }else {
+        echo "0";
+      }
+
 
   }
 

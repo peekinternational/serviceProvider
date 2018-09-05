@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+$rating='';
 
+ ?>
 <!--     Profile view       -->
 <div class="container " id="custom_profile">
   <div class="eo-box">
@@ -86,7 +89,7 @@
                 <div class="form-group provider">     <!-- Skill slection -->
                   <label class="control-label col-sm-3 col-xs-12">Skills</label>
                   <div class="col-sm-9 pnj-form-field">
-                    <select class="form-control select2" name="skill">      
+                    <select class="form-control select2" name="skill">
                       <?php foreach ($user_skill_info as $value): ?>
 														<option value="{{$value->skill_name}}" {{ $value->skill_name == $user->skill ? 'selected="selected"' : '' }}>{{$value->skill_name}}</option>
 													<?php endforeach; ?>
@@ -205,6 +208,74 @@
     </script>
   </div>  <!-- about editior end -->
 </div>   <!-- about div end -->
+
+
+  <!-- about Gallery -->
+  <div class="eo-box eo-about provider">
+    <!-- <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+    <h3 class="eo-about-heading">Gallery</h3>
+    <div class="eo-about-org" style="padding-left:30px">
+      <p><span></span></p>
+    </div>
+    <div class=""> <!-- about editior -->
+      <div id="w_error" class="alert alert-danger alert-dismissible" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>Please Enter Category Name and Picture</span>
+      </div>
+      <div id="worker_success" class="alert alert-success alert-dismissible" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>New image added Successfully</span>
+      </div>
+      <div class="individual-form provider">
+
+      <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
+        {{csrf_field()}}
+        <input type="hidden" name="" class="token">
+        <div class="form-group" style="padding-left:20px">
+          <label class="control-label col-sm-3">&nbsp;</label>
+          <!-- <div class="col-sm-7 pnj-form-field"> -->
+            <!-- <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea> -->
+            <div class="form-group col-md-2">
+              <label>Working Picture</label><br>
+              <label class="btn btn-file" for="w_image">Upload Picture
+                <input type="file" name="w_image" id="w_image">
+              </label>
+            </div>
+          <!-- </div> -->
+        </div>
+        <div class="col-md-12 provider">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+              <!-- <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button> -->
+              <!-- <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button> -->
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+      @if(count($user_gallery)>0)
+      @foreach(($user_gallery) as $gallery)
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+          <div class="">
+              <div class="row">
+
+                  <div class="col-sm-12 text-center">
+                    <div class="profile-show">
+                        <img src="{{url('img/gallery/'.$gallery->g_image)}}" class="pf-image" alt="">
+                    </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      @endforeach
+      @endif
+
+
+</div>   <!-- about div end -->
+</div>  <!-- about Gallery end -->
+
+
+
   <!-- History editor -->
   <div class="eo-box eo-about s_user history" id="eo-about1" >
 
@@ -216,7 +287,44 @@
     <div class="eo-about-editor1 history"> <!-- about editior -->
       @if(count($user_data)>0)
       @foreach($user_data as $data)
-      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card">
+
+      <!-- Modal -->
+  <div class="modal fade" id="myModal{{$data->id}}" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rating</h4>
+        </div>
+        <form class="" action="#" id="rating_form{{$data->id}}">
+          {{csrf_field()}}
+        <div class="modal-body">
+          <p>Do you want to give your rating to {{$data->name}}.</p>
+
+            <div class="form-group">
+            <select class="form-control" name="rating_drpdwn" id="rating_drpdwn{{$data->id}}">
+              <option value="5">Excellent</option>
+              <option value="4">Very Good</option>
+              <option value="3">Good</option>
+              <option value="2">Average</option>
+              <option value="1">Poor</option>
+            </select>
+            </div>
+            <input type="hidden" name="provider_id" id="provider_id{{$data->id}}" value="{{$data->provider_id}}">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success sub_btn" onclick="new_rating({{$data->id}})">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card_1">
           <div class="well well-sm">
               <div class="row">
 
@@ -236,9 +344,13 @@
                       <!-- Split button -->
                       <div class="row">
                         <div class="col-md-12 col-sm-12 col-xm-12">
+                          <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal{{$data->id}}">Rating</button>
+
                           <i class="fa fa-wrench"></i>
                           &nbsp;
+
                           {{$data->skill}}
+
                       </div>
                       </div>
                       <div class="row">
@@ -246,6 +358,11 @@
                         <i class="fa fa-map-marker"></i>
                         &nbsp;&nbsp;
                         {{$data->location}}
+                        <!-- <div class="Rating"> -->
+
+                        <!-- </div> -->
+
+                        <p>Hire Date: {{$data->created_at}}</p>
                       </div>
                     </div>
                   </div>
@@ -254,6 +371,8 @@
       </div>
       @endforeach
       @endif
+
+
       <script>
       // CKEDITOR.replace( 'companyAbout' );
     </script>
@@ -302,6 +421,7 @@ async defer></script>
 
 <!-- hide profile image edit button  -->
 <script>
+
 $(document).ready(function () {
 $(".pwd").hide();
   <?php
@@ -312,8 +432,8 @@ $(".pwd").hide();
     <?php  }
     ?>
   });
-</script>
-<script>
+
+
 $(document).ready(function () {
   <?php
   $session = session()->get('u_session');
@@ -324,10 +444,9 @@ $(document).ready(function () {
     <?php  }
     ?>
   });
-</script>
-<script>
-$(document).ready(function () {
 
+
+$(document).ready(function () {
   <?php
   $id = session()->get('u_session')->id;
   if ($id != $user->id) { ?>
@@ -339,10 +458,9 @@ $(document).ready(function () {
     <?php  }
     ?>
   });
-</script>
-<script>
-$(document).ready(function () {
 
+
+$(document).ready(function () {
   <?php
   $id = session()->get('u_session')->id;
   if ($id == $user->id) { ?>
@@ -499,10 +617,141 @@ function removecompanypic(){
   });
 }
 
+// var ratng='';
+// $(document).ready(function () {
+//  ratng = <?php echo $rating ?>;
+// console.log(ratng+"wewe");
+// });
+
+function new_rating(id) {
+  // alert(id);
+
+  // alert();
+  // $.ajaxSetup({
+  //   header: {
+  //     'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+  //   }
+  // });
+
+
+        var _token = $("input[name='_token']").val();
+      var provider_id = $('#provider_id'+id).val();
+      var rating = $('#rating_drpdwn'+id).val();
+
+      // alert(rating);
+      form = new FormData();
+      form.append('provider_id', provider_id);
+      form.append('rating', rating);
+      form.append('_token', _token);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/user/rating')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response ==  1) {
+            $('#myModal').hide();
+
+          }
+        }
+      });
+
+}
+
+$(document).ready(function(){
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $(document).on('change','#eo-dp',function(e){
+    if ($('#eo-dp').val()) {
+      e.preventDefault()
+      $('#loaderIcon').show()
+      var user_id="{{$user->id}}";
+
+      var image = $('.pf-image-change')[0].files[0];
+
+      form = new FormData();
+      form.append('profile-image',image);
+      form.append('user_id',user_id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{ url('imageUpload/'.$user->id) }}",
+        success: function(response){
+          console.log(response);
+          if(response){
+
+            $('.eo-c-logo').attr('src','<?= url('img/profile')?>/'+response);
+            $('#loaderIcon').hide();
+          }else {
+            toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
+          }
+
+        }
+      });
+    }
+  });
+});
 </script>
 
-<script>
+<!-- ============================================ -->
+<!-- Cover image using Ajax===================================== -->
 
+<script>
+$(document).ready(function () {
+  $.ajaxSetup({
+    header: {
+      'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+    }
+  });
+  $(document).on("change", "#w_image", function (e) {
+    if ($('#w_image').val()) {
+      e.preventDefault()
+      $('#loaderIcon').show()
+      var _token = $("input[name='_token']").val();
+      // var id = "{{$user->id}}";
+      var gal_image = $('#w_image')[0].files[0];
+
+      form = new FormData();
+      form.append('_token', _token);
+      form.append('gal_image', gal_image);
+      // form.append('id', id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{ url('gallery_imgUpload') }}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('#loaderIcon').hide()
+            $("#worker_success").show();
+            setTimeout(function () {
+              $("#worker_success").hide();
+            },3000);
+            $('.eo-timeline-cover').attr('src','<?=url('img/cover')?>/'+response);
+          }
+        }
+      });
+    }
+  });
+});
 </script>
 
 @endsection
