@@ -18,9 +18,9 @@ class RegisterController extends Controller
    */
 
   public function index()
-  {
+  {   $user_skill_info=DB::table('skills')->get();
       $user = Register::paginate(8);
-      return view('user_profile.people', compact('user'));
+      return view('user_profile.people', compact('user','user_skill_info'));
   }
 
   /**
@@ -31,6 +31,63 @@ class RegisterController extends Controller
   public function create()
   {
       //
+  }
+
+  public function home_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.home', compact('user_skill_info'));
+
+  }
+  public function landing_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.landing_page', compact('user_skill_info'));
+
+  }
+
+
+  public function skill_search_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.skill_search', compact('user_skill_info'));
+
+  }
+
+
+  public function register_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.create', compact('user_skill_info'));
+
+  }
+
+  public function login_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.login', compact('user_skill_info'));
+
+  }
+
+  public function people_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.people', compact('user_skill_info'));
+
+  }
+
+  public function contact_route()
+  {
+    $user_skill_info=DB::table('skills')->get();
+
+    return view('user_profile.contact', compact('user_skill_info'));
+
   }
 
   public function change_status(Request $request, $token)
@@ -134,9 +191,10 @@ class RegisterController extends Controller
   public function show_other($id)
   {
     // dd($id);
+    $user_skill_info=DB::table('skills')->get();
       $user = Register::find($id);
         $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
-      return view('user_profile.view_other', compact('user', 'user_gallery'));
+      return view('user_profile.view_other', compact('user', 'user_gallery','user_skill_info'));
   }
 
   /**

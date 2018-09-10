@@ -21,19 +21,11 @@
 						<div class="col-md-5 form-cols">
 							<!-- <input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills"> -->
 							<select class="form-control select2" name="skill" required="" >
-										<option value="" selected> Select Skill</option>
-								<option value="Plumber"> Plumber</option>
-									 <option value="Electrician" >Electrician</option>
-									 <option value="Welder "> Welder</option>
-									 <option value="Painter" >Painter</option>
-									 <option value="Carpenter"> Carpenter</option>
-									 <option value="Mechanic" >Mechanic</option>
-									 <option value="Cook" >cook</option>
-									 <option value="Gardener"> Gardener</option>
-									 <option value="Sweeper" >Sweeper</option>
+								<?php foreach ($user_skill_info as $value): ?>
+											<option value="{{$value->skill_name}}">{{$value->skill_name}}</option>
+										<?php endforeach; ?>
 							</select>
 						</div>
-						<!-- <input type="text" id="r_url" name="" value="<?php echo $url; ?>"> -->
 						<div class="col-md-5 form-cols" id="locationField">
 							<input id="locality1" name="location" class="form-control"  placeholder="Select your location" type="text" required=""></input>
 						</div>
@@ -67,6 +59,9 @@
 		<!-- Google Search Display -->
 		<div class="container" id="container">
 			<div class="row" id="show_all">
+
+			</div>
+			<div class="" id="pagination_show">
 
 			</div>
 

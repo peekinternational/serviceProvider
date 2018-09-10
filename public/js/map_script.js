@@ -298,9 +298,28 @@ $(document).ready(function(){
       	                '</div>'+
       	            '</div>'+
       	        '</div>';
+
           }
         }
         }
+  //       $('#pagination_show').pagination({
+  //   dataSource: temp,
+  //   pageSize: 2,
+  //   callback: function(data, pagination) {
+  //       // template method of yourself
+  //       var html = template(data);
+  //       dataContainer.html(html);
+  //   }
+  // })
+//         $(function() {
+//     $(pagination_show).pagination({
+//         items: 100,
+//         itemsOnPage: 10,
+//         cssStyle: 'light-theme'
+//     });
+// });
+
+
 
           document.getElementById('show_all').innerHTML = temp;
           var  GLatlng = new google.maps.LatLng(glatval, glngval);

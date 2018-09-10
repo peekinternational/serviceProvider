@@ -25,16 +25,9 @@
   						<div class="col-md-5 form-cols">
   							<!-- <input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills"> -->
   							<select class="form-control select2" name="skill" required="" >
-  										<option value="" selected> Select Skill</option>
-  								<option value="Plumber"> Plumber</option>
-  									 <option value="Electrician" >Electrician</option>
-  									 <option value="Welder "> Welder</option>
-  									 <option value="Painter" >Painter</option>
-  									 <option value="Carpenter"> Carpenter</option>
-  									 <option value="Mechanic" >Mechanic</option>
-  									 <option value="Cook" >cook</option>
-  									 <option value="Gardener"> Gardener</option>
-  									 <option value="Sweeper" >Sweeper</option>
+                  <?php foreach ($user_skill_info as $value): ?>
+  											<option value="{{$value->skill_name}}">{{$value->skill_name}}</option>
+  										<?php endforeach; ?>
   							</select>
   						</div>
   						<div class="col-md-5 form-cols" id="locationField">
@@ -264,7 +257,7 @@
 
 
                             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                              <form action="" method="">
+                              <form action="" method="" id="contact_form">
 
                                 <div class="form-group">
                                   <input type="text" class="form-control" onkeyup="check()" id="name"  name="name"   placeholder="Your Name" />
@@ -392,7 +385,10 @@
        success: function (response) {
          console.log(response);
          if (response == "successfully") {
+           $('#contact_form')[0].reset();
+           // $('#contact_form').val("");
            toastr.success('Thank you for Contacting Us', { timeOut: 5000 });
+
            // window.location.href = "/landing";
          }
        }

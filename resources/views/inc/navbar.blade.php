@@ -21,7 +21,11 @@
         <li><a href="{{url('/')}}">Home</a></li>
         <li class=" dropdown" id="dropdown" ><a href="#">Service Provider <span class="caret"></span> </a>
           <ul class="dropdown-menu dropdown_list" id="dropmenu">
-            <li ><a href="{{url('skill_search/')}}?skill=plumber">Plumber</a></li>
+            <?php foreach ($user_skill_info as $value): ?>
+                  <li ><a href="{{url('skill_search/')}}?skill={{$value->skill_name}}">{{$value->skill_name}}</a></li>
+                  <!-- <option value="{{$value->skill_name}}">{{$value->skill_name}}</option> -->
+                <?php endforeach; ?>
+            <!-- <li ><a href="{{url('skill_search/')}}?skill=plumber">Plumber</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=electrician">Electrician</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=carpenter">Carpenter</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=painter">Painter</a></li>
@@ -29,7 +33,7 @@
             <li ><a href="{{url('skill_search/')}}?skill=Mechanic">Auto Mechanic</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=Cook">Cook</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=Gardener">Gardener</a></li>
-            <li ><a href="{{url('skill_search/')}}?skill=Sweeper">Sweeper</a></li>
+            <li ><a href="{{url('skill_search/')}}?skill=Sweeper">Sweeper</a></li> -->
           </ul>
         </li>
         <li ><a href="{{url('people')}}?people=7">People</a></li>
