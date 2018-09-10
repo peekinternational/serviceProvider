@@ -56,9 +56,9 @@
             <div class="eo-details">
               <span>Email:</span> {{ $user->email }}
             </div>
-            <div class="eo-details">
+            <!-- <div class="eo-details">
               <span>Phone:</span> {{ $user->phone }}
-            </div>
+            </div> -->
             <div class="eo-details provider s_user_hide">
               <span>Experience:</span>{{ $user->experience }}
             </div>
