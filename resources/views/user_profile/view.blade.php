@@ -669,7 +669,9 @@ function new_rating(id) {
           console.log(response);
           // alert(response);
           if(response ==  1) {
-            $('#myModal').hide();
+            $('#myModal'+provider_id).modal('hide');
+            // $('#myModal'+provider_id).hide();
+            // $('#myModal'+provider_id).fadeOut();
 
           }
         }

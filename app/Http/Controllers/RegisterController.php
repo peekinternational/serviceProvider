@@ -483,31 +483,31 @@ public function searchProviders(Request $request)
     }
   }
 
-  public function rating_home(Request $request, $id)
-  {
-    // dd($id);
-    $user_data = DB::table('registers')
-       ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-       ->select(DB::raw('avg(rating_value) as rating'))
-       ->where('ratings.rating_provider_id', '=', $id)
-       ->groupBy('rating_provider_id')
-       ->get()->toArray();
-       // echo $user_data;
-       // dd($user_data);
-       // echo $user_data;
-
-       $obj = array(
-
-         "rate"=> $user_data
-    );
-    $data_val=[];
-foreach ($obj as $key => $value) {
-  // code...
-  $data_val=$value;
-}
-    dd($data_val);
-        echo json_encode($obj);
-  }
+//   public function rating_home(Request $request, $id)
+//   {
+//     // dd($id);
+//     $user_data = DB::table('registers')
+//        ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
+//        ->select(DB::raw('avg(rating_value) as rating'))
+//        ->where('ratings.rating_provider_id', '=', $id)
+//        ->groupBy('rating_provider_id')
+//        ->get()->toArray();
+//        // echo $user_data;
+//        // dd($user_data);
+//        // echo $user_data;
+//
+//        $obj = array(
+//
+//          "rate"=> $user_data
+//     );
+//     $data_val=[];
+// foreach ($obj as $key => $value) {
+//   // code...
+//   $data_val=$value;
+// }
+//     dd($data_val);
+//         echo json_encode($obj);
+//   }
 
 
  public function changePassword(Request $request, $id)
@@ -594,22 +594,27 @@ foreach ($obj as $key => $value) {
     // $userinfo= $request->session()->get('u_session')->userId;
     // dd($request->all());
       $id= $request->session()->get('u_session')->id;
+      $p_id= $request->get('provider_id');
       $nameinfo['rating_user_id']= $request->session()->get('u_session')->id;
       $nameinfo['rating_provider_id'] = $request->get('provider_id');
       $nameinfo['rating_value'] = $request->get('rating');
       // dd($nameinfo['value']);
-      $user_info=DB::table('ratings')->insert($nameinfo);
-      // dd($user_info);
-
-      // $user_get=DB::table('registers')->where('id',$id)->first();
-      // echo $user_info;
-      if($user_info == 1){
-        echo "1";
+      $user_get_info=DB::table('ratings')->where('rating_user_id',$id)->where('rating_provider_id', $p_id)->first();
+      if (count($user_get_info)>0) {
+        $user_info=DB::table('ratings')->where('rating_provider_id', $p_id)->update($nameinfo);
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
       }else {
-        echo "0";
+        $user_info=DB::table('ratings')->insert($nameinfo);
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
       }
-
-
   }
 
 }
