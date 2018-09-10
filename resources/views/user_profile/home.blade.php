@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<?php $url = "{{url('show_rating')}}" ?>
 <section class="banner-area relative" id="home">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
@@ -10,6 +12,8 @@
 			<div class="banner-content col-lg-12">
 				<h1 class="text-white">
 					<span>1500+</span> People registered last week
+
+
 				</h1>
 
 				<form action="{{url('search')}}" method="get" role="search" class="serach-form-area">
@@ -29,6 +33,7 @@
 									 <option value="Sweeper" >Sweeper</option>
 							</select>
 						</div>
+						<!-- <input type="text" id="r_url" name="" value="<?php echo $url; ?>"> -->
 						<div class="col-md-5 form-cols" id="locationField">
 							<input id="locality1" name="location" class="form-control"  placeholder="Select your location" type="text" required=""></input>
 						</div>

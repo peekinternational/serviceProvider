@@ -390,7 +390,9 @@ ul.nav.navbar-nav.navbar-left { margin-top: 4PX; margin-left: -110px; }
     margin-top: 10px;
 }
 .btn-block{ margin-top: 12px }
-
+.fa-star {
+  color: #f5b609;
+}
 
 /*media Query
 ==================================

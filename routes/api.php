@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('searchBoys', 'RegisterController@searchProviders');
+// Route::post('showRating', 'RegisterController@rating_home');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

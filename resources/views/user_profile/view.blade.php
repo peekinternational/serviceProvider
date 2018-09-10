@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<?php
-$rating='';
 
- ?>
+<?php
+$rating_val='';
+?>
+
 <!--     Profile view       -->
 <div class="container " id="custom_profile">
   <div class="eo-box">
@@ -287,7 +288,6 @@ $rating='';
     <div class="eo-about-editor1 history"> <!-- about editior -->
       @if(count($user_data)>0)
       @foreach($user_data as $data)
-
       <!-- Modal -->
   <div class="modal fade" id="myModal{{$data->id}}" role="dialog">
     <div class="modal-dialog">
@@ -346,9 +346,27 @@ $rating='';
                         <div class="col-md-12 col-sm-12 col-xm-12">
                           <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal{{$data->id}}">Rating</button>
 
+
+
+
+                    <?php $rating_val=round($data->rating); ?>
+                        @if($rating_val ==1)
+                          <i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 2)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 3)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>
+                          @elseif($rating_val == 4)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 5)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
+                          @else
+                          <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
+                          @endif
+
+
                           <i class="fa fa-wrench"></i>
                           &nbsp;
-
                           {{$data->skill}}
 
                       </div>
@@ -617,11 +635,7 @@ function removecompanypic(){
   });
 }
 
-// var ratng='';
-// $(document).ready(function () {
-//  ratng = <?php echo $rating ?>;
-// console.log(ratng+"wewe");
-// });
+
 
 function new_rating(id) {
   // alert(id);

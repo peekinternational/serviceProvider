@@ -109,18 +109,20 @@ class RegisterController extends Controller
     // dd($id);
       $user = Register::find($id);
       $session_id= $request->session()->get('u_session')->id;
-      // $user_data = DB::table('historys')
+      // $user_data_1 = DB::table('historys')
       //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
+      //         // ->join('ratings', 'registers.id', '=', 'ratings.rating_provider_id')
       //         ->where('historys.user_id', '=', $session_id)->groupBy('provider_id')
       //         ->get();
-              // dd($user_data_1);
-              $user_data = DB::table('historys')
-                  ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
-                  ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+      //         // dd($user_data);
+              $user_data = DB::table('ratings')
+                  ->join('registers', 'ratings.rating_provider_id', '=', 'registers.id')
+                  ->join('historys', 'ratings.rating_provider_id', '=', 'historys.provider_id')
                   ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
-                  ->where('historys.user_id', '=', $id)->groupBy('provider_id')
+                  ->where('ratings.rating_user_id', '=', $session_id)->groupBy('rating_provider_id')
                   ->get();
-                  // dd($user_data);
+
+                  // dd($rating_show);
                 //  $user_data = (object) array_merge((array) $user_data_1, (array) $rating_show);
 
                   //dd($user_data);
@@ -177,15 +179,11 @@ class RegisterController extends Controller
       // ]);
 
       $id= $request->session()->get('u_session')->id;
-      // $user_data = DB::table('historys')
-      //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
-      //         ->where('historys.user_id', '=', $id)
-      //         ->get();
-      $user_data = DB::table('historys')
-          ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
-          ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+      $user_data = DB::table('ratings')
+          ->join('registers', 'ratings.rating_provider_id', '=', 'registers.id')
+          ->join('historys', 'ratings.rating_provider_id', '=', 'historys.provider_id')
           ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
-          ->where('historys.user_id', '=', $id)->groupBy('provider_id')
+          ->where('ratings.rating_user_id', '=', $id)->groupBy('rating_provider_id')
           ->get();
       $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
 
@@ -266,15 +264,11 @@ class RegisterController extends Controller
           // $val = $request->session()->get('ses');
           $id= $request->session()->get('u_session')->id;
           $type= $request->session()->get('u_session')->type;
-          // $user_data = DB::table('historys')
-          //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
-          //         ->where('historys.user_id', '=', $id)
-          //         ->get();
-          $user_data = DB::table('historys')
-              ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
-              ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+          $user_data = DB::table('ratings')
+              ->join('registers', 'ratings.rating_provider_id', '=', 'registers.id')
+              ->join('historys', 'ratings.rating_provider_id', '=', 'historys.provider_id')
               ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
-              ->where('historys.user_id', '=', $id)->groupBy('provider_id')
+              ->where('ratings.rating_user_id', '=', $id)->groupBy('rating_provider_id')
               ->get();
                   $user_skill_info=DB::table('skills')->get();
             $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
@@ -323,21 +317,16 @@ class RegisterController extends Controller
     // $user = Register::all();
     // if($skill !="" && $location ="")$user->where('skill', 'LIKE',"%{$skill}%")->get();
 
-     $all=DB::table('registers')->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-     ->select('registers.*',DB::raw('avg(rating_value) as rating'))
-     ->groupBy('id');
+     $all=DB::table('registers');
      if($skill != "")$all->where('skill',$skill);
      if($location != "")$all->where('location',$location);
      $user=$all->get();
-     // dd($user);
 
-     $alls=DB::table('registers')->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-     ->select('registers.*',DB::raw('avg(rating_value) as rating'))->where('type', '<>', 'admin')->where('type', '<>', 'serviceUser')
-     ->groupBy('id');
+     $alls=DB::table('registers');
      if($city != "")$alls->where('city',$city);
      // if($skill != "")$alls->where('skill',$skill);
      $user1=$alls->get();
-     // dd($user1);
+     //dd($user);
 
       // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
 
@@ -427,39 +416,19 @@ public function searchProviders(Request $request)
 
     again:
       $distan=$km*111;
-      //sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
-      $order1 = Register::selectRaw("*,
-                  ( 6371 * acos( cos( radians(" . $latitude . ") ) *
-                  cos( radians(latitude) ) *
-                  cos( radians(longitude) - radians(" . $longitude . ") ) +
-                  sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan, avg(rating_value) as rating")
-          ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-          ->orderBy("distan", 'asc')
-          ->groupBy('id')
-          ->get();
-          // dd($order
+
+    $order1 = Register::selectRaw("*,
+                ( 6371 * acos( cos( radians(" . $latitude . ") ) *
+                cos( radians(latitude) ) *
+                cos( radians(longitude) - radians(" . $longitude . ") ) +
+                sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan")->orderBy("distan", 'asc')->get();
 
     if (empty($skill)) {
     $providers=$order1->where('distan','<=',$distan);
-    // $providers_1=$order1->where('distan','<=',$distan);
-    // $user_data = DB::table('registers')
-    //     ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-    //     ->select('registers.*',DB::raw('avg(rating_value) as rating'))
-    //     ->groupBy('id')
-    //     ->get();
-    //     dd($user_data);
-        // $providers = (object) array_merge((array) $providers_1, (array) $user_data);
-        // dd($providers);
     // $providers=$order1;
     }
     else {
-      $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])
-      ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-      ->select('registers.*',DB::raw('avg(rating_value) as rating'))
-      ->orderBy('latitude','asc')
-      ->groupBy('id')
-      ->get();
-      // dd($providers);
+      $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])->orderBy('latitude','asc')->get();
       // $providers = $order1->where('skill','LIKE',"%{$skill}%")->where('distan','<=',$distan);
     }
 
@@ -478,35 +447,9 @@ public function searchProviders(Request $request)
         "provider"=> $providers
         // "order"=> $order
       );
-      // dd($obj);
+      //dd($obj);
        echo json_encode($obj);
     }
-  }
-
-  public function rating_home(Request $request, $id)
-  {
-    // dd($id);
-    $user_data = DB::table('registers')
-       ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-       ->select(DB::raw('avg(rating_value) as rating'))
-       ->where('ratings.rating_provider_id', '=', $id)
-       ->groupBy('rating_provider_id')
-       ->get()->toArray();
-       // echo $user_data;
-       // dd($user_data);
-       // echo $user_data;
-
-       $obj = array(
-
-         "rate"=> $user_data
-    );
-    $data_val=[];
-foreach ($obj as $key => $value) {
-  // code...
-  $data_val=$value;
-}
-    dd($data_val);
-        echo json_encode($obj);
   }
 
 
@@ -597,7 +540,20 @@ foreach ($obj as $key => $value) {
       $nameinfo['rating_user_id']= $request->session()->get('u_session')->id;
       $nameinfo['rating_provider_id'] = $request->get('provider_id');
       $nameinfo['rating_value'] = $request->get('rating');
+      $pid = $request->input('provider_id');
+
+      if ($pid) {
+        $user_info=DB::table('ratings')->where('rating_provider_id',$pid)->update($nameinfo);
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
+      }
       // dd($nameinfo['value']);
+      else {
+
+
       $user_info=DB::table('ratings')->insert($nameinfo);
       // dd($user_info);
 
@@ -608,7 +564,7 @@ foreach ($obj as $key => $value) {
       }else {
         echo "0";
       }
-
+      }
 
   }
 

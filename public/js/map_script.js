@@ -181,13 +181,15 @@ $(document).ready(function(){
           // Loop for getting multiple users
           $.each(res.provider, function (i, val) {
             // console.log(val.name);
-            console.log(res.provider[i].name);
+            // console.log(res.provider[i].name);
             // console.log(res.provider[i].type+" " +res.provider[i].name);
             // if (res.provider[i].type =='admin' && res.provider[i].type =='serviceUser') {
             //
             // }else {
             //
             // }
+            // console.log(res.provider[i].rating+"sdfsdf");
+            // console.log(res.provider[i].rating+"sdfsdf");
 
             if ((res.provider)== null) {
               window.location('home.blade.php');
@@ -218,7 +220,6 @@ $(document).ready(function(){
 
             }else {
 
-
             if (res.provider[i].latitude == null) {
 
               // if (res.provider[i].type != 'admin') {
@@ -238,7 +239,29 @@ $(document).ready(function(){
             profile_img = '<img src="http://localhost:8000/img/profile/'+res.provider[i].image+'" class="pf-image" alt="">'
             // console.log(profile_img);
             }
+            var rating='';
 
+            if (res.provider[i].rating==null) {
+              rating='';
+            }
+            else{
+              rating=Math.round(res.provider[i].rating);
+            }
+
+            var ratingStar='';
+            if (rating == 1) {
+            ratingStar +=  '<i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>';
+          }else if (rating == 2) {
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>';
+          }else if (rating == 3) {
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>';
+          }else if (rating == 4) {
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>';
+          }else if (rating == 5) {
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>';
+          }else if (rating == '') {
+            ratingStar += '<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>';
+          }
             temp +='<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 profile_card_show">'+
             '<div class="well well-sm">'+
               '<div class="">'+
@@ -253,6 +276,7 @@ $(document).ready(function(){
                       <!-- Split button -->
                       '<div class="row">'+
                         '<div class="col-md-12 col-sm-12 col-xm-12">'+
+                        ratingStar+
                          '<i class="fa fa-wrench"></i>&nbsp; &nbsp;'+
                     			res.provider[i].skill+
 

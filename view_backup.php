@@ -2,6 +2,48 @@
 
 @section('content')
 
+<?php
+$rating_val='';
+?>
+<?php
+// print_r($user_data); die;
+ ?>
+<?php
+$array = array();
+$arr = array();
+foreach ($user_data as $key => $value) {
+  $array[$key] = $value->rating_value;//toarray($value);
+}
+function rating_multiply($provider_count){
+  $array2 = array();
+  foreach ($provider_count as $key => $val) {
+    $array2[$key] = $key * $val;
+  }
+  return $array2;
+}
+function rating_multiply($rating_count){
+  $array2 = array();
+  foreach ($rating_count as $key => $val) {
+    $array2[$key] = $key * $val;
+  }
+  return $array2;
+}
+function add_keys_value($rating_sum){
+  $calc_star = array();
+    $leftadd = 0;
+    $rightadd = 0;
+    foreach ($rating_sum as $key => $value) {
+      $leftadd += $key;
+      $rightadd += $value;
+    }
+    return $rightadd / $leftadd;
+}
+  // print_r(array_count_values($arr)); die;
+  $provider_count =array_count_values($arr);
+ $rating_count = array_count_values($array);
+ $rating_sum = rating_multiply($rating_count);
+echo add_keys_value($rating_sum);die;
+?>
 <!--     Profile view       -->
 <div class="container " id="custom_profile">
   <div class="eo-box">
@@ -67,10 +109,10 @@
             </div>
           </div>
           <div class="col-md-5 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
+            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
           </div>
           <div class="col-md-1 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
+            <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
           </div>
           <div class="eo-edit-section">   <!-- Edit section start -->
             <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
@@ -87,20 +129,9 @@
                   <label class="control-label col-sm-3 col-xs-12">Skills</label>
                   <div class="col-sm-9 pnj-form-field">
                     <select class="form-control select2" name="skill">
-                      <?php if (!empty($user->skill)): ?>
-                        <option value="{{ $user->skill }}"selected> {{ $user->skill }}</option>
-                      <?php else: ?>
-                        <option value="" selected> Select Skill</option>
-                      <?php endif; ?>
-                      <option value="Plumber"> Plumber</option>
-                      <option value="Electrician" >Electrician</option>
-                      <option value="Welder "> Welder</option>
-                      <option value="Painter" >Painter</option>
-                      <option value="Carpenter"> Carpenter</option>
-                      <option value="Mechanic" >Mechanic</option>
-                      <option value="Cook" >cook</option>
-                      <option value="Gardener"> Gardener</option>
-                      <option value="Sweeper" >Sweeper</option>
+                      <?php foreach ($user_skill_info as $value): ?>
+														<option value="{{$value->skill_name}}" {{ $value->skill_name == $user->skill ? 'selected="selected"' : '' }}>{{$value->skill_name}}</option>
+													<?php endforeach; ?>
                     </select>
                   </div>
                 </div>   <!-- Skill slection end -->
@@ -128,7 +159,6 @@
                     <div id="locationField">
                       <input id="locality1" name="location" class="form-control" value="{{$user->location}}" placeholder="Select your location"
                       type="text"></input>
-                      <!-- <input type="hidden" name="" value="{{$user->location}}"> -->
                     </div>
                   </div>
                 </div>
@@ -174,7 +204,7 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-offset-3 col-md-9">    <!-- Form Buttons here -->
-                      <button type="submit" class="btn btn-primary col-md-3" id="page_submit" name="save" >SAVE</button>
+                      <button type="submit" class="btn btn-primary col-md-3" onClick="initializeAutocomplete();"  id="page_submit" name="save" >SAVE</button>
                       <button type="button" class="btn btn-default col-md-3" onClick="$('.eo-edit-section').hide(); $('.eo-section').show()">CANCEL</button>
                     </div>
                   </div>
@@ -187,9 +217,40 @@
     </div>
   </div>    <!-- eo-box end -->
 
+  <!-- about editor -->
+  <div class="eo-box eo-about provider" id="eo-about" >
+    <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
+    <h3 class="eo-about-heading">About Me</h3>
+    <div class="eo-about-org" style="padding-left:30px">
+      <p><span></span></p>
+    </div>
+    <div class="eo-about-editor provider"> <!-- about editior -->
+      <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
+        <input type="hidden" name="" class="token">
+        <div class="form-group" style="padding-left:20px">
+          <label class="control-label col-sm-3">&nbsp;</label>
+          <div class="col-sm-7 pnj-form-field">
+            <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
+          </div>
+        </div>
+        <div class="col-md-12 provider">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button>
+              <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <script>
+      CKEDITOR.replace( 'companyAbout' );
+    </script>
+  </div>  <!-- about editior end -->
+</div>   <!-- about div end -->
+
 
   <!-- about Gallery -->
-  <div class="eo-box eo-about">
+  <div class="eo-box eo-about provider">
     <!-- <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
     <h3 class="eo-about-heading">Gallery</h3>
     <div class="eo-about-org" style="padding-left:30px">
@@ -204,7 +265,7 @@
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <span>New image added Successfully</span>
       </div>
-      <div class="individual-form hide_other">
+      <div class="individual-form provider">
 
       <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
         {{csrf_field()}}
@@ -221,7 +282,14 @@
             </div>
           <!-- </div> -->
         </div>
-
+        <div class="col-md-12 provider">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+              <!-- <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button> -->
+              <!-- <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button> -->
+            </div>
+          </div>
+        </div>
       </form>
       </div>
       @if(count($user_gallery)>0)
@@ -245,40 +313,132 @@
 </div>   <!-- about div end -->
 </div>  <!-- about Gallery end -->
 
-  <!-- about editor -->
-  <div class="eo-box eo-about" id="eo-about" >
-    <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
-    <h3 class="eo-about-heading">About Me</h3>
+
+
+  <!-- History editor -->
+  <div class="eo-box eo-about s_user history" id="eo-about1" >
+
+    <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+    <h3 class="eo-about-heading">History</h3>
     <div class="eo-about-org" style="padding-left:30px">
       <p><span></span></p>
     </div>
-    <div class="eo-about-editor"> <!-- about editior -->
-      <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
-        <input type="hidden" name="" class="token">
-        <div class="form-group" style="padding-left:20px">
-          <label class="control-label col-sm-3">&nbsp;</label>
-          <div class="col-sm-7 pnj-form-field">
-            <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
-          </div>
+    <div class="eo-about-editor1 history"> <!-- about editior -->
+      @if(count($user_data)>0)
+      @foreach($user_data as $data)
+      <!-- Modal -->
+  <div class="modal fade" id="myModal{{$data->id}}" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rating</h4>
         </div>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
-              <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button>
-              <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+        <form class="" action="#" id="rating_form{{$data->id}}">
+          {{csrf_field()}}
+        <div class="modal-body">
+          <p>Do you want to give your rating to {{$data->name}}.</p>
+
+            <div class="form-group">
+            <select class="form-control" name="rating_drpdwn" id="rating_drpdwn{{$data->id}}">
+              <option value="5">Excellent</option>
+              <option value="4">Very Good</option>
+              <option value="3">Good</option>
+              <option value="2">Average</option>
+              <option value="1">Poor</option>
+            </select>
             </div>
-          </div>
+            <input type="hidden" name="provider_id" id="provider_id{{$data->id}}" value="{{$data->provider_id}}">
         </div>
-      </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success sub_btn" onclick="new_rating({{$data->id}})">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card_1">
+          <div class="well well-sm">
+              <div class="row">
+
+                  <div class="col-sm-12 text-center">
+                    <div class="profile-show">
+                        <?php if (!empty($data->image)): ?>
+                          <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}"></a>
+                          <?php else: ?>
+                            <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}"></a>
+                        <?php endif; ?>
+                    </div>
+
+
+                    </div>
+                  <div class="col-sm-12 col-md-8">
+                      <h4><a href="{{url('profile_view_other/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                      <!-- Split button -->
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xm-12">
+                          <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal{{$data->id}}">Rating</button>
+
+
+
+
+                    <?php $rating_val=round($data->rating); ?>
+                        @if($rating_val ==1)
+                          <i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 2)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 3)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>
+                          @elseif($rating_val == 4)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>
+                          @elseif($rating_val == 5)
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
+                          @else
+                          <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
+                          @endif
+
+
+                          <i class="fa fa-wrench"></i>
+                          &nbsp;
+                          {{$data->skill}}
+
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xm-12">
+                        <i class="fa fa-map-marker"></i>
+                        &nbsp;&nbsp;
+                        {{$data->location}}
+                        <!-- <div class="Rating"> -->
+
+                        <!-- </div> -->
+
+                        <p>Hire Date: {{$data->created_at}}</p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      @endforeach
+      @endif
+
+
       <script>
-      CKEDITOR.replace( 'companyAbout' );
+      // CKEDITOR.replace( 'companyAbout' );
     </script>
   </div>  <!-- about editior end -->
-</div>   <!-- about div end -->
+</div>   <!-- History div end -->
 </div> 	<!-- container end -->
 <script>
-
 function initializeAutocomplete(){
+  // alert("abc");
+  // var input = $('#locality');
   var input = document.getElementById('locality1');
   // var options = {
   //   types: ['(regions)'],
@@ -317,60 +477,51 @@ async defer></script>
 
 <!-- hide profile image edit button  -->
 <script>
+
 $(document).ready(function () {
 $(".pwd").hide();
   <?php
-  if (\Session::has('u_session')) {
 
   $session = session()->get('u_session');
   if ($session->type == 'serviceUser') { ?>
     $(".provider").hide();
     <?php  }
-    }
     ?>
   });
-</script>
-<script>
+
+
 $(document).ready(function () {
   <?php
-  if (\Session::has('u_session')) {
-
   $session = session()->get('u_session');
   if ($session->type == 'provider') { ?>
+    $(".history").hide();
     // $(".s_user").hide();
     // $(".provider").show();
     <?php  }
-  }
     ?>
   });
-</script>
-<script>
-$(document).ready(function () {
 
+
+$(document).ready(function () {
   <?php
-  $id='';
-    if (\Session::has('u_session')) {
   $id = session()->get('u_session')->id;
   if ($id != $user->id) { ?>
     $("#edit_btn").hide();
     $("#eo-about").hide();
     $("#eo-about1").hide();
-    $(".hide_other").hide();
     $("#cover_change").hide();
-    $(".provider").show();
     $("#profile_img_change").hide();
     <?php  }
-  }elseif ($id == $user->id) {?>
-    $("#edit_btn").hide();
-    $("#eo-about").hide();
-    $("#eo-about1").hide();
-    $("#cover_change").hide();
-    $(".provider").show();
-    $("#profile_img_change").hide();
+    ?>
+  });
 
-    <?php }else {?>
-      $(".hide_other").hide();
-    <?php }
+
+$(document).ready(function () {
+  <?php
+  $id = session()->get('u_session')->id;
+  if ($id == $user->id) { ?>
+    $("#hire_btn").hide();
+    <?php  }
     ?>
   });
 </script>
@@ -522,6 +673,137 @@ function removecompanypic(){
   });
 }
 
+
+
+function new_rating(id) {
+  // alert(id);
+
+  // alert();
+  // $.ajaxSetup({
+  //   header: {
+  //     'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+  //   }
+  // });
+
+
+        var _token = $("input[name='_token']").val();
+      var provider_id = $('#provider_id'+id).val();
+      var rating = $('#rating_drpdwn'+id).val();
+
+      // alert(rating);
+      form = new FormData();
+      form.append('provider_id', provider_id);
+      form.append('rating', rating);
+      form.append('_token', _token);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/user/rating')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response ==  1) {
+            $('#myModal').hide();
+
+          }
+        }
+      });
+
+}
+
+$(document).ready(function(){
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $(document).on('change','#eo-dp',function(e){
+    if ($('#eo-dp').val()) {
+      e.preventDefault()
+      $('#loaderIcon').show()
+      var user_id="{{$user->id}}";
+
+      var image = $('.pf-image-change')[0].files[0];
+
+      form = new FormData();
+      form.append('profile-image',image);
+      form.append('user_id',user_id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{ url('imageUpload/'.$user->id) }}",
+        success: function(response){
+          console.log(response);
+          if(response){
+
+            $('.eo-c-logo').attr('src','<?= url('img/profile')?>/'+response);
+            $('#loaderIcon').hide();
+          }else {
+            toastr.error('Following format allowed (PNG/JPG/JPEG)', '', {timeOut: 5000, positionClass: "toast-bottom-center"});
+          }
+
+        }
+      });
+    }
+  });
+});
+</script>
+
+<!-- ============================================ -->
+<!-- Cover image using Ajax===================================== -->
+
+<script>
+$(document).ready(function () {
+  $.ajaxSetup({
+    header: {
+      'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+    }
+  });
+  $(document).on("change", "#w_image", function (e) {
+    if ($('#w_image').val()) {
+      e.preventDefault()
+      $('#loaderIcon').show()
+      var _token = $("input[name='_token']").val();
+      // var id = "{{$user->id}}";
+      var gal_image = $('#w_image')[0].files[0];
+
+      form = new FormData();
+      form.append('_token', _token);
+      form.append('gal_image', gal_image);
+      // form.append('id', id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{ url('gallery_imgUpload') }}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('#loaderIcon').hide()
+            $("#worker_success").show();
+            setTimeout(function () {
+              $("#worker_success").hide();
+            },3000);
+            $('.eo-timeline-cover').attr('src','<?=url('img/cover')?>/'+response);
+          }
+        }
+      });
+    }
+  });
+});
 </script>
 
 @endsection

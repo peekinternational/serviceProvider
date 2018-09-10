@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+$rating_val='';
+?>
 <div class="container" style="margin-top: 100px;">
     <div class="row">
       @if(count($user)>0)
@@ -25,6 +28,20 @@
                         <!-- Split button -->
                         <div class="row">
                           <div class="col-md-12 col-sm-12 col-xm-12">
+                            <?php $rating_val=round($users->rating); ?>
+                                @if($rating_val ==1)
+                                  <i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                                  @elseif($rating_val == 2)
+                                  <i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                                  @elseif($rating_val == 3)
+                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>
+                                  @elseif($rating_val == 4)
+                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>
+                                  @elseif($rating_val == 5)
+                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
+                                  @else
+                                  <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
+                                  @endif
                             <i class="fa fa-wrench"></i>
                             &nbsp;
                             {{$users->skill}}
@@ -73,18 +90,32 @@
                         <!-- Split button -->
                         <div class="row">
 
+                        <div class="col-md-12 col-sm-12 col-xm-12">
+                          <?php $rating_val=round($users->rating); ?>
+                              @if($rating_val ==1)
+                                <i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                                @elseif($rating_val == 2)
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                                @elseif($rating_val == 3)
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>
+                                @elseif($rating_val == 4)
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>
+                                @elseif($rating_val == 5)
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
+                                @else
+                                <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
+                                @endif
+                        <i class="fa fa-wrench"></i>
+                        &nbsp;
 
-                        <div class="col-md-3">
-                        <i class="fa fa-wrench"></i></div>
-                        <div class="col-md-9">
                           {{$users->skill}}
+
                         </div>
-                        </div>
+                      </div>
                         <div class="row">
-                          <div class="col-md-3">
+                          <div class="col-md-12 col-sm-12 col-xm-12">
                           <i class="fa fa-map-marker"></i>
-                        </div>
-                        <div class="col-md-9">
+                          &nbsp;
                           {{$users->location}}
                         </div>
                       </div>
