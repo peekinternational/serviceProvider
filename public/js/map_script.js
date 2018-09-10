@@ -142,8 +142,13 @@ $(document).ready(function(){
         success: function (response) {
           // console.log(response);
           if (response == "not found") {
-            toastr.warning('No Record Found');
-            window.location.href = "/";
+            var nofound = 'No Record Found';
+            $('#map').hide();
+            $('#area_btn_skill').hide();
+            $('#s_Result').hide();
+              document.getElementById('no_data').innerHTML = nofound;
+            // toastr.warning('No Record Found');
+            // window.location.href = "/";
           }
 
           var res = JSON.parse(response);

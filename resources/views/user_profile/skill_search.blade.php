@@ -2,15 +2,21 @@
 
 @section('content')
 <div class="container" style="margin-top: 100px;">
+
 		<div id="map">
 
   </div><br>
+
   <div class="text-center">
 		<button type="button" id="area_btn_skill" class="btn btn-success" name="button">Increase Area</button>
 	</div>
 <div class="text-center">
-  <h1>Search Results</h1>
-</div>
+  <h1 id="">Search Results</h1>
+	<div class="">
+		<h3 id="no_data"></h3>
+	</div><br><br><br>
+</div><br><br><br>
+
 	    <div id="show_all">
 
 	    </div>
