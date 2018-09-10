@@ -11,7 +11,7 @@
 		<button type="button" id="area_btn_skill" class="btn btn-success" name="button">Increase Area</button>
 	</div>
 <div class="text-center">
-  <h1 id="">Search Results For </h1>
+  <h1 id="">Search Results </h1>
 	<div class="">
 		<h3 id="no_data"></h3>
 	</div><br><br><br>
