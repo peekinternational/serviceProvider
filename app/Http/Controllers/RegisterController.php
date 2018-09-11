@@ -90,6 +90,7 @@ class RegisterController extends Controller
 
   }
 
+
   public function change_status(Request $request, $token)
   {
     // dd($request->all());
@@ -396,14 +397,14 @@ class RegisterController extends Controller
      // if($skill != "")$alls->where('skill',$skill);
      $user1=$alls->get();
      // dd($user1);
-
+     $user_skill_info=DB::table('skills')->get();
       // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
 
       // $user = Register::where('skill','LIKE',"%{$skill}%")->Where('location', 'LIKE',"%{$location}%")->get();
       // $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
 
       // return view('user_profile.search_result',compact('user', 'user1'));
-      return view('user_profile.search_result',compact('user','user1'));
+      return view('user_profile.search_result',compact('user','user1','user_skill_info'));
   }
 
   //  Searching through skill but not in use
