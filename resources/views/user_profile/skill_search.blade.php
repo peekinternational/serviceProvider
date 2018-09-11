@@ -14,8 +14,8 @@
   <h1 id="">Search Results </h1>
 	<div class="">
 		<h3 id="no_data"></h3>
-	</div><br><br><br>
-</div><br><br><br>
+	</div><br>
+</div>
 
 	    <div id="show_all">
 

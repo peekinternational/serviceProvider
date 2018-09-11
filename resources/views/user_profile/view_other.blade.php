@@ -364,6 +364,7 @@ $(document).ready(function () {
     $("#edit_btn").hide();
     $("#eo-about").hide();
     $("#eo-about1").hide();
+    $("#hire_btn").hide();
     $("#cover_change").hide();
     $(".provider").show();
     $("#profile_img_change").hide();

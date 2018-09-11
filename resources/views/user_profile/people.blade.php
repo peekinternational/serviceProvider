@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 100px;">
+<div class="container" style="margin-top: 60px;">
 	<div class="text-center">
-	  <h1>People</h1> <br><br>
+	  <h1>People</h1>
 	</div>
 		<div id="map" hidden>
 
