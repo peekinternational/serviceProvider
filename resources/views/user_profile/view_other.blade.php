@@ -370,6 +370,8 @@ $(document).ready(function () {
 
     <?php }else {?>
       $(".hide_other").hide();
+      $("#edit_btn").hide();
+      $("#eo-about").hide();
     <?php }
     ?>
   });

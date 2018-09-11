@@ -57,7 +57,7 @@
     <script src="{{asset('js/pagination.min.js')}}" charset="utf-8"></script>
     <script  src="{{asset('js/jquery.simplePagination.js')}}"></script>
     <!--  Jquery Core Script -->
-    <!-- <script src="{{asset('js/new_js/jquery-1.10.2.js')}}"></script> -->
+    <script src="{{asset('js/new_js/jquery-1.10.2.js')}}"></script>
     <!--  Core Bootstrap Script -->
     <script src="{{asset('js/new_js/bootstrap.js')}}"></script>
     <!--  Flexslider Scripts -->
