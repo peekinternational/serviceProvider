@@ -73,7 +73,7 @@ Very simple and takes only few minutes.
             </form>
         </div> -->
         <h2 align="center">Contact Us</h2>
-          <form action="" method="">
+          <form action="" method="" id="contct_form">
 
                                 <div class="form-group">
                                   <input type="text" class="form-control" onkeyup="check()" id="name"  name="name"   placeholder="Your Name" />
@@ -127,6 +127,7 @@ Very simple and takes only few minutes.
        success: function (response) {
          console.log(response);
          if (response == "successfully") {
+            $('#contct_form')[0].reset();
            toastr.success('Thank you for Contacting Us', { timeOut: 5000 });
            // window.location.href = "/landing";
          }
