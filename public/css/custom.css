@@ -66,6 +66,12 @@ margin-top: -60px;
   margin-left: 180px;
   margin-top: -100px;
 }
+#back_btn {
+  background: #7573f9;
+  color: white;
+  margin-right: 30px;
+  margin-left: -30px;
+}
 .loaderIcon {
   position: absolute;
   top: 10%;

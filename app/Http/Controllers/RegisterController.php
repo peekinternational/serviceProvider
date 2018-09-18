@@ -585,19 +585,54 @@ public function searchProviders(Request $request)
   }
 
 
- public function changePassword(Request $request, $id)
- {
-  $oldpassword=$request->get('oldPassword');
-    $user = Register::find($id);
-    if($user->password==$oldpassword){
-  $user->password= $request->get('newPassword');
-    $user->save();
-  return back()->with('success','Your password has been changed');
+  public function password_route(Request $request)
+  {
+    if($request->session()->has('u_session')){
+      $userinfo= $request->session()->get('u_session')->userId;
+      // dd($userinfo);
+
+      $user_get=DB::table('registers')->where('id',$userinfo)->first();
+      $user_skill_info=DB::table('skills')->get();
+      // $user_get_info=DB::table('user_infos')->where('f_userId',$userinfo)->first();
+      // $user_skill_info=DB::table('skills')->get();
+      // dd($user_get_info);
+
+      return view('user_profile.changePassword',compact('user_get','user_skill_info'));
+
+
+    }else {
+
+      return redirect('/login');
     }
-    else{
-      return back()->with('red-alert','Enter Correct old password');
-    }
- }
+
+  }
+
+
+  public function PasswordChange(Request $request)
+      {
+        // dd($request->all());
+        $old_password = md5($request->get('old_password'));
+        $new_password = $request->get('new_password');
+        $confirm_password = $request->get('confirm_password');
+
+        $usersession= $request->session()->get('u_session');
+        if ($old_password == ($usersession->password)) {
+          if ($new_password == $confirm_password) {
+            $nameinfo['password'] = md5($request->get('new_password'));
+            $getuser=DB::table('registers')->where('id',$usersession->id)->update($nameinfo);
+            echo "successfully";
+          }else {
+            echo "not_confirm";
+          }
+          // dd(md5($usersession->password));
+          // $nameinfo['password'] = $request->get('new_password');
+          // dd($nameinfo['password']);
+
+        }else {
+          echo "incorrect";
+        }
+
+      }
 
   // Contact Us function calling through ajax
   public function contact(Request $request)

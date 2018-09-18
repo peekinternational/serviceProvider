@@ -63,6 +63,8 @@ Route::post('/user/hiring', 'RegisterController@user_hiring');
 Route::post('/provider/work', 'RegisterController@start_work');
 Route::post('/provider/cancel_work', 'RegisterController@cancel_work');
 Route::post('/provider/end_work', 'RegisterController@end_work');
+Route::get('/change_password', 'RegisterController@password_route');
+Route::post('change_pwd', 'RegisterController@PasswordChange');
 
 
 
