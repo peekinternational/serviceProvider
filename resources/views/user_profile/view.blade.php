@@ -211,6 +211,130 @@ $rating_val='';
 </div>   <!-- about div end -->
 
 
+
+<!-- Work editor -->
+<div class="eo-box eo-about  work" id="eo-about1" >
+  <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+  <h3 class="eo-about-heading">Work</h3>
+  <div class="eo-about-org" style="padding-left:30px">
+    <p><span></span></p>
+  </div>
+  <div class="eo-about-editor1 work"> <!-- about editior -->
+    @if(count($work)>0)
+    @foreach($work as $data)
+    <!-- Modal -->
+<div class="modal fade" id="myModal_provider{{$data->id}}" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rating</h4>
+      </div>
+      <form class="" action="#" id="rating_form{{$data->id}}">
+        {{csrf_field()}}
+      <div class="modal-body">
+        <p>Do you want to do work of {{$data->name}}.</p>
+
+          <div class="form-group">
+          <select class="form-control" name="work_drpdwn" id="work_drpdwn{{$data->id}}">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          </div>
+          <input type="hidden" name="user_id" id="user_id{{$data->id}}" value="{{$data->user_id}}">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success sub_btn" id="start_btn" onclick="start_work({{$data->id}})">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+    <!-- Modal Cancel Work -->
+<div class="modal fade" id="myModal_provider_cancel{{$data->id}}" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cancel Work</h4>
+      </div>
+      <form class="" action="#" id="rating_form{{$data->id}}">
+        {{csrf_field()}}
+      <div class="modal-body">
+        <p>Are You sure want to cancel this work?</p>
+          <input type="hidden" name="user_id" id="user_id{{$data->id}}" value="{{$data->user_id}}">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger sub_btn" id="cancel_btn" onclick="cancel_work({{$data->id}})">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 profile_card_1">
+        <div class="well well-sm">
+            <div class="row">
+
+                <div class="col-sm-12 text-center">
+                  <div class="profile-show">
+                      <?php if (!empty($data->image)): ?>
+                        <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}"></a>
+                        <?php else: ?>
+                          <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}"></a>
+                      <?php endif; ?>
+                  </div>
+
+
+                  </div>
+                <div class="col-sm-12 col-md-8">
+                    <h4><a href="{{url('profile_view_other/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                    <!-- Split button -->
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                        <?php if ($data->work_status == 'pen'): ?>
+                          <button id="" class="btn btn-sm work_cancel_btn" data-toggle="modal" data-target="#myModal_provider_cancel{{$data->id}}">Cancel</button><br>
+                          <button id="" class="btn btn-sm btn-success work_start_btn" data-toggle="modal" data-target="#myModal_provider{{$data->id}}">Start</button><br>
+                          <?php else: ?>
+                            <!-- <button id="rating_btn" class="btn btn-sm btn-success start_btn_show" data-toggle="modal" data-target="#myModal_provider{{$data->id}}">Start</button><br> -->
+                        <?php endif; ?>
+                        <i class="fa fa-mobile"></i>
+                        &nbsp;
+                         {{$data->phone}}<br>
+                        <i class="fa fa-flask"></i>
+                        &nbsp;
+                        {{$data->work_description}}
+
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                      <i class="fa fa-map-marker"></i>
+                      &nbsp;&nbsp;
+                      {{$data->location}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
+
+
+</div>  <!-- about editior end -->
+</div>   <!-- Work div end -->
+
+
+
   <!-- about Gallery -->
   <div class="eo-box eo-about provider">
     <!-- <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
@@ -277,8 +401,125 @@ $rating_val='';
 
 
 
+<!--User Work editor -->
+<div class="eo-box eo-about  user_work" id="eo-about1" >
+  <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+  <h3 class="eo-about-heading">Work In Process</h3>
+  <div class="eo-about-org" style="padding-left:30px">
+    <p><span></span></p>
+  </div>
+  <div class="eo-about-editor1 user_work"> <!-- about editior -->
+    @if(count($user_work)>0)
+    @foreach($user_work as $data)
+    <!-- Modal -->
+<div class="modal fade" id="myModal_user{{$data->id}}" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">End Work</h4>
+      </div>
+      <div id="work_error{{$data->id}}" class="alert alert-danger alert-dismissible" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>Please Enter Amount {{$data->name}} has charged you? </span>
+      </div>
+      <form class="" action="#" id="rating_form{{$data->id}}">
+        {{csrf_field()}}
+      <div class="modal-body">
+        <label>Do {{$data->name}} have done your work?</label>
+          <div class="row">
+          <div class="form-group col-md-6">
+          <select class="form-control" name="work_drpdwn" id="user_work_drpdwn{{$data->id}}">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 ">
+              <label>How Much {{$data->name}} has charge you?</label>
+            <input type="text" name="amount" id="amount" class="form-control" value="" placeholder="Amount">
+            </div>
+            </div>
+            <div class="row">
+
+              <div class="form-group col-md-6">
+                <label>Do you want to give your rating to {{$data->name}}?</label>
+              <select class="form-control" name="rating_drpdwn" id="user_rating_drpdwn{{$data->id}}">
+                <option value="5">Excellent</option>
+                <option value="4">Very Good</option>
+                <option value="3">Good</option>
+                <option value="2">Average</option>
+                <option value="1">Poor</option>
+              </select>
+              </div>
+              </div>
+          <input type="hidden" name="provider_id" id="provider_id{{$data->id}}" value="{{$data->provider_id}}">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success sub_btn" onclick="end_work({{$data->id}})">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 profile_card_1">
+        <div class="well well-sm">
+            <div class="row">
+
+                <div class="col-sm-12 text-center">
+                  <div class="profile-show">
+                      <?php if (!empty($data->image)): ?>
+                        <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}"></a>
+                        <?php else: ?>
+                          <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}"></a>
+                      <?php endif; ?>
+                  </div>
+
+
+                  </div>
+                <div class="col-sm-12 col-md-8">
+                    <h4><a href="{{url('profile_view_other/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                    <!-- Split button -->
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                        <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal_user{{$data->id}}">End</button><br>
+                        <i class="fa fa-info-circle"></i>
+                        &nbsp;
+                         {{$data->work_status}}<br>
+                        <i class="fa fa-flask"></i>
+                        &nbsp;
+                        {{$data->work_description}}
+
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                      <i class="fa fa-map-marker"></i>
+                      &nbsp;&nbsp;
+                      {{$data->location}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
+
+
+</div>  <!-- about editior end -->
+</div>   <!--User Work div end -->
+
+
+
   <!-- History editor -->
-  <div class="eo-box eo-about s_user history" id="eo-about1" >
+  <div class="eo-box eo-about  history" id="eo-about1" >
 
     <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
     <h3 class="eo-about-heading">History</h3>
@@ -289,7 +530,7 @@ $rating_val='';
       @if(count($user_data)>0)
       @foreach($user_data as $data)
       <!-- Modal -->
-  <div class="modal fade" id="myModal{{$data->id}}" role="dialog">
+  <div class="modal fade" id="myModal_history{{$data->id}}" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -344,29 +585,32 @@ $rating_val='';
                       <!-- Split button -->
                       <div class="row">
                         <div class="col-md-12 col-sm-12 col-xm-12">
-                          <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal{{$data->id}}">Rating</button>
+                          <!-- <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal_history{{$data->id}}">Rating</button> -->
 
 
+
+                    <div class="">
 
 
                     <?php $rating_val=round($data->rating); ?>
                         @if($rating_val ==1)
-                          <i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          <i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
                           @elseif($rating_val == 2)
-                          <i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
                           @elseif($rating_val == 3)
-                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
                           @elseif($rating_val == 4)
-                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><br>
                           @elseif($rating_val == 5)
                           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
                           @else
                           <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>
                           @endif
-
+                        </div>
 
                           <i class="fa fa-wrench"></i>
                           &nbsp;
+
                           {{$data->skill}}
 
                       </div>
@@ -379,8 +623,6 @@ $rating_val='';
                         <!-- <div class="Rating"> -->
 
                         <!-- </div> -->
-
-                        <p>Hire Date: {{$data->created_at}}</p>
                       </div>
                     </div>
                   </div>
@@ -389,13 +631,68 @@ $rating_val='';
       </div>
       @endforeach
       @endif
-
-
-      <script>
-      // CKEDITOR.replace( 'companyAbout' );
-    </script>
   </div>  <!-- about editior end -->
 </div>   <!-- History div end -->
+
+
+<!-- Provider History editor -->
+<div class="eo-box eo-about  provider_history" id="eo-about1" >
+
+  <!-- <a class="btn btn-primary r-add-btn hideThis" href="#" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a> -->
+  <h3 class="eo-about-heading">History</h3>
+  <div class="eo-about-org" style="padding-left:30px">
+    <p><span></span></p>
+  </div>
+  <div class="eo-about-editor1 provider_history"> <!-- about editior -->
+    @if(count($user_data_provider)>0)
+    @foreach($user_data_provider as $data)
+
+
+    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 profile_card_1">
+        <div class="well well-sm">
+            <div class="row">
+
+                <div class="col-sm-12 text-center">
+                  <div class="profile-show">
+                      <?php if (!empty($data->image)): ?>
+                        <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{url('img/profile/'.$data->image)}}" class="pf-image" alt="{{$data->image}}"></a>
+                        <?php else: ?>
+                          <a href="{{url('profile_view_other/'.$data->id)}}"><img src="{{asset('img/profile-logo.jpg')}}" class="pf-image" alt="{{$data->image}}"></a>
+                      <?php endif; ?>
+                  </div>
+
+
+                  </div>
+                <div class="col-sm-12 col-md-8">
+                    <h4><a href="{{url('profile_view_other/'.$data->id)}}"> <?php echo ucfirst($data->name); ?></a></h4>
+                    <!-- Split button -->
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                        <!-- <button id="rating_btn" class="btn btn-sm btn-success rating_btn" data-toggle="modal" data-target="#myModal_history{{$data->id}}">Rating</button> -->
+                        <i class="fa fa-address-card"></i>
+                        &nbsp;
+
+                        {{$data->address}}
+
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xm-12">
+                      <i class="fa fa-map-marker"></i>
+                      &nbsp;&nbsp;
+                      {{$data->location}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
+</div>  <!-- about editior end -->
+</div>   <!-- Provider History div end -->
+
+
 </div> 	<!-- container end -->
 <script>
 function initializeAutocomplete(){
@@ -457,9 +754,12 @@ $(document).ready(function () {
   $session = session()->get('u_session');
   if ($session->type == 'provider') { ?>
     $(".history").hide();
-    // $(".s_user").hide();
-    // $(".provider").show();
+    $(".user_work").hide();
     <?php  }
+    elseif ($session->type == 'serviceUser') {?>
+      $(".work").hide();
+      $(".provider_history").hide();
+  <?php }
     ?>
   });
 
@@ -639,20 +939,11 @@ function removecompanypic(){
 
 function new_rating(id) {
   // alert(id);
-
-  // alert();
-  // $.ajaxSetup({
-  //   header: {
-  //     'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
-  //   }
-  // });
-
-
         var _token = $("input[name='_token']").val();
       var provider_id = $('#provider_id'+id).val();
       var rating = $('#rating_drpdwn'+id).val();
 
-      // alert(rating);
+      // console.log(provider_id);
       form = new FormData();
       form.append('provider_id', provider_id);
       form.append('rating', rating);
@@ -669,7 +960,120 @@ function new_rating(id) {
           console.log(response);
           // alert(response);
           if(response ==  1) {
-            $('#myModal'+provider_id).modal('hide');
+            $('#myModal_history'+provider_id).modal('hide');
+          }
+        }
+      });
+
+}
+
+
+function start_work(id) {
+  // console.log(id);
+        var _token = $("input[name='_token']").val();
+      var user_id = $('#user_id'+id).val();
+      var working_status = $('#work_drpdwn'+id).val();
+
+      // console.log(user_id+" sdfs "+ working_status);
+      form = new FormData();
+      form.append('user_id', user_id);
+      form.append('working_status', working_status);
+      form.append('_token', _token);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/provider/work')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('#myModal_provider'+user_id).modal('hide');
+            // if (response == 1) {
+            //   $('#start_btn').hide();
+            // }
+            // $('#myModal'+provider_id).hide();
+            // $('#myModal'+provider_id).fadeOut();
+
+          }
+        }
+      });
+
+}
+function cancel_work(id) {
+  // console.log(id);
+        // var _token = $("input[name='_token']").val();
+      var user_id = $('#user_id'+id).val();
+
+      // console.log(user_id+" sdfs "+ working_status);
+      form = new FormData();
+      form.append('user_id', user_id);
+      // form.append('working_status', working_status);
+      // form.append('_token', _token);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/provider/cancel_work')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('#myModal_provider_cancel'+user_id).modal('hide');
+            // if (response == 1) {
+            //   $('#start_btn').hide();
+            // }
+            // $('#myModal'+provider_id).hide();
+            // $('#myModal'+provider_id).fadeOut();
+
+          }
+        }
+      });
+
+}
+
+function end_work(id) {
+  // console.log(id);
+      var _token = $("input[name='_token']").val();
+      var provider_id = $('#provider_id'+id).val();
+      var amount = $('#amount').val();
+      var rating = $('#user_rating_drpdwn'+id).val();
+      var working_status = $('#user_work_drpdwn'+id).val();
+
+      if (amount == "") {
+    		$("#work_error"+id).show();
+    		setTimeout(function () {
+    			$("#work_error"+id).hide();
+    		},3000);
+    		return 0;
+    	}
+
+      // console.log(user_id+" sdfs "+ working_status);
+      form = new FormData();
+      form.append('provider_id', provider_id);
+      form.append('amount', amount);
+      form.append('rating', rating);
+      form.append('working_status', working_status);
+      form.append('_token', _token);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/provider/end_work')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response) {
+            $('#myModal_user'+provider_id).modal('hide');
             // $('#myModal'+provider_id).hide();
             // $('#myModal'+provider_id).fadeOut();
 

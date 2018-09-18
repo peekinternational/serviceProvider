@@ -245,6 +245,7 @@ $(document).ready(function(){
             // console.log(profile_img);
             }
             var rating='';
+            var person='';
 
             if (res.provider[i].rating==null) {
               rating='';
@@ -252,20 +253,26 @@ $(document).ready(function(){
             else{
               rating=Math.round(res.provider[i].rating);
             }
+            if (res.provider[i].person == 0 || res.provider[i].person == 1) {
+              person = 'person';
+            }else {
+              person = 'people';
+
+            }
 
             var ratingStar='';
             if (rating == 1) {
-            ratingStar +=  '<i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>';
+            ratingStar +=  '<i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i> by '+ res.provider[i].person+" "+person+ '<br>';
           }else if (rating == 2) {
-            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i><br>';
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i> by '+ res.provider[i].person+" "+person+ '<br>';
           }else if (rating == 3) {
-            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i><br>';
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></i><i class="fa fa-star-o"></i></i> by '+ res.provider[i].person+" "+person+ '<br>';
           }else if (rating == 4) {
-            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i><br>';
-          }else if (rating == 5) {
-            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>';
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i><i class="fa fa-star-o"></i> by '+ res.provider[i].person+" "+person+ '<br>';
           }else if (rating == '') {
-            ratingStar += '<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><br>';
+            ratingStar += '<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> by '+ res.provider[i].person+" "+person+'<br>';
+          }else {
+            ratingStar += '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> by '+ res.provider[i].person+" "+person+ '<br>';
           }
             temp +='<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 profile_card_show">'+
             '<div class="well well-sm">'+
@@ -276,7 +283,7 @@ $(document).ready(function(){
                     // profile_img+
                     '</div>'+
                     '</div>'+
-                  '<div class="col-sm-12 col-md-8">&nbsp;'+
+                  '<div class="col-sm-12 col-md-12">&nbsp;'+
                   '<h4><a href="http://localhost:8000/profile_view_other/'+res.provider[i].id+ '">'+  res.provider[i].name+ '</a></h4>'+
                       <!-- Split button -->
                       '<div class="row">'+

@@ -141,7 +141,7 @@ class RegisterController extends Controller
     Mail::send('mail.verify',['token' =>$request->_token,'u_name' =>$request->input('name')],
       function ($message) use ($toemail)
       {
-    //
+
         $message->subject('Service-Provider.com - Account Verifaction');
         $message->from('nabeelirbab@gmail.com', 'E-dehari');
         $message->to($toemail);
@@ -175,9 +175,30 @@ class RegisterController extends Controller
               $user_data = DB::table('historys')
                   ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
                   ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
-                  ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
+                  ->select('registers.*','historys.*','ratings.*',DB::raw('avg(rating_value) as rating'),DB::raw('count(rating_id) as person'))
                   ->where('historys.user_id', '=', $id)->groupBy('provider_id')
                   ->get();
+              $user_data_provider = DB::table('historys')
+                  ->leftJoin('registers', 'historys.user_id', '=', 'registers.id')
+                  ->select('registers.*','historys.*')
+                  ->where('historys.provider_id', '=', $id)->groupBy('user_id')
+                  ->get();
+                  // dd($user_data);
+
+                  $work = DB::table('work_history')
+                      ->leftJoin('registers', 'registers.id', '=', 'work_history.user_id')
+                      // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+                      ->select('registers.*','work_history.*')
+                      ->where('work_status','<>', 'completed')->where('work_history.provider_id', '=', $session_id)
+                      ->get();
+                      // dd($work);
+                  $user_work = DB::table('work_history')
+                      ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
+                      // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+                      ->select('registers.*','work_history.*')
+                      ->where('work_status','=', 'process')->where('work_history.user_id', '=', $session_id)
+                      ->get();
+                      // dd($work);
                   // dd($user_data);
                 //  $user_data = (object) array_merge((array) $user_data_1, (array) $rating_show);
 
@@ -186,7 +207,7 @@ class RegisterController extends Controller
               // dd($user_gallery);
               $user_skill_info=DB::table('skills')->get();
 
-      return view('user_profile.view', compact('user','user_data','user_skill_info','user_gallery'));
+      return view('user_profile.view', compact('user','user_data','user_skill_info','user_gallery','work', 'user_work','user_data_provider'));
   }
 
   public function show_other($id)
@@ -227,14 +248,6 @@ class RegisterController extends Controller
   public function update(Request $request, $id)
   {
     // return $id;
-
-      // $this->validate($request,[
-      //   'skill' => 'required',
-      //   'address' => 'required',
-      //   'location' => 'required',
-      //   'experience' => 'required'
-      // ]);
-
       $id= $request->session()->get('u_session')->id;
       // $user_data = DB::table('historys')
       //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
@@ -243,9 +256,26 @@ class RegisterController extends Controller
       $user_data = DB::table('historys')
           ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
           ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
-          ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
+          ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'),DB::raw('count(rating_user_id) as person'))
           ->where('historys.user_id', '=', $id)->groupBy('provider_id')
           ->get();
+          $user_data_provider = DB::table('historys')
+              ->leftJoin('registers', 'historys.user_id', '=', 'registers.id')
+              ->select('registers.*','historys.*')
+              ->where('historys.provider_id', '=', $id)->groupBy('user_id')
+              ->get();
+          $work = DB::table('work_history')
+              ->leftJoin('registers', 'registers.id', '=', 'work_history.user_id')
+              // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+              ->select('registers.*','work_history.*')
+              ->where('work_status','<>', 'completed')->where('work_history.provider_id', '=', $id)
+              ->get();
+              $user_work = DB::table('work_history')
+                  ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
+                  // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+                  ->select('registers.*','work_history.*')
+                  ->where('work_status','=', 'process')->where('work_history.user_id', '=', $id)
+                  ->get();
       $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
 
       $user = Register::find($id);
@@ -288,7 +318,7 @@ class RegisterController extends Controller
 //     session()->forget('success');
      // $success='Information Updated successfully';
      $user_skill_info=DB::table('skills')->get();
-      return view('user_profile.view',compact('user','user_data','user_skill_info','user_gallery'));
+      return view('user_profile.view',compact('user','user_data','user_skill_info','user_gallery', 'work','user_work','user_data_provider'));
 // exit(1);
 
   }
@@ -319,10 +349,6 @@ class RegisterController extends Controller
           $request->session()->put('u_session', $user1);
           $val = $request->session()->get('u_session');
 
-          // $user = DhrUser::find($val->userId);
-          // $request->session()->put('ses', $user1->id);
-          // $request->session()->put('name', $user1->name);
-          // $val = $request->session()->get('ses');
           $id= $request->session()->get('u_session')->id;
           $type= $request->session()->get('u_session')->type;
           // $user_data = DB::table('historys')
@@ -332,12 +358,35 @@ class RegisterController extends Controller
           $user_data = DB::table('historys')
               ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
               ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
-              ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'))
+              ->select('registers.*','historys.*',DB::raw('avg(rating_value) as rating'),DB::raw('count(rating_user_id) as person'))
               ->where('historys.user_id', '=', $id)->groupBy('provider_id')
               ->get();
+              $user_data_provider = DB::table('historys')
+                  ->leftJoin('registers', 'historys.user_id', '=', 'registers.id')
+                  ->select('registers.*','historys.*')
+                  ->where('historys.provider_id', '=', $id)->groupBy('user_id')
+                  ->get();
+              $work = DB::table('work_history')
+                  ->leftJoin('registers', 'registers.id', '=', 'work_history.user_id')
+                  // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+                  ->select('registers.*','work_history.*')
+                  ->where('work_status','<>', 'completed')->where('work_history.provider_id', '=', $id)
+                  ->get();
+                  $user_work = DB::table('work_history')
+                      ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
+                      // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+                      ->select('registers.*','work_history.*')
+                      ->where('work_status','=', 'process')->where('work_history.user_id', '=', $id)
+                      ->get();
                   $user_skill_info=DB::table('skills')->get();
             $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
-
+            // $work = DB::table('work_history')
+            //     ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
+            //     // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
+            //     ->select('registers.*','work_history.*')
+            //     ->where('work_history.user_id', '=', $id)
+            //     ->get();
+            //     dd($work);
           $user = Register::find($val->id);
           // $user_info = Register::wheretype($type)
           // return view('user_profile.view', compact('user', 'user_data'));
@@ -345,7 +394,7 @@ class RegisterController extends Controller
           if ($type == 'admin') {
             return redirect('/admin/dashboard');
           }else {
-            return view('user_profile.view', compact('user', 'user_data','user_skill_info','user_gallery'));
+            return view('user_profile.view', compact('user', 'user_data','user_skill_info','user_gallery', 'work', 'user_work','user_data_provider'));
           }
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
@@ -491,7 +540,7 @@ public function searchProviders(Request $request)
                   ( 6371 * acos( cos( radians(" . $latitude . ") ) *
                   cos( radians(latitude) ) *
                   cos( radians(longitude) - radians(" . $longitude . ") ) +
-                  sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan, avg(rating_value) as rating")
+                  sin( radians(" . $latitude . ") )*sin( radians(latitude) ) ) ) AS distan, avg(rating_value) as rating,count(rating_id) as person")
           ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
           ->orderBy("distan", 'asc')
           ->groupBy('id')
@@ -500,24 +549,17 @@ public function searchProviders(Request $request)
 
     if (empty($skill)) {
     $providers=$order1->where('distan','<=',$distan);
-    // $providers_1=$order1->where('distan','<=',$distan);
-    // $user_data = DB::table('registers')
-    //     ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-    //     ->select('registers.*',DB::raw('avg(rating_value) as rating'))
-    //     ->groupBy('id')
-    //     ->get();
-    //     dd($user_data);
-        // $providers = (object) array_merge((array) $providers_1, (array) $user_data);
-        // dd($providers);
-    // $providers=$order1;
+    // dd($providers);
     }
     else {
       $providers = Register::where('skill','LIKE',"%{$skill}%")->whereBetween('latitude',[$latitude-$km, $latitude+$km])->whereBetween('longitude',[$longitude-$km, $longitude+$km])
       ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-      ->select('registers.*',DB::raw('avg(rating_value) as rating'))
+      ->select('registers.*',DB::raw('avg(rating_value) as rating'),DB::raw('count(rating_id) as person'))
       ->orderBy('latitude','asc')
       ->groupBy('id')
       ->get();
+      // $providers=$order1->where('distan','<=',$distan)->where('skill','LIKE',"%{$skill}%");
+
       // dd($providers);
       // $providers = $order1->where('skill','LIKE',"%{$skill}%")->where('distan','<=',$distan);
     }
@@ -541,32 +583,6 @@ public function searchProviders(Request $request)
        echo json_encode($obj);
     }
   }
-
-//   public function rating_home(Request $request, $id)
-//   {
-//     // dd($id);
-//     $user_data = DB::table('registers')
-//        ->Join('ratings', 'ratings.rating_provider_id', '=', 'registers.id')
-//        ->select(DB::raw('avg(rating_value) as rating'))
-//        ->where('ratings.rating_provider_id', '=', $id)
-//        ->groupBy('rating_provider_id')
-//        ->get()->toArray();
-//        // echo $user_data;
-//        // dd($user_data);
-//        // echo $user_data;
-//
-//        $obj = array(
-//
-//          "rate"=> $user_data
-//     );
-//     $data_val=[];
-// foreach ($obj as $key => $value) {
-//   // code...
-//   $data_val=$value;
-// }
-//     dd($data_val);
-//         echo json_encode($obj);
-//   }
 
 
  public function changePassword(Request $request, $id)
@@ -672,6 +688,145 @@ public function searchProviders(Request $request)
           echo "1";
         }else {
           echo "0";
+        }
+      }
+  }
+
+
+
+  public function user_hiring(Request $request)
+  {
+    // $userinfo= $request->session()->get('u_session')->userId;
+    // dd($request->all());
+      $id= $request->session()->get('u_session')->id;
+      $p_id=$request->get('provider_id');
+      $nameinfo['user_id']= $request->session()->get('u_session')->id;
+      $nameinfo['provider_id'] = $request->get('provider_id');
+      $nameinfo['work_description'] = $request->get('issue');
+      $mytime = Carbon\Carbon::now();
+      $mytime->toDateTimeString();
+
+      $nameinfo['updated_at'] = $mytime;
+      // dd($nameinfo['value']);
+      // $user_get_info=DB::table('work_history')->where('user_id',$id)->where('provider_id', $p_id)->where('work_status', '<>', 'pen')->first();
+      // if (count($user_get_info)>0) {
+      //   $user_info=DB::table('work_history')->where('provider_id', $p_id)->where('work_status', '<>', 'pen')->update($nameinfo);
+      //   if($user_info == 1){
+      //     echo "1";
+      //   }else {
+      //     echo "0";
+      //   }
+      // }else {
+        $nameinfo['created_at'] = $mytime;
+        $user_info=DB::table('work_history')->insert($nameinfo);
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
+      // }
+  }
+
+
+
+  public function start_work(Request $request)
+  {
+    // $userinfo= $request->session()->get('u_session')->userId;
+    // dd($request->all());
+      $id= $request->session()->get('u_session')->id;
+      $u_id=$request->get('user_id');
+      $status = $request->get('working_status');
+      if ($status == 'No') {
+        echo "nothing";
+      }else {
+
+      $nameinfo['work_status'] = "process";
+      $mytime = Carbon\Carbon::now();
+      $mytime->toDateTimeString();
+      $nameinfo['updated_at'] = $mytime;
+      // dd($nameinfo['value']);
+      $user_get_info=DB::table('work_history')->where('user_id',$u_id)->where('provider_id', $id)->where('work_status', '=', 'pen')->first();
+      if (count($user_get_info)>0) {
+        $user_info=DB::table('work_history')->where('provider_id', $id)->where('user_id',$u_id)->where('work_status', '=', 'pen')->update($nameinfo);
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
+
+      }
+      }
+  }
+
+
+  public function cancel_work(Request $request)
+  {
+    // $userinfo= $request->session()->get('u_session')->userId;
+    // dd($request->all());
+      $id= $request->session()->get('u_session')->id;
+      $u_id=$request->get('user_id');
+      // dd($nameinfo['value']);
+      $user_get_info=DB::table('work_history')->where('user_id',$u_id)->where('provider_id', $id)->where('work_status', '=', 'pen')->first();
+      if (count($user_get_info)>0) {
+        $user_info=DB::table('work_history')->where('provider_id', $id)->where('user_id',$u_id)->where('work_status', '=', 'pen')->delete();
+        if($user_info == 1){
+          echo "1";
+        }else {
+          echo "0";
+        }
+      }
+  }
+
+
+
+
+  public function end_work(Request $request)
+  {
+    // $userinfo= $request->session()->get('u_session')->userId;
+    // dd($request->all());
+      $id= $request->session()->get('u_session')->id;
+      $p_id=$request->get('provider_id');
+      $nameinfo['amount'] =$request->get('amount');
+      $nameinfo['work_status'] = "completed";
+
+      $historyinfo['user_id'] =$id;
+      $historyinfo['provider_id'] =$p_id;
+
+      $ratinginfo['rating_value'] =$request->get('rating');
+      $ratinginfo['rating_user_id'] =$id;
+      $ratinginfo['rating_provider_id'] =$p_id;
+
+      $status = $request->get('working_status');
+      if ($status == 'No') {
+        echo "nothing";
+      }else {
+
+
+      $mytime = Carbon\Carbon::now();
+      $mytime->toDateTimeString();
+      $nameinfo['updated_at'] = $mytime;
+      // $ratinginfo['updated_at'] = $mytime;
+      // dd($nameinfo['value']);
+      $user_get_info=DB::table('work_history')->where('user_id',$id)->where('provider_id', $p_id)->where('work_status', '=', 'process')->first();
+      if (count($user_get_info)>0) {
+        $user_info=DB::table('work_history')->where('provider_id', $p_id)->where('user_id',$id)->where('work_status', '=', 'process')->update($nameinfo);
+        $historyinfo['created_at'] = $mytime;
+        $historyinfo['updated_at'] = $mytime;
+        $user_history=DB::table('historys')->insert($historyinfo);
+        $user_rating_info=DB::table('ratings')->where('rating_user_id',$id)->where('rating_provider_id', $p_id)->first();
+        // dd($user_rating_info);
+        if (count($user_rating_info)>0) {
+          $user_rating=DB::table('ratings')->where('rating_user_id',$id)->where('rating_provider_id', $p_id)->update($ratinginfo);
+        }else {
+          $user_rating=DB::table('ratings')->insert($ratinginfo);
+        }
+        // $user_history=DB::table('ratings')->insert($ratinginfo);
+          if($user_info == 1){
+            echo "1";
+          }else {
+            echo "0";
+          }
+
         }
       }
   }

@@ -59,6 +59,10 @@ Route::get('show_hire_provider', 'RegisterController@show_provider');
 Route::post('/user/rating', 'RegisterController@user_rating');
 Route::post('gallery_imgUpload', 'RegisterController@gallery_imageUpload');
 Route::post('/show_rating/{id}', 'RegisterController@rating_home');
+Route::post('/user/hiring', 'RegisterController@user_hiring');
+Route::post('/provider/work', 'RegisterController@start_work');
+Route::post('/provider/cancel_work', 'RegisterController@cancel_work');
+Route::post('/provider/end_work', 'RegisterController@end_work');
 
 
 

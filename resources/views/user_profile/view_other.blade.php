@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+if (\Session::has('u_session')) {
+  $name=session()->get('u_session')->name;
+  $email=session()->get('u_session')->email;
+  $phone=session()->get('u_session')->phone;
+}else{
+  $name="";
+  $email="";
+  $phone="";
+}
 
+ ?>
 <!--     Profile view       -->
 <div class="container " id="custom_profile">
   <div class="eo-box">
@@ -70,8 +81,61 @@
             <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
           </div>
           <div class="col-md-1 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
+            @if(\Session::has('u_session'))
+              <button id="hire_btn" class="btn btn-success" data-toggle="modal" data-target="#myModal{{$user->id}}">Hire Now</button>
+            @else
+            <a  href="{{url('/login')}}" class="btn btn-success">Hire Now</a>
+            @endif
+            <!-- <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a> -->
           </div>
+
+
+          <div class="modal fade" id="myModal{{$user->id}}" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Hire Now</h4>
+                </div>
+                <form class="" action="#" id="rating_form{{$user->id}}">
+                  {{csrf_field()}}
+                <div class="modal-body text-center">
+                  <p>Do you want to hire {{$user->name}}.</p>
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" name="user_name" id="user_name" class="form-control" value="{{$name}}" placeholder="Your Name">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="email" class="form-control" name="user_email" id="user_email" value="{{$email}}" placeholder="Your Email">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" name="user_phone" id="user_phone" value="{{$phone}}" placeholder="Your Phone">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3">
+                      <textarea name="message" id="user_issue" class="form-control"  style="min-height: 150px;" placeholder="What is Your Issue"></textarea>
+                    </div>
+                    </div>
+                    <input type="hidden" name="provider_id" id="provider_id" value="{{$user->id}}">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success sub_btn" onclick="new_hire({{$user->id}})">Submit</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+
           <div class="eo-edit-section">   <!-- Edit section start -->
             <form id="pnj-form" class="form-update" action="{{url('update/'.$user->id)}}" method="post">   <!-- Update Form start -->
               {{csrf_field()}}
@@ -524,6 +588,48 @@ function removecompanypic(){
     }
   });
 }
+
+
+
+function new_hire(id) {
+  console.log(id);
+      var _token = $("input[name='_token']").val();
+      var name = $('#user_name').val();
+      var email = $('#user_email').val();
+      var phone = $('#user_phone').val();
+      var issue = $('#user_issue').val();
+      var provider_id = id;
+
+      console.log(name);
+      form = new FormData();
+      form.append('name', name);
+      form.append('email', email);
+      form.append('phone', phone);
+      form.append('issue', issue);
+      form.append('_token', _token);
+      form.append('provider_id', provider_id);
+
+      $.ajax({
+        type: 'post',
+        data: form,
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: "{{url('/user/hiring')}}",
+        success: function (response) {
+          console.log(response);
+          // alert(response);
+          if(response ==  1) {
+            $('#myModal'+provider_id).modal('hide');
+            // $('#myModal'+provider_id).hide();
+            // $('#myModal'+provider_id).fadeOut();
+
+          }
+        }
+      });
+
+}
+
 
 </script>
 
