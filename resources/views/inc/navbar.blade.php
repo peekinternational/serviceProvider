@@ -21,10 +21,9 @@
         <li><a href="{{url('/')}}">Home</a></li>
         <li class=" dropdown" id="dropdown" ><a href="#">Service Provider <span class="caret"></span> </a>
           <ul class="dropdown-menu dropdown_list" id="dropmenu">
-            <?php foreach ($user_skill_info as $value): ?>
-                  <li ><a href="{{url('skill_search/')}}?skill={{$value->skill_name}}">{{$value->skill_name}}</a></li>
-                  <!-- <option value="{{$value->skill_name}}">{{$value->skill_name}}</option> -->
-                <?php endforeach; ?>
+            @foreach($navbar_data['skills'] as $skill)
+                  <li ><a href="{{url('skill_search/')}}?skill={{$skill->skill_name}}">{{$skill->skill_name}}</a></li>
+                @endforeach
             <!-- <li ><a href="{{url('skill_search/')}}?skill=plumber">Plumber</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=electrician">Electrician</a></li>
             <li ><a href="{{url('skill_search/')}}?skill=carpenter">Carpenter</a></li>
@@ -41,6 +40,22 @@
         <li ><a href="{{url('/contact')}}">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="margin-top: 2px;">
+        @if(\Session::has('u_session'))
+        <li id="logout" class="dropdown notification_li">
+          @if($navbar_data['count'] >0)
+            <a class="dropbtn2" href="#"><span class="notification_circle">{{$navbar_data['count']}}</span> Notifications</a>
+            @else
+            <a class="" href="#">Notifications</a>
+            @endif
+            <ul id="notification_list" class="dropdown-menu dropdown_list2" >
+              <?php $id=session()->get('u_session')->id; ?>
+              @foreach($navbar_data['notification'] as $show_notification)
+                <li ><button id="" onclick="notification_delete({{$show_notification->n_id}})">{{$show_notification->name}} want to hire you for his work</button>
+                  <input type="hidden" name="" id="n_id{{$show_notification->n_id}}" value="{{$show_notification->provider_id}}">
+                  @endforeach
+            </ul>
+          </li>
+        @endif
         <li id="logout" class="dropdown">
           <a class="dropbtn" href="#"><i class="fa fa-cog"></i>
             @if(\Session::has('u_session'))
@@ -97,6 +112,42 @@
         $("#dropmenu").hide();
         $("#profile_list").toggle();
       });
+      $(".dropbtn2").click(function(){
+        // $("#dropmenu").hide();
+        $("#notification_list").toggle();
+      });
 
     });
+
+    function notification_delete(id) {
+      // console.log(id);
+        var notification_id = id
+          var user_id = $('#n_id'+id).val();
+          // console.log(id);
+
+
+          // console.log(user_id+" sdfs "+ working_status);
+          form = new FormData();
+          form.append('notification_id', notification_id);
+          form.append('id', id);
+
+          $.ajax({
+            type: 'post',
+            data: form,
+            cache: false,
+            contentType: false,
+            processData: false,
+            url: "{{url('del_notification')}}",
+            success: function (response) {
+              console.log(response);
+              // alert(response);
+              if(response == 1) {
+                window.location.href = url('profile_view/'+user_id);
+              }
+            }
+          });
+
+    }
+
+
   </script>

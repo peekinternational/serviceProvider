@@ -1,5 +1,9 @@
 <?php
 
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {    // Ignores notices and reports all other kinds... and warnings    
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +44,8 @@ Route::post('updateProfile', 'RegisterController@updateProfile');
 
 
 Route::get('profile_view/{id}', 'RegisterController@show');
+Route::post('edit_profile/', 'RegisterController@ediprofile');
+
 Route::get('profile_view_other/{id}', 'RegisterController@show_other');
 Route::get('logout', 'RegisterController@logout');
 Route::post('upload', 'RegisterController@Upload');
@@ -65,6 +71,7 @@ Route::post('/provider/cancel_work', 'RegisterController@cancel_work');
 Route::post('/provider/end_work', 'RegisterController@end_work');
 Route::get('/change_password', 'RegisterController@password_route');
 Route::post('change_pwd', 'RegisterController@PasswordChange');
+Route::post('del_notification', 'RegisterController@delete_notification');
 
 
 
@@ -77,6 +84,7 @@ Route::get('/admin/dashboard', 'frontend\Admin@admin_dashboard_route');
 //     return view('admin.admin_account.dashboard');
 // });
 Route::get('/admin/user', 'frontend\Admin@show_user');
+Route::get('/admin/work_schedule', 'frontend\Admin@show_work');
 Route::get('/admin/categories', 'frontend\Admin@show_categories');
 Route::get('/admin/editUser/{w_id}', 'frontend\Admin@admin_edit_route');
 Route::post('edit_user', 'frontend\Admin@admin_edit_user');
@@ -87,3 +95,9 @@ Route::get('/admin/add_category', 'frontend\Admin@admin_add_category_route');
 Route::get('/admin/editCategory/{w_id}', 'frontend\Admin@admin_editCategory_route');
 Route::post('edit_category', 'frontend\Admin@admin_edit_category');
 Route::get('delete_category/{s_id}', 'frontend\Admin@admin_delete_category');
+
+
+Route::post('sms', 'RegisterController@sms');
+Route::post('compincode', 'RegisterController@compare_pincode');
+Route::get('verification','RegisterController@verification');
+

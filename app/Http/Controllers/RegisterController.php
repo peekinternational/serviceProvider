@@ -17,10 +17,19 @@ class RegisterController extends Controller
    * @return \Illuminate\Http\Response
    */
 
-  public function index()
-  {   $user_skill_info=DB::table('skills')->get();
+
+
+  public function index(Request $request)
+  {
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
       $user = Register::paginate(8);
-      return view('user_profile.people', compact('user','user_skill_info'));
+      return view('user_profile.people', compact('user','navbar_data'));
   }
 
   /**
@@ -33,60 +42,98 @@ class RegisterController extends Controller
       //
   }
 
-  public function home_route()
+  public function home_route(Request $request)
   {
-    $user_skill_info=DB::table('skills')->get();
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
 
-    return view('user_profile.home', compact('user_skill_info'));
+  }else {
+    $navbar_data = $this->header_data2();
+  }
+    // dd($navbar_data);
+    // $user_skill_info=DB::table('skills')->get();
+    return view('user_profile.home', compact('navbar_data'));
 
   }
-  public function landing_route()
+  public function landing_route(Request $request)
   {
-    $user_skill_info=DB::table('skills')->get();
-
-    return view('user_profile.landing_page', compact('user_skill_info'));
-
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
   }
 
-
-  public function skill_search_route()
-  {
-    $user_skill_info=DB::table('skills')->get();
-
-    return view('user_profile.skill_search', compact('user_skill_info'));
-
-  }
-
-
-  public function register_route()
-  {
-    $user_skill_info=DB::table('skills')->get();
-
-    return view('user_profile.create', compact('user_skill_info'));
+    return view('user_profile.landing_page', compact('navbar_data'));
 
   }
 
-  public function login_route()
-  {
-    $user_skill_info=DB::table('skills')->get();
 
-    return view('user_profile.login', compact('user_skill_info'));
+  public function skill_search_route(Request $request)
+  {
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
+
+    return view('user_profile.skill_search', compact('navbar_data'));
 
   }
 
-  public function people_route()
-  {
-    $user_skill_info=DB::table('skills')->get();
 
-    return view('user_profile.people', compact('user_skill_info'));
+  public function register_route(Request $request)
+  {
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
+
+    return view('user_profile.create', compact('navbar_data'));
 
   }
 
-  public function contact_route()
+  public function login_route(Request $request)
   {
-    $user_skill_info=DB::table('skills')->get();
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
 
-    return view('user_profile.contact', compact('user_skill_info'));
+    return view('user_profile.login', compact('navbar_data'));
+
+  }
+
+  // public function people_route()
+  // {
+  //   $user_skill_info=DB::table('skills')->get();
+  //
+  //   return view('user_profile.people', compact('user_skill_info'));
+  //
+  // }
+
+  public function contact_route(Request $request)
+  {
+    if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
+
+    return view('user_profile.contact', compact('navbar_data'));
 
   }
 
@@ -109,6 +156,26 @@ class RegisterController extends Controller
     }
 
   }
+
+  public function compare_pincode(Request $request)
+  {
+     $code=$request->input('pincode');
+      
+      $user_code['pincode']=$code;
+      // dd($user_code);
+    $get_users=DB::table('registers')->where('pincode',$user_code)->first();
+    // dd($get_code);
+    $user['statusverification'] = '1';
+    if (count($get_users)>0) {
+      $getuser=DB::table('registers')->where('pincode',$user_code)->update($user);
+      return redirect('/login')->with('success','Your account has been verified');
+    }else {
+      return redirect('/login')->with('red-alert','Wrong Code try again');
+
+    }
+
+  }
+
 
   /**
    * Store a newly created resource in storage.
@@ -166,57 +233,97 @@ class RegisterController extends Controller
   {
     // dd($id);
       $user = Register::find($id);
+       // dd($user);
+
       $session_id= $request->session()->get('u_session')->id;
-      // $user_data = DB::table('historys')
-      //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
-      //         ->where('historys.user_id', '=', $session_id)->groupBy('provider_id')
-      //         ->get();
-              // dd($user_data_1);
               $user_data = DB::table('historys')
                   ->leftJoin('ratings', 'ratings.rating_provider_id', '=', 'historys.provider_id')
                   ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
                   ->select('registers.*','historys.*','ratings.*',DB::raw('avg(rating_value) as rating'),DB::raw('count(rating_id) as person'))
                   ->where('historys.user_id', '=', $id)->groupBy('provider_id')
                   ->get();
+
               $user_data_provider = DB::table('historys')
                   ->leftJoin('registers', 'historys.user_id', '=', 'registers.id')
                   ->select('registers.*','historys.*')
                   ->where('historys.provider_id', '=', $id)->groupBy('user_id')
                   ->get();
-                  // dd($user_data);
 
                   $work = DB::table('work_history')
                       ->leftJoin('registers', 'registers.id', '=', 'work_history.user_id')
-                      // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
                       ->select('registers.*','work_history.*')
                       ->where('work_status','<>', 'completed')->where('work_history.provider_id', '=', $session_id)
                       ->get();
-                      // dd($work);
+
                   $user_work = DB::table('work_history')
                       ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
-                      // ->leftJoin('registers', 'historys.provider_id', '=', 'registers.id')
                       ->select('registers.*','work_history.*')
                       ->where('work_status','=', 'process')->where('work_history.user_id', '=', $session_id)
                       ->get();
-                      // dd($work);
-                  // dd($user_data);
-                //  $user_data = (object) array_merge((array) $user_data_1, (array) $rating_show);
 
-                  //dd($user_data);
-              $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
-              // dd($user_gallery);
-              $user_skill_info=DB::table('skills')->get();
+                  $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
+                  $user_skill_info=DB::table('skills')->get();
+                  
 
-      return view('user_profile.view', compact('user','user_data','user_skill_info','user_gallery','work', 'user_work','user_data_provider'));
+              // $delete_notification=DB::table('notifications')->where('g_provider_id', $id)->get();
+
+             $session_type= $request->session()->get('u_session')->type;
+              $navbar_data = $this->header_data($session_id, $session_type);
+               // dd($navbar_data);
+
+      return view('user_profile.view', compact('user','user_data','user_gallery','work', 'user_work','user_data_provider','navbar_data'));
   }
 
-  public function show_other($id)
+
+  public function ediprofile(Request $request)
+  {
+      $about=$request->input('companyAbout');
+      
+      $user_info['companyAbout']=$about;
+       $id=$request->input('id');
+
+     
+
+     
+      DB::table('registers')->where('id',$id)->update($user_info);
+  }
+
+
+
+  public function delete_notification(Request $request)
+  {
+    // dd($request->all());
+    $n_id = $request->get('notification_id');
+    $p_id = $request->get('user_id');
+
+    $user_notification=DB::table('notifications')->where('n_id', $n_id)->delete();
+    if($user_notification == 1){
+      echo "1";
+    }else {
+      echo "0";
+    }
+  }
+
+  public function show_other( Request $request ,$id)
   {
     // dd($id);
     $user_skill_info=DB::table('skills')->get();
       $user = Register::find($id);
         $user_gallery=DB::table('gallerys')->where('g_provider_id', $id)->get();
-      return view('user_profile.view_other', compact('user', 'user_gallery','user_skill_info'));
+
+
+        
+        if($request->session()->has('u_session'))
+        {
+          $session_id= $request->session()->get('u_session')->id;
+          // dd($session_id);
+          $session_type= $request->session()->get('u_session')->type;
+          $navbar_data = $this->header_data($session_id, $session_type);
+        }else {
+          $navbar_data = $this->header_data2();
+        }
+
+      return view('user_profile.view_other', compact('user', 'user_gallery','user_skill_info','navbar_data'));
   }
 
   /**
@@ -311,6 +418,14 @@ class RegisterController extends Controller
       }
       $user->save();
 
+      if($request->session()->has('u_session')){
+          $session_id= $request->session()->get('u_session')->id;
+          $session_type= $request->session()->get('u_session')->type;
+          $navbar_data = $this->header_data($session_id, $session_type);
+        }else {
+          $navbar_data = $this->header_data2();
+        }
+
       //dd($user);->save();
       //dd($user->id);
 // $request->session()->put('success','Information Updated successfully');
@@ -318,7 +433,7 @@ class RegisterController extends Controller
 //     session()->forget('success');
      // $success='Information Updated successfully';
      $user_skill_info=DB::table('skills')->get();
-      return view('user_profile.view',compact('user','user_data','user_skill_info','user_gallery', 'work','user_work','user_data_provider'));
+      return view('user_profile.view',compact('user','user_data','user_skill_info','user_gallery', 'work','user_work','user_data_provider','navbar_data'));
 // exit(1);
 
   }
@@ -340,8 +455,8 @@ class RegisterController extends Controller
     $phone  = $request->input('phone');
     $password = md5($request->input('password'));
     $user1 = Register::wherephone($phone)->first();
-
-    if (!empty($user1->phone)) {
+if ($user1->statusverification == '1'){
+if (!empty($user1->phone)) {
       if ($phone == $user1->phone) {
         if ($password == $user1->password) {
           // dd($user1);
@@ -351,6 +466,13 @@ class RegisterController extends Controller
 
           $id= $request->session()->get('u_session')->id;
           $type= $request->session()->get('u_session')->type;
+          if($request->session()->has('u_session')){
+    $session_id= $request->session()->get('u_session')->id;
+    $session_type= $request->session()->get('u_session')->type;
+    $navbar_data = $this->header_data($session_id, $session_type);
+  }else {
+    $navbar_data = $this->header_data2();
+  }
           // $user_data = DB::table('historys')
           //         ->join('registers', 'historys.provider_id', '=', 'registers.id')
           //         ->where('historys.user_id', '=', $id)
@@ -394,15 +516,21 @@ class RegisterController extends Controller
           if ($type == 'admin') {
             return redirect('/admin/dashboard');
           }else {
-            return view('user_profile.view', compact('user', 'user_data','user_skill_info','user_gallery', 'work', 'user_work','user_data_provider'));
+            return view('user_profile.view', compact('user', 'user_data','user_skill_info','user_gallery', 'work', 'user_work','user_data_provider','navbar_data'));
           }
         }else {
           return redirect('/login')->with('red-alert', 'Incorrect Password');
         }
       }
-      }else {
+      }
+      else {
         return redirect('/login')->with('red-alert', 'Incorrect Phone');
     }
+}
+   else {
+        return redirect('/login')->with('red-alert', 'Your Account is not Verrified');
+    }
+    
   }
 
   // Logout Funciton
@@ -427,6 +555,7 @@ class RegisterController extends Controller
       $skill = $request->input('skill');
       $location = $request->input('location');
       $city = $request->input('city');
+      // dd($city);
 
     // $user = Register::all();
     // if($skill !="" && $location ="")$user->where('skill', 'LIKE',"%{$skill}%")->get();
@@ -447,13 +576,14 @@ class RegisterController extends Controller
      $user1=$alls->get();
      // dd($user1);
      $user_skill_info=DB::table('skills')->get();
-      // $user = Register::where('skill','LIKE',"%{$skill}%")->get();
-
-      // $user = Register::where('skill','LIKE',"%{$skill}%")->Where('location', 'LIKE',"%{$location}%")->get();
-      // $user1 = Register::where('skill','LIKE',"%{$skill}%")->Where('city', 'LIKE',"%{$city}%")->get();
-
-      // return view('user_profile.search_result',compact('user', 'user1'));
-      return view('user_profile.search_result',compact('user','user1','user_skill_info'));
+     if($request->session()->has('u_session')){
+     $session_id= $request->session()->get('u_session')->id;
+     $session_type= $request->session()->get('u_session')->type;
+     $navbar_data = $this->header_data($session_id, $session_type);
+   }else {
+     $navbar_data = $this->header_data2();
+   }
+      return view('user_profile.search_result',compact('user','user1','user_skill_info','navbar_data'));
   }
 
   //  Searching through skill but not in use
@@ -740,26 +870,21 @@ public function searchProviders(Request $request)
       $nameinfo['work_description'] = $request->get('issue');
       $mytime = Carbon\Carbon::now();
       $mytime->toDateTimeString();
-
+      $nameinfo['created_at'] = $mytime;
       $nameinfo['updated_at'] = $mytime;
       // dd($nameinfo['value']);
-      // $user_get_info=DB::table('work_history')->where('user_id',$id)->where('provider_id', $p_id)->where('work_status', '<>', 'pen')->first();
-      // if (count($user_get_info)>0) {
-      //   $user_info=DB::table('work_history')->where('provider_id', $p_id)->where('work_status', '<>', 'pen')->update($nameinfo);
-      //   if($user_info == 1){
-      //     echo "1";
-      //   }else {
-      //     echo "0";
-      //   }
-      // }else {
-        $nameinfo['created_at'] = $mytime;
+      $notifcationinfo['user_id']= $request->session()->get('u_session')->id;
+      $notifcationinfo['provider_id'] = $request->get('provider_id');
+      $notifcationinfo['description'] = $request->get('issue');
+        $notifcationinfo['created_at'] = $mytime;
+        $notifcationinfo['updated_at'] = $mytime;
         $user_info=DB::table('work_history')->insert($nameinfo);
+        $user_info=DB::table('notifications')->insert($notifcationinfo);
         if($user_info == 1){
           echo "1";
         }else {
           echo "0";
         }
-      // }
   }
 
 
@@ -864,6 +989,148 @@ public function searchProviders(Request $request)
 
         }
       }
+  }
+
+
+
+
+
+
+
+  public function header_data($session_id, $session_type)
+  {
+    // dd($session_type);
+    if ($session_type == 'provider') {
+      $user_notification=DB::table('notifications')
+      ->leftJoin('registers', 'registers.id', '=', 'notifications.user_id')
+      ->select('registers.*','notifications.*')
+      ->where('provider_id', $session_id)->get();
+    }else {
+      $user_notification=DB::table('notifications')
+      ->leftJoin('registers', 'registers.id', '=', 'notifications.provider_id')
+      ->where('user_id', $session_id)->get();
+    }
+    // dd($user_notification);
+    $notification = (count($user_notification));
+    $user_skill_info=DB::table('skills')->get();
+    $data = array(
+      "notification" => $user_notification,
+      "count"        => $notification,
+      "skills"       => $user_skill_info
+    );
+    return $data;
+
+  }
+
+  public function header_data2()
+  {
+    $user_skill_info=DB::table('skills')->get();
+    $data = $data = array(
+      "skills"       => $user_skill_info
+    );
+    return $data;
+
+  }
+  public function sms(Request $request)
+  {
+    $mobile =$request->input('phone');
+   $check_user= DB::table('registers')->where('phone','=',$mobile)->where('statusverification','=','0')->first();
+   // dd($check_user);
+    if($check_user){
+       
+ $username = "923487991015";///Your Username
+$password = "7981";///Your Password
+///Recepient Mobile Number
+// dd($mobile);
+$sender = "SenderID";
+ $pincode =rand(500,1000);
+$message = "Your verification code is " .$pincode;
+$input['name']=$request->input('name');
+$input['phone']=$mobile;
+
+
+$input['email']=$request->input('email');
+$input['pincode']=$pincode;
+$input['password']=md5($request->input('password'));
+$input['confirm_pass']=md5($request->input('password_confirmation'));
+$input['type']=$request->input('type');
+$input['agree']=$request->input('agree');
+
+////sending sms
+ 
+$post = "sender=".urlencode($sender)."&mobile=".urlencode($mobile)."&message=".urlencode($message)."";
+$url = "https://sendpk.com/api/sms.php?username=".$username."&password=".$password."";
+$ch = curl_init();
+$timeout = 10; // set to zero for no timeout
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)');
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$result = curl_exec($ch); 
+/*Print Responce*/
+echo $result; 
+DB::table('registers')->where('phone','=',$mobile)->where('statusverification','=','0')->update($input);
+    }
+    else{
+      $request->validate([
+    'phone' => 'required|unique:registers|max:11',
+    
+]);
+
+ $username = "923487991015";///Your Username
+$password = "7981";///Your Password
+///Recepient Mobile Number
+// dd($mobile);
+$sender = "SenderID";
+ $pincode =rand(500,1000);
+$message = "Your verification code is " .$pincode;
+$input['name']=$request->input('name');
+$input['phone']=$mobile;
+
+
+$input['email']=$request->input('email');
+$input['pincode']=$pincode;
+$input['password']=md5($request->input('password'));
+$input['confirm_pass']=md5($request->input('password_confirmation'));
+$input['type']=$request->input('type');
+$input['agree']=$request->input('agree');
+
+////sending sms
+ 
+$post = "sender=".urlencode($sender)."&mobile=".urlencode($mobile)."&message=".urlencode($message)."";
+$url = "https://sendpk.com/api/sms.php?username=".$username."&password=".$password."";
+$ch = curl_init();
+$timeout = 10; // set to zero for no timeout
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)');
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$result = curl_exec($ch); 
+/*Print Responce*/
+echo $result; 
+DB::table('registers')->insert($input);
+    }
+
+
+
+
+ // return view('user_profile.verification');
+ return redirect('/verification');
+  }
+  public function verification(Request $request){
+     if($request->session()->has('u_session')){
+          $session_id= $request->session()->get('u_session')->id;
+          $session_type= $request->session()->get('u_session')->type;
+          $navbar_data = $this->header_data($session_id, $session_type);
+        }else {
+          $navbar_data = $this->header_data2();
+        }
+        return view('user_profile.verification',compact('navbar_data'));
+
   }
 
 }

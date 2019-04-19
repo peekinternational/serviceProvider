@@ -152,7 +152,7 @@ $(document).ready(function(){
           }
 
           var res = JSON.parse(response);
-
+           console.log(res);
           km = res.km;
 
         radius = km*111*1000+1000;
@@ -210,10 +210,15 @@ $(document).ready(function(){
           var  glngval=val.longitude;
           var  gname=val.name;
           var gskill = val.skill;
+          var gslocation = val.location;
+
+          var gsphone = val.phone;
+            // console.log(gsphone);
+
           var contentString = '<div id="content">'+
           '<a href="http://localhost:8000/profile_view/'+res.provider[i].id +'"><strong>'+ gname+'</strong></a>'+
-          '<p>'+gskill+'</p></div>';
-          // console.log(gskill);
+          '<p>'+gskill+'</p><p>'+gslocation+'</p><p>'+gsphone+'</p></div>';
+           console.log(gskill);
 
           }
           var temp = '';
@@ -297,10 +302,16 @@ $(document).ready(function(){
 
                       '<div class="row">'+
                        '<div class="col-md-12 col-sm-12 col-xm-12">'+
-                        '<i class="fa fa-map-marker"></i>&nbsp;  &nbsp; '+
-      	                         res.provider[i].location+
+                        '<i class="fa fa fa-phone" Style="color:green;"></i>&nbsp;  &nbsp; <span Style="color:green;"> '+
+      	                         res.provider[i].phone+'</span>'+
       	                        '</div>'+
       	                      '</div>'+
+                        '<div class="row">'+
+                       '<div class="col-md-12 col-sm-12 col-xm-12">'+
+                        '<i class="fa fa-map-marker"></i>&nbsp;  &nbsp; <span>'+
+                            res.provider[i].location+ '</span>'+
+                                '</div>'+
+                              '</div>'+
       	                    '</div>'+
       	                '</div>'+
       	            '</div>'+

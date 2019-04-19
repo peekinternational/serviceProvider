@@ -32,7 +32,7 @@
         <button type="submit" class="btn btn-primary btn-block login-btn" name="login">Login</button>
     </div>
     <div class="col-md-4">
-        <a href="{{url('register')}}" class="btn btn-default btn-block">Regiter</a>
+        <a href="{{url('register')}}" class="btn btn-default btn-block">Register</a>
     </div>
 </div>
 </form>

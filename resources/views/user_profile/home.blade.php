@@ -21,9 +21,9 @@
 						<div class="col-md-5 form-cols">
 							<!-- <input type="text" class="form-control" name="skill" id="skill_val" placeholder="Skills"> -->
 							<select class="form-control select2" name="skill" required="" >
-								<?php foreach ($user_skill_info as $value): ?>
-											<option value="{{$value->skill_name}}">{{$value->skill_name}}</option>
-										<?php endforeach; ?>
+								@foreach($navbar_data['skills'] as $skill)
+											<option value="{{$skill->skill_name}}">{{$skill->skill_name}}</option>
+										@endforeach
 							</select>
 						</div>
 						<div class="col-md-5 form-cols" id="locationField">

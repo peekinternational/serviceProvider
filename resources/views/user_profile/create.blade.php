@@ -9,7 +9,7 @@
 <div class="alert alert-danger error-group" style="display:None">
 
 </div>
-<form class="form_registeration" method="post" action="{{url('create_r')}}">
+<form class="form_registeration" method="post" action="{{url('/sms')}}">
 {{csrf_field()}}
   <div class="form-group">
     <label>Full Name:</label>

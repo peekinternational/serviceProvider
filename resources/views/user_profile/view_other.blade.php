@@ -67,9 +67,9 @@ if (\Session::has('u_session')) {
             <div class="eo-details">
               <span>Email:</span> {{ $user->email }}
             </div>
-            <!-- <div class="eo-details">
+            <div class="eo-details">
               <span>Phone:</span> {{ $user->phone }}
-            </div> -->
+            </div>
             <div class="eo-details provider s_user_hide">
               <span>Experience:</span>{{ $user->experience }}
             </div>
@@ -80,14 +80,7 @@ if (\Session::has('u_session')) {
           <div class="col-md-5 eo-section">    <!-- edit buttion -->
             <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
           </div>
-          <div class="col-md-1 eo-section">    <!-- edit buttion -->
-            @if(\Session::has('u_session'))
-              <button id="hire_btn" class="btn btn-success" data-toggle="modal" data-target="#myModal{{$user->id}}">Hire Now</button>
-            @else
-            <a  href="{{url('/login')}}" class="btn btn-success">Hire Now</a>
-            @endif
-            <!-- <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a> -->
-          </div>
+        
 
 
           <div class="modal fade" id="myModal{{$user->id}}" role="dialog">
@@ -126,7 +119,7 @@ if (\Session::has('u_session')) {
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-success sub_btn" onclick="new_hire({{$user->id}})">Submit</button>
+                  <button type="button" class="btn btn-success sub_btn" onclick="new_hire({{$user->i}})">Submit</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </form>

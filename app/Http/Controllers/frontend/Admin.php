@@ -45,6 +45,23 @@ class Admin extends Controller
      }
      }
 
+     public function show_work(Request $request)
+     {
+       if($request->session()->has('u_session')){
+       $user_get=DB::table('work_history')
+           ->leftJoin('registers', 'registers.id', '=', 'work_history.user_id')
+           // ->leftJoin('registers', 'registers.id', '=', 'work_history.provider_id')
+           // ->where('','=','work_history.provider_id')
+           ->select('registers.*','work_history.*')
+           ->get();
+       // dd($user_get);
+       return view('admin.admin_account.work_schedule',compact('user_get'));
+     }else {
+
+       return redirect('/login');
+     }
+     }
+
 
      public function show_categories(Request $request)
      {

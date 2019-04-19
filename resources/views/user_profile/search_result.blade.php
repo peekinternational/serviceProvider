@@ -45,6 +45,7 @@ $rating_val='';
                             <i class="fa fa-wrench"></i>
                             &nbsp;
                             {{$users->skill}}
+                            
                         </div>
                         </div>
                         <div class="row">
@@ -52,6 +53,13 @@ $rating_val='';
                           <i class="fa fa-map-marker"></i>
                           &nbsp;&nbsp;
                           {{$users->location}}
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12 col-sm-12 col-xm-12">
+                          <i class="fa fa-phone"></i>
+                          &nbsp;&nbsp;
+                          {{$users->phone}}
                         </div>
                       </div>
                     </div>
@@ -114,11 +122,19 @@ $rating_val='';
                       </div>
                         <div class="row">
                           <div class="col-md-12 col-sm-12 col-xm-12">
+                          <i class="fa fa fa-phone"></i>
+                          &nbsp; 
+                         <span style="color: green;"> {{$users->phone}}</span>
+                        </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12 col-xm-12">
                           <i class="fa fa-map-marker"></i>
                           &nbsp;
                           {{$users->location}}
                         </div>
                       </div>
+                     
                     </div>
                 </div>
             </div>

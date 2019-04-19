@@ -64,14 +64,14 @@ $rating_val='';
               <span>Phone:</span> {{ $user->phone }}
             </div>
             <div class="eo-details provider s_user_hide">
-              <span>Experience:</span>{{ $user->experience }}
+              <span>Experience:</span>{{ $user->experience }} Year
             </div>
             <div class="eo-details provider s_user_hide">
               <span>Examination Fee:</span> {{$user->fee}}  Rs.
             </div>
           </div>
           <div class="col-md-5 eo-section">    <!-- edit buttion -->
-            <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a>
+           <!--  <a class="btn btn-success" href="{{url('/user/hire/'.$user->id)}}" id="hire_btn">Hire Now </a> -->
           </div>
           <div class="col-md-1 eo-section">    <!-- edit buttion -->
             <a class="btn btn-primary eo-edit-btn" id="edit_btn" onClick="$('.eo-section').hide(); $('.eo-edit-section').show()"><i class="fa fa-edit"></i> </a>
@@ -90,10 +90,11 @@ $rating_val='';
                 <div class="form-group provider">     <!-- Skill slection -->
                   <label class="control-label col-sm-3 col-xs-12">Skills</label>
                   <div class="col-sm-9 pnj-form-field">
+
                     <select class="form-control select2" name="skill">
-                      <?php foreach ($user_skill_info as $value): ?>
-														<option value="{{$value->skill_name}}" {{ $value->skill_name == $user->skill ? 'selected="selected"' : '' }}>{{$value->skill_name}}</option>
-													<?php endforeach; ?>
+                      @foreach($navbar_data['skills'] as $skill)
+														<option value="{{$skill->skill_name}}" {{ $skill->skill_name == $user->skill ? 'selected="selected"' : '' }}>{{$skill->skill_name}}</option>
+											@endforeach
                     </select>
                   </div>
                 </div>   <!-- Skill slection end -->
@@ -180,19 +181,50 @@ $rating_val='';
   </div>    <!-- eo-box end -->
 
   <!-- about editor -->
-  <div class="eo-box eo-about provider" id="eo-about" >
+  
+  <div class="eo-box eo-about provider" id="eo-about">
+    
     <a class="btn btn-primary r-add-btn hideThis" id="about_btn" onClick="$('.eo-about-org').hide(); $('.hideThis').hide();$('.eo-about-editor').show(); "><i class="fa fa-edit"></i> </a>
     <h3 class="eo-about-heading">About Me</h3>
-    <div class="eo-about-org" style="padding-left:30px">
-      <p><span></span></p>
-    </div>
-    <div class="eo-about-editor provider"> <!-- about editior -->
-      <form action="#" id="pnj-form1" method="post" class="organization-desc-form">
-        <input type="hidden" name="" class="token">
+    
+    @if($user->companyAbout != '')
+  <div id="data-section" >
+    <P>{!! $user->companyAbout !!}</P>
+    <i class="eo-edit-btn"  id="edit-btuun" style="float: right;"></i>
+  </div>
+  <div style="display: none;" id="edit-form-section">
+     <form action="#" id="about_form" method="post" class="organization-desc-form">
+        {{ csrf_field () }}
+        <input type="hidden" name="id" value="{{$user->id}}">
         <div class="form-group" style="padding-left:20px">
           <label class="control-label col-sm-3">&nbsp;</label>
           <div class="col-sm-7 pnj-form-field">
-            <textarea class="form-control tex-editor" name="companyAbout" rows="10"> </textarea>
+            
+            <textarea class="form-control tex-editor"  id="aboutme" name="companyAbout" rows="10"> {!! $user->companyAbout !!} </textarea>
+          </div>
+        </div>
+        <div class="col-md-12 provider">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-primary col-md-3 edit-about-btn" name="save" >SAVE</button>
+              <button type="button" class="btn btn-default col-md-3 edit-about-btn" onClick="$('.eo-about-org').show(); $('.hideThis').show();$('.eo-about-editor').hide();">CANCEL</button>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+  
+  @else
+    <div class="eo-about-editor provider"> <!-- about editior -->
+      
+      <form action="#" id="about_form" method="post" class="organization-desc-form">
+        {{ csrf_field () }}
+        <input type="hidden" name="id" value="{{$user->id}}">
+        <div class="form-group" style="padding-left:20px">
+          <label class="control-label col-sm-3">&nbsp;</label>
+          <div class="col-sm-7 pnj-form-field">
+            
+            <textarea class="form-control tex-editor" id="aboutme" name="companyAbout" rows="10"> </textarea>
           </div>
         </div>
         <div class="col-md-12 provider">
@@ -208,7 +240,10 @@ $rating_val='';
       CKEDITOR.replace( 'companyAbout' );
     </script>
   </div>  <!-- about editior end -->
+  @endif
 </div>   <!-- about div end -->
+
+ 
 
 
 
@@ -1084,6 +1119,11 @@ function end_work(id) {
 }
 
 $(document).ready(function(){
+   $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 
   $.ajaxSetup({
     headers: {
@@ -1097,7 +1137,6 @@ $(document).ready(function(){
       var user_id="{{$user->id}}";
 
       var image = $('.pf-image-change')[0].files[0];
-
       form = new FormData();
       form.append('profile-image',image);
       form.append('user_id',user_id);
@@ -1172,6 +1211,41 @@ $(document).ready(function () {
     }
   });
 });
+// aboutend
+$(document).ready(function () {
+  $.ajaxSetup({
+    header: {
+      'X-CSRF-TOKEN' : $('meta[name="csrf_token"]').attr('content')
+    }
+  });
+  $(document).on("submit", "#about_form", function (e) {
+ 
+      e.preventDefault()
+      var formVal = $(this).serialize();
+      $.ajax({
+        type: 'post',
+        data: formVal,
+        url: "{{ url('edit_profile') }}",
+        success: function (response) {
+         if(response) {
+            $('#loaderIcon').hide()
+            $("#worker_success").show();
+            setTimeout(function () {
+              $("#worker_success").hide();
+            },3000);
+            
+          }
+        }
+      });
+    });
+});
+
+$("#edit-btuun").click(function(){
+  $("#data-section").hide();
+   $("#edit-form-section").show();
+});
+
+
 </script>
 
 @endsection

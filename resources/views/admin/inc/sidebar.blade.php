@@ -35,9 +35,9 @@
                  </a>
              </li>
              <li>
-                 <a href="{{url('/admin/add_category')}}">
-                     <i class="fa fa-envelope-open"></i>
-                     <p>Subscriber</p>
+                 <a href="{{url('/admin/work_schedule')}}">
+                     <i class="fa fa-clipboard"></i>
+                     <p>Work Schedule</p>
                  </a>
              </li>
              <li>
